@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 const mongoose = require('mongoose')
 
-const connectionString = 'mongodb://0.tcp.ap.ngrok.io:17800/trading' // Replace with your database name
+const connectionString = 'mongodb://27.254.144.100/trading' // Replace with your database name
 
 mongoose
   .connect(connectionString, {
@@ -37,26 +37,29 @@ app.post('/gettrading', async (req, res) => {
     bodyq = req.body
     let body = {
       ...bodyq,
-      status: false,
       symbol: bodyq.symbol.replace(/\.P$/, '')
     }
     const checkData = await Trading.findOne({
       signal: body.signal,
-      trend: body.trend,
+      // trend: body.trend,
       symbol: body.symbol
     })
 
     if (checkData) {
-      await Trading.deleteMany({
-        signal: body.signal,
-        trend: body.trend,
-        symbol: body.symbol
-      })
+      await Trading.updateOne(
+        {
+          signal: body.signal,
+          // trend: body.trend,
+          symbol: body.symbol
+        },
+        { trend: body.trend },
+        { upsert: true }
+      )
     }
-    const createNew = await Trading.create({
-      ...body,
-      status: false
-    })
+    if (!checkData)
+      await Trading.create({
+        ...body
+      })
 
     if (body.signal === '15m' || body.signal === '4h' || body.signal === '1m')
       checkTf15and4h(body, res)
@@ -93,14 +96,11 @@ const checkTf15and4h = async (body, res) => {
 
     if (check1m) {
       // console.log('เข้า 1 นาทีจ้า')
-      checkStopLoss(body, res, check15m, check4h, check1m)
+      checkStopLoss(check1m)
     }
     if (check4h && check15m && check1m) {
-      postLineNotify('buy')
       //  console.log('ซื้อเลย up', whenBuy)
       buyingBinance(check15m, check4h, check1m)
-    } else {
-      console.log('อย่าซื้อเลย')
     }
     return res.status(HTTPStatus.OK).json({ success: true, data: 'ไม่ๆๆๆ' })
   } catch (error) {}
@@ -124,33 +124,32 @@ const buyingBinance = async (check15m, check4h, check1m) => {
         binance: { symbol: check1m.symbol }
       }
       const logCreated = await Log.create(data)
+      postLineNotify('buy')
     } else console.log('มีอยู่แล้วไม่ต้องซื้อจ้า')
-    deletedWhenMatch(check15m, check4h, check1m)
+    //deletedWhenMatch(check15m, check4h, check1m)
   } catch (error) {}
 }
 
-const checkStopLoss = async (body, check15m, check4h, check1m) => {
+const checkStopLoss = async (check1m) => {
   try {
     const nice = await Log.findOne({
-      'binance.symbol': body.symbol // "15m"
+      'binance.symbol': check1m.symbol // "15m"
     })
+
     if (nice) {
       if (
-        (body.trend === 'Down' && nice.trend === 'Up') ||
-        (body.trend === 'Up' && nice.trend === 'Down')
+        (check1m.trend === 'down' && nice.trend === 'up') ||
+        (check1m.trend === 'up' && nice.trend === 'down')
       ) {
+        const checkBinance = await Log.deleteOne({
+          'binance.symbol': check1m.symbol
+        })
         postLineNotify('stoploss')
-        console.log('this is nice', nice)
         console.log('cancle take profit')
-        deletedWhenMatch(check15m, check4h, check1m)
+        // deletedWhenMatch(check15m, check4h, check1m)
       }
     }
   } catch (error) {}
-}
-const deletedWhenMatch = async (check15m, check4h, check1m) => {
-  await Trading.deleteMany({
-    $or: [{ _id: check15m?._id }, { _id: check4h?._id }, { _id: check1m?._id }]
-  })
 }
 
 const postLineNotify = async (buyit) => {
@@ -176,9 +175,7 @@ const postLineNotify = async (buyit) => {
       // Other parameters as needed (refer to LINE Notify API documentation)
     }
   })
-    .then(() => {
-      console.log('hello')
-    })
+    .then(() => {})
 
     .catch((error) => {})
 }
