@@ -183,53 +183,62 @@ const checkStopLoss = async (body) => {
   try {
     const { symbol, side, type, stopPrice } = body
 
-    console.log('urhere')
+    const checkStopLoss = await Log.findOne({ symbol: symbol })
+    if (checkStopLoss) {
+      const qty = 0
+      const status = true
 
-    const qty = 0
-    const status = true
+      const data = await apiBinance.postBinannce(
+        symbol,
+        side,
+        qty,
+        type,
+        stopPrice,
+        status
+      )
 
-    const data = await apiBinance.postBinannce(
-      symbol,
-      side,
-      qty,
-      type,
-      stopPrice,
-      status
-    )
+      const check = await Log.findOne({
+        'symbol': symbol,
+        'binanceStopLoss.symbol': symbol
+      })
 
-    const check = await Log.findOne({
-      'symbol': symbol,
-      'binanceStopLoss.symbol': symbol
-    })
+      if (data.status === 200) {
+        if (check) {
+          console.log('urrightjaaaaaaaa')
+          //   await apiBinance.cancleOrder(symbol, check.binanceStopLoss.orderId)
+          // }
 
-    if (data.status === 200) {
-      if (check) {
-        console.log('urrightjaaaaaaaa')
-        //   await apiBinance.cancleOrder(symbol, check.binanceStopLoss.orderId)
-        // }
+          await Log.findOneAndUpdate(
+            { symbol: symbol },
+            {
+              $set: { binanceStopLoss: data.data }
+            },
+            { upsert: true }
+          )
+        }
 
-        await Log.findOneAndUpdate(
-          { symbol: symbol },
-          {
-            $set: { binanceStopLoss: data.data }
-          },
-          { upsert: true }
-        )
+        const buyit = {
+          symbol: symbol,
+          text: 'updatestoploss',
+          type: type,
+          msg: `อัพเดท stoploss สำเร็จ , เลื่อน stopLoss : ${stopPrice}`
+        }
+        await lineNotifyPost.postLineNotify(buyit)
+      } else {
+        const buyit = {
+          symbol: symbol,
+          text: 'error',
+          type: type,
+          msg: data.data.msg
+        }
+        await lineNotifyPost.postLineNotify(buyit)
       }
-
-      const buyit = {
-        symbol: symbol,
-        text: 'updatestoploss',
-        type: type,
-        msg: `อัพเดท stoploss สำเร็จ , เลื่อน stopLoss : ${stopPrice}`
-      }
-      await lineNotifyPost.postLineNotify(buyit)
     } else {
       const buyit = {
         symbol: symbol,
-        text: 'error',
+        text: 'checkstoploss',
         type: type,
-        msg: data.data.msg
+        msg: 'ยังไม่มีคำสั่งซื้อ'
       }
       await lineNotifyPost.postLineNotify(buyit)
     }
