@@ -3,14 +3,15 @@ const Schema = mongoose.Schema
 
 const Trading = new Schema(
   {
-    signal: { type: String },
+    type: { type: String },
+    side: { type: String },
     symbol: { type: String },
-    trend: { type: String },
-    price: { type: String },
+    takeProfit: { type: Object },
     time: { type: Date, default: Date.now },
-    status: { type: Boolean }
+    stopPrice: { type: String },
+    priceCal: { type: String },
+    stopPriceCal: { type: String }
   },
-
   {
     timestamps: true
   }

@@ -6,15 +6,17 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const Trading = require('./model/trading')
 const Log = require('./model/log')
-const axios = require('axios')
-
+const lineNotifyPost = require('./lib/lineNotifyPost')
+const apiBinance = require('./lib/apibinance')
+const callLeverage = require('./lib/calLeverage')
+const realEnvironment = require('./lib/realEnv')
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 const mongoose = require('mongoose')
 
-const connectionString = 'mongodb://27.254.144.100/trading' // Replace with your database name
+const connectionString = 'mongodb://localhost:27017/trading' //'mongodb://27.254.144.100/trading' // Replace with your database name
 
 mongoose
   .connect(connectionString, {
@@ -23,7 +25,6 @@ mongoose
   .then(() => console.log('MongoDB connected successfully'))
   .catch((err) => console.error('Error connecting to MongoDB:', err))
 let bodyq = null
-
 app.get('/getbinance', async (req, res) => {
   try {
     const getLog = await Log.find()
@@ -35,149 +36,203 @@ app.get('/getbinance', async (req, res) => {
 app.post('/gettrading', async (req, res) => {
   try {
     bodyq = req.body
-    let body = {
-      ...bodyq,
-      symbol: bodyq.symbol.replace(/\.P$/, '')
-    }
-    const checkData = await Trading.findOne({
-      signal: body.signal,
-      // trend: body.trend,
-      symbol: body.symbol
-    })
 
-    if (checkData) {
-      await Trading.updateOne(
-        {
-          signal: body.signal,
-          // trend: body.trend,
-          symbol: body.symbol
-        },
-        { trend: body.trend },
-        { upsert: true }
+    let body = await checkDataFirst(bodyq)
+
+    if (body.type === 'MARKET') {
+      const x = await Log.findOne({ symbol: body.symbol })
+
+      if (x) {
+        const checkTakeOrCancle = await apiBinance.getOrder(
+          x?.binanceMarket?.orderId,
+          body.symbol
+        )
+
+        if (checkTakeOrCancle.status === 'CLOSED') {
+          await Log.deleteOne({ symbol: body.symbol })
+        }
+      }
+
+      const calLeverage = await callLeverage.leverageCal(
+        body.symbol,
+        body.priceCal,
+        body.stopPriceCal,
+        body.side
       )
-    }
-    if (!checkData)
-      await Trading.create({
-        ...body
-      })
-
-    if (body.signal === '15m' || body.signal === '4h' || body.signal === '1m')
-      checkTf15and4h(body, res)
+      checkCondition(
+        body,
+        res,
+        calLeverage.maximumQty,
+        calLeverage.defaultLeverage,
+        calLeverage.budget,
+        calLeverage.minimum,
+        calLeverage.openLongShort,
+        calLeverage.st,
+        calLeverage.valueAskBid
+      )
+    } else checkCondition(body, res)
 
     return res.status(HTTPStatus.OK).json({ success: true, data: 'ok' })
   } catch (error) {}
 })
 
-const checkTf15and4h = async (body, res) => {
+const checkCondition = async (
+  body,
+  res,
+  maximumQty,
+  defaultLeverage,
+  budget,
+  minimum,
+  openLongShort,
+  st,
+  valueAskBid
+) => {
   try {
-    const check15m = await Trading.findOne({
-      symbol: body.symbol,
-      signal: '15m',
-      trend: body.trend
-    })
-    const check4h = await Trading.findOne({
-      symbol: body.symbol,
-      signal: '4h',
-      trend: body.trend
-    })
+    const finalBody = {
+      ...body,
+      quantity: maximumQty,
+      leverage: defaultLeverage,
+      budget: budget,
+      minimum: minimum,
+      openLongShort: openLongShort,
+      st: st,
+      valueAskBid: valueAskBid
+    }
+    await lineNotifyPost.postLineNotify(lineNotify(finalBody))
 
-    const check1m = await Trading.findOne({
-      symbol: body.symbol,
-      signal: '1m',
-      trend: body.trend
-    })
-
-    let whenBuy = {
-      symbol: body.symbol,
-      price: parseFloat(check15m?.price)
+    if (body.type === 'MARKET') {
+      await realEnvironment.buyingBinance(finalBody)
+    } else if (body.type === 'STOP_MARKET') {
+      await checkStopLoss(body)
     }
 
-    postLineNotify(lineNotify(body))
-
-    if (check1m) {
-      // console.log('เข้า 1 นาทีจ้า')
-      checkStopLoss(check1m)
-    }
-    if (check4h && check15m && check1m) {
-      //  console.log('ซื้อเลย up', whenBuy)
-      buyingBinance(check15m, check4h, check1m)
-    }
     return res.status(HTTPStatus.OK).json({ success: true, data: 'ไม่ๆๆๆ' })
   } catch (error) {}
 }
 
-//const creteLog = async () => {} //  signal1 signal2 symbol1 symbol2   + binance responese
+// const envorimentTest = async (body) => {
+//   try {
+//     const checkBinance = await Log.findOne({
+//       symbol: body.symbol
+//     })
 
-const buyingBinance = async (check15m, check4h, check1m) => {
+//     const status = true
+//     if (!checkBinance) {
+//       const {
+//         symbol,
+//         side,
+//         type,
+//         takeProfit,
+//         quantity,
+//         stopPriceCal,
+//         leverage
+//       } = body
+//       const setLeverage = await apiBinance.changeLeverage(symbol, leverage)
+//       let binanceMarket = {}
+//       binanceMarket = await apiBinance.postBinannce(
+//         symbol,
+//         side,
+//         quantity,
+//         type,
+//         stopPriceCal,
+//         status
+//       )
+//       if (binanceMarket.status === 400) {
+//         const buyit = {
+//           symbol: symbol,
+//           text: 'error',
+//           type: type,
+//           msg: binanceMarket.data.msg
+//         }
+//         await lineNotifyPost.postLineNotify(buyit)
+//       } else if (binanceMarket.status === 200) {
+//         const binanceTakeProfit = await apiBinance.postBinannce(
+//           takeProfit.symbol,
+//           takeProfit.side,
+//           quantity,
+//           takeProfit.type,
+//           stopPriceCal,
+//           status,
+//           takeProfit.takeprofit
+//         )
+//         if (binanceTakeProfit.status === 200) {
+//           const buy = await realEnvironment.buyingBinance(body)
+//         } else if (binanceTakeProfit.status === 400) {
+//           const buyit = {
+//             text: 'error',
+//             symbol: takeProfit.symbol,
+//             type: takeProfit.type,
+//             msg: binanceTakeProfit.data.msg
+//           }
+//           await lineNotifyPost.postLineNotify(buyit)
+//         }
+//       }
+//     } else if (checkBinance) {
+//       const buyit = {
+//         text: 'error',
+//         symbol: body.symbol,
+//         type: body.type,
+//         msg: 'มีออเดอร์อยู่แล้วจ้าาาา'
+//       }
+//       await lineNotifyPost.postLineNotify(buyit)
+//     }
+//   } catch (error) {}
+// }
+const checkStopLoss = async (body) => {
   try {
-    const checkBinance = await Log.findOne({ 'binance.symbol': check1m.symbol })
+    const { symbol, side, type, stopPrice } = body
 
-    if (!checkBinance) {
-      let data = {
-        signal1: check4h?.signal,
-        signal2: check15m?.signal,
-        signal3: check1m?.signal,
-        symbol: check1m?.symbol,
-        trend: check1m?.trend,
-        status: 'Buying',
-        price: check1m?.price,
-        binance: { symbol: check1m.symbol }
-      }
-      const logCreated = await Log.create(data)
-      postLineNotify('buy')
-    } else console.log('มีอยู่แล้วไม่ต้องซื้อจ้า')
-    //deletedWhenMatch(check15m, check4h, check1m)
-  } catch (error) {}
-}
+    console.log('urhere')
 
-const checkStopLoss = async (check1m) => {
-  try {
-    const nice = await Log.findOne({
-      'binance.symbol': check1m.symbol // "15m"
+    const qty = 0
+    const status = true
+
+    const data = await apiBinance.postBinannce(
+      symbol,
+      side,
+      qty,
+      type,
+      stopPrice,
+      status
+    )
+
+    const check = await Log.findOne({
+      'symbol': symbol,
+      'binanceStopLoss.symbol': symbol
     })
 
-    if (nice) {
-      if (
-        (check1m.trend === 'down' && nice.trend === 'up') ||
-        (check1m.trend === 'up' && nice.trend === 'down')
-      ) {
-        const checkBinance = await Log.deleteOne({
-          'binance.symbol': check1m.symbol
-        })
-        postLineNotify('stoploss')
-        console.log('cancle take profit')
-        // deletedWhenMatch(check15m, check4h, check1m)
+    if (data.status === 200) {
+      if (check) {
+        console.log('urrightjaaaaaaaa')
+        //   await apiBinance.cancleOrder(symbol, check.binanceStopLoss.orderId)
+        // }
+
+        await Log.findOneAndUpdate(
+          { symbol: symbol },
+          {
+            $set: { binanceStopLoss: data.data }
+          },
+          { upsert: true }
+        )
       }
+
+      const buyit = {
+        symbol: symbol,
+        text: 'updatestoploss',
+        type: type,
+        msg: `อัพเดท stoploss สำเร็จ , เลื่อน stopLoss : ${stopPrice}`
+      }
+      await lineNotifyPost.postLineNotify(buyit)
+    } else {
+      const buyit = {
+        symbol: symbol,
+        text: 'error',
+        type: type,
+        msg: data.data.msg
+      }
+      await lineNotifyPost.postLineNotify(buyit)
     }
   } catch (error) {}
-}
-
-const postLineNotify = async (buyit) => {
-  const url = 'https://notify-api.line.me/api/notify'
-  const accessToken = 'F7a8pS8pvY12WuFggDpsE589qiIAUvk4Sqs2S3ynvy0'
-  let message = null
-  if (typeof buyit === 'string' && buyit === 'buy') {
-    message = 'ซื้อแล้ว'
-  } else if (typeof buyit === 'string' && buyit === 'stoploss') {
-    message = 'Stop Loss Detect!! Cancle Order'
-  } else
-    message = `\nsignal: ${buyit.signal}\ntrend: ${buyit.trend}\nprice: ${buyit.price}\nsymbol: ${buyit.symbol}\ntime: ${buyit.time}`
-
-  await axios({
-    method: 'post',
-    url,
-    headers: {
-      'Authorization': `Bearer ${accessToken}`,
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    data: {
-      message: message
-      // Other parameters as needed (refer to LINE Notify API documentation)
-    }
-  })
-    .then(() => {})
-
-    .catch((error) => {})
 }
 
 const lineNotify = (body) => {
@@ -187,13 +242,84 @@ const lineNotify = (body) => {
   const seconds = now.getSeconds()
 
   const buyit = {
-    signal: body.signal,
-    price: body.price,
-    trend: body.trend,
     symbol: body.symbol,
+    side: body.side,
+    type: body.type,
+    price: body.price,
+    takeProfit: body.takeProfit,
+    stopPrice: body.stopPrice,
     time: `${hours}:${minutes}:${seconds}`
   }
   return buyit
+}
+
+const checkMarketBody = (body) => {
+  let real = {}
+
+  const filteredBody = body.filter((item) => item.hasOwnProperty('takeprofit'))
+
+  real = {
+    type: body[0].type,
+    side: body[0].side,
+    symbol: body[0].symbol,
+    takeProfit: filteredBody[0],
+    priceCal: body[0].priceCal,
+    stopPriceCal: body[0].stopPriceCal
+  }
+
+  return real
+}
+
+const checkStopLossBody = (bodyq) => {
+  let real = {}
+
+  real = {
+    type: bodyq.type,
+    side: bodyq.side,
+    symbol: bodyq.symbol,
+    price: bodyq.price,
+    stopPrice: bodyq.stopPrice
+  }
+
+  return real
+}
+
+const checkDataFirst = async (bodyq) => {
+  if (bodyq[0]?.type === 'MARKET') {
+    const modifiedBody = bodyq.map((item) => ({
+      ...item,
+      symbol: item.symbol.replace(/\.P$/, '')
+    }))
+
+    const bodyMarket = checkMarketBody(modifiedBody)
+
+    const checkData = await Trading.findOne({
+      symbol: bodyMarket.symbol,
+      type: bodyMarket.type
+    })
+
+    if (checkData) {
+      await Trading.updateOne(
+        {
+          symbol: bodyMarket.symbol,
+          type: bodyMarket.type
+        },
+        bodyMarket,
+        { upsert: true }
+      )
+    }
+    if (!checkData) await Trading.create(bodyMarket)
+
+    return bodyMarket
+  } else if (bodyq?.type === 'STOP_MARKET') {
+    let body = {
+      ...bodyq,
+      symbol: bodyq.symbol.replace(/\.P$/, '')
+    }
+    const bodyStopLoss = checkStopLossBody(body)
+
+    return bodyStopLoss
+  }
 }
 
 app.listen(port, () => {

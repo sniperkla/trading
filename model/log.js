@@ -3,17 +3,16 @@ const Schema = mongoose.Schema
 
 const Log = new Schema(
   {
-    indicator1: { type: String },
-    indicator2: { type: String },
-    indicator2: { type: String },
     symbol: { type: String },
-    trend: { type: String },
+    side: { type: String },
     status: { type: String },
     price: { type: String },
+    takeProfit: { type: Object },
     time: { type: Date, default: Date.now },
-    binance: { type: Object }
+    binanceTakeProfit: { type: Object },
+    binanceMarket: { type: Object },
+    binanceStopLoss: { type: Object }
   },
-
   {
     timestamps: true
   }
