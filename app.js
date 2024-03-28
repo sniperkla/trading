@@ -16,8 +16,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 const mongoose = require('mongoose')
 
-// const connectionString = 'mongodb://localhost:27017/trading' //'mongodb://27.254.144.100/trading' // Replace with your database name
 const connectionString = 'mongodb://admin:AaBb1234!@27.254.144.100/trading'
+// const connectionString = 'mongodb://localhost:27017/trading'
 
 mongoose
   .connect(connectionString, {
