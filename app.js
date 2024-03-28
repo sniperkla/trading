@@ -215,11 +215,10 @@ const checkStopLoss = async (body) => {
       const checkMarket = await Log.findOne({
         symbol: symbol
       })
+
       if (data.status === 200) {
         if (check) {
-          //   await apiBinance.cancleOrder(symbol, check.binanceStopLoss.orderId)
-          // }
-
+          await apiBinance.cancleOrder(symbol, check.binanceStopLoss.orderId)
           await Log.findOneAndUpdate(
             { symbol: symbol },
             {
@@ -227,8 +226,12 @@ const checkStopLoss = async (body) => {
             },
             { upsert: true }
           )
+        } else {
+          const updated = await Log.updateOne(
+            { symbol: symbol },
+            { $set: { binanceStopLoss: data.data } }
+          )
         }
-
         const buyit = {
           symbol: symbol,
           text: 'updatestoploss',
