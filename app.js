@@ -99,7 +99,17 @@ const checkCondition = async (
       st: st,
       valueAskBid: valueAskBid
     }
-    await lineNotifyPost.postLineNotify(lineNotify(finalBody))
+
+    const checkLog = await Log.findOne({
+      symbol: finalBody.symbol.replace(/\.P$/, '')
+    })
+
+    if (
+      (finalBody.type === 'STOP_MARKET' && checkLog) ||
+      finalBody.type === 'MARKET'
+    ) {
+      await lineNotifyPost.postLineNotify(lineNotify(finalBody))
+    }
 
     if (body.type === 'MARKET') {
       await realEnvironment.buyingBinance(finalBody)
@@ -202,9 +212,11 @@ const checkStopLoss = async (body) => {
         'binanceStopLoss.symbol': symbol
       })
 
+      const checkMarket = await Log.findOne({
+        symbol: symbol
+      })
       if (data.status === 200) {
         if (check) {
-          console.log('urrightjaaaaaaaa')
           //   await apiBinance.cancleOrder(symbol, check.binanceStopLoss.orderId)
           // }
 
@@ -221,10 +233,10 @@ const checkStopLoss = async (body) => {
           symbol: symbol,
           text: 'updatestoploss',
           type: type,
-          msg: `อัพเดท stoploss สำเร็จ , เลื่อน stopLoss : ${stopPrice}`
+          msg: `${symbol} : อัพเดท stoploss สำเร็จ , เลื่อน stopLoss : ${stopPrice}`
         }
         await lineNotifyPost.postLineNotify(buyit)
-      } else {
+      } else if (data.status !== 200 && checkMarket) {
         const buyit = {
           symbol: symbol,
           text: 'error',
@@ -233,15 +245,16 @@ const checkStopLoss = async (body) => {
         }
         await lineNotifyPost.postLineNotify(buyit)
       }
-    } else {
-      const buyit = {
-        symbol: symbol,
-        text: 'checkstoploss',
-        type: type,
-        msg: 'ยังไม่มีคำสั่งซื้อ'
-      }
-      await lineNotifyPost.postLineNotify(buyit)
     }
+    // } else {
+    //   const buyit = {
+    //     symbol: symbol,
+    //     text: 'checkstoploss',
+    //     type: type,
+    //     msg: 'ยังไม่มีคำสั่งซื้อ'
+    //   }
+    //   await lineNotifyPost.postLineNotify(buyit)
+    // }
   } catch (error) {}
 }
 
@@ -255,7 +268,7 @@ const lineNotify = (body) => {
     symbol: body.symbol,
     side: body.side,
     type: body.type,
-    price: body.price,
+    price: body.priceCal,
     takeProfit: body.takeProfit,
     stopPrice: body.stopPrice,
     time: `${hours}:${minutes}:${seconds}`
@@ -287,7 +300,7 @@ const checkStopLossBody = (bodyq) => {
     type: bodyq.type,
     side: bodyq.side,
     symbol: bodyq.symbol,
-    price: bodyq.price,
+    price: bodyq.priceCal,
     stopPrice: bodyq.stopPrice
   }
 
