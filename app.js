@@ -15,7 +15,6 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 const mongoose = require('mongoose')
-
 const connectionString = 'mongodb://admin:AaBb1234!@27.254.144.100/trading'
 // const connectionString = 'mongodb://localhost:27017/trading'
 
@@ -69,7 +68,8 @@ app.post('/gettrading', async (req, res) => {
         calLeverage.minimum,
         calLeverage.openLongShort,
         calLeverage.st,
-        calLeverage.valueAskBid
+        calLeverage.valueAskBid,
+        calLeverage.price
       )
     } else checkCondition(body, res)
 
@@ -86,7 +86,8 @@ const checkCondition = async (
   minimum,
   openLongShort,
   st,
-  valueAskBid
+  valueAskBid,
+  price
 ) => {
   try {
     const finalBody = {
@@ -97,7 +98,8 @@ const checkCondition = async (
       minimum: minimum,
       openLongShort: openLongShort,
       st: st,
-      valueAskBid: valueAskBid
+      valueAskBid: valueAskBid,
+      price: price
     }
 
     const checkLog = await Log.findOne({
