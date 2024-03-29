@@ -27,6 +27,8 @@ mongoose
 let bodyq = null
 app.get('/getbinance', async (req, res) => {
   try {
+    // const haa = await apiBinance.getOrder(11888540880, 'XLMUSDT')
+    // console.log('binance', haa)
     const getLog = await Log.find()
 
     return res.status(HTTPStatus.OK).json({ success: true, data: getLog })
@@ -40,19 +42,6 @@ app.post('/gettrading', async (req, res) => {
     let body = await checkDataFirst(bodyq)
 
     if (body.type === 'MARKET') {
-      const x = await Log.findOne({ symbol: body.symbol })
-
-      if (x) {
-        const checkTakeOrCancle = await apiBinance.getOrder(
-          x?.binanceMarket?.orderId,
-          body.symbol
-        )
-
-        if (checkTakeOrCancle.status === 'CLOSED') {
-          await Log.deleteOne({ symbol: body.symbol })
-        }
-      }
-
       const calLeverage = await callLeverage.leverageCal(
         body.symbol,
         body.priceCal,
@@ -195,11 +184,31 @@ const checkStopLoss = async (body) => {
   try {
     const { symbol, side, type, stopPrice } = body
 
-    const checkStopLoss = await Log.findOne({ symbol: symbol })
-    if (checkStopLoss) {
-      const qty = 0
-      const status = true
+    const qty = 0
+    const status = true
+    const checkMarket = await Log.findOne({
+      symbol: symbol
+    })
 
+    // check order first
+
+    const checkTakeOrCancle = await apiBinance.getOrder(
+      checkMarket?.binanceMarket?.orderId,
+      body.symbol
+    )
+    if (
+      checkTakeOrCancle.status === 'CLOSED' ||
+      checkTakeOrCancle.status === 'FILLED'
+    ) {
+      await Log.deleteOne({ symbol: body.symbol })
+    }
+
+    const check = await Log.findOne({
+      'symbol': symbol,
+      'binanceStopLoss.symbol': symbol
+    })
+
+    if (check) {
       const data = await apiBinance.postBinannce(
         symbol,
         side,
@@ -208,32 +217,19 @@ const checkStopLoss = async (body) => {
         stopPrice,
         status
       )
-
-      const check = await Log.findOne({
-        'symbol': symbol,
-        'binanceStopLoss.symbol': symbol
-      })
-
-      const checkMarket = await Log.findOne({
-        symbol: symbol
-      })
-
       if (data.status === 200) {
-        if (check) {
-          await apiBinance.cancleOrder(symbol, check.binanceStopLoss.orderId)
-          await Log.findOneAndUpdate(
-            { symbol: symbol },
-            {
-              $set: { binanceStopLoss: data.data }
-            },
-            { upsert: true }
-          )
-        } else {
-          const updated = await Log.updateOne(
-            { symbol: symbol },
-            { $set: { binanceStopLoss: data.data } }
-          )
-        }
+        await apiBinance.cancleOrder(symbol, check.binanceStopLoss.orderId)
+        await Log.findOneAndUpdate(
+          { symbol: symbol },
+          {
+            $set: { binanceStopLoss: data.data }
+          },
+          { upsert: true }
+        )
+        const updated = await Log.updateOne(
+          { symbol: symbol },
+          { $set: { binanceStopLoss: data.data } }
+        )
         const buyit = {
           symbol: symbol,
           text: 'updatestoploss',
@@ -251,6 +247,7 @@ const checkStopLoss = async (body) => {
         await lineNotifyPost.postLineNotify(buyit)
       }
     }
+
     // } else {
     //   const buyit = {
     //     symbol: symbol,
