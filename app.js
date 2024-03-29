@@ -58,7 +58,9 @@ app.post('/gettrading', async (req, res) => {
         calLeverage.openLongShort,
         calLeverage.st,
         calLeverage.valueAskBid,
-        calLeverage.price
+        calLeverage.price,
+        calLeverage.bids,
+        calLeverage.asks
       )
     } else checkCondition(body, res)
 
@@ -76,7 +78,9 @@ const checkCondition = async (
   openLongShort,
   st,
   valueAskBid,
-  price
+  price,
+  bids,
+  asks
 ) => {
   try {
     const finalBody = {
@@ -88,7 +92,9 @@ const checkCondition = async (
       openLongShort: openLongShort,
       st: st,
       valueAskBid: valueAskBid,
-      price: price
+      price: price,
+      bids: bids,
+      asks: asks
     }
 
     const checkLog = await Log.findOne({
