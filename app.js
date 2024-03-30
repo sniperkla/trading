@@ -41,6 +41,22 @@ app.post('/gettrading', async (req, res) => {
 
     let body = await checkDataFirst(bodyq)
 
+    const checkMarket = await Log.findOne({
+      symbol: body.symbol
+    })
+    if (checkMarket) {
+      const checkTakeOrCancle = await apiBinance.getOrder(
+        checkMarket?.binanceTakeProfit?.orderId,
+        body.symbol
+      )
+      if (
+        checkTakeOrCancle?.status === 'CANCELED' ||
+        checkTakeOrCancle?.status === 'CLOSED'
+      ) {
+        await Log.findOneAndDelete({ symbol: body.symbol })
+      }
+    }
+
     if (body.type === 'MARKET') {
       const calLeverage = await callLeverage.leverageCal(
         body.symbol,
@@ -98,7 +114,7 @@ const checkCondition = async (
     }
 
     const checkLog = await Log.findOne({
-      symbol: finalBody.symbol.replace(/\.P$/, '')
+      symbol: finalBody.symbol
     })
 
     if (
@@ -192,22 +208,11 @@ const checkStopLoss = async (body) => {
 
     const qty = 0
     const status = true
+
+    // check order first
     const checkMarket = await Log.findOne({
       symbol: symbol
     })
-
-    // check order first
-
-    const checkTakeOrCancle = await apiBinance.getOrder(
-      checkMarket?.binanceMarket?.orderId,
-      body.symbol
-    )
-    if (
-      checkTakeOrCancle.status === 'CLOSED' ||
-      checkTakeOrCancle.status === 'FILLED'
-    ) {
-      await Log.deleteOne({ symbol: body.symbol })
-    }
 
     const check = await Log.findOne({
       'symbol': symbol,
@@ -244,6 +249,38 @@ const checkStopLoss = async (body) => {
         }
         await lineNotifyPost.postLineNotify(buyit)
       } else if (data.status !== 200 && checkMarket) {
+        const buyit = {
+          symbol: symbol,
+          text: 'error',
+          type: type,
+          msg: data.data.msg
+        }
+        await lineNotifyPost.postLineNotify(buyit)
+      }
+    } else if (checkMarket !== null && check === null) {
+      const data = await apiBinance.postBinannce(
+        symbol,
+        side,
+        qty,
+        type,
+        stopPrice,
+        status
+      )
+
+      if (data.status === 200) {
+        const updated = await Log.updateOne(
+          { symbol: symbol },
+          { $set: { binanceStopLoss: data.data } }
+        )
+
+        const buyit = {
+          symbol: symbol,
+          text: 'updatestoploss',
+          type: type,
+          msg: `${symbol} : อัพเดท stoploss สำเร็จ , เลื่อน stopLoss : ${stopPrice}`
+        }
+        await lineNotifyPost.postLineNotify(buyit)
+      } else {
         const buyit = {
           symbol: symbol,
           text: 'error',
