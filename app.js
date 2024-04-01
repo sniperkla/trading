@@ -27,10 +27,11 @@ mongoose
 let bodyq = null
 app.get('/getbinance', async (req, res) => {
   try {
-    const x = 'ETHUSDT'
-    const haa = await apiBinance.getNotionalLv('DOGEUSDT')
-    console.log('binance', haa[0].brackets)
+    // const x = 'ETHUSDT'
+    // const haa = await apiBinance.getNotionalLv('DOGEUSDT')
+    // console.log('binance', haa[0].brackets)
     //   const getLog = await Log.find()
+ 
 
     return res.status(HTTPStatus.OK).json({ success: true, data: getLog })
   } catch (error) {}
@@ -52,7 +53,8 @@ app.post('/gettrading', async (req, res) => {
       )
       if (
         checkTakeOrCancle?.status === 'CANCELED' ||
-        checkTakeOrCancle?.status === 'CLOSED'
+        checkTakeOrCancle?.status === 'CLOSED' ||
+        checkTakeOrCancle?.status === 'EXPIRED'
       ) {
         await Log.findOneAndDelete({ symbol: body.symbol })
       }
@@ -61,7 +63,7 @@ app.post('/gettrading', async (req, res) => {
     if (body.type === 'MARKET') {
       const checkMarketFirst = await Log.findOne({ symbol: body.symbol })
 
-      if (checkMarketFirst === null) {
+      if (!checkMarketFirst) {
         const calLeverage = await callLeverage.leverageCal(
           body.symbol,
           body.priceCal,
