@@ -27,9 +27,10 @@ mongoose
 let bodyq = null
 app.get('/getbinance', async (req, res) => {
   try {
-    // const haa = await apiBinance.getOrder(11888540880, 'XLMUSDT')
-    // console.log('binance', haa)
-    const getLog = await Log.find()
+    const x = 'ETHUSDT'
+    const haa = await apiBinance.getNotionalLv('DOGEUSDT')
+    console.log('binance', haa[0].brackets)
+    //   const getLog = await Log.find()
 
     return res.status(HTTPStatus.OK).json({ success: true, data: getLog })
   } catch (error) {}
@@ -58,26 +59,30 @@ app.post('/gettrading', async (req, res) => {
     }
 
     if (body.type === 'MARKET') {
-      const calLeverage = await callLeverage.leverageCal(
-        body.symbol,
-        body.priceCal,
-        body.stopPriceCal,
-        body.side
-      )
-      checkCondition(
-        body,
-        res,
-        calLeverage.maximumQty,
-        calLeverage.defaultLeverage,
-        calLeverage.budget,
-        calLeverage.minimum,
-        calLeverage.openLongShort,
-        calLeverage.st,
-        calLeverage.valueAskBid,
-        calLeverage.price,
-        calLeverage.bids,
-        calLeverage.asks
-      )
+      const checkMarketFirst = await Log.findOne({ symbol: body.symbol })
+
+      if (checkMarketFirst === null) {
+        const calLeverage = await callLeverage.leverageCal(
+          body.symbol,
+          body.priceCal,
+          body.stopPriceCal,
+          body.side
+        )
+        checkCondition(
+          body,
+          res,
+          calLeverage.maximumQty,
+          calLeverage.defaultLeverage,
+          calLeverage.budget,
+          calLeverage.minimum,
+          calLeverage.openLongShort,
+          calLeverage.st,
+          calLeverage.valueAskBid,
+          calLeverage.price,
+          calLeverage.bids,
+          calLeverage.asks
+        )
+      } else console.log('arleady have market')
     } else checkCondition(body, res)
 
     return res.status(HTTPStatus.OK).json({ success: true, data: 'ok' })
