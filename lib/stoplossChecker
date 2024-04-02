@@ -1,0 +1,92 @@
+const axios = require('axios')
+const Log = require('../model/log')
+
+const stoplossZone = async (symbol, stopPrice, entryPrice, side) => {
+  let slBuyZone = 0
+  let sZone100 = 0
+  let sZone70 = 0
+  let sZone = 0
+
+  sZone100 = entryPrice - stopPrice
+  sZone70 = sZone100 * 0.7
+
+  if (side === 'BUY') {
+    sZone = stopPrice + sZone70
+    slBuyZone = sZone
+    if (stopPrice > slBuyZone) {
+      await Log.findOneAndUpdate({ symbol: symbol })
+    } else if (stopPrice < slBuyZone) {
+      return priceCal
+    }
+  } else if (side === 'SELL') {
+    sZone = stopPrice - sZone70
+    slBuyZone = sZone
+  }
+}
+
+module.exports = { stoplossZone }
+
+// วิธีแก้ให้ตั้ง V.2
+
+// sl = stopPriceCal
+
+// buy
+// Bzone100  =  ราคาเข้าออเดอร์ - sl
+// Bzone100 = 0.15023 - 0.13923
+// =  0.011
+// //ได้ระยะห่าง คือ 0.011 = 100 % ของระยะทาง
+
+// Bzone70  =  Bzone100 * 0.70
+// Bzone70 = 0.011 * 0.70
+//         =  0.0077
+// // หาระยะทาง 70 % จาก
+
+// Bzone   =  sl + Bzone70
+// Bzone   =  0.13923 + 0.0077
+// =  0.14693
+// //เอา sl + กับ ผลของ 75 %
+
+// SLBuyzone =      Bzone
+
+// sell
+
+// Szone100  =  ราคาเข้าออเดอร์ - sl
+// Szone100  =  0.15844 - 0.15023
+// =  0.00821
+// //ได้ระยะห่าง คือ 00821 = 100 % ของระยะทาง
+
+// Szone70  =  Szone100 * 0.70
+// Szone70  =  0.00821 * 0.70
+// Szone70  =  0.005747
+// //หาระยะทาง 75 % จาก
+
+// Szone   =  sl - Szone70
+// Szone   =  0.15844 - 0.005747
+// Szone   =  0.152693
+// //เอา sl - กับ ผลของ 75 %
+// SLSuyzone =      Szone
+
+// การตั้ง sl และ tp
+
+// เมื่อเกิดสัญญาณ Long  short ให้ส่งคำสั่งซื้อไป จากนั้น ตั้ง sl ที่มาจาก stopPriceCal  และตั้ง tp ที่มาจาก takeprofit  เมื่อตั้งเสร็จตั้ง
+// SLBuyzone ของ long   หรือ SLSuyzone ของ short ตามออเดอร์
+
+// long
+// stackL =  stackL  (ไปเขียนลงดาต้าเบสเอาเอง)
+// if   sl   >  SLBuyzone
+//   เมิน sl ปัดทิ้งไปไม่ต้องทำอะไร
+// else  sl   <  SLBuyzone
+//   ตั้ง sl ตามค่าที่ให้มา
+
+// stackL >= 5
+//   ยกเลิก sl ตัวนี้ SLBuyzone ทิ้ง
+
+// short
+// stackS =  stackS  (ไปเขียนลงดาต้าเบสเอาเอง)
+// if   sl   <  SLBuyzone
+//   เมิน sl ปัดทิ้งไปไม่ต้องทำอะไร
+// else  sl   >  SLBuyzone
+//   ตั้ง sl ตามค่าที่ให้มา
+
+// stackL >= 5
+//   ยกเลิก sl ตัวนี้ SLBuyzone ทิ้ง

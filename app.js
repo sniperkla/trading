@@ -54,7 +54,8 @@ app.post('/gettrading', async (req, res) => {
       if (
         checkTakeOrCancle?.status === 'CANCELED' ||
         checkTakeOrCancle?.status === 'CLOSED' ||
-        checkTakeOrCancle?.status === 'EXPIRED'
+        checkTakeOrCancle?.status === 'EXPIRED'||
+        checkTakeOrCancle?.status === 'FILLED'
       ) {
         await Log.findOneAndDelete({ symbol: body.symbol })
       }
