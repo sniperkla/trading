@@ -10,13 +10,14 @@ const lineNotifyPost = require('./lib/lineNotifyPost')
 const apiBinance = require('./lib/apibinance')
 const callLeverage = require('./lib/calLeverage')
 const realEnvironment = require('./lib/realEnv')
+const combine = require('./lib/combineUser')
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 const mongoose = require('mongoose')
-const connectionString = 'mongodb://admin:AaBb1234!@27.254.144.100/trading'
-// const connectionString = 'mongodb://localhost:27017/trading'
+// const connectionString = 'mongodb://admin:AaBb1234!@27.254.144.100/trading'
+const connectionString = 'mongodb://localhost:27017/trading'
 
 mongoose
   .connect(connectionString, {
@@ -27,12 +28,7 @@ mongoose
 let bodyq = null
 app.get('/getbinance', async (req, res) => {
   try {
-    const x = 'ETHUSDT'
-    const haa = await apiBinance.getNotionalLv('DOGEUSDT')
-    console.log('binance', haa[0].brackets)
-    //   const getLog = await Log.find()
-
-    return res.status(HTTPStatus.OK).json({ success: true, data: getLog })
+    return res.status(HTTPStatus.OK).json({ success: true, data: 'running' })
   } catch (error) {}
 })
 
@@ -52,7 +48,8 @@ app.post('/gettrading', async (req, res) => {
       )
       if (
         checkTakeOrCancle?.status === 'CANCELED' ||
-        checkTakeOrCancle?.status === 'CLOSED'
+        checkTakeOrCancle?.status === 'CLOSED' ||
+        checkTakeOrCancle?.status === 'EXPIRED'
       ) {
         await Log.findOneAndDelete({ symbol: body.symbol })
       }
@@ -60,14 +57,17 @@ app.post('/gettrading', async (req, res) => {
 
     if (body.type === 'MARKET') {
       const checkMarketFirst = await Log.findOne({ symbol: body.symbol })
-
+      const get = combine.combineUser()
       if (checkMarketFirst === null) {
         const calLeverage = await callLeverage.leverageCal(
           body.symbol,
           body.priceCal,
           body.stopPriceCal,
-          body.side
+          body.side,
+          get.API_KEY[0],
+          get.SECRET_KEY[0]
         )
+
         checkCondition(
           body,
           res,
@@ -126,11 +126,21 @@ const checkCondition = async (
       (finalBody.type === 'STOP_MARKET' && checkLog) ||
       finalBody.type === 'MARKET'
     ) {
+      // for (const user of get)
       await lineNotifyPost.postLineNotify(lineNotify(finalBody))
     }
 
     if (body.type === 'MARKET') {
-      await realEnvironment.buyingBinance(finalBody)
+      const get = combine.combineUser()
+
+      for (let i = 0; i < 2; i++) {
+        let en = {
+          ...finalBody,
+          apiKey: get.API_KEY[i],
+          secretKey: get.SECRET_KEY[i]
+        }
+        await realEnvironment.buyingBinance(en)
+      }
     } else if (body.type === 'STOP_MARKET') {
       await checkStopLoss(body)
     }
