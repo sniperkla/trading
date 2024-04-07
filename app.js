@@ -16,8 +16,8 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 const mongoose = require('mongoose')
-// const connectionString = 'mongodb://admin:AaBb1234!@27.254.144.100/trading'
-const connectionString = 'mongodb://localhost:27017/trading'
+const connectionString = 'mongodb://admin:AaBb1234!@27.254.144.100/trading'
+// const connectionString = 'mongodb://localhost:27017/trading'
 
 mongoose
   .connect(connectionString, {
@@ -133,14 +133,16 @@ const checkCondition = async (
     if (body.type === 'MARKET') {
       const get = combine.combineUser()
 
-      for (let i = 0; i < 2; i++) {
-        let en = {
-          ...finalBody,
-          apiKey: get.API_KEY[i],
-          secretKey: get.SECRET_KEY[i]
-        }
-        await realEnvironment.buyingBinance(en)
+      // for (let i = 0; i < 2; i++) {
+      let en = {
+        ...finalBody,
+        apiKey: get.API_KEY[0],
+        secretKey: get.SECRET_KEY[0]
       }
+
+      console.log('this is en', en)
+      await realEnvironment.buyingBinance(en)
+      // }
     } else if (body.type === 'STOP_MARKET') {
       await checkStopLoss(body)
     }
