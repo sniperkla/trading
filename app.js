@@ -11,13 +11,14 @@ const apiBinance = require('./lib/apibinance')
 const callLeverage = require('./lib/calLeverage')
 const realEnvironment = require('./lib/realEnv')
 const combine = require('./lib/combineUser')
+const multiUser = require('./lib/multiUser')
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 const mongoose = require('mongoose')
-const connectionString = 'mongodb://admin:AaBb1234!@27.254.144.100/trading'
-// const connectionString = 'mongodb://localhost:27017/trading'
+// const connectionString = 'mongodb://admin:AaBb1234!@27.254.144.100/trading'
+const connectionString = 'mongodb://localhost:27017/trading'
 
 mongoose
   .connect(connectionString, {
@@ -35,6 +36,7 @@ app.get('/getbinance', async (req, res) => {
 app.post('/gettrading', async (req, res) => {
   try {
     bodyq = req.body
+    multiUser.multiUser(bodyq)
 
     let body = await checkDataFirst(bodyq)
 
@@ -347,9 +349,12 @@ const checkMarketBody = (body) => {
     type: body[0].type,
     side: body[0].side,
     symbol: body[0].symbol,
-    takeProfit: filteredBody[0],
-    priceCal: body[0].priceCal,
-    stopPriceCal: body[0].stopPriceCal
+    takeProfit: {
+      ...filteredBody[0],
+      takeprofit: parseFloat(filteredBody[0].takeprofit)
+    },
+    priceCal: parseFloat(body[0].priceCal),
+    stopPriceCal: parseFloat(body[0].stopPriceCal)
   }
 
   return real
@@ -362,8 +367,8 @@ const checkStopLossBody = (bodyq) => {
     type: bodyq.type,
     side: bodyq.side,
     symbol: bodyq.symbol,
-    price: bodyq.priceCal,
-    stopPrice: bodyq.stopPrice
+    price: parseFloat(bodyq.priceCal),
+    stopPrice: parseFloat(bodyq.stopPrice)
   }
 
   return real
@@ -399,6 +404,7 @@ const checkDataFirst = async (bodyq) => {
   } else if (bodyq?.type === 'STOP_MARKET') {
     let body = {
       ...bodyq,
+      stopPriceCal: stopPriceCal,
       symbol: bodyq.symbol.replace(/\.P$/, '')
     }
     const bodyStopLoss = checkStopLossBody(body)
