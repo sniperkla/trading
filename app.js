@@ -11,22 +11,11 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-const mongoose = require('mongoose')
-// const connectionString = 'mongodb://admin:AaBb1234!@27.254.144.100/trading'
-const connectionString = 'mongodb://localhost:27017/trading'
-
-mongoose
-  .connect(connectionString, {
-    useNewUrlParser: true
-  })
-  .then(() => console.log('MongoDB connected successfully'))
-  .catch((err) => console.error('Error connecting to MongoDB:', err))
 let bodyq = null
 
-app.post('/gettrading', async (req, res) => {
+app.post('/broadcast', async (req, res) => {
   try {
     bodyq = req.body
-
     const urls = url.combineUser()
     for (let i = 0; i < urls.URL.length; i++) {
       const x = multiUser.multiUser(urls.URL[i], bodyq)
