@@ -1,7 +1,7 @@
 const express = require('express')
 const HTTPStatus = require('http-status')
 const app = express()
-const port = 80
+const port = 3002
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const url = require('./lib/combineUser')
@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 let bodyq = null
 
-app.post('/broadcast', async (req, res) => {
+app.post('/gettrading', async (req, res) => {
   try {
     bodyq = req.body
     const urls = url.combineUser()
