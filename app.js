@@ -18,7 +18,7 @@ app.post('/gettrading', async (req, res) => {
     bodyq = req.body
     const urls = url.combineUser()
     for (let i = 0; i < urls.URL.length; i++) {
-      const x = multiUser.multiUser(urls.URL[i], bodyq)
+      multiUser.multiUser(urls.URL[i], bodyq)
     }
     return res.status(HTTPStatus.OK).json({ success: true, data: 'success' })
   } catch (error) {}
