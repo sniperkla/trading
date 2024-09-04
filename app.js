@@ -14,9 +14,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.post('/gettrading', async (req, res) => {
   try {
     const bodyq = req.body
-    const urls = url.combineUser()
+    const urls = url.combineUser(bodyq)
 
-    console.log('this is url', urls)
     // Use Promise.all to handle multiple requests concurrently
     await Promise.all(
       urls.URL.map(async (url) => {
