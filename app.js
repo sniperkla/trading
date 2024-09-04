@@ -16,17 +16,12 @@ let bodyq = null
 app.post('/gettrading', async (req, res) => {
   try {
     bodyq = req.body
-    setTimeout(() => {
-      console.log('check body', req.body)
-      const urls = url.combineUser()
-      for (let i = 0; i < urls.URL.length; i++) {
-        multiUser.multiUser(urls.URL[i], bodyq)
-      }
-    }, 1000)
+    const urls = url.combineUser()
+    for (let i = 0; i < urls.URL.length; i++) {
+      await multiUser.multiUser(urls.URL[i], bodyq)
+    }
     return res.status(HTTPStatus.OK).json({ success: true, data: 'success' })
-  } catch (error) {
-    console.log('error jaa', error)
-  }
+  } catch (error) {}
 })
 
 app.listen(port, () => {
