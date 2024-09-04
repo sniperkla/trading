@@ -15,6 +15,7 @@ app.post('/gettrading', async (req, res) => {
     const bodyq = req.body
     const urls = url.combineUser()
 
+    console.log('this is url', urls)
     // Use Promise.all to handle multiple requests concurrently
     await Promise.all(
       urls.URL.map(async (url) => {
