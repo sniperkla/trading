@@ -17,11 +17,8 @@ app.post('/gettrading', async (req, res) => {
     const urls = url.combineUser(bodyq)
 
     // Use Promise.all to handle multiple requests concurrently
-    await Promise.all(
-      urls.URL.map(async (url) => {
-        await multiUser(url, bodyq)
-      })
-    )
+
+    await multiUser('https://trading.ts926.com/gettrading_MACD_BTP_SMCP', bodyq)
 
     console.log('Data sent successfully to all URLs:', urls.URL)
     return res.status(HTTPStatus.OK).json({ success: true, data: 'success' })
