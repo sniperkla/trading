@@ -5,7 +5,6 @@ const port = 3002
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const url = require('./lib/combineUser')
-const axios = require('axios')
 
 app.use(cors())
 app.use(bodyParser.json())
@@ -14,10 +13,14 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.post('/gettrading', async (req, res) => {
   try {
     const bodyq = req.body
+    const urls = url.combineUser()
 
     // Use Promise.all to handle multiple requests concurrently
-
-    await multiUser('https://trading.ts926.com/gettrading_MACD_BTP_SMCP', bodyq)
+    await Promise.all(
+      urls.URL.map(async (url) => {
+        await multiUser(url, bodyq)
+      })
+    )
 
     console.log('Data sent successfully to all URLs:', urls.URL)
     return res.status(HTTPStatus.OK).json({ success: true, data: 'success' })
