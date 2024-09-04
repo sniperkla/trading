@@ -20,6 +20,7 @@ app.post('/gettrading', async (req, res) => {
     for (let i = 0; i < urls.URL.length; i++) {
       await multiUser.multiUser(urls.URL[i], bodyq)
     }
+    console.log('data sented', bodyq)
     return res.status(HTTPStatus.OK).json({ success: true, data: 'success' })
   } catch (error) {}
 })
