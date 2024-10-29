@@ -6,6 +6,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const url = require('./lib/combineUser')
 const axios = require('axios')
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 app.use(cors())
 app.use(bodyParser.json())
@@ -13,7 +14,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.post('/gettrading', async (req, res) => {
   try {
-    console.log('welcomjaa')
     const bodyq = req.body
     const urls = url.combineUser()
     // Use Promise.all to handle multiple requests concurrently
@@ -39,8 +39,10 @@ app.listen(port, () => {
 
 const multiUser = async (URL, body) => {
   try {
+    if (body?.type === 'MARKET') {
+      await delay(1000)
+    }
     const response = await axios.post(URL, body)
-
     if (response.status === 200 || response.status === 201) {
       console.log('Data sent successfully to:', URL)
       // Handle successful response data (e.g., process response.data)
