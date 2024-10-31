@@ -40,7 +40,8 @@ app.listen(port, () => {
 const multiUser = async (URL, body) => {
   try {
     if (body?.type === 'MARKET') {
-      await delay(1000)
+      console.log('should be delay')
+      await delay(1500)
     }
     const response = await axios.post(URL, body)
     if (response.status === 200 || response.status === 201) {
