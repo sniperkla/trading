@@ -22,7 +22,6 @@ app.post('/gettrading', async (req, res) => {
         await multiUser(url, bodyq)
       })
     )
-    console.log('Data sent successfully to all URLs:', urls.URL)
     return res.status(HTTPStatus.OK).json({ success: true, data: 'success' })
   } catch (error) {
     console.error('Error broadcasting data:', error)
@@ -43,16 +42,8 @@ const multiUser = async (URL, body) => {
       console.log('should be delay')
       await delay(1500)
     }
-    const response = await axios.post(URL, body)
-    if (response.status === 200 || response.status === 201) {
-      console.log('Data sent successfully to:', URL)
-      // Handle successful response data (e.g., process response.data)
-    } else {
-      console.error('Error sending data to:', URL, 'Status:', response.status)
-      // Handle unsuccessful response (e.g., display error message to user)
-    }
+    await axios.post(URL, body)
   } catch (error) {
     console.error('Error sending data to:', URL, 'Error:', error)
-    // Handle errors (e.g., network issues, server errors)
   }
 }
