@@ -6,7 +6,6 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const url = require('./lib/combineUser')
 const axios = require('axios')
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 app.use(cors())
 app.use(bodyParser.json())
@@ -39,9 +38,6 @@ app.listen(port, () => {
 
 const multiUser = async (URL, body) => {
   try {
-    if (body?.type === 'MARKET') {
-      await delay(1000)
-    }
     const response = await axios.post(URL, body)
     if (response.status === 200 || response.status === 201) {
       console.log('Data sent successfully to:', URL)
