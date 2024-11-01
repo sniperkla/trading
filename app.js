@@ -6,6 +6,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const url = require('./lib/combineUser')
 const axios = require('axios')
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 app.use(cors())
 app.use(bodyParser.json())
@@ -22,6 +23,7 @@ app.post('/gettrading', async (req, res) => {
       })
     )
     console.log('Data sent successfully to all URLs:', urls.URL)
+    await delay(1500)
     return res.status(HTTPStatus.OK).json({ success: true, data: 'success' })
   } catch (error) {
     console.error('Error broadcasting data:', error)
