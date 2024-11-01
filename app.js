@@ -23,7 +23,7 @@ app.post('/gettrading', async (req, res) => {
       })
     )
     console.log('Data sent successfully to all URLs:', urls.URL)
-    await delay(1500)
+    await delay(5000)
     return res.status(HTTPStatus.OK).json({ success: true, data: 'success' })
   } catch (error) {
     console.error('Error broadcasting data:', error)
