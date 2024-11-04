@@ -22,6 +22,7 @@ app.post('/gettrading', async (req, res) => {
         await multiUser(url, bodyq)
       })
     )
+
     console.log('Data sent successfully to all URLs:', urls.URL)
     await delay(5000)
     return res.status(HTTPStatus.OK).json({ success: true, data: 'success' })
