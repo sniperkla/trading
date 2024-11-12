@@ -1,31 +1,47 @@
 const express = require('express')
 const HTTPStatus = require('http-status')
 const app = express()
-const port = 3002
+const port = 5002
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const url = require('./lib/combineUser')
 const axios = require('axios')
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+const Data = require('./model/getdata')
+require('dotenv').config()
 
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.post('/gettrading', async (req, res) => {
+const mongoose = require('mongoose')
+
+const pathName = process.env.NAME
+const connectionString = `${process.env.DB}` + `${pathName}`
+
+console.log('connectionString', connectionString)
+mongoose
+  .connect(connectionString, {
+    useNewUrlParser: true
+  })
+  .then(() => console.log('MongoDB connected successfully'))
+  .catch((err) => console.error('Error connecting to MongoDB:', err))
+
+app.post('/getData', async (req, res) => {
   try {
     const bodyq = req.body
-    const urls = url.combineUser()
-    // Use Promise.all to handle multiple requests concurrently
-    await Promise.all(
-      urls.URL.map(async (url) => {
-        await multiUser(url, bodyq)
-      })
-    )
+    if (bodyq.version === 'VS') {
+      const checkData = await Data.findOne({ symbol: bodyq.symbol })
+      if (checkData) {
+        await Data.updateOne(
+          { symbol: bodyq.symbol },
+          { side: bodyq.side },
+          { upsert: true }
+        )
+      } else {
+        await Data.create({ symbol: bodyq.symbol, side: bodyq.side })
+      }
 
-    console.log('Data sent successfully to all URLs:', urls.URL)
-    await delay(5000)
-    return res.status(HTTPStatus.OK).json({ success: true, data: 'success' })
+      return res.status(HTTPStatus.OK).json({ success: true, data: 'success' })
+    }
   } catch (error) {
     console.error('Error broadcasting data:', error)
     return res.status(HTTPStatus.INTERNAL_SERVER_ERROR).json({
