@@ -5,7 +5,8 @@ const Data = new Schema(
   {
     symbol: { type: String },
     side: { type: String },
-    type: { type: String, default: 'MARKET' }
+    type: { type: String, default: 'MARKET' },
+    status: { type: Boolean, default: false }
   },
   {
     timestamps: true
