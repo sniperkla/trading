@@ -3,8 +3,9 @@ const Schema = mongoose.Schema
 
 const Data = new Schema(
   {
-    symbol: { type: Number, default: 0 },
-    side: { type: String }
+    symbol: { type: String },
+    side: { type: String },
+    type: { type: String, default: 'MARKET' }
   },
   {
     timestamps: true
