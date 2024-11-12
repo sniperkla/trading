@@ -31,6 +31,40 @@ mongoose
 
 const schedule1hr = '0 * * * *'
 
+const doCheckLinePost = async () => {
+  await delay(10000)
+  const getData = await Data.find()
+  getData.map(async (item) => {
+    if (item.status === false) {
+      console.log('here', item.symbol)
+      await senData(getData)
+    } else {
+      console.log('nothing', item.symbol)
+    }
+  })
+}
+
+const doCheckMarket = async () => {
+  const data = getData.map((item) => {
+    return { symbol: item.symbol, side: item.side, status: item.status }
+  })
+  await delay(20000)
+  const buyit = {
+    text: 'initsmcp',
+    msg: `📈 สรุป เหรียญทั้งหมด`
+  }
+  await postLineNotify(buyit)
+  for (let i = 0; i < data.length; i++) {
+    const buyit = {
+      text: 'initsmcp',
+      msg: `\n เหรียญ : ${data[i].symbol} side :​${data[i].side}\n status :${
+        data[i].status === true ? 'ซื้ออยู่ ✅' : 'รอซื้อ ❌'
+      }`
+    }
+    await postLineNotify(buyit)
+  }
+}
+
 const task1 = cron.schedule(schedule1hr, doCheckLinePost)
 const task2 = cron.schedule(schedule1hr, doCheckMarket)
 
@@ -83,39 +117,5 @@ const senData = async (body) => {
   } catch (error) {
     console.error('Error sending data to:', URL, 'Error:', error)
     // Handle errors (e.g., network issues, server errors)
-  }
-}
-
-const doCheckLinePost = async () => {
-  await delay(10000)
-  const getData = await Data.find()
-  getData.map(async (item) => {
-    if (item.status === false) {
-      console.log('here', item.symbol)
-      await senData(getData)
-    } else {
-      console.log('nothing', item.symbol)
-    }
-  })
-}
-
-const doCheckMarket = async () => {
-  const data = getData.map((item) => {
-    return { symbol: item.symbol, side: item.side, status: item.status }
-  })
-  await delay(20000)
-  const buyit = {
-    text: 'initsmcp',
-    msg: `📈 สรุป เหรียญทั้งหมด`
-  }
-  await postLineNotify(buyit)
-  for (let i = 0; i < data.length; i++) {
-    const buyit = {
-      text: 'initsmcp',
-      msg: `\n เหรียญ : ${data[i].symbol} side :​${data[i].side}\n status :${
-        data[i].status === true ? 'ซื้ออยู่ ✅' : 'รอซื้อ ❌'
-      }`
-    }
-    await postLineNotify(buyit)
   }
 }
