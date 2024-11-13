@@ -45,6 +45,7 @@ const doCheckLinePost = async () => {
 }
 
 const doCheckMarket = async () => {
+  const getData = await Data.find()
   const data = getData.map((item) => {
     return { symbol: item.symbol, side: item.side, status: item.status }
   })
@@ -64,7 +65,6 @@ const doCheckMarket = async () => {
     await postLineNotify(buyit)
   }
 }
-
 const task1 = cron.schedule(schedule1hr, doCheckLinePost)
 const task2 = cron.schedule(schedule1hr, doCheckMarket)
 
@@ -73,6 +73,26 @@ task2.start()
 
 app.post('/getData', async (req, res) => {
   try {
+    await delay(20000)
+    const getData = await Data.find()
+    const data = getData.map((item) => {
+      return { symbol: item.symbol, side: item.side, status: item.status }
+    })
+    const buyit = {
+      text: 'initsmcp',
+      msg: `📈 สรุป เหรียญทั้งหมด`
+    }
+    await postLineNotify(buyit)
+    for (let i = 0; i < data.length; i++) {
+      const buyit = {
+        text: 'initsmcp',
+        msg: `\n เหรียญ : ${data[i].symbol} side :${data[i].side}\n status :${
+          data[i].status === true ? 'ซื้ออยู่ ✅' : 'รอซื้อ ❌'
+        }`
+      }
+      await postLineNotify(buyit)
+    }
+
     const bodyq = req.body
     if (bodyq.version === 'VS') {
       const checkData = await Data.findOne({ symbol: bodyq.symbol })
@@ -102,7 +122,7 @@ app.listen(port, () => {
 })
 
 const senData = async (body) => {
-  const URL = 'www'
+  const URL = 'https://tradng2.ts926.com/api/user/botTradingView'
   try {
     const response = await axios.post(URL, body)
     if (response.status === 200 || response.status === 201) {
