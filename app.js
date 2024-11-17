@@ -111,7 +111,10 @@ app.post('/getData', async (req, res) => {
       await postLineNotify(buyit)
     }
     const bodyq = req.body
+    console.log('this is body', bodyq)
     if (bodyq.version === 'VS') {
+      console.log('you here')
+
       const checkData = await Data.findOne({ symbol: bodyq.symbol })
       if (checkData) {
         if (checkData.side !== bodyq.side && checkData.status == true) {
