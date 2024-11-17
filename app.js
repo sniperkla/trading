@@ -89,7 +89,7 @@ app.get('/testGetData', async (req, res) => {
   }
 })
 
-app.post('/getData', async (req, res) => {
+app.post('/AUT_TRADE_COMP', async (req, res) => {
   try {
     await delay(20000)
     const getData = await Data.find()
