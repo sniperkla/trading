@@ -32,7 +32,7 @@ mongoose
 const schedule1hr = '0 * * * *'
 
 const doCheckLinePost = async () => {
-  await delay(10000)
+  await delay(15000)
   const getData = await Data.find()
   for (let i = 0; i < getData.length; i++) {
     if (getData[i].status === false) {
@@ -48,7 +48,7 @@ const doCheckMarket = async () => {
   const data = getData.map((item) => {
     return { symbol: item.symbol, side: item.side, status: item.status }
   })
-  await delay(20000)
+  await delay(10000)
   const buyit = {
     text: 'initsmcp',
     msg: `📈 สรุป เหรียญทั้งหมด`
@@ -91,25 +91,6 @@ app.get('/testGetData', async (req, res) => {
 
 app.post('/AUT_TRADE_COMP', async (req, res) => {
   try {
-    await delay(20000)
-    const getData = await Data.find()
-    const data = getData.map((item) => {
-      return { symbol: item.symbol, side: item.side, status: item.status }
-    })
-    const buyit = {
-      text: 'initsmcp',
-      msg: `📈 สรุป เหรียญทั้งหมด`
-    }
-    await postLineNotify(buyit)
-    for (let i = 0; i < data.length; i++) {
-      const buyit = {
-        text: 'initsmcp',
-        msg: `\n เหรียญ : ${data[i].symbol} side :${data[i].side}\n status :${
-          data[i].status === true ? 'ซื้ออยู่ ✅' : 'รอซื้อ ❌'
-        }`
-      }
-      await postLineNotify(buyit)
-    }
     const bodyq = req.body
     console.log('this is body', bodyq)
     if (bodyq.version === 'VS') {
