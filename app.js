@@ -34,14 +34,13 @@ const schedule1hr = '0 * * * *'
 const doCheckLinePost = async () => {
   await delay(10000)
   const getData = await Data.find()
-  getData.map(async (item) => {
-    if (item.status === false) {
-      console.log('here', item.symbol)
-      await senData(getData)
-    } else {
-      console.log('nothing', item.symbol)
+  for (let i = 0; i < getData.length; i++) {
+    if (getData[i].status === false) {
+      await senData(getData[i])
+      await delay(30000)
+      console.log('suscess await sym : ', getData[i].symbol)
     }
-  })
+  }
 }
 
 const doCheckMarket = async () => {
@@ -70,6 +69,25 @@ const task2 = cron.schedule(schedule1hr, doCheckMarket)
 
 task1.start()
 task2.start()
+app.get('/testGetData', async (req, res) => {
+  try {
+    const getData = await Data.find()
+    for (let i = 0; i < getData.length; i++) {
+      if (getData[i].status === false) {
+        await senData(getData[i])
+        await delay(30000)
+        console.log('suscess await')
+      }
+    }
+    return res.status(HTTPStatus.OK).json({ success: true, data: 'success' })
+  } catch (error) {
+    console.error('Error broadcasting data:', error)
+    return res.status(HTTPStatus.INTERNAL_SERVER_ERROR).json({
+      success: false,
+      error: 'Failed to broadcast data'
+    })
+  }
+})
 
 app.post('/getData', async (req, res) => {
   try {
@@ -92,7 +110,6 @@ app.post('/getData', async (req, res) => {
       }
       await postLineNotify(buyit)
     }
-
     const bodyq = req.body
     if (bodyq.version === 'VS') {
       const checkData = await Data.findOne({ symbol: bodyq.symbol })
@@ -122,9 +139,12 @@ app.listen(port, () => {
 })
 
 const senData = async (body) => {
-  const URL = 'https://tradng2.ts926.com/api/user/botTradingView'
+  const URL = 'http://45.141.27.209:4040/api/user/botTradingView'
+  // const URL = 'http://localhost:4040/api/user/botTradingView'
+  // const URL = 'https://trading2.ts926.com/api/user/botTradingView'
   try {
-    const response = await axios.post(URL, body)
+    const bodys = { symbol: body.symbol, side: body.side }
+    const response = await axios.post(URL, bodys, { timeout: 60000 })
     if (response.status === 200 || response.status === 201) {
       await Data.updateOne({ symbol: body.symbol }, { status: true })
       console.log('Data sent successfully to:', URL)
