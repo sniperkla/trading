@@ -9,9 +9,10 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.post('/getUser', async (req, res) => {
+app.get('/getUser', async (req, res) => {
   try {
     const bodyq = req.body
+    console.log('hello', bodyq)
     console.log('Data sent successfully to all URLs:', req.body)
     return res.status(HTTPStatus.OK).json({ success: true, data: 'success' })
   } catch (error) {
