@@ -1,7 +1,7 @@
 const express = require('express')
 const HTTPStatus = require('http-status')
 const app = express()
-const port = 9999
+const port = 5800
 const cors = require('cors')
 const bodyParser = require('body-parser')
 
@@ -9,7 +9,7 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.get('/getUser', async (req, res) => {
+app.post('/getUser', async (req, res) => {
   try {
     const bodyq = req.body
     console.log('hello', bodyq)
