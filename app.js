@@ -24,6 +24,9 @@ mongoose
 app.post('/license_api', async (req, res) => {
   try {
     const { account, licenes } = req.body
+    console.log('account', account)
+    console.log('licenes', licenes)
+
     const checkAccount = await licen.findOne({
       user: account,
       licenes: licenes
