@@ -1,16 +1,19 @@
 const express = require('express')
 const HTTPStatus = require('http-status')
 const app = express()
+require('dotenv').config()
+
 const port = 5800
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const licen = require('./model/licen')
-
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+const connectionString = `${process.env.DB}` + `${process.env.NAME}`
 
+console.log('connectionString', connectionString)
 mongoose
   .connect(connectionString, {
     useNewUrlParser: true
@@ -20,17 +23,16 @@ mongoose
 
 app.post('/license_api', async (req, res) => {
   try {
-    const bodyq = req.body
-
-    const checkLicence = await licen.findOne({ account: bodyq.account })
-    if (checkLicence) {
-      console.log('ur member')
-      console.log('checkLicence ', checkLicence)
+    const { account, licenes } = req.body
+    const checkAccount = await licen.findOne({
+      user: account,
+      licenes: licenes
+    })
+    if (checkAccount) {
       return res.status(HTTPStatus.OK).json({ status: 'valid' })
     } else return res.status(HTTPStatus.OK).json({ status: 'invalid' })
   } catch (error) {
     return res.status(HTTPStatus.INTERNAL_SERVER_ERROR).json({
-      success: false,
       error: error
     })
   }
