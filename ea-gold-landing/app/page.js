@@ -113,7 +113,7 @@ export default function TradingEALanding() {
               <TrendingUp className="w-6 h-6 text-black" />
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
-              EA Gold Pro
+              EA MAPA
             </span>
           </div>
 
@@ -201,10 +201,10 @@ export default function TradingEALanding() {
           >
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
               <span className="bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400 bg-clip-text text-transparent">
-                Free EA Gold
+                Free EA MAPA
               </span>
               <br />
-              <span className="text-white">Trading Robot</span>
+              <span className="text-white">Trading AI ROBOT</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
@@ -276,7 +276,7 @@ export default function TradingEALanding() {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              Why Choose EA Gold Pro?
+              Why Choose EA MAPA?
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               Our cutting-edge technology gives you the competitive edge in gold
@@ -377,7 +377,7 @@ export default function TradingEALanding() {
               Start Trading Gold Like a Pro
             </h2>
             <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              Join thousands of successful traders using our free EA Gold robot.
+              Join thousands of successful traders using our free EA MAPA robot.
               No hidden fees, no subscriptions - just pure trading power.
             </p>
 
@@ -422,7 +422,7 @@ export default function TradingEALanding() {
                 <TrendingUp className="w-5 h-5 text-black" />
               </div>
               <span className="text-lg font-bold bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
-                EA Gold Pro
+                EA MAPA
               </span>
             </div>
             <p className="text-gray-400 mb-6">
@@ -444,7 +444,7 @@ export default function TradingEALanding() {
               </a>
             </div>
             <div className="mt-8 pt-8 border-t border-white/10 text-gray-500 text-sm">
-              © 2025 EA Gold Pro. All rights reserved. Trading involves risk.
+              © 2025 EA MAPA. All rights reserved. Trading involves risk.
             </div>
           </div>
         </div>
