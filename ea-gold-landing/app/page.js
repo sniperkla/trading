@@ -241,7 +241,9 @@ export default function TradingEALanding() {
                   onClick={handleCopyReferral}
                   className="w-full sm:w-auto px-4 py-2 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-lg transition-all text-sm text-center"
                 >
-                  {copied ? translations[lang].copied : translations[lang].copyReferral}
+                  {copied
+                    ? translations[lang].copied
+                    : translations[lang].copyReferral}
                 </button>
                 {/* ปุ่มสมัคร */}
                 <a
@@ -328,7 +330,9 @@ export default function TradingEALanding() {
               </div>
             </section>
             <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              {translations[lang].join} {translations[lang].freeEA} {translations[lang].robot}.{translations[lang].noHiddenFees} - {translations[lang].justPureTradingPower}
+              {translations[lang].join} {translations[lang].freeEA}{' '}
+              {translations[lang].robot}.{translations[lang].noHiddenFees} -{' '}
+              {translations[lang].justPureTradingPower}
             </p>
 
             <div className="mb-8">
@@ -492,7 +496,9 @@ export default function TradingEALanding() {
               {translations[lang].startTrading}
             </h2>
             <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              {translations[lang].join} {translations[lang].freeEA} {translations[lang].robot}.{translations[lang].noHiddenFees} - {translations[lang].justPureTradingPower}
+              {translations[lang].join} {translations[lang].freeEA}{' '}
+              {translations[lang].robot}.{translations[lang].noHiddenFees} -{' '}
+              {translations[lang].justPureTradingPower}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
