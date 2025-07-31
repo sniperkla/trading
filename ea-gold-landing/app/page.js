@@ -1,6 +1,8 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import ImageSlider from './ImageSlider'
+import translations from './i18n'
 import {
   ChevronDown,
   TrendingUp,
@@ -14,13 +16,103 @@ import {
   CheckCircle,
   BarChart3,
   Globe,
-  Award
+  Award,
+  FileText
 } from 'lucide-react'
+import PDFViewer from './PDFViewer'
 
 export default function TradingEALanding() {
+  const [expandedStep, setExpandedStep] = useState(null)
+  const [showPDFGuide, setShowPDFGuide] = useState(false)
+  const [copied, setCopied] = useState(false)
+  const referralCode = 'BsFPM765'
+
+  const handleCopyReferral = () => {
+    navigator.clipboard.writeText(referralCode)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000) // รีเซ็ตหลัง 2 วิ
+  }
+  const publicPDFUrl = 'https://eamapa.com/pdfs/vantage-guide.pdf' // ✅ เปลี่ยนให้เป็น URL จริงที่ออนไลน์แล้ว
+
+  const [lang, setLang] = useState('en') // default เป็นอังกฤษ
+  useEffect(() => {
+    const getBrowserLang = () => {
+      if (typeof window === 'undefined') return 'en'
+      const lang = navigator.language || navigator.userLanguage || 'en'
+      if (lang.startsWith('th')) return 'th'
+      if (lang.startsWith('en')) return 'en'
+      if (lang.startsWith('zh')) return 'zh'
+      if (lang.startsWith('hi')) return 'hi'
+      if (lang.startsWith('ru')) return 'ru'
+      return 'en' // ถ้าไม่ตรงกับที่รองรับ ให้เป็นอังกฤษ
+    }
+    setLang(getBrowserLang())
+  }, [])
+
+  const brokerGuide = {
+    title: 'How to Register with Vantage Broker',
+    steps: [
+      {
+        step: 1,
+        title: 'Registration',
+        content: 'Click the registration link: https://vigco.co/uyYRJz',
+        details: [
+          'Open the link using a browser on your mobile or computer',
+          'Fill in basic information: Full name, Email address, Desired password',
+          'Enter invitation code: BsFPM765 in the Referral Code field',
+          "Click 'Create Account' to confirm registration"
+        ]
+      },
+      {
+        step: 2,
+        title: 'Personal Information Verification',
+        content: 'Complete account verification to unlock trading features',
+        details: [
+          'Link your email address',
+          'Link your phone number',
+          'Provide personal information'
+        ],
+        benefits: [
+          'Open a real trading account',
+          'Ability to deposit and withdraw funds',
+          'Full trading access',
+          'Can open additional trading accounts',
+          'Access to V-Wallet (Deposit/Withdraw/Currency Conversion)'
+        ],
+        limits: {
+          maxDeposit: '$5,000',
+          maxWithdrawal: '$5,000'
+        }
+      },
+      {
+        step: 3,
+        title: 'Identity Verification (Optional)',
+        content: 'Upload identity documents for higher limits',
+        requirements: ['National ID card or passport required'],
+        benefits: [
+          'Maximum Deposit: $10,000,000',
+          'Maximum Withdrawal: $10,000,000',
+          'Ideal for large capital volume traders'
+        ]
+      },
+      {
+        step: 4,
+        title: 'Open MT5 Trading Account',
+        content: 'Set up your MetaTrader 5 account for trading',
+        details: [
+          'Go to Accounts section',
+          "Click 'Open Account'",
+          'Choose MetaTrader 5 platform',
+          'Select CENT SWAP-FREE account type',
+          'Choose USD currency',
+          'Submit your request'
+        ]
+      }
+    ]
+  }
+
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isVisible, setIsVisible] = useState({})
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -42,57 +134,57 @@ export default function TradingEALanding() {
   }, [])
 
   const stats = [
-    { number: '50K+', label: 'Active Traders', icon: Users },
-    { number: '98.7%', label: 'Success Rate', icon: TrendingUp },
-    { number: '24/7', label: 'Auto Trading', icon: Zap },
-    { number: '100%', label: 'Free Forever', icon: Award }
+    { number: '50K+', label: translations[lang].activeTraders, icon: Users },
+    {
+      number: '98.7%',
+      label: translations[lang].successRate,
+      icon: TrendingUp
+    },
+    { number: '24/7', label: translations[lang].autoTrading, icon: Zap },
+    { number: '100%', label: translations[lang].freeForeverShort, icon: Award }
   ]
 
   const features = [
     {
       icon: BarChart3,
-      title: 'Advanced AI Algorithm',
-      description:
-        'Powered by machine learning to analyze gold market patterns and execute profitable trades automatically.'
+      title: translations[lang].advancedAI,
+      description: translations[lang].aiDesc
     },
     {
       icon: Shield,
-      title: 'Risk Management',
-      description:
-        'Built-in stop-loss and take-profit mechanisms to protect your capital and maximize returns.'
+      title: translations[lang].riskManagement,
+      description: translations[lang].riskDesc
     },
     {
       icon: Globe,
-      title: 'Multi-Broker Support',
-      description:
-        'Compatible with MT4/MT5 platforms and works with all major forex brokers worldwide.'
+      title: translations[lang].multiBroker,
+      description: translations[lang].multiBrokerDesc
     },
     {
       icon: Zap,
-      title: 'Lightning Fast Execution',
-      description:
-        'Execute trades in milliseconds with our optimized algorithm for maximum profit potential.'
+      title: translations[lang].fastExecution,
+      description: translations[lang].fastExecutionDesc
     }
   ]
 
   const testimonials = [
     {
-      name: 'Sarah Johnson',
-      role: 'Professional Trader',
+      name: translations[lang].testi1Name,
+      role: translations[lang].testi1Role,
       rating: 5,
-      text: 'This EA has completely transformed my trading results. The AI algorithm is incredibly accurate!'
+      text: translations[lang].testi1Text
     },
     {
-      name: 'Mike Chen',
-      role: 'Investment Manager',
+      name: translations[lang].testi2Name,
+      role: translations[lang].testi2Role,
       rating: 5,
-      text: "I've been using EA Gold Pro for 6 months. Consistent profits and excellent risk management."
+      text: translations[lang].testi2Text
     },
     {
-      name: 'Alex Rodriguez',
-      role: 'Forex Trader',
+      name: translations[lang].testi3Name,
+      role: translations[lang].testi3Role,
       rating: 5,
-      text: 'Finally, a free EA that actually works! The setup was easy and results speak for themselves.'
+      text: translations[lang].testi3Text
     }
   ]
 
@@ -104,7 +196,6 @@ export default function TradingEALanding() {
         <div className="absolute top-0 -right-4 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
         <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
       </div>
-
       {/* Navigation */}
       <nav className="relative z-50 p-6">
         <div className="container mx-auto flex justify-between items-center">
@@ -122,25 +213,25 @@ export default function TradingEALanding() {
               href="#features"
               className="hover:text-yellow-400 transition-colors"
             >
-              Features
+              {translations[lang].features}
             </a>
             <a
               href="#stats"
               className="hover:text-yellow-400 transition-colors"
             >
-              Performance
+              {translations[lang].performance}
             </a>
             <a
               href="#testimonials"
               className="hover:text-yellow-400 transition-colors"
             >
-              Reviews
+              {translations[lang].reviews}
             </a>
             <a
               href="#download"
               className="hover:text-yellow-400 transition-colors"
             >
-              Download
+              {translations[lang].download}
             </a>
           </div>
 
@@ -164,31 +255,94 @@ export default function TradingEALanding() {
                 href="#features"
                 className="block hover:text-yellow-400 transition-colors"
               >
-                Features
+                {translations[lang].features}
               </a>
               <a
                 href="#stats"
                 className="block hover:text-yellow-400 transition-colors"
               >
-                Performance
+                {translations[lang].performance}
               </a>
               <a
                 href="#testimonials"
                 className="block hover:text-yellow-400 transition-colors"
               >
-                Reviews
+                {translations[lang].reviews}
               </a>
               <a
                 href="#download"
                 className="block hover:text-yellow-400 transition-colors"
               >
-                Download
+                {translations[lang].download}
               </a>
             </div>
           </div>
         )}
       </nav>
+      {showPDFGuide && (
+        <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm">
+          <div className="w-full h-full bg-slate-900 flex flex-col">
+            {/* Header */}
+            <div className="p-4 border-b border-white/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-900">
+              <h3 className="text-2xl font-bold text-yellow-400">
+                Vantage Registration Guide
+              </h3>
 
+              <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 w-full sm:w-auto">
+                {/* แสดงรหัสแนะนำ */}
+                <div className="text-center sm:text-left text-sm text-yellow-300 font-semibold">
+                  รหัสแนะนำของคุณ:{' '}
+                  <span className="bg-yellow-400 text-black font-mono px-2 py-1 rounded">
+                    {referralCode}
+                  </span>
+                  <div className="text-xs mt-1 text-yellow-200 font-normal">
+                    * ห้ามลืมใส่รหัสนี้ตอนสมัคร มิฉะนั้นจะไม่ได้รับสิทธิพิเศษ
+                  </div>
+                </div>
+
+                {/* ปุ่มคัดลอกรหัส */}
+                <button
+                  onClick={handleCopyReferral}
+                  className="w-full sm:w-auto px-4 py-2 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-lg transition-all text-sm text-center"
+                >
+                  {copied ? 'คัดลอกแล้ว ✅' : 'คัดลอกรหัสแนะนำ'}
+                </button>
+
+                {/* ปุ่มสมัคร */}
+                <a
+                  href="https://vigco.co/uyYRJz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors text-sm text-center"
+                >
+                  สมัครเปิดบัญชี
+                </a>
+
+                {/* ปุ่มปิด */}
+                <button
+                  onClick={() => setShowPDFGuide(false)}
+                  className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+                >
+                  <X className="w-6 h-6 text-white" />
+                </button>
+              </div>
+            </div>
+
+            {/* PDF Viewer - Google Docs */}
+            <div className="flex-1 w-full">
+              <iframe
+                src={`https://docs.google.com/gview?url=${encodeURIComponent(
+                  publicPDFUrl
+                )}&embedded=true`}
+                width="100%"
+                height="100%"
+                className="w-full h-full border-none"
+                title="Vantage PDF Guide"
+              />
+            </div>
+          </div>
+        </div>
+      )}
       {/* Hero Section */}
       <section id="hero" className="relative z-10 container mx-auto px-6 py-20">
         <div className="text-center max-w-4xl mx-auto">
@@ -201,32 +355,71 @@ export default function TradingEALanding() {
           >
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
               <span className="bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400 bg-clip-text text-transparent">
-                Free EA MAPA
+                {translations[lang].freeEA}
               </span>
               <br />
-              <span className="text-white">Trading AI ROBOT</span>
+              <span className="text-white">{translations[lang].tradingAI}</span>
             </h1>
+            <section id="broker-guide" className="relative z-10 py-20">
+              <div className="container mx-auto px-6 text-center">
+                <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                  Get Your Broker Account Ready
+                </h2>
+                <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                  Follow our complete setup guide to get trading in minutes
+                </p>
 
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                  <a
+                    href="https://vigco.co/uyYRJz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold rounded-xl hover:from-blue-400 hover:to-blue-500 transform hover:scale-105 transition-all duration-300 shadow-2xl"
+                  >
+                    <Users className="w-6 h-6" />
+                    Register with Vantage Now
+                  </a>
+
+                  <button
+                    onClick={() => setShowPDFGuide(true)}
+                    className="inline-flex items-center gap-3 px-8 py-4 border-2 border-yellow-400 text-yellow-400 font-bold rounded-xl hover:bg-yellow-400 hover:text-black transition-all duration-300"
+                  >
+                    <FileText className="w-6 h-6" />
+                    View Setup Guide (PDF)
+                  </button>
+                </div>
+
+                <p className="text-sm text-gray-400 mt-4">
+                  Use referral code:{' '}
+                  <span className="text-yellow-400 font-mono font-bold">
+                    BsFPM765
+                  </span>
+                </p>
+              </div>
+            </section>
             <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-              Automate your gold trading with our advanced AI-powered Expert
-              Advisor.
+              {translations[lang].automate}
               <span className="text-yellow-400 font-semibold">
                 {' '}
-                100% Free, Forever.
+                {translations[lang].freeForever}
               </span>
             </p>
+
+            <div className="mb-8">
+              <ImageSlider />
+            </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
               <button className="group relative px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-2xl">
                 <span className="flex items-center gap-2">
                   <Download className="w-5 h-5" />
-                  Download Free EA
+                  {translations[lang].downloadFreeEA}
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-200 to-yellow-400 rounded-xl blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
               </button>
 
               <button className="px-8 py-4 border-2 border-yellow-400 text-yellow-400 font-bold rounded-xl hover:bg-yellow-400 hover:text-black transition-all duration-300">
-                Watch Demo
+                {translations[lang].watchDemo}
               </button>
             </div>
 
@@ -236,7 +429,6 @@ export default function TradingEALanding() {
           </div>
         </div>
       </section>
-
       {/* Stats Section */}
       <section
         id="stats"
@@ -270,13 +462,12 @@ export default function TradingEALanding() {
           </div>
         </div>
       </section>
-
       {/* Features Section */}
       <section id="features" className="relative z-10 py-20">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              Why Choose EA MAPA?
+              {translations[lang].whyChoose}
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               Our cutting-edge technology gives you the competitive edge in gold
@@ -315,7 +506,6 @@ export default function TradingEALanding() {
           </div>
         </div>
       </section>
-
       {/* Testimonials Section */}
       <section
         id="testimonials"
@@ -324,7 +514,7 @@ export default function TradingEALanding() {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              Trusted by Traders Worldwide
+              {translations[lang].trusted}
             </h2>
           </div>
 
@@ -362,7 +552,6 @@ export default function TradingEALanding() {
           </div>
         </div>
       </section>
-
       {/* CTA Section */}
       <section id="download" className="relative z-10 py-20">
         <div className="container mx-auto px-6 text-center">
@@ -374,18 +563,19 @@ export default function TradingEALanding() {
             }`}
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
-              Start Trading Gold Like a Pro
+              {translations[lang].startTrading}
             </h2>
             <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              Join thousands of successful traders using our free EA MAPA robot.
-              No hidden fees, no subscriptions - just pure trading power.
+              {translations[lang].join} {translations[lang].freeEA}{' '}
+              {translations[lang].robot}.{translations[lang].noHiddenFees} -{' '}
+              {translations[lang].justPureTradingPower}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
               <button className="group relative px-12 py-6 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold text-xl rounded-2xl hover:from-yellow-300 hover:to-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-2xl">
                 <span className="flex items-center gap-3">
                   <Download className="w-6 h-6" />
-                  Get Your Free EA Now
+                  {translations[lang].getYourFreeEA}
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-200 to-yellow-400 rounded-2xl blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
               </button>
@@ -394,25 +584,24 @@ export default function TradingEALanding() {
             <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-green-400" />
-                <span>Instant Download</span>
+                <span>{translations[lang].instantDownload}</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-green-400" />
-                <span>No Registration Required</span>
+                <span>{translations[lang].noRegister}</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-green-400" />
-                <span>24/7 Support</span>
+                <span>{translations[lang].support}</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-green-400" />
-                <span>100% Free Forever</span>
+                <span>{translations[lang].forever}</span>
               </div>
             </div>
           </div>
         </div>
       </section>
-
       {/* Footer */}
       <footer className="relative z-10 border-t border-white/10 bg-black/30 backdrop-blur-sm">
         <div className="container mx-auto px-6 py-12">
@@ -431,16 +620,13 @@ export default function TradingEALanding() {
             </p>
             <div className="flex justify-center space-x-6 text-sm text-gray-400">
               <a href="#" className="hover:text-yellow-400 transition-colors">
-                Privacy Policy
+                {translations[lang].privacy}
               </a>
               <a href="#" className="hover:text-yellow-400 transition-colors">
-                Terms of Service
+                {translations[lang].terms}
               </a>
               <a href="#" className="hover:text-yellow-400 transition-colors">
-                Support
-              </a>
-              <a href="#" className="hover:text-yellow-400 transition-colors">
-                Contact
+                {translations[lang].contact}
               </a>
             </div>
             <div className="mt-8 pt-8 border-t border-white/10 text-gray-500 text-sm">
