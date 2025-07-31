@@ -223,29 +223,26 @@ export default function TradingEALanding() {
             {/* Header */}
             <div className="p-4 border-b border-white/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-900">
               <h3 className="text-2xl font-bold text-yellow-400">
-                Vantage Registration Guide
+                {translations[lang].vantageGuide}
               </h3>
-
               <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 w-full sm:w-auto">
                 {/* แสดงรหัสแนะนำ */}
                 <div className="text-center sm:text-left text-sm text-yellow-300 font-semibold">
-                  รหัสแนะนำของคุณ:{' '}
+                  {translations[lang].yourReferral}{' '}
                   <span className="bg-yellow-400 text-black font-mono px-2 py-1 rounded">
                     {referralCode}
                   </span>
                   <div className="text-xs mt-1 text-yellow-200 font-normal">
-                    * ห้ามลืมใส่รหัสนี้ตอนสมัคร มิฉะนั้นจะไม่ได้รับสิทธิพิเศษ
+                    {translations[lang].referralNote}
                   </div>
                 </div>
-
                 {/* ปุ่มคัดลอกรหัส */}
                 <button
                   onClick={handleCopyReferral}
                   className="w-full sm:w-auto px-4 py-2 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-lg transition-all text-sm text-center"
                 >
-                  {copied ? 'คัดลอกแล้ว ✅' : 'คัดลอกรหัสแนะนำ'}
+                  {copied ? translations[lang].copied : translations[lang].copyReferral}
                 </button>
-
                 {/* ปุ่มสมัคร */}
                 <a
                   href="https://vigco.co/uyYRJz"
@@ -253,9 +250,8 @@ export default function TradingEALanding() {
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors text-sm text-center"
                 >
-                  สมัครเปิดบัญชี
+                  {translations[lang].openAccount}
                 </a>
-
                 {/* ปุ่มปิด */}
                 <button
                   onClick={() => setShowPDFGuide(false)}
@@ -265,7 +261,6 @@ export default function TradingEALanding() {
                 </button>
               </div>
             </div>
-
             {/* PDF Viewer - Google Docs */}
             <div className="flex-1 w-full">
               <iframe
@@ -301,12 +296,11 @@ export default function TradingEALanding() {
             <section id="broker-guide" className="relative z-10 py-20">
               <div className="container mx-auto px-6 text-center">
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                  Get Your Broker Account Ready
+                  {translations[lang].getBrokerReady}
                 </h2>
                 <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                  Follow our complete setup guide to get trading in minutes
+                  {translations[lang].setupGuide}
                 </p>
-
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <a
                     href="https://vigco.co/uyYRJz"
@@ -315,32 +309,26 @@ export default function TradingEALanding() {
                     className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold rounded-xl hover:from-blue-400 hover:to-blue-500 transform hover:scale-105 transition-all duration-300 shadow-2xl"
                   >
                     <Users className="w-6 h-6" />
-                    Register with Vantage Now
+                    {translations[lang].registerVantage}
                   </a>
-
                   <button
                     onClick={() => setShowPDFGuide(true)}
                     className="inline-flex items-center gap-3 px-8 py-4 border-2 border-yellow-400 text-yellow-400 font-bold rounded-xl hover:bg-yellow-400 hover:text-black transition-all duration-300"
                   >
                     <FileText className="w-6 h-6" />
-                    View Setup Guide (PDF)
+                    {translations[lang].viewSetupGuide}
                   </button>
                 </div>
-
                 <p className="text-sm text-gray-400 mt-4">
-                  Use referral code:{' '}
+                  {translations[lang].useReferral}{' '}
                   <span className="text-yellow-400 font-mono font-bold">
-                    BsFPM765
+                    {referralCode}
                   </span>
                 </p>
               </div>
             </section>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-              {translations[lang].automate}
-              <span className="text-yellow-400 font-semibold">
-                {' '}
-                {translations[lang].freeForever}
-              </span>
+            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+              {translations[lang].join} {translations[lang].freeEA} {translations[lang].robot}.{translations[lang].noHiddenFees} - {translations[lang].justPureTradingPower}
             </p>
 
             <div className="mb-8">
@@ -504,9 +492,7 @@ export default function TradingEALanding() {
               {translations[lang].startTrading}
             </h2>
             <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              {translations[lang].join} {translations[lang].freeEA}{' '}
-              {translations[lang].robot}.{translations[lang].noHiddenFees} -{' '}
-              {translations[lang].justPureTradingPower}
+              {translations[lang].join} {translations[lang].freeEA} {translations[lang].robot}.{translations[lang].noHiddenFees} - {translations[lang].justPureTradingPower}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
