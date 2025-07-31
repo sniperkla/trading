@@ -49,68 +49,6 @@ export default function TradingEALanding() {
     setLang(getBrowserLang())
   }, [])
 
-  const brokerGuide = {
-    title: 'How to Register with Vantage Broker',
-    steps: [
-      {
-        step: 1,
-        title: 'Registration',
-        content: 'Click the registration link: https://vigco.co/uyYRJz',
-        details: [
-          'Open the link using a browser on your mobile or computer',
-          'Fill in basic information: Full name, Email address, Desired password',
-          'Enter invitation code: BsFPM765 in the Referral Code field',
-          "Click 'Create Account' to confirm registration"
-        ]
-      },
-      {
-        step: 2,
-        title: 'Personal Information Verification',
-        content: 'Complete account verification to unlock trading features',
-        details: [
-          'Link your email address',
-          'Link your phone number',
-          'Provide personal information'
-        ],
-        benefits: [
-          'Open a real trading account',
-          'Ability to deposit and withdraw funds',
-          'Full trading access',
-          'Can open additional trading accounts',
-          'Access to V-Wallet (Deposit/Withdraw/Currency Conversion)'
-        ],
-        limits: {
-          maxDeposit: '$5,000',
-          maxWithdrawal: '$5,000'
-        }
-      },
-      {
-        step: 3,
-        title: 'Identity Verification (Optional)',
-        content: 'Upload identity documents for higher limits',
-        requirements: ['National ID card or passport required'],
-        benefits: [
-          'Maximum Deposit: $10,000,000',
-          'Maximum Withdrawal: $10,000,000',
-          'Ideal for large capital volume traders'
-        ]
-      },
-      {
-        step: 4,
-        title: 'Open MT5 Trading Account',
-        content: 'Set up your MetaTrader 5 account for trading',
-        details: [
-          'Go to Accounts section',
-          "Click 'Open Account'",
-          'Choose MetaTrader 5 platform',
-          'Select CENT SWAP-FREE account type',
-          'Choose USD currency',
-          'Submit your request'
-        ]
-      }
-    ]
-  }
-
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isVisible, setIsVisible] = useState({})
   useEffect(() => {
