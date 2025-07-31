@@ -32,7 +32,7 @@ export default function TradingEALanding() {
     setCopied(true)
     setTimeout(() => setCopied(false), 2000) // รีเซ็ตหลัง 2 วิ
   }
-  const publicPDFUrl = 'https://eamapa.com/pdfs/vantage-guide.pdf' // ✅ เปลี่ยนให้เป็น URL จริงที่ออนไลน์แล้ว
+  const publicPDFUrl = 'https://eamapa.com/pdfs/register.pdf' // ✅ เปลี่ยนให้เป็น URL จริงที่ออนไลน์แล้ว
 
   const [lang, setLang] = useState('en') // default เป็นอังกฤษ
   useEffect(() => {
