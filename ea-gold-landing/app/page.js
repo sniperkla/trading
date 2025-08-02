@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import ImageSlider from './ImageSlider'
 import translations from './i18n'
 import {
@@ -17,7 +17,8 @@ import {
   BarChart3,
   Globe,
   Award,
-  FileText
+  FileText,
+  Volume2
 } from 'lucide-react'
 import PDFViewer from './PDFViewer'
 
@@ -126,14 +127,68 @@ export default function TradingEALanding() {
     }
   ]
 
+  const [videoMuted, setVideoMuted] = useState(true)
+  const videoRef = useRef(null)
+
+  const handleUnmute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = false
+      videoRef.current.volume = 1
+      setVideoMuted(false)
+      videoRef.current.play()
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-hidden">
-      {/* Animated Background */}
-      <div className="fixed inset-0 opacity-30">
-        <div className="absolute top-0 -left-4 w-72 h-72 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-        <div className="absolute top-0 -right-4 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
-        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
-      </div>
+      {/* Animated SVG Background */}
+      <svg
+        className="fixed inset-0 w-full h-full z-0 pointer-events-none"
+        style={{ opacity: 0.18 }}
+        aria-hidden="true"
+      >
+        <defs>
+          <radialGradient id="goldGlow" cx="50%" cy="50%" r="80%">
+            <stop offset="0%" stopColor="#FFD700" stopOpacity="0.7" />
+            <stop offset="100%" stopColor="#FFD700" stopOpacity="0" />
+          </radialGradient>
+          <linearGradient id="purpleWave" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.7" />
+            <stop offset="100%" stopColor="#6366f1" stopOpacity="0.2" />
+          </linearGradient>
+        </defs>
+        <circle cx="80%" cy="20%" r="300" fill="url(#goldGlow)">
+          <animate
+            attributeName="r"
+            values="300;340;300"
+            dur="6s"
+            repeatCount="indefinite"
+          />
+        </circle>
+        <ellipse cx="20%" cy="80%" rx="220" ry="80" fill="url(#purpleWave)">
+          <animate
+            attributeName="rx"
+            values="220;260;220"
+            dur="8s"
+            repeatCount="indefinite"
+          />
+        </ellipse>
+        <ellipse
+          cx="50%"
+          cy="50%"
+          rx="180"
+          ry="60"
+          fill="#fff8e1"
+          fillOpacity="0.08"
+        >
+          <animate
+            attributeName="ry"
+            values="60;90;60"
+            dur="7s"
+            repeatCount="indefinite"
+          />
+        </ellipse>
+      </svg>
       {/* Navigation */}
       <nav className="relative z-50 p-6">
         <div className="container mx-auto flex justify-between items-center">
@@ -295,6 +350,43 @@ export default function TradingEALanding() {
               <br />
               <span className="text-white">{translations[lang].tradingAI}</span>
             </h1>
+
+            <section id="video-demo">
+              <div className="container mx-auto px-6 flex flex-col items-center">
+                <div className="w-full max-w-3xl rounded-3xl overflow-hidden shadow-2xl border-4 border-yellow-400/30 bg-black/60 backdrop-blur-lg relative">
+                  <video
+                    ref={videoRef}
+                    src="/video/clip.mp4"
+                    controls
+                    autoPlay
+                    muted={videoMuted}
+                    poster="/images/promo.png"
+                    className="w-full h-auto aspect-video bg-black"
+                    preload="metadata"
+                  >
+                    {translations[lang].videoNotSupported ||
+                      'Your browser does not support the video tag.'}
+                  </video>
+                  {videoMuted && (
+                    <button
+                      onClick={handleUnmute}
+                      className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/60 transition-colors z-10"
+                      style={{ pointerEvents: 'auto' }}
+                      aria-label="Unmute video"
+                    >
+                      <span className="flex flex-col items-center">
+                        <Volume2 className="w-12 h-12 text-yellow-400 mb-2 animate-pulse" />
+                        <span className="text-lg font-bold text-yellow-200 bg-black/60 px-4 py-2 rounded-xl shadow-lg">
+                          Unmute
+                        </span>
+                      </span>
+                    </button>
+                  )}
+                </div>
+              </div>
+            </section>
+            {/* End Video Section */}
+
             <section id="broker-guide" className="relative z-10 py-20">
               <div className="container mx-auto px-6 text-center">
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
@@ -321,19 +413,18 @@ export default function TradingEALanding() {
                     {translations[lang].viewSetupGuide}
                   </button>
                 </div>
-                <p className="text-sm text-gray-400 mt-4">
-                  {translations[lang].useReferral}{' '}
-                  <span className="text-yellow-400 font-mono font-bold">
-                    {referralCode}
-                  </span>
-                </p>
+                {/* แสดงรหัสแนะนำ */}
+                <div className="flex flex-col items-center justify-center mt-6 mb-2">
+                  <div className="text-2xl md:text-3xl font-extrabold text-yellow-400 bg-black/80 px-6 py-4 rounded-2xl shadow-xl border-4 border-yellow-300 tracking-widest text-center select-all">
+                    {translations[lang].useReferral}{' '}
+                    <span className="text-3xl md:text-4xl font-mono font-black underline decoration-yellow-400">
+                      {referralCode}
+                    </span>
+                  </div>
+                </div>
               </div>
             </section>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              {translations[lang].join} {translations[lang].freeEA}{' '}
-              {translations[lang].robot}.{translations[lang].noHiddenFees} -{' '}
-              {translations[lang].justPureTradingPower}
-            </p>
+     
 
             <div className="mb-8">
               <ImageSlider />

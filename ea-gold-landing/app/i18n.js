@@ -4,8 +4,8 @@ const translations = {
     performance: 'ประสิทธิภาพ',
     reviews: 'รีวิว',
     download: 'ดาวน์โหลด',
-    freeEA: 'ฟรี EA MAPA',
-    tradingAI: 'หุ่นยนต์เทรด AI',
+    freeEA: 'ฟรี EA MAPA ',
+    tradingAI: 'หุ่นยนต์เทรด AI อัตโนมัติ',
     automate: 'อัตโนมัติการเทรดทองของคุณด้วย EA อัจฉริยะ',
     freeForever: 'ฟรี 100% ตลอดไป',
     watchDemo: 'ดูตัวอย่าง',
@@ -37,13 +37,16 @@ const translations = {
     fastExecutionDesc: 'ส่งคำสั่งเทรดในเสี้ยววินาทีเพื่อโอกาสกำไรสูงสุด',
     testi1Name: 'ซาร่า จอห์นสัน',
     testi1Role: 'เทรดเดอร์มืออาชีพ',
-    testi1Text: 'EA ตัวนี้เปลี่ยนผลลัพธ์การเทรดของฉันโดยสิ้นเชิง อัลกอริทึม AI แม่นยำมาก!',
+    testi1Text:
+      'EA ตัวนี้เปลี่ยนผลลัพธ์การเทรดของฉันโดยสิ้นเชิง อัลกอริทึม AI แม่นยำมาก!',
     testi2Name: 'ไมค์ เฉิน',
     testi2Role: 'ผู้จัดการลงทุน',
-    testi2Text: 'ผมใช้ EA Gold Pro มา 6 เดือน กำไรสม่ำเสมอและบริหารความเสี่ยงดีมาก',
+    testi2Text:
+      'ผมใช้ EA Gold Pro มา 6 เดือน กำไรสม่ำเสมอและบริหารความเสี่ยงดีมาก',
     testi3Name: 'อเล็กซ์ โรดริเกซ',
     testi3Role: 'เทรดเดอร์ฟอเร็กซ์',
-    testi3Text: 'ในที่สุดก็เจอ EA ฟรีที่ใช้ได้จริง! ติดตั้งง่ายและผลลัพธ์ยอดเยี่ยม',
+    testi3Text:
+      'ในที่สุดก็เจอ EA ฟรีที่ใช้ได้จริง! ติดตั้งง่ายและผลลัพธ์ยอดเยี่ยม',
     getBrokerReady: 'เตรียมบัญชีโบรกเกอร์ของคุณ',
     setupGuide: 'ทำตามคู่มือการตั้งค่าเพื่อเริ่มเทรดได้ในไม่กี่นาที',
     registerVantage: 'สมัครกับ Vantage ตอนนี้',
@@ -51,15 +54,18 @@ const translations = {
     useReferral: 'ใช้รหัสแนะนำ:',
     vantageGuide: 'คู่มือสมัคร Vantage',
     yourReferral: 'รหัสแนะนำของคุณ:',
-    referralNote: '* ห้ามลืมใส่รหัสนี้ตอนสมัคร มิฉะนั้นจะไม่ได้รับสิทธิพิเศษ',
+    referralNote:
+      '* อย่าลืมใส่รหัสนี้ตอนสมัคร มิฉะนั้นจะไม่สามารถขอรับใช้บอทได้',
     copyReferral: 'คัดลอกรหัสแนะนำ',
     copied: 'คัดลอกแล้ว ✅',
     openAccount: 'เปิดบัญชี',
     empowering: 'เสริมพลังเทรดเดอร์ทั่วโลกด้วยเทคโนโลยีอัตโนมัติล้ำสมัย',
     noHiddenFees: 'ไม่มีค่าธรรมเนียมแอบแฝง ไม่มีค่าสมัคร',
-    justPureTradingPower: 'แค่พลังการเทรดล้วนๆ',
-    robot: 'หุ่นยนต์',
+    justPureTradingPower: 'เทรดอัตโนมัติล้วนๆ',
+    robot: 'บอท',
     getYourFreeEA: 'รับ EA ฟรีของคุณ',
+    videoSectionTitle: 'ชมการทำงานของ EA MAPA',
+    videoSectionDesc: 'ดูวิดีโอตัวอย่างการใช้งานจริงของ EA ในตลาดเทรดทอง'
   },
   en: {
     features: 'Features',
@@ -68,7 +74,8 @@ const translations = {
     download: 'Download',
     freeEA: 'Free EA MAPA',
     tradingAI: 'Trading AI ROBOT',
-    automate: 'Automate your gold trading with our advanced AI-powered Expert Advisor.',
+    automate:
+      'Automate your gold trading with our advanced AI-powered Expert Advisor.',
     freeForever: '100% Free, Forever.',
     watchDemo: 'Watch Demo',
     downloadFreeEA: 'Download Free EA',
@@ -90,22 +97,29 @@ const translations = {
     autoTrading: 'Auto Trading',
     freeForeverShort: 'Free Forever',
     advancedAI: 'Advanced AI Algorithm',
-    aiDesc: 'Powered by machine learning to analyze gold market patterns and execute profitable trades automatically.',
+    aiDesc:
+      'Powered by machine learning to analyze gold market patterns and execute profitable trades automatically.',
     riskManagement: 'Risk Management',
-    riskDesc: 'Built-in stop-loss and take-profit mechanisms to protect your capital and maximize returns.',
+    riskDesc:
+      'Built-in stop-loss and take-profit mechanisms to protect your capital and maximize returns.',
     multiBroker: 'Multi-Broker Support',
-    multiBrokerDesc: 'Compatible with MT4/MT5 platforms and works with all major forex brokers worldwide.',
+    multiBrokerDesc:
+      'Compatible with MT4/MT5 platforms and works with all major forex brokers worldwide.',
     fastExecution: 'Lightning Fast Execution',
-    fastExecutionDesc: 'Execute trades in milliseconds with our optimized algorithm for maximum profit potential.',
+    fastExecutionDesc:
+      'Execute trades in milliseconds with our optimized algorithm for maximum profit potential.',
     testi1Name: 'Sarah Johnson',
     testi1Role: 'Professional Trader',
-    testi1Text: 'This EA has completely transformed my trading results. The AI algorithm is incredibly accurate!',
+    testi1Text:
+      'This EA has completely transformed my trading results. The AI algorithm is incredibly accurate!',
     testi2Name: 'Mike Chen',
     testi2Role: 'Investment Manager',
-    testi2Text: "I've been using EA Gold Pro for 6 months. Consistent profits and excellent risk management.",
+    testi2Text:
+      "I've been using EA Gold Pro for 6 months. Consistent profits and excellent risk management.",
     testi3Name: 'Alex Rodriguez',
     testi3Role: 'Forex Trader',
-    testi3Text: 'Finally, a free EA that actually works! The setup was easy and results speak for themselves.',
+    testi3Text:
+      'Finally, a free EA that actually works! The setup was easy and results speak for themselves.',
     getBrokerReady: 'Get Your Broker Account Ready',
     setupGuide: 'Follow our complete setup guide to get trading in minutes',
     registerVantage: 'Register with Vantage Now',
@@ -113,15 +127,20 @@ const translations = {
     useReferral: 'Use referral code:',
     vantageGuide: 'Vantage Registration Guide',
     yourReferral: 'Your referral code:',
-    referralNote: '* Don’t forget to enter this code when registering or you will miss out on special privileges.',
+    referralNote:
+      '* Don’t forget to enter this code when registering or you will miss out on special privileges.',
     copyReferral: 'Copy referral code',
     copied: 'Copied ✅',
     openAccount: 'Open Account',
-    empowering: 'Empowering traders worldwide with cutting-edge automation technology',
+    empowering:
+      'Empowering traders worldwide with cutting-edge automation technology',
     noHiddenFees: 'No hidden fees, no subscriptions',
     justPureTradingPower: 'just pure trading power.',
     robot: 'robot',
     getYourFreeEA: 'Get Your Free EA Now',
+    videoSectionTitle: 'See EA MAPA in Action',
+    videoSectionDesc:
+      'Watch our quick demo to see how the EA works in real trading conditions.'
   },
   zh: {
     features: '功能',
@@ -158,13 +177,15 @@ const translations = {
     multiBroker: '多经纪商支持',
     multiBrokerDesc: '与 MT4/MT5 平台兼容，适用于全球所有主要外汇经纪商。',
     fastExecution: '闪电般的快速执行',
-    fastExecutionDesc: '通过我们优化的算法在毫秒内执行交易，最大限度地提高利润潜力。',
+    fastExecutionDesc:
+      '通过我们优化的算法在毫秒内执行交易，最大限度地提高利润潜力。',
     testi1Name: '莎拉·约翰逊',
     testi1Role: '专业交易员',
     testi1Text: '这个 EA 完全改变了我的交易结果。 AI 算法准确性极高！',
     testi2Name: '迈克·陈',
     testi2Role: '投资经理',
-    testi2Text: '我已经使用 EA Gold Pro 6 个月了。 稳定的利润和出色的风险管理。',
+    testi2Text:
+      '我已经使用 EA Gold Pro 6 个月了。 稳定的利润和出色的风险管理。',
     testi3Name: '亚历克斯·罗德里格斯',
     testi3Role: '外汇交易员',
     testi3Text: '终于找到了一个真正有效的免费 EA！ 设置简单，结果不言而喻。',
@@ -184,6 +205,8 @@ const translations = {
     justPureTradingPower: '只有纯粹的交易实力。',
     robot: '机器人',
     getYourFreeEA: '立即获取您的免费 EA',
+    videoSectionTitle: '观看 EA MAPA 实际操作',
+    videoSectionDesc: '观看我们的演示视频，了解 EA 如何在真实交易中运行。'
   },
   hi: {
     features: 'विशेषताएँ',
@@ -192,7 +215,8 @@ const translations = {
     download: 'डाउनलोड',
     freeEA: 'नि:शुल्क EA MAPA',
     tradingAI: 'ट्रेडिंग एआई रोबोट',
-    automate: 'हमारे उन्नत एआई-पावर्ड एक्सपर्ट एडवाइजर के साथ अपने गोल्ड ट्रेडिंग को स्वचालित करें।',
+    automate:
+      'हमारे उन्नत एआई-पावर्ड एक्सपर्ट एडवाइजर के साथ अपने गोल्ड ट्रेडिंग को स्वचालित करें।',
     freeForever: '100% हमेशा के लिए मुफ्त।',
     watchDemo: 'डेमो देखें',
     downloadFreeEA: 'नि:शुल्क EA डाउनलोड करें',
@@ -214,38 +238,51 @@ const translations = {
     autoTrading: 'स्वचालित व्यापार',
     freeForeverShort: 'हमेशा के लिए मुफ्त',
     advancedAI: 'उन्नत एआई एल्गोरिदम',
-    aiDesc: 'स्वचालित रूप से सोने के बाजार के पैटर्न का विश्लेषण करने और लाभदायक व्यापार करने के लिए मशीन लर्निंग द्वारा संचालित।',
+    aiDesc:
+      'स्वचालित रूप से सोने के बाजार के पैटर्न का विश्लेषण करने और लाभदायक व्यापार करने के लिए मशीन लर्निंग द्वारा संचालित।',
     riskManagement: 'जोखिम प्रबंधन',
-    riskDesc: 'आपकी पूंजी की रक्षा और रिटर्न को अधिकतम करने के लिए अंतर्निहित स्टॉप-लॉस और टेक-प्रॉफिट तंत्र।',
+    riskDesc:
+      'आपकी पूंजी की रक्षा और रिटर्न को अधिकतम करने के लिए अंतर्निहित स्टॉप-लॉस और टेक-प्रॉफिट तंत्र।',
     multiBroker: 'मल्टी-ब्रोकर समर्थन',
-    multiBrokerDesc: 'MT4/MT5 प्लेटफार्मों के साथ संगत और दुनिया भर के सभी प्रमुख फॉरेक्स ब्रोकरों के साथ काम करता है।',
+    multiBrokerDesc:
+      'MT4/MT5 प्लेटफार्मों के साथ संगत और दुनिया भर के सभी प्रमुख फॉरेक्स ब्रोकरों के साथ काम करता है।',
     fastExecution: 'तेज गति से निष्पादन',
-    fastExecutionDesc: 'अधिकतम लाभ की संभावनाओं के लिए हमारे अनुकूलित एल्गोरिदम के साथ मिलीसेकंड में व्यापार निष्पादित करें।',
+    fastExecutionDesc:
+      'अधिकतम लाभ की संभावनाओं के लिए हमारे अनुकूलित एल्गोरिदम के साथ मिलीसेकंड में व्यापार निष्पादित करें।',
     testi1Name: 'सारा जॉनसन',
     testi1Role: 'पेशेवर व्यापारी',
-    testi1Text: 'इस ईए ने मेरे व्यापार के परिणामों को पूरी तरह से बदल दिया है। एआई एल्गोरिदम अविश्वसनीय रूप से सटीक है!',
+    testi1Text:
+      'इस ईए ने मेरे व्यापार के परिणामों को पूरी तरह से बदल दिया है। एआई एल्गोरिदम अविश्वसनीय रूप से सटीक है!',
     testi2Name: 'माइक चेन',
     testi2Role: 'निवेश प्रबंधक',
-    testi2Text: 'मैंने ईए गोल्ड प्रो का 6 महीने से अधिक समय तक उपयोग किया है। लगातार लाभ और उत्कृष्ट जोखिम प्रबंधन।',
+    testi2Text:
+      'मैंने ईए गोल्ड प्रो का 6 महीने से अधिक समय तक उपयोग किया है। लगातार लाभ और उत्कृष्ट जोखिम प्रबंधन।',
     testi3Name: 'एलेक्स रोड्रिगेज',
     testi3Role: 'फॉरेक्स ट्रेडर',
-    testi3Text: 'अंततः, एक मुफ्त ईए जो वास्तव में काम करता है! सेटअप आसान था और परिणाम खुद के लिए बोलते हैं।',
+    testi3Text:
+      'अंततः, एक मुफ्त ईए जो वास्तव में काम करता है! सेटअप आसान था और परिणाम खुद के लिए बोलते हैं।',
     getBrokerReady: 'अपना ब्रोकर खाता तैयार करें',
-    setupGuide: 'हमारे पूर्ण सेटअप गाइड का पालन करें और मिनटों में ट्रेडिंग शुरू करें',
+    setupGuide:
+      'हमारे पूर्ण सेटअप गाइड का पालन करें और मिनटों में ट्रेडिंग शुरू करें',
     registerVantage: 'अब Vantage के साथ रजिस्टर करें',
     viewSetupGuide: 'सेटअप गाइड देखें (PDF)',
     useReferral: 'रेफरल कोड का उपयोग करें:',
     vantageGuide: 'Vantage पंजीकरण गाइड',
     yourReferral: 'आपका रेफरल कोड:',
-    referralNote: '* पंजीकरण करते समय इस कोड को भरना न भूलें, अन्यथा विशेष लाभ नहीं मिलेंगे।',
+    referralNote:
+      '* पंजीकरण करते समय इस कोड को भरना न भूलें, अन्यथा विशेष लाभ नहीं मिलेंगे।',
     copyReferral: 'रेफरल कोड कॉपी करें',
     copied: 'कॉपी हो गया ✅',
     openAccount: 'खाता खोलें',
-    empowering: 'उन्नत ऑटोमेशन तकनीक के साथ दुनिया भर के ट्रेडर्स को सशक्त बनाना',
+    empowering:
+      'उन्नत ऑटोमेशन तकनीक के साथ दुनिया भर के ट्रेडर्स को सशक्त बनाना',
     noHiddenFees: 'कोई छिपी फीस नहीं, कोई सब्सक्रिप्शन नहीं',
     justPureTradingPower: 'सिर्फ शुद्ध ट्रेडिंग पावर।',
     robot: 'रोबोट',
     getYourFreeEA: 'अपना मुफ्त EA प्राप्त करें',
+    videoSectionTitle: 'EA MAPA को एक्शन में देखें',
+    videoSectionDesc:
+      'देखें कि हमारा EA असली ट्रेडिंग में कैसे काम करता है – डेमो वीडियो देखें।'
   },
   ru: {
     features: 'Функции',
@@ -254,7 +291,8 @@ const translations = {
     download: 'Скачать',
     freeEA: 'Бесплатный EA MAPA',
     tradingAI: 'Торговый ИИ-робот',
-    automate: 'Автоматизируйте торговлю золотом с помощью нашего продвинутого ИИ-советника.',
+    automate:
+      'Автоматизируйте торговлю золотом с помощью нашего продвинутого ИИ-советника.',
     freeForever: '100% бесплатно навсегда.',
     watchDemo: 'Смотреть демо',
     downloadFreeEA: 'Скачать бесплатный EA',
@@ -276,39 +314,52 @@ const translations = {
     autoTrading: 'Автоматическая торговля',
     freeForeverShort: 'Бесплатно навсегда',
     advancedAI: 'Продвинутый ИИ алгоритм',
-    aiDesc: 'Работает на основе машинного обучения для автоматического анализа паттернов золотого рынка и выполнения прибыльных сделок.',
+    aiDesc:
+      'Работает на основе машинного обучения для автоматического анализа паттернов золотого рынка и выполнения прибыльных сделок.',
     riskManagement: 'Управление рисками',
-    riskDesc: 'Встроенные механизмы стоп-лосс и тейк-профит для защиты вашего капитала и максимизации прибыли.',
+    riskDesc:
+      'Встроенные механизмы стоп-лосс и тейк-профит для защиты вашего капитала и максимизации прибыли.',
     multiBroker: 'Поддержка нескольких брокеров',
-    multiBrokerDesc: 'Совместим с платформами MT4/MT5 и работает со всеми крупными форекс-брокерами мира.',
+    multiBrokerDesc:
+      'Совместим с платформами MT4/MT5 и работает со всеми крупными форекс-брокерами мира.',
     fastExecution: 'Молниеносное исполнение',
-    fastExecutionDesc: 'Исполняйте сделки за миллисекунды с помощью нашего оптимизированного алгоритма для максимального потенциала прибыли.',
+    fastExecutionDesc:
+      'Исполняйте сделки за миллисекунды с помощью нашего оптимизированного алгоритма для максимального потенциала прибыли.',
     testi1Name: 'Сара Джонсон',
     testi1Role: 'Профессиональный трейдер',
-    testi1Text: 'Этот EA полностью изменил мои торговые результаты. Алгоритм ИИ невероятно точен!',
+    testi1Text:
+      'Этот EA полностью изменил мои торговые результаты. Алгоритм ИИ невероятно точен!',
     testi2Name: 'Майк Чен',
     testi2Role: 'Инвестиционный менеджер',
-    testi2Text: 'Я использую EA Gold Pro уже 6 месяцев. Стабильная прибыль и отличное управление рисками.',
+    testi2Text:
+      'Я использую EA Gold Pro уже 6 месяцев. Стабильная прибыль и отличное управление рисками.',
     testi3Name: 'Алекс Родригес',
     testi3Role: 'Трейдер Форекс',
-    testi3Text: 'Наконец-то бесплатный EA, который действительно работает! Установка была простой, а результаты говорят сами за себя.',
+    testi3Text:
+      'Наконец-то бесплатный EA, который действительно работает! Установка была простой, а результаты говорят сами за себя.',
     getBrokerReady: 'Подготовьте свой брокерский счет',
-    setupGuide: 'Следуйте нашему полному руководству, чтобы начать торговать за считанные минуты',
+    setupGuide:
+      'Следуйте нашему полному руководству, чтобы начать торговать за считанные минуты',
     registerVantage: 'Зарегистрируйтесь в Vantage сейчас',
     viewSetupGuide: 'Посмотреть руководство по настройке (PDF)',
     useReferral: 'Используйте реферальный код:',
     vantageGuide: 'Руководство по регистрации Vantage',
     yourReferral: 'Ваш реферальный код:',
-    referralNote: '* Не забудьте ввести этот код при регистрации, иначе вы не получите специальные привилегии.',
+    referralNote:
+      '* Не забудьте ввести этот код при регистрации, иначе вы не получите специальные привилегии.',
     copyReferral: 'Скопировать реферальный код',
     copied: 'Скопировано ✅',
     openAccount: 'Открыть счет',
-    empowering: 'Расширяем возможности трейдеров по всему миру с помощью передовых автоматизированных технологий',
+    empowering:
+      'Расширяем возможности трейдеров по всему миру с помощью передовых автоматизированных технологий',
     noHiddenFees: 'Без скрытых комиссий, без подписки',
     justPureTradingPower: 'только чистая торговая мощь.',
     robot: 'робот',
     getYourFreeEA: 'Получить бесплатный EA сейчас',
-  },
+    videoSectionTitle: 'Смотрите EA MAPA в действии',
+    videoSectionDesc:
+      'Смотрите нашу быструю демонстрацию, чтобы увидеть, как EA работает в реальных торговых условиях.'
+  }
 }
 
 export default translations

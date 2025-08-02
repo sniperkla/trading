@@ -24,17 +24,17 @@ export default function ImageSlider() {
 	const [animating, setAnimating] = React.useState(false)
 	const [direction, setDirection] = React.useState(1)
 
-	React.useEffect(() => {
-		const interval = setInterval(() => {
-			setDirection(1)
-			setAnimating(true)
-			setTimeout(() => {
-				setCurrent((prev) => (prev + 1) % images.length)
-				setAnimating(false)
-			}, 600)
-		}, 3000)
-		return () => clearInterval(interval)
-	}, [])
+	// React.useEffect(() => {
+	// 	const interval = setInterval(() => {
+	// 		setDirection(1)
+	// 		setAnimating(true)
+	// 		setTimeout(() => {
+	// 			setCurrent((prev) => (prev + 1) % images.length)
+	// 			setAnimating(false)
+	// 		}, 600)
+	// 	}, 3000)
+	// 	return () => clearInterval(interval)
+	// }, [])
 
 	const getIndex = (offset) =>
 		(current + offset + images.length) % images.length
@@ -58,7 +58,7 @@ export default function ImageSlider() {
 	}
 
 	return (
-		<div className="relative w-full max-w-2xl mx-auto rounded-2xl shadow-lg flex items-center justify-center h-64 overflow-hidden">
+		<div className="relative w-full max-w-3xl mx-auto rounded-2xl shadow-lg flex items-center justify-center h-80 overflow-hidden">
 			<button
 				onClick={handlePrev}
 				className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-black rounded-full w-10 h-10 flex items-center justify-center text-2xl font-bold shadow-lg z-30"
