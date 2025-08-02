@@ -22,20 +22,8 @@ import {
 } from 'lucide-react'
 import PDFViewer from './PDFViewer'
 
-export default function TradingEALanding() {
-  const [expandedStep, setExpandedStep] = useState(null)
-  const [showPDFGuide, setShowPDFGuide] = useState(false)
-  const [copied, setCopied] = useState(false)
-  const referralCode = 'BsFPM765'
-
-  const handleCopyReferral = () => {
-    navigator.clipboard.writeText(referralCode)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000) // รีเซ็ตหลัง 2 วิ
-  }
-  const publicPDFUrl = 'https://eamapa.com/pdfs/register.pdf' // ✅ เปลี่ยนให้เป็น URL จริงที่ออนไลน์แล้ว
-
-  const [lang, setLang] = useState('en') // default เป็นอังกฤษ
+function useLang() {
+  const [lang, setLang] = useState('en')
   useEffect(() => {
     const getBrowserLang = () => {
       if (typeof window === 'undefined') return 'en'
@@ -45,12 +33,14 @@ export default function TradingEALanding() {
       if (lang.startsWith('zh')) return 'zh'
       if (lang.startsWith('hi')) return 'hi'
       if (lang.startsWith('ru')) return 'ru'
-      return 'en' // ถ้าไม่ตรงกับที่รองรับ ให้เป็นอังกฤษ
+      return 'en'
     }
     setLang(getBrowserLang())
   }, [])
+  return lang
+}
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+function useVisibleSection() {
   const [isVisible, setIsVisible] = useState({})
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -64,13 +54,31 @@ export default function TradingEALanding() {
       },
       { threshold: 0.1 }
     )
-
     document.querySelectorAll('[id]').forEach((el) => {
       observer.observe(el)
     })
-
     return () => observer.disconnect()
   }, [])
+  return isVisible
+}
+
+export default function TradingEALanding() {
+  const [expandedStep, setExpandedStep] = useState(null)
+  const [showPDFGuide, setShowPDFGuide] = useState(false)
+  const [copied, setCopied] = useState(false)
+  const referralCode = 'BsFPM765'
+
+  const handleCopyReferral = () => {
+    navigator.clipboard.writeText(referralCode)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000) // รีเซ็ตหลัง 2 วิ
+  }
+  const publicPDFUrl = 'https://eamapa.com/pdfs/register.pdf' // ✅ เปลี่ยนให้เป็น URL จริงที่ออนไลน์แล้ว
+
+  const lang = useLang() // ใช้ custom hook
+  const isVisible = useVisibleSection() // ใช้ custom hook
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const stats = [
     { number: '50K+', label: translations[lang].activeTraders, icon: Users },
@@ -414,13 +422,25 @@ export default function TradingEALanding() {
                   </button>
                 </div>
                 {/* แสดงรหัสแนะนำ */}
-                <div className="flex flex-col items-center justify-center mt-6 mb-2">
-                  <div className="text-2xl md:text-3xl font-extrabold text-yellow-400 bg-black/80 px-6 py-4 rounded-2xl shadow-xl border-4 border-yellow-300 tracking-widest text-center select-all">
-                    {translations[lang].useReferral}{' '}
-                    <span className="text-3xl md:text-4xl font-mono font-black underline decoration-yellow-400">
-                      {referralCode}
-                    </span>
-                  </div>
+                <div className="flex flex-col items-center justify-center w-full mt-6 mb-2">
+                  <button
+                    onClick={handleCopyReferral}
+                    className="w-full max-w-lg flex flex-col items-center justify-center focus:outline-none group"
+                    style={{ background: 'none', border: 'none', padding: 0, margin: 0 }}
+                    aria-label={translations[lang].copyReferral}
+                  >
+                    <div className="text-2xl md:text-3xl font-extrabold text-yellow-400 bg-black/80 px-6 py-4 rounded-2xl shadow-xl border-4 border-yellow-300 tracking-widest text-center select-all group-hover:bg-yellow-400/30 transition w-full">
+                      {translations[lang].useReferral}{' '}
+                      <span className="text-3xl md:text-4xl font-mono font-black underline decoration-yellow-400">
+                        {referralCode}
+                      </span>
+                    </div>
+                    {copied && (
+                      <span className="mt-2 text-green-400 text-lg font-bold animate-pulse">
+                        {translations[lang].copied}
+                      </span>
+                    )}
+                  </button>
                 </div>
               </div>
             </section>
@@ -491,11 +511,9 @@ export default function TradingEALanding() {
               {translations[lang].whyChoose}
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Our cutting-edge technology gives you the competitive edge in gold
-              trading
+              Our cutting-edge technology gives you the competitive edge in gold trading
             </p>
           </div>
-
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {features.map((feature, index) => {
               const IconComponent = feature.icon
