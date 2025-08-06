@@ -73,9 +73,14 @@ export default function TradingEALanding() {
     setCopied(true)
     setTimeout(() => setCopied(false), 2000) // รีเซ็ตหลัง 2 วิ
   }
-  const publicPDFUrl = 'https://eamapa.com/pdfs/register.pdf' // ✅ เปลี่ยนให้เป็น URL จริงที่ออนไลน์แล้ว
-
   const lang = useLang() // ใช้ custom hook
+
+  // Use different PDF for Thai language
+  const publicPDFUrl =
+    lang === 'th'
+      ? 'https://eamapa.com/pdfs/th.pdf'
+      : 'https://eamapa.com/pdfs/en.pdf'
+
   const isVisible = useVisibleSection() // ใช้ custom hook
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -364,7 +369,7 @@ export default function TradingEALanding() {
                 <div className="w-full max-w-3xl rounded-3xl overflow-hidden shadow-2xl border-4 border-yellow-400/30 bg-black/60 backdrop-blur-lg relative">
                   <video
                     ref={videoRef}
-                    src="/video/clip.mp4"
+                    src={lang === 'th' ? '/video/th.mp4' : '/video/en.mp4'}
                     controls
                     autoPlay
                     muted={videoMuted}
@@ -426,7 +431,12 @@ export default function TradingEALanding() {
                   <button
                     onClick={handleCopyReferral}
                     className="w-full max-w-lg flex flex-col items-center justify-center focus:outline-none group"
-                    style={{ background: 'none', border: 'none', padding: 0, margin: 0 }}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      padding: 0,
+                      margin: 0
+                    }}
                     aria-label={translations[lang].copyReferral}
                   >
                     <div className="text-2xl md:text-3xl font-extrabold text-yellow-400 bg-black/80 px-6 py-4 rounded-2xl shadow-xl border-4 border-yellow-300 tracking-widest text-center select-all group-hover:bg-yellow-400/30 transition w-full">
@@ -444,7 +454,6 @@ export default function TradingEALanding() {
                 </div>
               </div>
             </section>
-     
 
             <div className="mb-8">
               <ImageSlider />
@@ -511,7 +520,8 @@ export default function TradingEALanding() {
               {translations[lang].whyChoose}
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Our cutting-edge technology gives you the competitive edge in gold trading
+              Our cutting-edge technology gives you the competitive edge in gold
+              trading
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
