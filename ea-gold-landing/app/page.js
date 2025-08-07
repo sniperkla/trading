@@ -144,18 +144,6 @@ export default function TradingEALanding() {
     }
   ]
 
-  const [videoMuted, setVideoMuted] = useState(true)
-  const videoRef = useRef(null)
-
-  const handleUnmute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = false
-      videoRef.current.volume = 1
-      setVideoMuted(false)
-      videoRef.current.play()
-    }
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-hidden">
       {/* Animated SVG Background */}
@@ -232,7 +220,7 @@ export default function TradingEALanding() {
               {translations[lang].performance}
             </a>
             <a
-              href="#testimonials"
+              href="#whychoose"
               className="hover:text-yellow-400 transition-colors"
             >
               {translations[lang].reviews}
@@ -352,7 +340,7 @@ export default function TradingEALanding() {
       )}
       {/* Hero Section */}
       {/* Hero Section */}
-      <section id="hero" className="relative z-10 container mx-auto px-6 py-20">
+      <section id="hero" className="relative z-10 container mx-auto px-6 pt-20">
         <div className="text-center max-w-4xl mx-auto">
           <div
             className={`transform transition-all duration-1000 ${
@@ -433,6 +421,9 @@ export default function TradingEALanding() {
                   {referralCode}
                 </span>
               </div>
+              <div className="text-xs mt-2 text-yellow-200 text-center">
+                {translations[lang].referralNote}
+              </div>
               {copied && (
                 <span className="mt-2 text-green-400 text-lg font-bold animate-pulse">
                   {translations[lang].copied}
@@ -446,7 +437,18 @@ export default function TradingEALanding() {
       <section className="relative z-10 pb-20">
         <div className="container mx-auto px-6 text-center">
           <div className="mb-8">
-            <ImageSlider />
+            <div className="relative w-full max-w-3xl mx-auto aspect-video rounded-2xl overflow-hidden shadow-2xl border-4 border-yellow-400">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/Wf9GD5oJbfw"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="w-full h-full"
+              ></iframe>
+            </div>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -457,10 +459,10 @@ export default function TradingEALanding() {
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-yellow-200 to-yellow-400 rounded-xl blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
             </button>
-
+            {/* 
             <button className="px-8 py-4 border-2 border-yellow-400 text-yellow-400 font-bold rounded-xl hover:bg-yellow-400 hover:text-black transition-all duration-300">
               {translations[lang].watchDemo}
-            </button>
+            </button> */}
           </div>
 
           <div className="flex justify-center">
@@ -504,7 +506,7 @@ export default function TradingEALanding() {
 
       {/* EA MAPA MCB Carousel Section */}
       <section
-        id="mcb"
+        id="whychoose"
         className="relative z-10 py-20 bg-black/30 backdrop-blur-sm"
       >
         <div className="container mx-auto px-6">
