@@ -20,7 +20,9 @@ import {
   FileText,
   Volume2
 } from 'lucide-react'
+
 import PDFViewer from './PDFViewer'
+import VideoSlider2 from './VideoSlider2'
 
 function useLang() {
   const [lang, setLang] = useState('en')
@@ -347,6 +349,7 @@ export default function TradingEALanding() {
         </div>
       )}
       {/* Hero Section */}
+      {/* Hero Section */}
       <section id="hero" className="relative z-10 container mx-auto px-6 py-20">
         <div className="text-center max-w-4xl mx-auto">
           <div
@@ -364,118 +367,102 @@ export default function TradingEALanding() {
               <span className="text-white">{translations[lang].tradingAI}</span>
             </h1>
 
-            <section id="video-demo">
-              <div className="container mx-auto px-6 flex flex-col items-center">
-                <div className="w-full max-w-3xl rounded-3xl overflow-hidden shadow-2xl border-4 border-yellow-400/30 bg-black/60 backdrop-blur-lg relative">
-                  <video
-                    ref={videoRef}
-                    src={lang === 'th' ? '/video/th.mp4' : '/video/en.mp4'}
-                    controls
-                    autoPlay
-                    muted={videoMuted}
-                    poster="/images/promo.png"
-                    className="w-full h-auto aspect-video bg-black"
-                    preload="metadata"
-                  >
-                    {translations[lang].videoNotSupported ||
-                      'Your browser does not support the video tag.'}
-                  </video>
-                  {videoMuted && (
-                    <button
-                      onClick={handleUnmute}
-                      className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/60 transition-colors z-10"
-                      style={{ pointerEvents: 'auto' }}
-                      aria-label="Unmute video"
-                    >
-                      <span className="flex flex-col items-center">
-                        <Volume2 className="w-12 h-12 text-yellow-400 mb-2 animate-pulse" />
-                        <span className="text-lg font-bold text-yellow-200 bg-black/60 px-4 py-2 rounded-xl shadow-lg">
-                          Unmute
-                        </span>
-                      </span>
-                    </button>
-                  )}
-                </div>
-              </div>
-            </section>
-            {/* End Video Section */}
+            <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
+              {translations[lang].automate}
+              <span className="text-yellow-400 font-semibold">
+                {' '}
+                {translations[lang].freeForever}
+              </span>
+            </p>
+          </div>
+        </div>
+      </section>
 
-            <section id="broker-guide" className="relative z-10 py-20">
-              <div className="container mx-auto px-6 text-center">
-                <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                  {translations[lang].getBrokerReady}
-                </h2>
-                <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                  {translations[lang].setupGuide}
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                  <a
-                    href="https://vigco.co/uyYRJz"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold rounded-xl hover:from-blue-400 hover:to-blue-500 transform hover:scale-105 transition-all duration-300 shadow-2xl"
-                  >
-                    <Users className="w-6 h-6" />
-                    {translations[lang].registerVantage}
-                  </a>
-                  <button
-                    onClick={() => setShowPDFGuide(true)}
-                    className="inline-flex items-center gap-3 px-8 py-4 border-2 border-yellow-400 text-yellow-400 font-bold rounded-xl hover:bg-yellow-400 hover:text-black transition-all duration-300"
-                  >
-                    <FileText className="w-6 h-6" />
-                    {translations[lang].viewSetupGuide}
-                  </button>
-                </div>
-                {/* แสดงรหัสแนะนำ */}
-                <div className="flex flex-col items-center justify-center w-full mt-6 mb-2">
-                  <button
-                    onClick={handleCopyReferral}
-                    className="w-full max-w-lg flex flex-col items-center justify-center focus:outline-none group"
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      padding: 0,
-                      margin: 0
-                    }}
-                    aria-label={translations[lang].copyReferral}
-                  >
-                    <div className="text-2xl md:text-3xl font-extrabold text-yellow-400 bg-black/80 px-6 py-4 rounded-2xl shadow-xl border-4 border-yellow-300 tracking-widest text-center select-all group-hover:bg-yellow-400/30 transition w-full">
-                      {translations[lang].useReferral}{' '}
-                      <span className="text-3xl md:text-4xl font-mono font-black underline decoration-yellow-400">
-                        {referralCode}
-                      </span>
-                    </div>
-                    {copied && (
-                      <span className="mt-2 text-green-400 text-lg font-bold animate-pulse">
-                        {translations[lang].copied}
-                      </span>
-                    )}
-                  </button>
-                </div>
-              </div>
-            </section>
+      {/* Video Demo Section - Separate from Hero */}
+      <section id="video-demo" className="relative z-10 py-4">
+        <div className="container mx-auto px-6 flex flex-col items-center">
+          <VideoSlider2 />
+        </div>
+      </section>
 
-            <div className="mb-8">
-              <ImageSlider />
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <button className="group relative px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-2xl">
-                <span className="flex items-center gap-2">
-                  <Download className="w-5 h-5" />
-                  {translations[lang].downloadFreeEA}
+      {/* Broker Guide Section */}
+      <section id="broker-guide" className="relative z-10 py-20">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            {translations[lang].getBrokerReady}
+          </h2>
+          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            {translations[lang].setupGuide}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a
+              href="https://vigco.co/uyYRJz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold rounded-xl hover:from-blue-400 hover:to-blue-500 transform hover:scale-105 transition-all duration-300 shadow-2xl"
+            >
+              <Users className="w-6 h-6" />
+              {translations[lang].registerVantage}
+            </a>
+            <button
+              onClick={() => setShowPDFGuide(true)}
+              className="inline-flex items-center gap-3 px-8 py-4 border-2 border-yellow-400 text-yellow-400 font-bold rounded-xl hover:bg-yellow-400 hover:text-black transition-all duration-300"
+            >
+              <FileText className="w-6 h-6" />
+              {translations[lang].viewSetupGuide}
+            </button>
+          </div>
+          {/* แสดงรหัสแนะนำ */}
+          <div className="flex flex-col items-center justify-center w-full mt-6 mb-2">
+            <button
+              onClick={handleCopyReferral}
+              className="w-full max-w-lg flex flex-col items-center justify-center focus:outline-none group"
+              style={{
+                background: 'none',
+                border: 'none',
+                padding: 0,
+                margin: 0
+              }}
+              aria-label={translations[lang].copyReferral}
+            >
+              <div className="text-2xl md:text-3xl font-extrabold text-yellow-400 bg-black/80 px-6 py-4 rounded-2xl shadow-xl border-4 border-yellow-300 tracking-widest text-center select-all group-hover:bg-yellow-400/30 transition w-full">
+                {translations[lang].useReferral}{' '}
+                <span className="text-3xl md:text-4xl font-mono font-black underline decoration-yellow-400">
+                  {referralCode}
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-yellow-200 to-yellow-400 rounded-xl blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
-              </button>
+              </div>
+              {copied && (
+                <span className="mt-2 text-green-400 text-lg font-bold animate-pulse">
+                  {translations[lang].copied}
+                </span>
+              )}
+            </button>
+          </div>
+        </div>
+      </section>
+      {/* Continue with ImageSlider and buttons */}
+      <section className="relative z-10 pb-20">
+        <div className="container mx-auto px-6 text-center">
+          <div className="mb-8">
+            <ImageSlider />
+          </div>
 
-              <button className="px-8 py-4 border-2 border-yellow-400 text-yellow-400 font-bold rounded-xl hover:bg-yellow-400 hover:text-black transition-all duration-300">
-                {translations[lang].watchDemo}
-              </button>
-            </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            <button className="group relative px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-2xl">
+              <span className="flex items-center gap-2">
+                <Download className="w-5 h-5" />
+                {translations[lang].downloadFreeEA}
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-yellow-200 to-yellow-400 rounded-xl blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
+            </button>
 
-            <div className="flex justify-center">
-              <ChevronDown className="w-8 h-8 text-yellow-400 animate-bounce" />
-            </div>
+            <button className="px-8 py-4 border-2 border-yellow-400 text-yellow-400 font-bold rounded-xl hover:bg-yellow-400 hover:text-black transition-all duration-300">
+              {translations[lang].watchDemo}
+            </button>
+          </div>
+
+          <div className="flex justify-center">
+            <ChevronDown className="w-8 h-8 text-yellow-400 animate-bounce" />
           </div>
         </div>
       </section>
