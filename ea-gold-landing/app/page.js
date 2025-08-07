@@ -1,6 +1,8 @@
 'use client'
 
 import React, { useState, useEffect, useRef } from 'react'
+import MCBCarousel from './MCBCarousel'
+
 import ImageSlider from './ImageSlider'
 import translations from './i18n'
 import {
@@ -499,6 +501,24 @@ export default function TradingEALanding() {
           </div>
         </div>
       </section>
+
+      {/* EA MAPA MCB Carousel Section */}
+      <section
+        id="mcb"
+        className="relative z-10 py-20 bg-black/30 backdrop-blur-sm"
+      >
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
+              {translations[lang].mcbSectionTitle ||
+                'เหตุผลที่นักเทรดควรใช้ EA MAPA'}
+            </h2>
+          </div>
+          {/* Carousel */}
+          <MCBCarousel translations={translations} lang={lang} />
+        </div>
+      </section>
+
       {/* Features Section */}
       <section id="features" className="relative z-10 py-20">
         <div className="container mx-auto px-6">
