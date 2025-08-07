@@ -79,10 +79,16 @@ export default function VideoSlider2() {
 
         {/* Main Card (YouTube Video) */}
         <div className="relative z-20 w-full sm:w-[52%] mx-4 scale-100">
-          <div className="rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-lg border-2 border-yellow-400/40">
+          <div
+            className="rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-lg border-2 border-yellow-400/40 transition-transform duration-500 ease-in-out"
+            style={{
+              transform: `translateX(0)`
+            }}
+            key={current} // Force re-render and transition
+          >
             {/* YouTube Embed */}
             <div
-              className="relative w-full aspect-video bg-black rounded-3xl overflow-hidden"
+              className="relative w-full aspect-video bg-black rounded-3xl overflow-hidden transition-all duration-500 ease-in-out"
               style={{ minHeight: 320 }}
             >
               <iframe
@@ -97,13 +103,13 @@ export default function VideoSlider2() {
             </div>
 
             {/* Video Title Overlay */}
-            <div className="absolute top-6 left-6 right-6 z-30">
+            {/* <div className="absolute -top-10 left-6 right-6 z-30">
               <div className="bg-black/70 backdrop-blur-sm rounded-xl px-6 py-3 border border-yellow-400/40">
                 <h3 className="text-yellow-400 font-bold text-lg md:text-xl">
                   {videos[current].title}
                 </h3>
               </div>
-            </div>
+            </div> */}
 
             {/* Navigation Arrows */}
             <button
