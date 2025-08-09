@@ -51,7 +51,7 @@ export async function generateMetadata() {
 
   return {
     metadataBase: new URL('https://eamapa.com'),
-    title: { template: '%s | EA MAPA', default: titleDefault },
+    title: { default: titleDefault },
     description,
     keywords:
       'EA MAPA, Free EA, Gold Trading Robot, Forex EA, MT5, Automated Trading, AI Trading, XAUUSD, Trading Bot, Free Forex Robot, Download EA, Multi Broker, Risk Management, Trading Automation',
@@ -83,9 +83,9 @@ export async function generateMetadata() {
   }
 }
 
-
 export default function RootLayout({ children }) {
   const lang = negotiateLanguage(headers())
+  console.log(`Using language: ${lang}`)
 
   return (
     <html lang={lang}>
