@@ -1,15 +1,8 @@
 import React, { useState } from 'react'
-
-export default function MCBCarousel({ translations, lang }) {
+import { CheckCircle2Icon } from 'lucide-react'
+export default function MCBCarousel({ translations, lang, icon }) {
   const [index, setIndex] = useState(0)
-  const mcbList = translations[lang].mcbSectionList || [
-    '🟢 ทำงานอัตโนมัติ 24 ชม.\nไม่ต้องเฝ้าหน้าจอ EA ทำงานต่อเนื่องทุกสถานการณ์',
-    '🟢 เทรด 2 ฝั่งอย่างชาญฉลาด (Hedging)\nลดความเสี่ยงจากตลาดผันผวน ด้วยระบบซื้อขายสลับฝั่งแบบมีแบบแผน',
-    '🟢 ปิดไม้ด้วยระบบจับคู่ (Matching Logic)\nไม่ปล่อยไม้ลอยตัว ลดโอกาสติดลบสะสม',
-    '🟢 ปรับลอตตามสถานการณ์อัตโนมัติ\nเพิ่ม-ลดลอตอย่างเหมาะสม ช่วยฟื้นพอร์ตและปิดกำไรไว',
-    '🟢 ใช้งานง่าย ไม่ต้องมีประสบการณ์\nมือใหม่ใช้ได้ มือโปรใช้แล้ว “วางใจ”',
-    '🟢 ลดอารมณ์ในการเทรด\nไม่ต้องลุ้น ไม่ต้องกลัว ไม่ต้องลังเล EA ตัดสินใจตามแผนให้คุณ'
-  ]
+  const mcbList = translations[lang].mcbSectionList
   //   const mcbList2 = translations[lang].mcbSectionList || [
   //     '🟢 ทำงานอัตโนมัติ 24 ชม.\nไม่ต้องเฝ้าหน้าจอ EA ทำงานต่อเนื่องทุกสถานการณ์',
   //     '🟢 เทรด 2 ฝั่งอย่างชาญฉลาด (Hedging)\nลดความเสี่ยงจากตลาดผันผวน ด้วยระบบซื้อขายสลับฝั่งแบบมีแบบแผน',
@@ -19,25 +12,48 @@ export default function MCBCarousel({ translations, lang }) {
   //   ]
   const cards = [
     {
-      title: translations[lang].mcbSectionDesc || 'EA MAPA ระบบ MCB',
+      title: translations[lang].mcbSectionDesc,
       content: (
         <>
+          {/* MCB Bot Instruction */}
+          <div className="mb-6 p-4 rounded-xl border border-yellow-400/40 bg-black/30 text-center text-base md:text-lg text-white">
+            <div className="font-bold text-yellow-300 text-xl mb-1">
+              {translations[lang].botInstructionMCB.name}
+            </div>
+            <div>
+              {translations[lang].botInstructionMCB.desc1}{' '}
+              <span className="font-bold text-yellow-400">
+                {translations[lang].botInstructionMCB.amount}
+              </span>{' '}
+              {translations[lang].botInstructionMCB.desc2}{' '}
+              <span className="font-bold text-yellow-400">
+                {translations[lang].botInstructionMCB.lot}
+              </span>
+            </div>
+            <div>
+              {translations[lang].botInstructionMCB.profit}{' '}
+              <span className="font-bold text-green-400">
+                {translations[lang].botInstructionMCB.percent}
+              </span>{' '}
+              {translations[lang].botInstructionMCB.perDay}
+            </div>
+          </div>
           {mcbList.map((item, idx) => (
             <div
               key={idx}
               className="flex items-start gap-3 mb-6 text-lg md:text-xl text-white/90"
             >
-              <span className="text-green-400 text-2xl select-none">🟢</span>
-              <span className="whitespace-pre-line">
-                {item.replace(/^🟢 /, '')}
+              <span className="text-green-400 text-2xl select-none">
+                <CheckCircle2Icon className="w-8 h-8" />
               </span>
+              <span className="whitespace-pre-line">{item}</span>
             </div>
           ))}
         </>
       )
     },
     {
-      title: 'Coming Soon',
+      title: 'EA MAPA SUPER T',
       content: (
         <div className="text-3xl text-gray-300 py-20 text-center">
           Coming Soon
@@ -45,7 +61,15 @@ export default function MCBCarousel({ translations, lang }) {
       )
     },
     {
-      title: 'Coming Soon',
+      title: 'EA MAPA RUNTIME',
+      content: (
+        <div className="text-3xl text-gray-300 py-20 text-center">
+          Coming Soon
+        </div>
+      )
+    },
+    {
+      title: 'EA MAPA SUPER SW',
       content: (
         <div className="text-3xl text-gray-300 py-20 text-center">
           Coming Soon

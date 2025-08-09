@@ -24,7 +24,7 @@ const translations = {
     prev: 'ก่อนหน้า',
     next: 'ถัดไป',
     activeTraders: 'ผู้ใช้งาน',
-    successRate: 'ปลอดภัยสสูงว',
+    successRate: 'ปลอดภัยสสูง',
     autoTrading: 'เทรดอัตโนมัติ',
     freeForeverShort: 'ฟรีตลอดไป',
     advancedAI: 'อัลกอริทึม AI ขั้นสูง',
@@ -69,14 +69,30 @@ const translations = {
     mcbSectionTitle: 'เหตุผลที่นักเทรดควรใช้ EA MAPA',
     mcbSectionDesc: 'EA MAPA MCB',
     mcbSectionList: [
-      '🟢 ทำงานอัตโนมัติ 24 ชม.\nไม่ต้องเฝ้าหน้าจอ EA ทำงานต่อเนื่องทุกสถานการณ์',
-      '🟢 เทรด 2 ฝั่งอย่างชาญฉลาด (Hedging)\nลดความเสี่ยงจากตลาดผันผวน ด้วยระบบซื้อขายสลับฝั่งแบบมีแบบแผน',
-      '🟢 ปิดไม้ด้วยระบบจับคู่ (Matching Logic)\nไม่ปล่อยไม้ลอยตัว ลดโอกาสติดลบสะสม',
-      '🟢 ปรับลอตตามสถานการณ์อัตโนมัติ\nเพิ่ม-ลดลอตอย่างเหมาะสม ช่วยฟื้นพอร์ตและปิดกำไรไว',
-      '🟢 ใช้งานง่าย ไม่ต้องมีประสบการณ์\nมือใหม่ใช้ได้ มือโปรใช้แล้ว “วางใจ”',
-      '🟢 ลดอารมณ์ในการเทรด\nไม่ต้องลุ้น ไม่ต้องกลัว ไม่ต้องลังเล EA ตัดสินใจตามแผนให้คุณ'
+      ' ทำงานอัตโนมัติ 24 ชม.\nไม่ต้องเฝ้าหน้าจอ EA ทำงานต่อเนื่องทุกสถานการณ์',
+      ' เทรด 2 ฝั่งอย่างชาญฉลาด (Hedging)\nลดความเสี่ยงจากตลาดผันผวน ด้วยระบบซื้อขายสลับฝั่งแบบมีแบบแผน',
+      ' ปิดไม้ด้วยระบบจับคู่ (Matching Logic)\nไม่ปล่อยไม้ลอยตัว ลดโอกาสติดลบสะสม',
+      ' ปรับลอตตามสถานการณ์อัตโนมัติ\nเพิ่ม-ลดลอตอย่างเหมาะสม ช่วยฟื้นพอร์ตและปิดกำไรไว',
+      ' ใช้งานง่าย ไม่ต้องมีประสบการณ์\nมือใหม่ใช้ได้ มือโปรใช้แล้ว “วางใจ”',
+      ' ลดอารมณ์ในการเทรด\nไม่ต้องลุ้น ไม่ต้องกลัว ไม่ต้องลังเล EA ตัดสินใจตามแผนให้คุณ'
     ],
-    mcbComingSoon: 'เร็วๆนี้'
+    mcbComingSoon: 'เร็วๆนี้',
+    botInstructionTitle: 'คำแนะนำการใช้งานบอทแต่ละตัว',
+    botInstructionMCB: {
+      name: 'MCB',
+      desc1: 'งบลงทุนที่ปลอดภัย คือ',
+      amount: '300,000',
+      lot: '0.01',
+      desc2: 'ออก lot',
+      profit: 'กำไรเฉลี่ย',
+      percent: '0.3%',
+      perDay: 'ต่อวัน'
+    },
+    botInstructionSupert: { name: 'SUPER T' },
+    botInstructionRuntime: { name: 'RUNTIME' },
+    botInstructionSupersw: { name: 'SUPER SW' },
+    botInstructionComingSoon: 'เร็วๆ นี้',
+    instruction: 'แผนการลงทุน'
   },
   en: {
     features: 'Features',
@@ -156,14 +172,30 @@ const translations = {
     mcbSectionDesc: 'EA MAPA MCB',
 
     mcbSectionList: [
-      '🟢 24/7 Automated Trading\nNo need to monitor the screen, EA works continuously in all conditions.',
-      '🟢 Smart 2-way Trading (Hedging)\nReduce risk from market volatility with strategic buy/sell switching.',
-      '🟢 Close trades with Matching Logic\nNo floating trades, reduce risk of accumulating losses.',
-      '🟢 Auto lot adjustment\nIncrease/decrease lot size as appropriate to recover and take profit faster.',
-      '🟢 Easy to use, no experience needed\nBeginners and pros can trust and use with confidence.',
-      '🟢 Reduces trading emotions\nNo need to worry, hesitate, or fear. EA follows the plan for you.'
+      ' 24/7 Automated Trading\nNo need to monitor the screen, EA works continuously in all conditions.',
+      ' Smart 2-way Trading (Hedging)\nReduce risk from market volatility with strategic buy/sell switching.',
+      ' Close trades with Matching Logic\nNo floating trades, reduce risk of accumulating losses.',
+      ' Auto lot adjustment\nIncrease/decrease lot size as appropriate to recover and take profit faster.',
+      ' Easy to use, no experience needed\nBeginners and pros can trust and use with confidence.',
+      ' Reduces trading emotions\nNo need to worry, hesitate, or fear. EA follows the plan for you.'
     ],
-    mcbComingSoon: 'Coming Soon'
+    mcbComingSoon: 'Coming Soon',
+    botInstructionTitle: 'Bot Usage Instructions',
+    botInstructionMCB: {
+      name: 'MCB',
+      desc1: 'Safe investment amount is',
+      amount: '300,000',
+      lot: '0.01',
+      desc2: 'open lot',
+      profit: 'Average profit',
+      percent: '0.3%',
+      perDay: 'per day'
+    },
+    botInstructionSupert: { name: 'SUPER T' },
+    botInstructionRuntime: { name: 'RUNTIME' },
+    botInstructionSupersw: { name: 'SUPER SW' },
+    botInstructionComingSoon: 'Coming Soon',
+    instruction: 'Investment Plan'
   },
   zh: {
     features: '功能',
@@ -234,14 +266,30 @@ const translations = {
     mcbSectionDesc: 'EA MAPA MCB',
 
     mcbSectionList: [
-      '🟢 24 小时自动交易\n无需盯盘，EA 全天候持续运行',
-      '🟢 智能双向交易（对冲）\n通过策略性买卖切换降低市场波动风险',
-      '🟢 匹配逻辑平仓\n不让订单浮亏，减少累计亏损风险',
-      '🟢 自动调整手数\n根据情况增减手数，帮助账户恢复并快速获利',
-      '🟢 易于使用，无需经验\n新手和高手都能放心使用',
-      '🟢 降低交易情绪影响\n无需担心、犹豫或害怕，EA 按计划执行'
+      ' 24 小时自动交易\n无需盯盘，EA 全天候持续运行',
+      ' 智能双向交易（对冲）\n通过策略性买卖切换降低市场波动风险',
+      ' 匹配逻辑平仓\n不让订单浮亏，减少累计亏损风险',
+      ' 自动调整手数\n根据情况增减手数，帮助账户恢复并快速获利',
+      ' 易于使用，无需经验\n新手和高手都能放心使用',
+      ' 降低交易情绪影响\n无需担心、犹豫或害怕，EA 按计划执行'
     ],
-    mcbComingSoon: '敬请期待'
+    mcbComingSoon: '敬请期待',
+    botInstructionTitle: '每个机器人使用说明',
+    botInstructionMCB: {
+      name: 'MCB',
+      desc1: '安全投资金额为',
+      amount: '300,000',
+      lot: '0.01',
+      desc2: '开仓手数',
+      profit: '平均收益',
+      percent: '0.3%',
+      perDay: '每天'
+    },
+    botInstructionSupert: { name: 'SUPER T' },
+    botInstructionRuntime: { name: 'RUNTIME' },
+    botInstructionSupersw: { name: 'SUPER SW' },
+    botInstructionComingSoon: '敬请期待',
+    instruction: '投资计划'
   },
   hi: {
     features: 'विशेषताएँ',
@@ -321,14 +369,30 @@ const translations = {
     mcbSectionTitle: 'EA MAPA क्यों चुनें?',
     mcbSectionDesc: 'EA MAPA MCB',
     mcbSectionList: [
-      '🟢 24/7 स्वचालित ट्रेडिंग\nस्क्रीन देखने की जरूरत नहीं, EA हर परिस्थिति में लगातार काम करता है',
-      '🟢 स्मार्ट 2-वे ट्रेडिंग (हेजिंग)\nबाजार की अस्थिरता से जोखिम कम करें, रणनीतिक खरीद/बिक्री स्विचिंग के साथ',
-      '🟢 मैचिंग लॉजिक के साथ ट्रेड क्लोज\nफ्लोटिंग ट्रेड नहीं, घाटे के जोखिम को कम करें',
-      '🟢 ऑटो लॉट एडजस्टमेंट\nपरिस्थिति के अनुसार लॉट बढ़ाएं/घटाएं, तेजी से रिकवरी और प्रॉफिट के लिए',
-      '🟢 उपयोग में आसान, अनुभव की आवश्यकता नहीं\nशुरुआती और प्रो दोनों भरोसे के साथ इस्तेमाल कर सकते हैं',
-      '🟢 ट्रेडिंग इमोशंस कम करें\nचिंता, डर या हिचकिचाहट की जरूरत नहीं, EA आपके लिए योजना का पालन करता है'
+      ' 24/7 स्वचालित ट्रेडिंग\nस्क्रीन देखने की जरूरत नहीं, EA हर परिस्थिति में लगातार काम करता है',
+      ' स्मार्ट 2-वे ट्रेडिंग (हेजिंग)\nबाजार की अस्थिरता से जोखिम कम करें, रणनीतिक खरीद/बिक्री स्विचिंग के साथ',
+      ' मैचिंग लॉजिक के साथ ट्रेड क्लोज\nफ्लोटिंग ट्रेड नहीं, घाटे के जोखिम को कम करें',
+      ' ऑटो लॉट एडजस्टमेंट\nपरिस्थिति के अनुसार लॉट बढ़ाएं/घटाएं, तेजी से रिकवरी और प्रॉफिट के लिए',
+      ' उपयोग में आसान, अनुभव की आवश्यकता नहीं\nशुरुआती और प्रो दोनों भरोसे के साथ इस्तेमाल कर सकते हैं',
+      ' ट्रेडिंग इमोशंस कम करें\nचिंता, डर या हिचकिचाहट की जरूरत नहीं, EA आपके लिए योजना का पालन करता है'
     ],
-    mcbComingSoon: 'जल्द आ रहा है'
+    mcbComingSoon: 'जल्द आ रहा है',
+    botInstructionTitle: 'प्रत्येक बॉट के लिए निर्देश',
+    botInstructionMCB: {
+      name: 'MCB',
+      desc1: 'सुरक्षित निवेश राशि है',
+      amount: '300,000',
+      lot: '0.01',
+      desc2: 'लॉट खोलें',
+      profit: 'औसत लाभ',
+      percent: '0.3%',
+      perDay: 'प्रति दिन'
+    },
+    botInstructionSupert: { name: 'SUPER T' },
+    botInstructionRuntime: { name: 'RUNTIME' },
+    botInstructionSupersw: { name: 'SUPER SW' },
+    botInstructionComingSoon: 'जल्द आ रहा है',
+    instruction: 'निवेश योजना'
   },
   ru: {
     features: 'Функции',
@@ -408,14 +472,30 @@ const translations = {
       'Смотрите нашу быструю демонстрацию, чтобы увидеть, как EA работает в реальных торговых условиях.',
     mcbSectionTitle: 'Почему трейдеры выбирают EA MAPA MCB',
     mcbSectionList: [
-      '🟢 Автоматическая торговля 24/7\nНе нужно следить за экраном, EA работает непрерывно в любых условиях',
-      '🟢 Умная торговля в обе стороны (Хеджирование)\nСнижайте риски волатильности рынка с помощью стратегического переключения покупок/продаж',
-      '🟢 Закрытие сделок по Matching Logic\nНет плавающих сделок, снижает риск накопления убытков',
-      '🟢 Автоматическая корректировка лота\nУвеличивайте или уменьшайте лот в зависимости от ситуации для быстрого восстановления и получения прибыли',
-      '🟢 Простота использования, не требуется опыт\nПодходит как новичкам, так и профессионалам',
-      '🟢 Снижает эмоции в торговле\nНе нужно переживать, бояться или сомневаться — EA следует плану за вас'
+      ' Автоматическая торговля 24/7\nНе нужно следить за экраном, EA работает непрерывно в любых условиях',
+      ' Умная торговля в обе стороны (Хеджирование)\nСнижайте риски волатильности рынка с помощью стратегического переключения покупок/продаж',
+      ' Закрытие сделок по Matching Logic\nНет плавающих сделок, снижает риск накопления убытков',
+      ' Автоматическая корректировка лота\nУвеличивайте или уменьшайте лот в зависимости от ситуации для быстрого восстановления и получения прибыли',
+      ' Простота использования, не требуется опыт\nПодходит как новичкам, так и профессионалам',
+      ' Снижает эмоции в торговле\nНе нужно переживать, бояться или сомневаться — EA следует плану за вас'
     ],
-    mcbComingSoon: 'Скоро будет'
+    mcbComingSoon: 'Скоро будет',
+    botInstructionTitle: 'Инструкция по каждому боту',
+    botInstructionMCB: {
+      name: 'MCB',
+      desc1: 'Безопасная сумма инвестиций',
+      amount: '300,000',
+      lot: '0.01',
+      desc2: 'открыть лот',
+      profit: 'Средняя прибыль',
+      percent: '0.3%',
+      perDay: 'в день'
+    },
+    botInstructionSupert: { name: 'SUPER T' },
+    botInstructionRuntime: { name: 'RUNTIME' },
+    botInstructionSupersw: { name: 'SUPER SW' },
+    botInstructionComingSoon: 'Скоро будет',
+    instruction: 'План инвестиций'
   }
 }
 

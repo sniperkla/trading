@@ -3,8 +3,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import MCBCarousel from './MCBCarousel'
 
-import ImageSlider from './ImageSlider'
 import translations from './i18n'
+import VideoSlider2 from './VideoSlider2'
 import {
   ChevronDown,
   TrendingUp,
@@ -20,12 +20,9 @@ import {
   Globe,
   Award,
   FileText,
-  Volume2
+  Volume2,
+  CheckCircle2Icon
 } from 'lucide-react'
-
-import PDFViewer from './PDFViewer'
-import VideoSlider2 from './VideoSlider2'
-
 function useLang() {
   const [lang, setLang] = useState('en')
   useEffect(() => {
@@ -67,17 +64,126 @@ function useVisibleSection() {
 }
 
 export default function TradingEALanding() {
-  const [expandedStep, setExpandedStep] = useState(null)
+  const lang = useLang() // ใช้ custom hook
+
   const [showPDFGuide, setShowPDFGuide] = useState(false)
   const [copied, setCopied] = useState(false)
   const referralCode = 'BsFPM765'
+
+  // Bot Instruction Tabs State
+  const [activeBot, setActiveBot] = useState('MCB')
+
+  // Bot instruction content
+  const botInstructions = {
+    MCB: (
+      <div className="bg-black/40 rounded-xl p-6 border border-yellow-400/30 text-lg text-white text-center">
+        <div className="text-2xl font-bold text-yellow-300 mb-2">
+          {translations[lang].botInstructionMCB.name}
+        </div>
+        <div>
+          {translations[lang].botInstructionMCB.desc1}{' '}
+          <span className="font-bold text-yellow-400">
+            {translations[lang].botInstructionMCB.amount}
+          </span>{' '}
+          {translations[lang].botInstructionMCB.desc2}{' '}
+          <span className="font-bold text-yellow-400">
+            {translations[lang].botInstructionMCB.lot}
+          </span>
+        </div>
+        <div>
+          {translations[lang].botInstructionMCB.profit}{' '}
+          <span className="font-bold text-green-400">
+            {translations[lang].botInstructionMCB.percent}
+          </span>{' '}
+          {translations[lang].botInstructionMCB.perDay}
+        </div>
+      </div>
+    ),
+    SUPERT: (
+      <div className="bg-black/40 rounded-xl p-6 border border-yellow-400/30 text-lg text-white text-center">
+        <div className="text-2xl font-bold text-yellow-300 mb-2">
+          {translations[lang].botInstructionSupert.name}
+        </div>
+        <div className="text-yellow-400 text-xl">
+          {translations[lang].botInstructionComingSoon}
+        </div>
+      </div>
+    ),
+    RUNTIME: (
+      <div className="bg-black/40 rounded-xl p-6 border border-yellow-400/30 text-lg text-white text-center">
+        <div className="text-2xl font-bold text-yellow-300 mb-2">
+          {translations[lang].botInstructionRuntime.name}
+        </div>
+        <div className="text-yellow-400 text-xl">
+          {translations[lang].botInstructionComingSoon}
+        </div>
+      </div>
+    ),
+    SUPERSW: (
+      <div className="bg-black/40 rounded-xl p-6 border border-yellow-400/30 text-lg text-white text-center">
+        <div className="text-2xl font-bold text-yellow-300 mb-2">
+          {translations[lang].botInstructionSupersw.name}
+        </div>
+        <div className="text-yellow-400 text-xl">
+          {translations[lang].botInstructionComingSoon}
+        </div>
+      </div>
+    )
+  }
+
+  // BotInstructionTabs component
+  function BotInstructionTabs() {
+    const bots = [
+      {
+        key: 'MCB',
+        label: translations[lang].botInstructionMCB.name,
+        desc: `${translations[lang].botInstructionMCB.desc1} ${translations[lang].botInstructionMCB.amount} ${translations[lang].botInstructionMCB.desc2} ${translations[lang].botInstructionMCB.lot} | ${translations[lang].botInstructionMCB.profit} ${translations[lang].botInstructionMCB.percent} ${translations[lang].botInstructionMCB.perDay}`
+      },
+      {
+        key: 'SUPERT',
+        label: translations[lang].botInstructionSupert.name,
+        desc: translations[lang].botInstructionComingSoon
+      },
+      {
+        key: 'RUNTIME',
+        label: translations[lang].botInstructionRuntime.name,
+        desc: translations[lang].botInstructionComingSoon
+      },
+      {
+        key: 'SUPERSW',
+        label: translations[lang].botInstructionSupersw.name,
+        desc: translations[lang].botInstructionComingSoon
+      }
+    ]
+    return (
+      <div>
+        <div className="flex justify-center gap-4 mb-8 flex-wrap">
+          {bots.map((bot) => (
+            <button
+              key={bot.key}
+              onClick={() => setActiveBot(bot.key)}
+              className={`px-6 py-2 rounded-full font-bold border-2 transition-all duration-200 text-lg focus:outline-none
+                ${
+                  activeBot === bot.key
+                    ? 'bg-yellow-400 text-black border-yellow-400 shadow-lg scale-105'
+                    : 'bg-black/40 text-yellow-300 border-yellow-400/40 hover:bg-yellow-400/20 hover:text-yellow-400'
+                }
+              `}
+            >
+              {bot.label}
+            </button>
+          ))}
+        </div>
+        <div>{botInstructions[activeBot]}</div>
+      </div>
+    )
+  }
 
   const handleCopyReferral = () => {
     navigator.clipboard.writeText(referralCode)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000) // รีเซ็ตหลัง 2 วิ
   }
-  const lang = useLang() // ใช้ custom hook
 
   // Use different PDF for Thai language
   const publicPDFUrl =
@@ -230,6 +336,12 @@ export default function TradingEALanding() {
               className="hover:text-yellow-400 transition-colors"
             >
               {translations[lang].download}
+            </a>
+            <a
+              href="#instruction"
+              className="hover:text-yellow-400 transition-colors"
+            >
+              {translations[lang].instruction}
             </a>
           </div>
 
@@ -396,7 +508,7 @@ export default function TradingEALanding() {
             </a>
             <button
               onClick={() => setShowPDFGuide(true)}
-              className="inline-flex items-center gap-3 px-8 py-4 border-2 border-yellow-400 text-yellow-400 font-bold rounded-xl hover:bg-yellow-400 hover:text-black transition-all duration-300"
+              className="inline-flex  items-center gap-3 px-8 py-4 border-2 border-yellow-400 text-yellow-400 font-bold rounded-xl hover:bg-yellow-400 hover:text-black transition-all duration-300"
             >
               <FileText className="w-6 h-6" />
               {translations[lang].viewSetupGuide}
@@ -421,7 +533,7 @@ export default function TradingEALanding() {
                   {referralCode}
                 </span>
               </div>
-              <div className="text-xs mt-2 text-yellow-200 text-center">
+              <div className="mt-2 text-yellow-200 text-center font-semibold text-base md:text-lg bg-yellow-400/10 px-3 py-2 rounded-lg border border-yellow-300/40 shadow">
                 {translations[lang].referralNote}
               </div>
               {copied && (
@@ -437,18 +549,7 @@ export default function TradingEALanding() {
       <section className="relative z-10 pb-20">
         <div className="container mx-auto px-6 text-center">
           <div className="mb-8">
-            <div className="relative w-full max-w-3xl mx-auto aspect-video rounded-2xl overflow-hidden shadow-2xl border-4 border-yellow-400">
-              <iframe
-                width="100%"
-                height="100%"
-                src="https://www.youtube.com/embed/Wf9GD5oJbfw"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                className="w-full h-full"
-              ></iframe>
-            </div>
+            <YouTubeWithUnmute />
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -511,13 +612,32 @@ export default function TradingEALanding() {
       >
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
               {translations[lang].mcbSectionTitle ||
                 'เหตุผลที่นักเทรดควรใช้ EA MAPA'}
             </h2>
           </div>
           {/* Carousel */}
-          <MCBCarousel translations={translations} lang={lang} />
+          <MCBCarousel
+            translations={translations}
+            lang={lang}
+            icon={CheckCircle2Icon}
+          />
+        </div>
+      </section>
+
+      {/* MAPA Bot Instructions Section */}
+      <section
+        id="instruction"
+        className="relative z-10 py-20 bg-black/20 backdrop-blur-sm"
+      >
+        <div className="container mx-auto px-6 max-w-3xl">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
+              {translations[lang].botInstructionTitle}
+            </h2>
+          </div>
+          <BotInstructionTabs />
         </div>
       </section>
 
@@ -693,6 +813,63 @@ export default function TradingEALanding() {
           </div>
         </div>
       </footer>
+    </div>
+  )
+}
+// --- YouTubeWithUnmute component ---
+function YouTubeWithUnmute() {
+  const iframeRef = useRef(null)
+  // const [muted, setMuted] = useState(true)
+  // const [showButton, setShowButton] = useState(true)
+
+  // Send mute command on mount
+  // useEffect(() => {
+  //   const mute = () => {
+  //     if (iframeRef.current) {
+  //       iframeRef.current.contentWindow.postMessage(
+  //         JSON.stringify({ event: 'command', func: 'mute', args: [] }),
+  //         '*'
+  //       )
+  //     }
+  //   }
+  //   // Wait a bit for iframe to load
+  //   const timeout = setTimeout(mute, 1000)
+  //   return () => clearTimeout(timeout)
+  // }, [])
+
+  // Unmute handler
+  // const handleUnmute = () => {
+  //   if (iframeRef.current) {
+  //     iframeRef.current.contentWindow.postMessage(
+  //       JSON.stringify({ event: 'command', func: 'unMute', args: [] }),
+  //       '*'
+  //     )
+  //     setMuted(false)
+  //     setShowButton(false)
+  //   }
+  // }
+
+  return (
+    <div className="relative w-full max-w-3xl mx-auto aspect-video rounded-2xl overflow-hidden shadow-2xl border-4 border-yellow-400">
+      <iframe
+        ref={iframeRef}
+        width="100%"
+        height="100%"
+        src="https://www.youtube.com/embed/Wf9GD5oJbfw?enablejsapi=1&mute=1&autoplay=1"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+        className="w-full h-full"
+      ></iframe>
+      {/* {showButton && (
+        <button
+          onClick={handleUnmute}
+          className="absolute bottom-4 right-4 bg-black/70 text-yellow-300 px-6 py-3 rounded-full text-lg font-bold shadow-lg border-2 border-yellow-400 hover:bg-yellow-400 hover:text-black transition-all z-10"
+        >
+          🔊 Unmute
+        </button>
+      )} */}
     </div>
   )
 }

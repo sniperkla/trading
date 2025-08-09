@@ -1,22 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const videos = [
   {
     youtubeId: 'RY5LmZsIYvA', // Replace with actual YouTube video ID
-    poster: '/images/promo.png',
+    poster: '/images/enposter.png',
     label: 'English Demo',
     title: 'EA MAPA Trading System - English'
   },
   {
     youtubeId: 'YKzepkZ6F_g', // Replace with actual YouTube video ID
-    poster: '/images/promo1.png',
+    poster: '/images/thposter.png',
     label: 'Thai Demo',
     title: 'EA MAPA Trading System - Thai'
   },
   {
     youtubeId: 'N3RPQ2JgVFw', // Replace with actual YouTube video ID
-    poster: '/images/promo1.png',
+    poster: '/images/demoposter.png',
     label: 'Demo',
     title: 'EA MAPA Trading System - Demo'
   }
@@ -38,9 +38,36 @@ export default function VideoSlider2() {
     }
   }
   const [current, setCurrent] = useState(initialIdx)
+  const iframeRef = useRef(null)
+  const [showUnmute, setShowUnmute] = useState(true)
 
   const goTo = (idx) => {
     setCurrent(idx)
+    setShowUnmute(true) // Show unmute button for new video
+  }
+  // Mute video on mount and when current changes
+  useEffect(() => {
+    const mute = () => {
+      if (iframeRef.current) {
+        iframeRef.current.contentWindow.postMessage(
+          JSON.stringify({ event: 'command', func: 'mute', args: [] }),
+          '*'
+        )
+      }
+    }
+    const timeout = setTimeout(mute, 800)
+    return () => clearTimeout(timeout)
+  }, [current])
+
+  // Unmute handler
+  const handleUnmute = () => {
+    if (iframeRef.current) {
+      iframeRef.current.contentWindow.postMessage(
+        JSON.stringify({ event: 'command', func: 'unMute', args: [] }),
+        '*'
+      )
+      setShowUnmute(false)
+    }
   }
 
   const prev = () => {
@@ -92,7 +119,8 @@ export default function VideoSlider2() {
               style={{ minHeight: 320 }}
             >
               <iframe
-                src={`https://www.youtube.com/embed/${videos[current].youtubeId}?autoplay=1&mute=0&controls=1&rel=0&modestbranding=1&enablejsapi=1`}
+                ref={iframeRef}
+                src={`https://www.youtube.com/embed/${videos[current].youtubeId}?autoplay=1&mute=1&controls=1&rel=0&modestbranding=1&enablejsapi=1`}
                 title={videos[current].title}
                 className="absolute inset-0 w-full h-full"
                 frameBorder="0"
@@ -100,6 +128,14 @@ export default function VideoSlider2() {
                 allowFullScreen
                 key={current} // Force re-render when video changes
               />
+              {showUnmute && (
+                <button
+                  onClick={handleUnmute}
+                  className="absolute bottom-4 right-4 bg-black/70 text-yellow-300 px-6 py-3 rounded-full text-lg font-bold shadow-lg border-2 border-yellow-400 hover:bg-yellow-400 hover:text-black transition-all z-10"
+                >
+                  🔊 Unmute
+                </button>
+              )}
             </div>
 
             {/* Video Title Overlay */}
@@ -150,7 +186,7 @@ export default function VideoSlider2() {
       </div>
 
       {/* Bottom Indicators and Labels */}
-      <div className="flex justify-center items-center mt-6 space-x-8">
+      {/* <div className="flex justify-center items-center mt-6 space-x-8">
         {videos.map((video, idx) => (
           <button
             key={idx}
@@ -162,7 +198,6 @@ export default function VideoSlider2() {
             }`}
             aria-label={video.label}
           >
-            {/* Indicator Dot */}
             <div
               className={`w-3 h-3 rounded-full border-2 transition-all duration-300 ${
                 current === idx
@@ -170,19 +205,18 @@ export default function VideoSlider2() {
                   : 'bg-transparent border-gray-400 group-hover:border-yellow-300'
               }`}
             />
-            {/* Label */}
             <span className="text-sm font-medium">{video.label}</span>
           </button>
         ))}
-      </div>
+      </div> */}
 
-      {/* Additional Info Bar */}
+      {/* Additional Info Bar
       <div className="mt-4 text-center">
         <p className="text-gray-400 text-sm">
           Watch our EA MAPA trading system in action -{' '}
           {videos[current].label.toLowerCase()}
         </p>
-      </div>
+      </div> */}
     </div>
   )
 }
