@@ -251,7 +251,7 @@ export default function TradingEALanding() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
       {/* Animated SVG Background */}
       <svg
         className="fixed inset-0 w-full h-full z-0 pointer-events-none"
@@ -302,7 +302,7 @@ export default function TradingEALanding() {
       </svg>
       {/* Navigation */}
       <nav className="relative z-50 p-4 sm:p-6">
-        <div className="container mx-auto flex justify-between items-center px-0">
+        <div className="container mx-auto flex justify-between items-center px-0 max-w-7xl">
           <div className="flex items-center space-x-2">
             <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center">
               <TrendingUp className="w-6 h-6 text-black" />
@@ -360,19 +360,13 @@ export default function TradingEALanding() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden fixed inset-0 z-50 bg-black/95 backdrop-blur-md border-t border-white/10 flex flex-col">
-            <div className="flex justify-end p-4">
-              <button onClick={() => setIsMenuOpen(false)} className="p-2 rounded-lg bg-white/10 focus:outline-none" aria-label="Close menu">
-                <X className="w-7 h-7 text-white" />
-              </button>
-            </div>
-            <div className="flex-1 flex flex-col justify-center items-center gap-6 pb-12">
-              <a href="#features" className="block text-lg font-bold py-2 px-6 rounded-full hover:bg-yellow-400/10 hover:text-yellow-400 transition-colors w-full text-center">{translations[lang].features}</a>
-              <a href="#stats" className="block text-lg font-bold py-2 px-6 rounded-full hover:bg-yellow-400/10 hover:text-yellow-400 transition-colors w-full text-center">{translations[lang].performance}</a>
-              <a href="#plan" className="block text-lg font-bold py-2 px-6 rounded-full hover:bg-yellow-400/10 hover:text-yellow-400 transition-colors w-full text-center">{translations[lang].plan}</a>
-              <a href="#testimonials" className="block text-lg font-bold py-2 px-6 rounded-full hover:bg-yellow-400/10 hover:text-yellow-400 transition-colors w-full text-center">{translations[lang].reviews}</a>
-              <a href="#download" className="block text-lg font-bold py-2 px-6 rounded-full hover:bg-yellow-400/10 hover:text-yellow-400 transition-colors w-full text-center">{translations[lang].download}</a>
-              <a href="#instruction" className="block text-lg font-bold py-2 px-6 rounded-full hover:bg-yellow-400/10 hover:text-yellow-400 transition-colors w-full text-center">{translations[lang].instruction}</a>
+          <div className="md:hidden absolute top-full left-0 right-0 z-50 bg-black/95 backdrop-blur-md border-t border-white/10 rounded-b-2xl shadow-xl max-h-[80vh] overflow-y-auto animate-fadeIn">
+            <div className="flex flex-col items-center py-4 gap-2">
+              <a href="#features" onClick={() => setIsMenuOpen(false)} className="block text-base font-bold py-2 px-6 rounded-full hover:bg-yellow-400/10 hover:text-yellow-400 transition-colors w-11/12 text-center">{translations[lang].features}</a>
+              <a href="#stats" onClick={() => setIsMenuOpen(false)} className="block text-base font-bold py-2 px-6 rounded-full hover:bg-yellow-400/10 hover:text-yellow-400 transition-colors w-11/12 text-center">{translations[lang].performance}</a>
+              <a href="#testimonials" onClick={() => setIsMenuOpen(false)} className="block text-base font-bold py-2 px-6 rounded-full hover:bg-yellow-400/10 hover:text-yellow-400 transition-colors w-11/12 text-center">{translations[lang].reviews}</a>
+              <a href="#download" onClick={() => setIsMenuOpen(false)} className="block text-base font-bold py-2 px-6 rounded-full hover:bg-yellow-400/10 hover:text-yellow-400 transition-colors w-11/12 text-center">{translations[lang].download}</a>
+              <a href="#instruction" onClick={() => setIsMenuOpen(false)} className="block text-base font-bold py-2 px-6 rounded-full hover:bg-yellow-400/10 hover:text-yellow-400 transition-colors w-11/12 text-center">{translations[lang].instruction}</a>
             </div>
           </div>
         )}
@@ -440,8 +434,8 @@ export default function TradingEALanding() {
       )}
       {/* Hero Section */}
       {/* Hero Section */}
-      <section id="hero" className="relative z-10 container mx-auto px-6 pt-20">
-        <div className="text-center max-w-4xl mx-auto">
+      <section id="hero" className="relative z-10 container mx-auto px-6 pt-20 max-w-7xl">
+        <div className="text-center max-w-5xl mx-auto">
           <div
             className={`transform transition-all duration-1000 ${
               isVisible.hero
@@ -470,14 +464,14 @@ export default function TradingEALanding() {
 
       {/* Video Demo Section - Separate from Hero */}
       <section id="video-demo" className="relative z-10 py-4">
-        <div className="container mx-auto px-6 flex flex-col items-center">
+        <div className="container mx-auto px-6 flex flex-col items-center max-w-5xl">
           <VideoSlider2 />
         </div>
       </section>
 
       {/* Broker Guide Section */}
       <section id="broker-guide" className="relative z-10 py-20">
-        <div className="container mx-auto px-6 text-center">
+        <div className="container mx-auto px-6 text-center max-w-4xl">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
             {translations[lang].getBrokerReady}
           </h2>
@@ -535,7 +529,7 @@ export default function TradingEALanding() {
       </section>
       {/* Continue with ImageSlider and buttons */}
       <section className="relative z-10 pb-20">
-        <div className="container mx-auto px-6 text-center">
+        <div className="container mx-auto px-6 text-center max-w-5xl">
           <div className="mb-8">
             <YouTubeWithUnmute />
           </div>
@@ -564,7 +558,7 @@ export default function TradingEALanding() {
         id="stats"
         className="relative z-10 py-12 sm:py-20 bg-black/20 backdrop-blur-sm"
       >
-        <div className="container mx-auto px-2 sm:px-6">
+        <div className="container mx-auto px-2 sm:px-6 max-w-6xl">
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-8">
             {stats.map((stat, index) => {
               const IconComponent = stat.icon
@@ -598,7 +592,7 @@ export default function TradingEALanding() {
         id="whychoose"
         className="relative z-10 py-20 bg-black/30 backdrop-blur-sm"
       >
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-6 max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
               {translations[lang].mcbSectionTitle ||
@@ -631,7 +625,7 @@ export default function TradingEALanding() {
 
       {/* Features Section */}
       <section id="features" className="relative z-10 py-12 sm:py-20">
-        <div className="container mx-auto px-2 sm:px-6">
+        <div className="container mx-auto px-2 sm:px-6 max-w-6xl">
           <div className="text-center mb-10 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               {translations[lang].whyChoose}
@@ -676,7 +670,7 @@ export default function TradingEALanding() {
         id="testimonials"
         className="relative z-10 py-12 sm:py-20 bg-black/20 backdrop-blur-sm"
       >
-        <div className="container mx-auto px-2 sm:px-6">
+        <div className="container mx-auto px-2 sm:px-6 max-w-6xl">
           <div className="text-center mb-10 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               {translations[lang].trusted}
@@ -719,7 +713,7 @@ export default function TradingEALanding() {
       </section>
       {/* CTA Section */}
       <section id="download" className="relative z-10 py-20">
-        <div className="container mx-auto px-6 text-center">
+        <div className="container mx-auto px-6 text-center max-w-4xl">
           <div
             className={`max-w-4xl mx-auto transform transition-all duration-1000 ${
               isVisible.download
@@ -769,13 +763,13 @@ export default function TradingEALanding() {
       </section>
       {/* Footer */}
       <footer className="relative z-10 border-t border-white/10 bg-black/30 backdrop-blur-sm">
-        <div className="container mx-auto px-6 py-12">
+        <div className="container mx-auto px-6 py-12 max-w-4xl">
           <div className="text-center">
             <div className="flex items-center justify-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center shadow-lg">
                 <TrendingUp className="w-5 h-5 text-black" />
               </div>
-              <span className="text-lg font-bold bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
+              <span className="text-lg font-bold bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent tracking-wide">
                 EA MAPA
               </span>
             </div>
@@ -783,7 +777,7 @@ export default function TradingEALanding() {
               Empowering traders worldwide with cutting-edge automation
               technology
             </p>
-            <div className="flex justify-center space-x-6 text-sm text-gray-400">
+            <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-gray-400">
               <a href="#" className="hover:text-yellow-400 transition-colors">
                 {translations[lang].privacy}
               </a>
