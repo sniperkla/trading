@@ -65,8 +65,8 @@ function useVisibleSection() {
 
 import Head from 'next/head'
 
-export default function TradingEALanding() {
-  const lang = useLang() // ใช้ custom hook
+export default function TradingEALanding({ forcedLang }) {
+  const lang = forcedLang || useLang()
 
   const [showPDFGuide, setShowPDFGuide] = useState(false)
   const [copied, setCopied] = useState(false)
@@ -252,7 +252,6 @@ export default function TradingEALanding() {
     }
   ]
 
-  // SEO: English and Thai
   const pageTitle =
     lang === 'th'
       ? 'EA MAPA ฟรีบอทเทรดทองอัตโนมัติ | หุ่นยนต์เทรด Forex สำหรับ MT5'
@@ -266,7 +265,7 @@ export default function TradingEALanding() {
       ? 'EA MAPA, ฟรี EA, บอทเทรดทอง, หุ่นยนต์เทรดฟอเร็กซ์, MT5, เทรดอัตโนมัติ, AI เทรด, XAUUSD, บอทเทรด, ดาวน์โหลด EA, หลายโบรกเกอร์, จัดการความเสี่ยง, ระบบเทรดอัตโนมัติ'
       : 'EA MAPA, Free EA, Gold Trading Robot, Forex EA, MT5, Automated Trading, AI Trading, XAUUSD, Trading Bot, Free Forex Robot, Download EA, Multi Broker, Risk Management, Trading Automation'
   const pageUrl = 'https://eamapa.com/'
-  const pageImage = 'https://eamapa.com/images/promo.png'
+  const pageImage = 'https://eamapa.com/images/page.png'
 
   return (
     <>
@@ -276,20 +275,17 @@ export default function TradingEALanding() {
         <meta name="keywords" content={pageKeywords} />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content={pageUrl} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
         <meta property="og:image" content={pageImage} />
-        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content={pageUrl} />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
         <meta name="twitter:image" content={pageImage} />
-        {/* Hreflang for SEO */}
-        <link rel="alternate" hrefLang="en" href="https://eamapa.com/" />
+
         <link rel="alternate" hrefLang="x-default" href="https://eamapa.com/" />
       </Head>
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
