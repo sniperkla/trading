@@ -301,8 +301,8 @@ export default function TradingEALanding() {
         </ellipse>
       </svg>
       {/* Navigation */}
-      <nav className="relative z-50 p-6">
-        <div className="container mx-auto flex justify-between items-center">
+      <nav className="relative z-50 p-4 sm:p-6">
+        <div className="container mx-auto flex justify-between items-center px-0">
           <div className="flex items-center space-x-2">
             <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center">
               <TrendingUp className="w-6 h-6 text-black" />
@@ -312,7 +312,7 @@ export default function TradingEALanding() {
             </span>
           </div>
 
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex flex-wrap gap-x-6 gap-y-2">
             <a
               href="#features"
               className="hover:text-yellow-400 transition-colors"
@@ -347,50 +347,32 @@ export default function TradingEALanding() {
 
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg bg-white/10 backdrop-blur-sm"
+            className="md:hidden p-2 rounded-lg bg-white/10 backdrop-blur-sm focus:outline-none"
+            aria-label="Toggle menu"
           >
             {isMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X className="w-7 h-7" />
             ) : (
-              <Menu className="w-6 h-6" />
+              <Menu className="w-7 h-7" />
             )}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-black/90 backdrop-blur-md border-t border-white/10">
-            <div className="p-6 space-y-4">
-              <a
-                href="#features"
-                className="block hover:text-yellow-400 transition-colors"
-              >
-                {translations[lang].features}
-              </a>
-              <a
-                href="#stats"
-                className="block hover:text-yellow-400 transition-colors"
-              >
-                {translations[lang].performance}
-              </a>
-              <a
-                href="#testimonials"
-                className="block hover:text-yellow-400 transition-colors"
-              >
-                {translations[lang].reviews}
-              </a>
-              <a
-                href="#download"
-                className="block hover:text-yellow-400 transition-colors"
-              >
-                {translations[lang].download}
-              </a>
-              <a
-                href="#instruction"
-                className="block hover:text-yellow-400 transition-colors"
-              >
-                {translations[lang].instruction}
-              </a>
+          <div className="md:hidden fixed inset-0 z-50 bg-black/95 backdrop-blur-md border-t border-white/10 flex flex-col">
+            <div className="flex justify-end p-4">
+              <button onClick={() => setIsMenuOpen(false)} className="p-2 rounded-lg bg-white/10 focus:outline-none" aria-label="Close menu">
+                <X className="w-7 h-7 text-white" />
+              </button>
+            </div>
+            <div className="flex-1 flex flex-col justify-center items-center gap-6 pb-12">
+              <a href="#features" className="block text-lg font-bold py-2 px-6 rounded-full hover:bg-yellow-400/10 hover:text-yellow-400 transition-colors w-full text-center">{translations[lang].features}</a>
+              <a href="#stats" className="block text-lg font-bold py-2 px-6 rounded-full hover:bg-yellow-400/10 hover:text-yellow-400 transition-colors w-full text-center">{translations[lang].performance}</a>
+              <a href="#plan" className="block text-lg font-bold py-2 px-6 rounded-full hover:bg-yellow-400/10 hover:text-yellow-400 transition-colors w-full text-center">{translations[lang].plan}</a>
+              <a href="#testimonials" className="block text-lg font-bold py-2 px-6 rounded-full hover:bg-yellow-400/10 hover:text-yellow-400 transition-colors w-full text-center">{translations[lang].reviews}</a>
+              <a href="#download" className="block text-lg font-bold py-2 px-6 rounded-full hover:bg-yellow-400/10 hover:text-yellow-400 transition-colors w-full text-center">{translations[lang].download}</a>
+              <a href="#instruction" className="block text-lg font-bold py-2 px-6 rounded-full hover:bg-yellow-400/10 hover:text-yellow-400 transition-colors w-full text-center">{translations[lang].instruction}</a>
             </div>
           </div>
         )}
@@ -580,10 +562,10 @@ export default function TradingEALanding() {
       {/* Stats Section */}
       <section
         id="stats"
-        className="relative z-10 py-20 bg-black/20 backdrop-blur-sm"
+        className="relative z-10 py-12 sm:py-20 bg-black/20 backdrop-blur-sm"
       >
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="container mx-auto px-2 sm:px-6">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-8">
             {stats.map((stat, index) => {
               const IconComponent = stat.icon
               return (
@@ -597,13 +579,13 @@ export default function TradingEALanding() {
                       : 'translate-y-10 opacity-0'
                   }`}
                 >
-                  <div className="inline-flex p-4 rounded-full bg-gradient-to-br from-yellow-400/20 to-yellow-600/20 mb-4">
-                    <IconComponent className="w-8 h-8 text-yellow-400" />
+                  <div className="inline-flex p-3 sm:p-4 rounded-full bg-gradient-to-br from-yellow-400/20 to-yellow-600/20 mb-2 sm:mb-4">
+                    <IconComponent className="w-7 h-7 sm:w-8 sm:h-8 text-yellow-400" />
                   </div>
-                  <div className="text-3xl md:text-4xl font-bold text-yellow-400 mb-2">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400 mb-1 sm:mb-2">
                     {stat.number}
                   </div>
-                  <div className="text-gray-300">{stat.label}</div>
+                  <div className="text-gray-300 text-sm sm:text-base">{stat.label}</div>
                 </div>
               )
             })}
@@ -648,38 +630,37 @@ export default function TradingEALanding() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="relative z-10 py-20">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+      <section id="features" className="relative z-10 py-12 sm:py-20">
+        <div className="container mx-auto px-2 sm:px-6">
+          <div className="text-center mb-10 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               {translations[lang].whyChoose}
             </h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Our cutting-edge technology gives you the competitive edge in gold
-              trading
+            <p className="text-base sm:text-xl text-gray-300 max-w-2xl mx-auto">
+              Our cutting-edge technology gives you the competitive edge in gold trading
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 max-w-6xl mx-auto">
             {features.map((feature, index) => {
               const IconComponent = feature.icon
               return (
                 <div
                   key={index}
-                  className={`group p-8 rounded-2xl bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 hover:border-yellow-400/30 transition-all duration-300 transform hover:scale-105 ${
+                  className={`group p-5 sm:p-8 rounded-2xl bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 hover:border-yellow-400/30 transition-all duration-300 transform hover:scale-105 ${
                     isVisible.features
                       ? 'translate-y-0 opacity-100'
                       : 'translate-y-10 opacity-0'
                   }`}
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-xl bg-gradient-to-br from-yellow-400/20 to-yellow-600/20 group-hover:from-yellow-400 group-hover:to-yellow-600 transition-all duration-300">
-                      <IconComponent className="w-6 h-6 text-yellow-400 group-hover:text-black" />
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className="p-2 sm:p-3 rounded-xl bg-gradient-to-br from-yellow-400/20 to-yellow-600/20 group-hover:from-yellow-400 group-hover:to-yellow-600 transition-all duration-300">
+                      <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400 group-hover:text-black" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold mb-3 text-white group-hover:text-yellow-400 transition-colors">
+                      <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-white group-hover:text-yellow-400 transition-colors">
                         {feature.title}
                       </h3>
-                      <p className="text-gray-300 leading-relaxed">
+                      <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
                         {feature.description}
                       </p>
                     </div>
@@ -693,20 +674,20 @@ export default function TradingEALanding() {
       {/* Testimonials Section */}
       <section
         id="testimonials"
-        className="relative z-10 py-20 bg-black/20 backdrop-blur-sm"
+        className="relative z-10 py-12 sm:py-20 bg-black/20 backdrop-blur-sm"
       >
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+        <div className="container mx-auto px-2 sm:px-6">
+          <div className="text-center mb-10 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               {translations[lang].trusted}
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8 max-w-6xl mx-auto">
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className={`p-6 rounded-2xl bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 transform transition-all duration-700 delay-${
+                className={`p-4 sm:p-6 rounded-2xl bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 transform transition-all duration-700 delay-${
                   index * 200
                 } ${
                   isVisible.testimonials
@@ -714,20 +695,20 @@ export default function TradingEALanding() {
                     : 'translate-y-10 opacity-0'
                 }`}
               >
-                <div className="flex gap-1 mb-4">
+                <div className="flex gap-1 mb-2 sm:mb-4">
                   {Array.from({ length: testimonial.rating }).map((_, i) => (
                     <Star
                       key={i}
-                      className="w-5 h-5 fill-yellow-400 text-yellow-400"
+                      className="w-4 h-4 sm:w-5 sm:h-5 fill-yellow-400 text-yellow-400"
                     />
                   ))}
                 </div>
-                <p className="text-gray-300 mb-4 leading-relaxed">
+                <p className="text-gray-300 mb-2 sm:mb-4 leading-relaxed text-sm sm:text-base">
                   "{testimonial.text}"
                 </p>
                 <div>
-                  <div className="font-bold text-white">{testimonial.name}</div>
-                  <div className="text-yellow-400 text-sm">
+                  <div className="font-bold text-white text-base sm:text-lg">{testimonial.name}</div>
+                  <div className="text-yellow-400 text-xs sm:text-sm">
                     {testimonial.role}
                   </div>
                 </div>
