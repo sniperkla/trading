@@ -63,8 +63,6 @@ function useVisibleSection() {
   return isVisible
 }
 
-import Head from 'next/head'
-
 export default function TradingEALanding({ forcedLang }) {
   const lang = forcedLang || useLang()
 
@@ -252,42 +250,8 @@ export default function TradingEALanding({ forcedLang }) {
     }
   ]
 
-  const pageTitle =
-    lang === 'th'
-      ? 'EA MAPA ฟรีบอทเทรดทองอัตโนมัติ | หุ่นยนต์เทรด Forex สำหรับ MT5'
-      : 'EA MAPA Free Gold Trading AI Robot | Automated Forex EA for MT5'
-  const pageDescription =
-    lang === 'th'
-      ? 'EA MAPA คือบอทเทรดทองและฟอเร็กซ์อัตโนมัติด้วย AI ขั้นสูง ฟรี 100% ไม่ต้องสมัครสมาชิก ดาวน์โหลดใช้งานได้ทันที รองรับหลายโบรกเกอร์ เพิ่มศักยภาพการเทรดของคุณด้วยระบบอัตโนมัติและการจัดการความเสี่ยงตลอด 24 ชั่วโมง.'
-      : 'EA MAPA is a free, advanced AI trading robot for gold (XAUUSD) and forex. 100% free, no registration required. Download for MT5. Supports multiple brokers. Boost your trading with automation, risk management, and 24/7 performance.'
-  const pageKeywords =
-    lang === 'th'
-      ? 'EA MAPA, ฟรี EA, บอทเทรดทอง, หุ่นยนต์เทรดฟอเร็กซ์, MT5, เทรดอัตโนมัติ, AI เทรด, XAUUSD, บอทเทรด, ดาวน์โหลด EA, หลายโบรกเกอร์, จัดการความเสี่ยง, ระบบเทรดอัตโนมัติ'
-      : 'EA MAPA, Free EA, Gold Trading Robot, Forex EA, MT5, Automated Trading, AI Trading, XAUUSD, Trading Bot, Free Forex Robot, Download EA, Multi Broker, Risk Management, Trading Automation'
-  const pageUrl = 'https://eamapa.com/'
-  const pageImage = 'https://eamapa.com/images/page.png'
-
   return (
     <>
-      <Head>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
-        <meta name="keywords" content={pageKeywords} />
-        <meta name="robots" content="index, follow" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content={pageImage} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content={pageUrl} />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content={pageImage} />
-
-        <link rel="alternate" hrefLang="x-default" href="https://eamapa.com/" />
-      </Head>
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
         {/* Animated SVG Background */}
         <svg

@@ -1,53 +1,34 @@
-'use client'
-import React from 'react'
-import Head from 'next/head'
-import translations from '../i18n'
 import TradingEALanding from '../page'
 
-export default function ThaiLanding() {
-  const lang = 'th'
-  const pageTitle =
-    'EA MAPA ฟรีบอทเทรดทองอัตโนมัติ | หุ่นยนต์เทรด Forex สำหรับ MT5'
-  const pageDescription =
-    'EA MAPA คือบอทเทรดทองและฟอเร็กซ์อัตโนมัติด้วย AI ขั้นสูง ฟรี 100% ไม่ต้องสมัครสมาชิก ดาวน์โหลดใช้งานได้ทันที รองรับหลายโบรกเกอร์ เพิ่มศักยภาพการเทรดของคุณด้วยระบบอัตโนมัติและการจัดการความเสี่ยงตลอด 24 ชั่วโมง.'
-  const pageKeywords =
-    'EA MAPA, ฟรี EA, บอทเทรดทอง, หุ่นยนต์เทรดฟอเร็กซ์, MT5, เทรดอัตโนมัติ, AI เทรด, XAUUSD, บอทเทรด, ดาวน์โหลด EA, หลายโบรกเกอร์, จัดการความเสี่ยง, ระบบเทรดอัตโนมัติ'
-  const pageUrl = 'https://eamapa.com/th'
-  const pageImage = 'https://eamapa.com/images/page.png'
+export const generateMetadata = () => ({
+  title: 'EA MAPA ฟรีบอทเทรดทองอัตโนมัติ | หุ่นยนต์เทรด Forex สำหรับ MT5',
+  description: 'EA MAPA คือบอทเทรดทองและฟอเร็กซ์อัตโนมัติด้วย AI ขั้นสูง ฟรี 100% ไม่ต้องสมัครสมาชิก ดาวน์โหลดใช้งานได้ทันที รองรับหลายโบรกเกอร์ เพิ่มศักยภาพการเทรดของคุณด้วยระบบอัตโนมัติและการจัดการความเสี่ยงตลอด 24 ชั่วโมง.',
+  keywords: 'EA MAPA, ฟรี EA, บอทเทรดทอง, หุ่นยนต์เทรดฟอเร็กซ์, MT5, เทรดอัตโนมัติ, AI เทรด, XAUUSD, บอทเทรด, ดาวน์โหลด EA, หลายโบรกเกอร์, จัดการความเสี่ยง, ระบบเทรดอัตโนมัติ',
+  alternates: {
+    canonical: 'https://eamapa.com/th',
+    languages: {
+      'th': 'https://eamapa.com/th',
+      'en': 'https://eamapa.com',
+      'zh': 'https://eamapa.com/zh',
+      'hi': 'https://eamapa.com/hi',
+      'ru': 'https://eamapa.com/ru'
+    }
+  },
+  openGraph: {
+    title: 'EA MAPA ฟรีบอทเทรดทองอัตโนมัติ | หุ่นยนต์เทรด Forex สำหรับ MT5',
+    description: 'EA MAPA คือบอทเทรดทองและฟอเร็กซ์อัตโนมัติด้วย AI ขั้นสูง ฟรี 100% ไม่ต้องสมัครสมาชิก ดาวน์โหลดใช้งานได้ทันที รองรับหลายโบรกเกอร์',
+    url: 'https://eamapa.com/th',
+    siteName: 'EA MAPA',
+    locale: 'th_TH',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'EA MAPA ฟรีบอทเทรดทองอัตโนมัติ | หุ่นยนต์เทรด Forex สำหรับ MT5',
+    description: 'EA MAPA คือบอทเทรดทองและฟอเร็กซ์อัตโนมัติด้วย AI ขั้นสูง ฟรี 100% ไม่ต้องสมัครสมาชิก ดาวน์โหลดใช้งานได้ทันที รองรับหลายโบรกเกอร์'
+  }
+})
 
-  return (
-    <>
-      <Head>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
-        <meta name="keywords" content={pageKeywords} />
-        <meta name="robots" content="index, follow" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content={pageImage} />
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content={pageUrl} />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content={pageImage} />
-        {/* Hreflang for SEO */}
-        <link rel="alternate" hrefLang="th" href="https://eamapa.com/th" />
-        <link rel="alternate" hrefLang="en" href="https://eamapa.com/en" />
-        <link rel="alternate" hrefLang="ru" href="https://eamapa.com/ru" />
-        <link rel="alternate" hrefLang="hi" href="https://eamapa.com/hi" />
-        <link rel="alternate" hrefLang="zh" href="https://eamapa.com/zh" />
-        <link
-          rel="alternate"
-          hrefLang="x-default"
-          href="https://eamapa.com/en"
-        />
-      </Head>
-      <TradingEALanding forcedLang={lang} />
-    </>
-  )
+export default function Page() {
+  return <TradingEALanding forcedLang="th" />
 }
