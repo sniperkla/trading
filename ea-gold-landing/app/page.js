@@ -385,6 +385,12 @@ export default function TradingEALanding() {
               >
                 {translations[lang].download}
               </a>
+              <a
+                href="#instruction"
+                className="block hover:text-yellow-400 transition-colors"
+              >
+                {translations[lang].instruction}
+              </a>
             </div>
           </div>
         )}
