@@ -39,36 +39,13 @@ export default function VideoSlider2() {
   }
   const [current, setCurrent] = useState(initialIdx)
   const iframeRef = useRef(null)
-  const [showUnmute, setShowUnmute] = useState(true)
 
   const goTo = (idx) => {
     setCurrent(idx)
-    setShowUnmute(true) // Show unmute button for new video
   }
   // Mute video on mount and when current changes
-  useEffect(() => {
-    const mute = () => {
-      if (iframeRef.current) {
-        iframeRef.current.contentWindow.postMessage(
-          JSON.stringify({ event: 'command', func: 'mute', args: [] }),
-          '*'
-        )
-      }
-    }
-    const timeout = setTimeout(mute, 800)
-    return () => clearTimeout(timeout)
-  }, [current])
 
   // Unmute handler
-  const handleUnmute = () => {
-    if (iframeRef.current) {
-      iframeRef.current.contentWindow.postMessage(
-        JSON.stringify({ event: 'command', func: 'unMute', args: [] }),
-        '*'
-      )
-      setShowUnmute(false)
-    }
-  }
 
   const prev = () => {
     goTo((current - 1 + videos.length) % videos.length)
@@ -120,7 +97,7 @@ export default function VideoSlider2() {
             >
               <iframe
                 ref={iframeRef}
-                src={`https://www.youtube.com/embed/${videos[current].youtubeId}?autoplay=1&mute=1&controls=1&rel=0&modestbranding=1&enablejsapi=1`}
+                src={`https://www.youtube.com/embed/${videos[current].youtubeId}?controls=1&rel=0&modestbranding=1&enablejsapi=1`}
                 title={videos[current].title}
                 className="absolute inset-0 w-full h-full"
                 frameBorder="0"
@@ -128,14 +105,14 @@ export default function VideoSlider2() {
                 allowFullScreen
                 key={current} // Force re-render when video changes
               />
-              {showUnmute && (
+              {/* {showUnmute && (
                 <button
                   onClick={handleUnmute}
                   className="absolute bottom-4 right-4 bg-black/70 text-yellow-300 px-6 py-3 rounded-full text-lg font-bold shadow-lg border-2 border-yellow-400 hover:bg-yellow-400 hover:text-black transition-all z-10"
                 >
                   🔊 Unmute
                 </button>
-              )}
+              )} */}
             </div>
 
             {/* Video Title Overlay */}
