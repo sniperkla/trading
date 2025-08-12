@@ -140,7 +140,7 @@ export default function TradingEALanding({ forcedLang }) {
         desc: `${translations[lang].botInstructionMCB.desc1} ${translations[lang].botInstructionMCB.amount} ${translations[lang].botInstructionMCB.desc2} ${translations[lang].botInstructionMCB.lot} | ${translations[lang].botInstructionMCB.profit} ${translations[lang].botInstructionMCB.percent} ${translations[lang].botInstructionMCB.perDay}`
       },
       {
-        key: 'SUPERT',
+        key: 'SUPER H',
         label: translations[lang].botInstructionSupert.name,
         desc: translations[lang].botInstructionComingSoon
       },
@@ -1073,12 +1073,12 @@ function DownloadCarousel({ lang }) {
     },
     // --- New item for SuperH ---
     {
-      key: 'SUPERH',
-      label: 'SuperH',
+      key: 'SUPER H',
+      label: 'Super H',
       content: (
         <div className="bg-black/40 rounded-xl p-6 border border-yellow-400/30 text-lg text-white text-left max-w-xl mx-auto">
           <div className="text-2xl font-bold text-yellow-300 mb-2">
-            SuperH
+            Super H
           </div>
           <div className="flex justify-center mb-4">
             <img

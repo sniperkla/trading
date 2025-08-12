@@ -88,7 +88,7 @@ const translations = {
       percent: '0.3%',
       perDay: 'ต่อวัน'
     },
-    botInstructionSupert: { name: 'SUPER T' },
+    botInstructionSupert: { name: 'SUPER H' },
     botInstructionRuntime: { name: 'RUNTIME' },
     botInstructionSupersw: { name: 'SUPER SW' },
     botInstructionComingSoon: 'เร็วๆ นี้',
@@ -116,14 +116,14 @@ const translations = {
         download: 'ดาวน์โหลด EA MAPA.MCB V1.18N'
       },
        SUPERH: {
-        label: 'SuperH',
+        label: 'Super H',
         minInvestment: 'งบทุนขั้นต่ำ:',
         minInvestmentValue: '12,000',
         lot: 'ล๊อทขั้นต่ำ:',
         lotValue: '0.01',
         profit: 'กำไรเฉลี่ย:',
         profitValue: '0.3%',
-        download: 'ดาวน์โหลด SuperH'
+        download: 'ดาวน์โหลด Super H'
       },
       coming: {
         label: 'เร็วๆ นี้',
@@ -229,7 +229,7 @@ const translations = {
       percent: '0.3%',
       perDay: 'per day'
     },
-    botInstructionSupert: { name: 'SUPER T' },
+    botInstructionSupert: { name: 'SUPER H' },
     botInstructionRuntime: { name: 'RUNTIME' },
     botInstructionSupersw: { name: 'SUPER SW' },
     botInstructionComingSoon: 'Coming Soon',
@@ -257,14 +257,14 @@ const translations = {
         download: 'Download EA MAPA.MCB V1.18N'
       },
       SUPERH: {
-        label: 'SuperH',
+        label: 'Super H',
         minInvestment: 'Minimum capital:',
         minInvestmentValue: '12,000',
         lot: 'Minimum lot:',
         lotValue: '0.01',
         profit: 'Average profit:',
         profitValue: '0.3%',
-        download: 'Download SuperH'
+        download: 'Download Super H'
       },
       coming: {
         label: 'Coming Soon',
@@ -361,7 +361,7 @@ const translations = {
       percent: '0.3%',
       perDay: '每天'
     },
-    botInstructionSupert: { name: 'SUPER T' },
+    botInstructionSupert: { name: 'SUPER H' },
     botInstructionRuntime: { name: 'RUNTIME' },
     botInstructionSupersw: { name: 'SUPER SW' },
     botInstructionComingSoon: '敬请期待',
@@ -389,14 +389,14 @@ const translations = {
         download: '下载 EA MAPA.MCB V1.18N'
       },
       SUPERH: {
-        label: 'SuperH',
+        label: 'Super H',
         minInvestment: '最低资金：',
         minInvestmentValue: '12,000',
         lot: '最小手数：',
         lotValue: '0.01',
         profit: '平均收益：',
         profitValue: '0.3%',
-        download: '下载 SuperH'
+        download: '下载 Super H'
       },
       coming: {
         label: '敬请期待',
@@ -502,7 +502,7 @@ const translations = {
       percent: '0.3%',
       perDay: 'प्रति दिन'
     },
-    botInstructionSupert: { name: 'SUPER T' },
+    botInstructionSupert: { name: 'SUPER H' },
     botInstructionRuntime: { name: 'RUNTIME' },
     botInstructionSupersw: { name: 'SUPER SW' },
     botInstructionComingSoon: 'जल्द आ रहा है',
@@ -530,14 +530,14 @@ const translations = {
         download: 'डाउनलोड EA MAPA.MCB V1.18N'
       },
          SUPERH: {
-        label: 'SuperH',
+        label: 'Super H',
         minInvestment: 'न्यूनतम पूंजी:',
         minInvestmentValue: '12,000',
         lot: 'न्यूनतम लॉट:',
         lotValue: '0.01',
         profit: 'औसत लाभ:',
         profitValue: '0.3%',
-        download: 'डाउनलोड SuperH'
+        download: 'डाउनलोड Super H'
       },
       coming: {
         label: 'जल्द आ रहा है',
@@ -643,7 +643,7 @@ const translations = {
       percent: '0.3%',
       perDay: 'в день'
     },
-    botInstructionSupert: { name: 'SUPER T' },
+    botInstructionSupert: { name: 'SUPER H' },
     botInstructionRuntime: { name: 'RUNTIME' },
     botInstructionSupersw: { name: 'SUPER SW' },
     botInstructionComingSoon: 'Скоро будет',
@@ -671,14 +671,14 @@ const translations = {
         download: 'Скачать EA MAPA.MCB V1.18N'
       },
        SUPERH: {
-        label: 'SuperH',
+        label: 'Super H',
         minInvestment: 'Минимальный капитал:',
         minInvestmentValue: '12,000',
         lot: 'Минимальный лот:',
         lotValue: '0.01',
         profit: 'Средняя прибыль:',
         profitValue: '0.3%',
-        download: 'Скачать SuperH'
+        download: 'Скачать Super H'
       },
       coming: {
         label: 'Скоро',
