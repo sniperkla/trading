@@ -92,7 +92,35 @@ const translations = {
     botInstructionRuntime: { name: 'RUNTIME' },
     botInstructionSupersw: { name: 'SUPER SW' },
     botInstructionComingSoon: 'เร็วๆ นี้',
-    instruction: 'แผนการลงทุน'
+    instruction: 'แผนการลงทุน',
+    downloadCarousel: {
+      MCB: {
+        label: 'MAPA.MCB V1.18N',
+        title: 'ชุดการตั้งค่า Lot ใน MAPA.MCB V1.18N',
+        minInvestment: 'เงินลงทุนขั้นต่ำ:',
+        minInvestmentValue: 'เงิน 300,000 USD หรือ USC',
+        note: 'หมายเหตุ: หากใช้เงินลงทุนน้อยกว่า อาจมีความเสี่ยงสูงขึ้น และไม่แนะนำให้ปรับเพิ่มค่าตัวเลขการตั้งค่า Lot ที่ระบบตั้งมาแล้ว',
+        lotSetting: 'การตั้งค่า Lot เริ่มต้น:',
+        lotStart: 'Lot Start B = 0.01',
+        lotPlus: 'Lot Plus = 0.01',
+        lotRelation: 'ความสัมพันธ์เงินลงทุน:',
+        lotRelationDesc: 'ใช้ตั้งค่าเริ่มต้น 300,000 : 0.01',
+        lotExamples: [
+          'ทุน 300,000 = Lot 0.01',
+          'ทุน 600,000 = Lot 0.02',
+          'ทุน 900,000 = Lot 0.03',
+          'ทุน 1,200,000 = Lot 0.04'
+        ],
+        important: 'หมายเหตุสำคัญ:',
+        importantDesc: 'การตั้งค่า Lot ควรสัมพันธ์กับทุนที่ใช้จริง ไม่ควรปรับเพิ่มเกินกว่าที่แนะนำ',
+        download: 'ดาวน์โหลด EA MAPA.MCB V1.18N'
+      },
+      coming: {
+        label: 'เร็วๆ นี้',
+        title: 'เร็วๆ นี้',
+        desc: 'ฟีเจอร์ใหม่กำลังจะมาเร็วๆ นี้'
+      }
+    }
   },
   en: {
     features: 'Features',
@@ -195,7 +223,35 @@ const translations = {
     botInstructionRuntime: { name: 'RUNTIME' },
     botInstructionSupersw: { name: 'SUPER SW' },
     botInstructionComingSoon: 'Coming Soon',
-    instruction: 'Investment Plan'
+    instruction: 'Investment Plan',
+    downloadCarousel: {
+      MCB: {
+        label: 'MAPA.MCB V1.18N',
+        title: 'Lot Setting Guide for MAPA.MCB V1.18N',
+        minInvestment: 'Minimum recommended investment:',
+        minInvestmentValue: '300,000 USD or USC',
+        note: 'Note: Using less capital increases risk. Do not increase lot settings above the recommended values.',
+        lotSetting: 'Initial Lot Setting:',
+        lotStart: 'Lot Start B = 0.01',
+        lotPlus: 'Lot Plus = 0.01',
+        lotRelation: 'Investment to Lot Ratio:',
+        lotRelationDesc: 'Start with 300,000 : 0.01',
+        lotExamples: [
+          '300,000 = Lot 0.01',
+          '600,000 = Lot 0.02',
+          '900,000 = Lot 0.03',
+          '1,200,000 = Lot 0.04'
+        ],
+        important: 'Important:',
+        importantDesc: 'Lot size should match your real capital. Do not increase above recommended values.',
+        download: 'Download EA MAPA.MCB V1.18N'
+      },
+      coming: {
+        label: 'Coming Soon',
+        title: 'Coming Soon',
+        desc: 'New features coming soon'
+      }
+    }
   },
   zh: {
     features: '功能',
@@ -289,7 +345,35 @@ const translations = {
     botInstructionRuntime: { name: 'RUNTIME' },
     botInstructionSupersw: { name: 'SUPER SW' },
     botInstructionComingSoon: '敬请期待',
-    instruction: '投资计划'
+    instruction: '投资计划',
+    downloadCarousel: {
+      MCB: {
+        label: 'MAPA.MCB V1.18N',
+        title: 'MAPA.MCB V1.18N 的手动设置指南',
+        minInvestment: '最低推荐投资：',
+        minInvestmentValue: '300,000 美元或 USC',
+        note: '注意：使用更少的资金会增加风险。请勿将手动设置调整超过推荐值。',
+        lotSetting: '初始手动设置：',
+        lotStart: 'Lot Start B = 0.01',
+        lotPlus: 'Lot Plus = 0.01',
+        lotRelation: '投资与手数比例：',
+        lotRelationDesc: '从 300,000 : 0.01 开始',
+        lotExamples: [
+          '300,000 = Lot 0.01',
+          '600,000 = Lot 0.02',
+          '900,000 = Lot 0.03',
+          '1,200,000 = Lot 0.04'
+        ],
+        important: '重要：',
+        importantDesc: '手动设置应与您的真实资金相匹配。请勿将其调整超过推荐值。',
+        download: '下载 EA MAPA.MCB V1.18N'
+      },
+      coming: {
+        label: '敬请期待',
+        title: '敬请期待',
+        desc: '新功能即将推出'
+      }
+    }
   },
   hi: {
     features: 'विशेषताएँ',
@@ -392,7 +476,35 @@ const translations = {
     botInstructionRuntime: { name: 'RUNTIME' },
     botInstructionSupersw: { name: 'SUPER SW' },
     botInstructionComingSoon: 'जल्द आ रहा है',
-    instruction: 'निवेश योजना'
+    instruction: 'निवेश योजना',
+    downloadCarousel: {
+      MCB: {
+        label: 'MAPA.MCB V1.18N',
+        title: 'MAPA.MCB V1.18N के लिए लॉट सेटिंग गाइड',
+        minInvestment: 'न्यूनतम अनुशंसित निवेश:',
+        minInvestmentValue: '300,000 USD या USC',
+        note: 'नोट: कम पूंजी का उपयोग करने से जोखिम बढ़ता है। अनुशंसित मानों से ऊपर लॉट सेटिंग्स बढ़ाने की कोशिश न करें।',
+        lotSetting: 'प्रारंभिक लॉट सेटिंग:',
+        lotStart: 'Lot Start B = 0.01',
+        lotPlus: 'Lot Plus = 0.01',
+        lotRelation: 'निवेश से लॉट अनुपात:',
+        lotRelationDesc: '300,000 : 0.01 से शुरू करें',
+        lotExamples: [
+          '300,000 = Lot 0.01',
+          '600,000 = Lot 0.02',
+          '900,000 = Lot 0.03',
+          '1,200,000 = Lot 0.04'
+        ],
+        important: 'महत्वपूर्ण:',
+        importantDesc: 'लॉट का आकार आपकी वास्तविक पूंजी से मेल खाना चाहिए। अनुशंसित मानों से ऊपर न बढ़ाएं।',
+        download: 'डाउनलोड EA MAPA.MCB V1.18N'
+      },
+      coming: {
+        label: 'जल्द आ रहा है',
+        title: 'जल्द आ रहा है',
+        desc: 'नए फीचर्स जल्द ही आ रहे हैं'
+      }
+    }
   },
   ru: {
     features: 'Функции',
@@ -495,7 +607,35 @@ const translations = {
     botInstructionRuntime: { name: 'RUNTIME' },
     botInstructionSupersw: { name: 'SUPER SW' },
     botInstructionComingSoon: 'Скоро будет',
-    instruction: 'План инвестиций'
+    instruction: 'План инвестиций',
+    downloadCarousel: {
+      MCB: {
+        label: 'MAPA.MCB V1.18N',
+        title: 'Руководство по настройке лота для MAPA.MCB V1.18N',
+        minInvestment: 'Минимальная рекомендуемая инвестиция:',
+        minInvestmentValue: '300,000 USD или USC',
+        note: 'Примечание: использование меньшего капитала увеличивает риск. Не увеличивайте настройки лота выше рекомендованных значений.',
+        lotSetting: 'Начальная настройка лота:',
+        lotStart: 'Lot Start B = 0.01',
+        lotPlus: 'Lot Plus = 0.01',
+        lotRelation: 'Соотношение инвестиций к лоту:',
+        lotRelationDesc: 'Начните с 300,000 : 0.01',
+        lotExamples: [
+          '300,000 = Lot 0.01',
+          '600,000 = Lot 0.02',
+          '900,000 = Lot 0.03',
+          '1,200,000 = Lot 0.04'
+        ],
+        important: 'Важно:',
+        importantDesc: 'Размер лота должен соответствовать вашему реальному капиталу. Не увеличивайте выше рекомендованных значений.',
+        download: 'Скачать EA MAPA.MCB V1.18N'
+      },
+      coming: {
+        label: 'Скоро',
+        title: 'Скоро',
+        desc: 'Скоро новые функции'
+      }
+    }
   }
 }
 

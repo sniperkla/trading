@@ -1004,53 +1004,49 @@ function ScrollSpyDropdown({ sections, translations, lang, isVisible }) {
 
 // --- DownloadCarousel component ---
 function DownloadCarousel({ lang }) {
+  const t = translations[lang]?.downloadCarousel || translations.en.downloadCarousel
   const [active, setActive] = useState('MCB')
   const items = [
     {
       key: 'MCB',
-      label: 'MAPA.MCB V1.18N',
+      label: t.MCB.label,
       content: (
         <div className="bg-black/40 rounded-xl p-6 border border-yellow-400/30 text-lg text-white text-left max-w-xl mx-auto">
           <div className="text-2xl font-bold text-yellow-300 mb-2">
-            ชุดการตั้งค่า Lot ใน MAPA.MCB V1.18N
+            {t.MCB.title}
           </div>
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              <span className="font-bold text-yellow-400">เงินลงทุนขั้นต่ำ:</span> 
+              <span className="font-bold text-yellow-400">{t.MCB.minInvestment}</span>
               <br />
-              แนะนำใช้เงินลงทุนขั้นต่ำสำหรับการใช้งาน EA ที่ <br />
-              <span className="font-mono text-yellow-300">เงิน 300,000 USD หรือ USC</span>
+              <span className="font-mono text-yellow-300">{t.MCB.minInvestmentValue}</span>
             </li>
             <li>
-              <span className="font-bold text-yellow-400">หมายเหตุ:</span> 
-              หากใช้เงินลงทุนที่ต่ำกว่า อาจมีความเสี่ยงสูงขึ้น<br />
-              และไม่แนะนำให้ปรับเพิ่มค่าตัวเลขการตั้งค่า Lot ที่ระบบตั้งมาแล้ว
+              <span className="font-bold text-yellow-400">{t.MCB.note}</span>
             </li>
             <li>
-              <span className="font-bold text-yellow-400">การตั้งค่า Lot เริ่มต้น:</span>
+              <span className="font-bold text-yellow-400">{t.MCB.lotSetting}</span>
               <br />
-              กำหนดการตั้งค่า Lot ให้สัมพันธ์กับเงินลงทุน (Lot Start B = Lot Plus) ตามนี้:
+              <span className="font-mono text-yellow-300">{t.MCB.lotStart}</span>
               <br />
-              <span className="font-mono text-yellow-300">Lot Start B = 0.01</span>
-              <br />
-              <span className="font-mono text-yellow-300">Lot Plus = 0.01</span>
+              <span className="font-mono text-yellow-300">{t.MCB.lotPlus}</span>
             </li>
             <li>
-              <span className="font-bold text-yellow-400">ความสัมพันธ์เงินลงทุน:</span>
+              <span className="font-bold text-yellow-400">{t.MCB.lotRelation}</span>
               <br />
-              ใช้ตั้งค่าเริ่มต้น <span className="font-mono text-yellow-300">300,000 : 0.01</span>
+              {t.MCB.lotRelationDesc}
               <br />
-              ทุน 300,000 = Lot 0.01<br />
-              ทุน 600,000 = Lot 0.02<br />
-              ทุน 900,000 = Lot 0.03<br />
-              ทุน 1,200,000 = Lot 0.04
+              {t.MCB.lotExamples.map((ex, i) => (
+                <span key={i}>
+                  {ex}
+                  <br />
+                </span>
+              ))}
             </li>
             <li>
-              <span className="font-bold text-yellow-400">หมายเหตุสำคัญ:</span>
+              <span className="font-bold text-yellow-400">{t.MCB.important}</span>
               <br />
-              การตั้งค่า Lot ควรสัมพันธ์กับทุนที่ใช้จริง<br />
-              เพื่อป้องกันการเปิดออเดอร์ที่มี Lot ขนาดใหญ่เกินไป<br />
-              และไม่แนะนำให้ปรับเพิ่มค่ามากเกินกว่าที่ระบบแนะนำ
+              {t.MCB.importantDesc}
             </li>
           </ul>
           <div className="mt-6 flex justify-center">
@@ -1059,7 +1055,7 @@ function DownloadCarousel({ lang }) {
               className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-2xl"
               download
             >
-              ดาวน์โหลด EA MAPA.MCB V1.18N
+              {t.MCB.download}
             </a>
           </div>
         </div>
@@ -1067,14 +1063,14 @@ function DownloadCarousel({ lang }) {
     },
     {
       key: 'COMING',
-      label: 'Coming Soon',
+      label: t.coming.label,
       content: (
         <div className="bg-black/40 rounded-xl p-6 border border-yellow-400/30 text-lg text-white text-center">
           <div className="text-2xl font-bold text-yellow-300 mb-2">
-            Coming Soon
+            {t.coming.title}
           </div>
           <div className="text-yellow-400 text-xl mt-4">
-            ฟีเจอร์ใหม่กำลังจะมาเร็วๆ นี้
+            {t.coming.desc}
           </div>
         </div>
       )
