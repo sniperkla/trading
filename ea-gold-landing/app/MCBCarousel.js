@@ -53,7 +53,7 @@ export default function MCBCarousel({ translations, lang, icon }) {
       )
     },
     {
-      title: 'EA MAPA SUPER T',
+      title: 'EA MAPA SUPER H',
       content: (
         <div className="text-3xl text-gray-300 py-20 text-center">
           Coming Soon

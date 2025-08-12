@@ -99,11 +99,10 @@ export default function TradingEALanding({ forcedLang }) {
         </div>
       </div>
     ),
-    SUPERT: (
+    SUPERH: (
       <div className="bg-black/40 rounded-xl p-6 border border-yellow-400/30 text-lg text-white text-center">
         <div className="text-2xl font-bold text-yellow-300 mb-2">
-          {translations[lang].botInstructionSupert.name}
-        </div>
+kkk        </div>
         <div className="text-yellow-400 text-xl">
           {translations[lang].botInstructionComingSoon}
         </div>
@@ -140,7 +139,7 @@ export default function TradingEALanding({ forcedLang }) {
         desc: `${translations[lang].botInstructionMCB.desc1} ${translations[lang].botInstructionMCB.amount} ${translations[lang].botInstructionMCB.desc2} ${translations[lang].botInstructionMCB.lot} | ${translations[lang].botInstructionMCB.profit} ${translations[lang].botInstructionMCB.percent} ${translations[lang].botInstructionMCB.perDay}`
       },
       {
-        key: 'SUPER H',
+        key: 'SUPERT',
         label: translations[lang].botInstructionSupert.name,
         desc: translations[lang].botInstructionComingSoon
       },
