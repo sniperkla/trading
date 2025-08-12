@@ -250,6 +250,13 @@ export default function TradingEALanding({ forcedLang }) {
     }
   ]
 
+  const sections = [
+    { id: 'features', label: translations[lang].features },
+    { id: 'stats', label: translations[lang].performance },
+    { id: 'whychoose', label: translations[lang].reviews },
+    { id: 'download', label: translations[lang].download },
+    { id: 'instruction', label: translations[lang].instruction }  ]
+
   return (
     <html lang={lang}>
       <>
@@ -303,7 +310,7 @@ export default function TradingEALanding({ forcedLang }) {
             </ellipse>
           </svg>
           {/* Navigation */}
-          <nav className="relative z-50 p-4 sm:p-6">
+          {/* <nav className="relative z-50 p-4 sm:p-6">
             <div className="container mx-auto flex justify-between items-center px-0 max-w-7xl">
               <div className="flex items-center space-x-2">
                 <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center">
@@ -360,7 +367,6 @@ export default function TradingEALanding({ forcedLang }) {
               </button>
             </div>
 
-            {/* Mobile Menu */}
             {isMenuOpen && (
               <div className="md:hidden absolute top-full left-0 right-0 z-50 bg-black/95 backdrop-blur-md border-t border-white/10 rounded-b-2xl shadow-xl max-h-[80vh] overflow-y-auto animate-fadeIn">
                 <div className="flex flex-col items-center py-4 gap-2">
@@ -402,7 +408,13 @@ export default function TradingEALanding({ forcedLang }) {
                 </div>
               </div>
             )}
-          </nav>
+          </nav> */}
+          <ScrollSpyDropdown
+            sections={sections}
+            translations={translations}
+            lang={lang}
+            isVisible={isVisible}
+          />
           {showPDFGuide && (
             <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm">
               <div className="w-full h-full bg-slate-900 flex flex-col">
@@ -906,6 +918,96 @@ function YouTubeWithUnmute() {
           🔊 Unmute
         </button>
       )} */}
+    </div>
+  )
+}
+
+function ScrollSpyDropdown({ sections, translations, lang, isVisible }) {
+  const [open, setOpen] = useState(false)
+  const [isSticky, setIsSticky] = useState(false)
+  const dropdownRef = useRef(null)
+
+  // Sticky effect
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!dropdownRef.current) return
+      setIsSticky(window.scrollY > 120)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Close dropdown on scroll (mobile)
+  useEffect(() => {
+    if (!open) return
+    const close = () => setOpen(false)
+    window.addEventListener('scroll', close)
+    return () => window.removeEventListener('scroll', close)
+  }, [open])
+
+  // Smooth scroll for anchor links
+  const handleClick = (e, id) => {
+    e.preventDefault()
+    const el = document.getElementById(id)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      setOpen(false)
+    }
+  }
+
+  return (
+    <div
+      ref={dropdownRef}
+      className={`z-50 mb-4 w-full transition-all duration-300 ${
+        isSticky
+          ? 'fixed top-0 left-0 right-0 bg-black/80 shadow-lg border-b border-yellow-400'
+          : 'relative bg-transparent'
+      }`}
+      style={{ backdropFilter: isSticky ? 'blur(8px)' : undefined }}
+    >
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Redesigned Mobile Dropdown Button */}
+        <div className="md:hidden flex justify-between items-center py-2">
+          <span className="text-xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
+            EA MAPA
+          </span>
+          <button
+            className={`flex items-center gap-2 px-3 py-2 rounded-full border-2 border-yellow-400 bg-black/80 text-yellow-300 font-bold shadow-lg transition-all duration-200 focus:outline-none ${
+              open ? 'bg-yellow-400 text-black' : 'hover:bg-yellow-400/20'
+            }`}
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Open navigation"
+          >
+            <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
+            <span className="ml-1">{translations[lang]?.navigate || 'เมนู'}</span>
+          </button>
+        </div>
+        {/* Dropdown Menu */}
+        <div
+          className={`${
+            open ? 'block' : 'hidden'
+          } absolute left-0 right-0 mt-2 bg-black/95 border border-yellow-400 rounded-xl shadow-xl transition-all duration-200 md:static md:block md:bg-transparent md:border-none md:shadow-none md:rounded-none`}
+        >
+          <div className="flex flex-col md:flex-row md:gap-x-6">
+            {sections.map((section) => (
+              <a
+                key={section.id}
+                href={`#${section.id}`}
+                onClick={(e) => handleClick(e, section.id)}
+                className={`px-4 py-3 rounded-lg font-bold transition-colors text-base text-center md:text-left
+                  ${
+                    isVisible[section.id]
+                      ? 'bg-yellow-400 text-black'
+                      : 'hover:bg-yellow-400/10 hover:text-yellow-400 text-yellow-300'
+                  }
+                `}
+              >
+                {section.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
