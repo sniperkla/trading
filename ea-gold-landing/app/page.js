@@ -988,7 +988,7 @@ function ScrollSpyDropdown({ sections, translations, lang, isVisible }) {
             open ? 'block' : 'hidden'
           } absolute left-0 right-0 mt-2 bg-black/95 border border-yellow-400 rounded-xl shadow-xl transition-all duration-200 md:static md:block md:bg-transparent md:border-none md:shadow-none md:rounded-none`}
         >
-          <div className="flex flex-col md:flex-row md:gap-x-6">
+          <div className="flex flex-col md:flex-row md:gap-x-6 md:justify-end">
             {sections.map((section) => (
               <a
                 key={section.id}
