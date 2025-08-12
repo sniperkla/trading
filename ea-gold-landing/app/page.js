@@ -1006,6 +1006,7 @@ function ScrollSpyDropdown({ sections, translations, lang, isVisible }) {
 function DownloadCarousel({ lang }) {
   const t = translations[lang]?.downloadCarousel || translations.en.downloadCarousel
   const [active, setActive] = useState('MCB')
+
   const items = [
     {
       key: 'MCB',
@@ -1015,12 +1016,12 @@ function DownloadCarousel({ lang }) {
           <div className="text-2xl font-bold text-yellow-300 mb-2">
             {t.MCB.title}
           </div>
-          {/* --- Added image under title --- */}
           <div className="flex justify-center mb-4">
             <img
               src="/images/mcbdemo.jpg"
               alt="MCB Demo"
-              className="rounded-xl shadow-lg max-h-64 object-contain"
+              className="rounded-xl shadow-lg max-h-64 object-contain cursor-pointer transition hover:scale-105"
+              onClick={() => window.open('/images/mcbdemo.jpg', '_blank')}
             />
           </div>
           <ul className="list-disc pl-5 space-y-2">
@@ -1058,7 +1059,6 @@ function DownloadCarousel({ lang }) {
             </li>
           </ul>
           <div className="mt-6 flex flex-col items-center gap-4">
-            {/* --- Updated download link to Google Drive --- */}
             <a
               href="https://drive.google.com/file/d/14ibZ1Whc0Bz8ATIDrNMb9c0E2C5cFfNN/view?usp=drive_link"
               className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-2xl"
@@ -1066,6 +1066,65 @@ function DownloadCarousel({ lang }) {
               rel="noopener noreferrer"
             >
               {t.MCB.download}
+            </a>
+          </div>
+        </div>
+      )
+    },
+    // --- New item for SuperH ---
+    {
+      key: 'SUPERH',
+      label: 'SuperH',
+      content: (
+        <div className="bg-black/40 rounded-xl p-6 border border-yellow-400/30 text-lg text-white text-left max-w-xl mx-auto">
+          <div className="text-2xl font-bold text-yellow-300 mb-2">
+            SuperH
+          </div>
+          <div className="flex justify-center mb-4">
+            <img
+              src="/images/superhdemo.jpg"
+              alt="SuperH Demo"
+              className="rounded-xl shadow-lg max-h-64 object-contain cursor-pointer transition hover:scale-105"
+              onClick={() => window.open('/images/superhdemo.jpg', '_blank')}
+            />
+          </div>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>
+              <span className="font-bold text-yellow-400">
+                {t.SUPERH?.minInvestment || 'งบทุนขั้นต่ำ:'}
+              </span>
+              <br />
+              <span className="font-mono text-yellow-300">
+                {t.SUPERH?.minInvestmentValue || '12,000'}
+              </span>
+            </li>
+            <li>
+              <span className="font-bold text-yellow-400">
+                {t.SUPERH?.lot || 'ล๊อทขั้นต่ำ:'}
+              </span>
+              <br />
+              <span className="font-mono text-yellow-300">
+                {t.SUPERH?.lotValue || '0.01'}
+              </span>
+            </li>
+            <li>
+              <span className="font-bold text-yellow-400">
+                {t.SUPERH?.profit || 'กำไรเฉลี่ย:'}
+              </span>
+              <br />
+              <span className="font-mono text-green-400">
+                {t.SUPERH?.profitValue || '0.3%'}
+              </span>
+            </li>
+          </ul>
+          <div className="mt-6 flex flex-col items-center gap-4">
+            <a
+              href="https://drive.google.com/drive/folders/1jnLAp6a_xnEZ-g56PEqAdVUZPaBKwqNQ?usp=sharing"
+              className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-2xl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t.SUPERH?.download || 'Download SuperH'}
             </a>
           </div>
         </div>

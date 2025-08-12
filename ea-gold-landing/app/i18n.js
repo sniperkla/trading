@@ -115,6 +115,16 @@ const translations = {
         importantDesc: 'การตั้งค่า Lot ควรสัมพันธ์กับทุนที่ใช้จริง ไม่ควรปรับเพิ่มเกินกว่าที่แนะนำ',
         download: 'ดาวน์โหลด EA MAPA.MCB V1.18N'
       },
+       SUPERH: {
+        label: 'SuperH',
+        minInvestment: 'งบทุนขั้นต่ำ:',
+        minInvestmentValue: '12,000',
+        lot: 'ล๊อทขั้นต่ำ:',
+        lotValue: '0.01',
+        profit: 'กำไรเฉลี่ย:',
+        profitValue: '0.3%',
+        download: 'ดาวน์โหลด SuperH'
+      },
       coming: {
         label: 'เร็วๆ นี้',
         title: 'เร็วๆ นี้',
@@ -246,6 +256,16 @@ const translations = {
         importantDesc: 'Lot size should match your real capital. Do not increase above recommended values.',
         download: 'Download EA MAPA.MCB V1.18N'
       },
+      SUPERH: {
+        label: 'SuperH',
+        minInvestment: 'Minimum capital:',
+        minInvestmentValue: '12,000',
+        lot: 'Minimum lot:',
+        lotValue: '0.01',
+        profit: 'Average profit:',
+        profitValue: '0.3%',
+        download: 'Download SuperH'
+      },
       coming: {
         label: 'Coming Soon',
         title: 'Coming Soon',
@@ -367,6 +387,16 @@ const translations = {
         important: '重要：',
         importantDesc: '手动设置应与您的真实资金相匹配。请勿将其调整超过推荐值。',
         download: '下载 EA MAPA.MCB V1.18N'
+      },
+      SUPERH: {
+        label: 'SuperH',
+        minInvestment: '最低资金：',
+        minInvestmentValue: '12,000',
+        lot: '最小手数：',
+        lotValue: '0.01',
+        profit: '平均收益：',
+        profitValue: '0.3%',
+        download: '下载 SuperH'
       },
       coming: {
         label: '敬请期待',
@@ -499,6 +529,16 @@ const translations = {
         importantDesc: 'लॉट का आकार आपकी वास्तविक पूंजी से मेल खाना चाहिए। अनुशंसित मानों से ऊपर न बढ़ाएं।',
         download: 'डाउनलोड EA MAPA.MCB V1.18N'
       },
+         SUPERH: {
+        label: 'SuperH',
+        minInvestment: 'न्यूनतम पूंजी:',
+        minInvestmentValue: '12,000',
+        lot: 'न्यूनतम लॉट:',
+        lotValue: '0.01',
+        profit: 'औसत लाभ:',
+        profitValue: '0.3%',
+        download: 'डाउनलोड SuperH'
+      },
       coming: {
         label: 'जल्द आ रहा है',
         title: 'जल्द आ रहा है',
@@ -629,6 +669,16 @@ const translations = {
         important: 'Важно:',
         importantDesc: 'Размер лота должен соответствовать вашему реальному капиталу. Не увеличивайте выше рекомендованных значений.',
         download: 'Скачать EA MAPA.MCB V1.18N'
+      },
+       SUPERH: {
+        label: 'SuperH',
+        minInvestment: 'Минимальный капитал:',
+        minInvestmentValue: '12,000',
+        lot: 'Минимальный лот:',
+        lotValue: '0.01',
+        profit: 'Средняя прибыль:',
+        profitValue: '0.3%',
+        download: 'Скачать SuperH'
       },
       coming: {
         label: 'Скоро',
