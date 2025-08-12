@@ -1015,6 +1015,14 @@ function DownloadCarousel({ lang }) {
           <div className="text-2xl font-bold text-yellow-300 mb-2">
             {t.MCB.title}
           </div>
+          {/* --- Added image under title --- */}
+          <div className="flex justify-center mb-4">
+            <img
+              src="/images/mcbdemo.jpg"
+              alt="MCB Demo"
+              className="rounded-xl shadow-lg max-h-64 object-contain"
+            />
+          </div>
           <ul className="list-disc pl-5 space-y-2">
             <li>
               <span className="font-bold text-yellow-400">{t.MCB.minInvestment}</span>
@@ -1049,11 +1057,13 @@ function DownloadCarousel({ lang }) {
               {t.MCB.importantDesc}
             </li>
           </ul>
-          <div className="mt-6 flex justify-center">
+          <div className="mt-6 flex flex-col items-center gap-4">
+            {/* --- Updated download link to Google Drive --- */}
             <a
-              href="/download/EA_MAPA_MCB_V1.18N.zip"
+              href="https://drive.google.com/file/d/14ibZ1Whc0Bz8ATIDrNMb9c0E2C5cFfNN/view?usp=drive_link"
               className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-2xl"
-              download
+              target="_blank"
+              rel="noopener noreferrer"
             >
               {t.MCB.download}
             </a>
