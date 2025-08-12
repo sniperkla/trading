@@ -785,18 +785,8 @@ export default function TradingEALanding({ forcedLang }) {
                   {translations[lang].robot}.{translations[lang].noHiddenFees} -{' '}
                   {translations[lang].justPureTradingPower}
                 </p>
-
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-                  <button className="group relative px-12 py-6 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold text-xl rounded-2xl hover:from-yellow-300 hover:to-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-2xl">
-                    <span className="flex items-center gap-3">
-                      <Download className="w-6 h-6" />
-                      {translations[lang].getYourFreeEA}
-                    </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-200 to-yellow-400 rounded-2xl blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
-                  </button>
-                </div>
-
-                <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
+                <DownloadCarousel lang={lang} />
+                <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400 mt-8">
                   <div className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-green-400" />
                     <span>{translations[lang].instantDownload}</span>
@@ -1008,6 +998,108 @@ function ScrollSpyDropdown({ sections, translations, lang, isVisible }) {
           </div>
         </div>
       </div>
+    </div>
+  )
+}
+
+// --- DownloadCarousel component ---
+function DownloadCarousel({ lang }) {
+  const [active, setActive] = useState('MCB')
+  const items = [
+    {
+      key: 'MCB',
+      label: 'MAPA.MCB V1.18N',
+      content: (
+        <div className="bg-black/40 rounded-xl p-6 border border-yellow-400/30 text-lg text-white text-left max-w-xl mx-auto">
+          <div className="text-2xl font-bold text-yellow-300 mb-2">
+            ชุดการตั้งค่า Lot ใน MAPA.MCB V1.18N
+          </div>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>
+              <span className="font-bold text-yellow-400">เงินลงทุนขั้นต่ำ:</span> 
+              <br />
+              แนะนำใช้เงินลงทุนขั้นต่ำสำหรับการใช้งาน EA ที่ <br />
+              <span className="font-mono text-yellow-300">เงิน 300,000 USD หรือ USC</span>
+            </li>
+            <li>
+              <span className="font-bold text-yellow-400">หมายเหตุ:</span> 
+              หากใช้เงินลงทุนที่ต่ำกว่า อาจมีความเสี่ยงสูงขึ้น<br />
+              และไม่แนะนำให้ปรับเพิ่มค่าตัวเลขการตั้งค่า Lot ที่ระบบตั้งมาแล้ว
+            </li>
+            <li>
+              <span className="font-bold text-yellow-400">การตั้งค่า Lot เริ่มต้น:</span>
+              <br />
+              กำหนดการตั้งค่า Lot ให้สัมพันธ์กับเงินลงทุน (Lot Start B = Lot Plus) ตามนี้:
+              <br />
+              <span className="font-mono text-yellow-300">Lot Start B = 0.01</span>
+              <br />
+              <span className="font-mono text-yellow-300">Lot Plus = 0.01</span>
+            </li>
+            <li>
+              <span className="font-bold text-yellow-400">ความสัมพันธ์เงินลงทุน:</span>
+              <br />
+              ใช้ตั้งค่าเริ่มต้น <span className="font-mono text-yellow-300">300,000 : 0.01</span>
+              <br />
+              ทุน 300,000 = Lot 0.01<br />
+              ทุน 600,000 = Lot 0.02<br />
+              ทุน 900,000 = Lot 0.03<br />
+              ทุน 1,200,000 = Lot 0.04
+            </li>
+            <li>
+              <span className="font-bold text-yellow-400">หมายเหตุสำคัญ:</span>
+              <br />
+              การตั้งค่า Lot ควรสัมพันธ์กับทุนที่ใช้จริง<br />
+              เพื่อป้องกันการเปิดออเดอร์ที่มี Lot ขนาดใหญ่เกินไป<br />
+              และไม่แนะนำให้ปรับเพิ่มค่ามากเกินกว่าที่ระบบแนะนำ
+            </li>
+          </ul>
+          <div className="mt-6 flex justify-center">
+            <a
+              href="/download/EA_MAPA_MCB_V1.18N.zip"
+              className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-2xl"
+              download
+            >
+              ดาวน์โหลด EA MAPA.MCB V1.18N
+            </a>
+          </div>
+        </div>
+      )
+    },
+    {
+      key: 'COMING',
+      label: 'Coming Soon',
+      content: (
+        <div className="bg-black/40 rounded-xl p-6 border border-yellow-400/30 text-lg text-white text-center">
+          <div className="text-2xl font-bold text-yellow-300 mb-2">
+            Coming Soon
+          </div>
+          <div className="text-yellow-400 text-xl mt-4">
+            ฟีเจอร์ใหม่กำลังจะมาเร็วๆ นี้
+          </div>
+        </div>
+      )
+    }
+  ]
+  return (
+    <div>
+      <div className="flex justify-center gap-4 mb-8 flex-wrap">
+        {items.map((item) => (
+          <button
+            key={item.key}
+            onClick={() => setActive(item.key)}
+            className={`px-6 py-2 rounded-full font-bold border-2 transition-all duration-200 text-lg focus:outline-none
+              ${
+                active === item.key
+                  ? 'bg-yellow-400 text-black border-yellow-400 shadow-lg scale-105'
+                  : 'bg-black/40 text-yellow-300 border-yellow-400/40 hover:bg-yellow-400/20 hover:text-yellow-400'
+              }
+            `}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+      <div>{items.find((i) => i.key === active).content}</div>
     </div>
   )
 }
