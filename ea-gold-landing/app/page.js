@@ -21,7 +21,10 @@ import {
   Award,
   FileText,
   Volume2,
-  CheckCircle2Icon
+  CheckCircle2Icon,
+   MessageCircle, // <-- add this
+  Facebook,      // <-- add this
+  Send           // <-- add this
 } from 'lucide-react'
 function useLang() {
   const [lang, setLang] = useState('en')
@@ -806,6 +809,47 @@ kkk        </div>
               </div>
             </div>
           </section>
+          {/* Contact Section */}
+          <section id="contact" className="relative z-10 py-20 bg-black/30 backdrop-blur-sm">
+            <div className="container mx-auto px-6 text-center max-w-3xl">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
+                {translations[lang].contact || 'Contact Us'}
+              </h2>
+              <p className="text-xl text-gray-300 mb-8">
+                {translations[lang].contactDesc || 'Connect with us on your favorite platform!'}
+              </p>
+              <div className="flex flex-wrap justify-center gap-6">
+                <a
+                  href="https://lin.ee/Vv8zh6d5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 px-6 py-4 bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl transition-all duration-300 shadow-lg"
+                >
+                  <MessageCircle className="w-6 h-6" />
+                  LINE
+                </a>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61578827489685"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 px-6 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all duration-300 shadow-lg"
+                >
+                  <Facebook className="w-6 h-6" />
+                  Facebook
+                </a>
+                <a
+                  href="https://t.me/mapa_trading_bot"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 px-6 py-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold rounded-xl transition-all duration-300 shadow-lg"
+                >
+                  <Send className="w-6 h-6" />
+                  Telegram
+                </a>
+              </div>
+            </div>
+          </section>
+
           {/* Footer */}
           <footer className="relative z-10 border-t border-white/10 bg-black/30 backdrop-blur-sm">
             <div className="container mx-auto px-6 py-12 max-w-4xl">
@@ -1058,6 +1102,14 @@ function DownloadCarousel({ lang }) {
             </li>
           </ul>
           <div className="mt-6 flex flex-col items-center gap-4">
+            <a
+              href="https://www.myfxbook.com/members/chatcharit/mapa-mcb/11652603"
+              className="px-8 py-4 bg-gradient-to-r from-green-400 to-green-600 text-black font-bold rounded-xl hover:from-green-300 hover:to-green-500 transform hover:scale-105 transition-all duration-300 shadow-2xl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Myfxbook
+            </a>
             <a
               href="https://drive.google.com/file/d/14ibZ1Whc0Bz8ATIDrNMb9c0E2C5cFfNN/view?usp=drive_link"
               className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-2xl"

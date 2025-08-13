@@ -21,9 +21,10 @@ const geistMono = Geist_Mono({
 const SUPPORTED = ['en', 'th', 'zh', 'hi', 'ru']
 const DEFAULT_LANG = 'en'
 
-function negotiateLanguage(hdrs) {
+async function negotiateLanguage() {
+  const hdrs = await headers()
   const accept = hdrs.get('accept-language') ?? DEFAULT_LANG
-  const negotiator = new Negotiator({ headers: { 'accept-language': accept } })
+  const negotiator = new Negotiator({ headers: { 'accept-language': accept } })  
   const requested = negotiator.languages()
   return match(requested, SUPPORTED, DEFAULT_LANG)
 }
@@ -83,8 +84,8 @@ export async function generateMetadata() {
   }
 }
 
-export default function RootLayout({ children }) {
-  const lang = negotiateLanguage(headers())
+export default async function RootLayout({ children }) {
+  const lang = await negotiateLanguage()
   console.log(`Using language: ${lang}`)
 
   return (
