@@ -538,7 +538,7 @@ export default function TradingEALanding({ forcedLang }) {
           </section>
 
           {/* Broker Guide Section */}
-          <section id="broker-guide" className="relative z-10 py-20">
+          <section id="broker-guide" className="relative z-10 py-14">
             <div className="container mx-auto px-6 text-center max-w-4xl">
               <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 {translations[lang].getBrokerReady}
@@ -595,6 +595,49 @@ export default function TradingEALanding({ forcedLang }) {
               </div>
             </div>
           </section>
+
+
+         {/* Contact Section */}
+          <section id="contact" className="relative z-10 py-14 bg-black/30 backdrop-blur-sm">
+            <div className="container mx-auto px-6 text-center max-w-3xl">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
+                {translations[lang].contact || 'Contact Us'}
+              </h2>
+              <p className="text-xl text-gray-300 mb-8">
+                {translations[lang].contactDesc || 'Connect with us on your favorite platform!'}
+              </p>
+              <div className="flex flex-wrap justify-center gap-6">
+                <a
+                  href="https://lin.ee/Vv8zh6d5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 px-6 py-4 bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl transition-all duration-300 shadow-lg"
+                >
+                  <MessageCircle className="w-6 h-6" />
+                  {translations[lang].line || 'LINE'}
+                </a>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61578827489685"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 px-6 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all duration-300 shadow-lg"
+                >
+                  <Facebook className="w-6 h-6" />
+                  {translations[lang].facebook || 'Facebook'}
+                </a>
+                <a
+                  href="https://t.me/mapa_trading_bot"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 px-6 py-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold rounded-xl transition-all duration-300 shadow-lg"
+                >
+                  <Send className="w-6 h-6" />
+                  {translations[lang].telegram || 'Telegram'}
+                </a>
+              </div>
+            </div>
+          </section>
+
           {/* Continue with ImageSlider and buttons */}
           <section className="relative z-10 pb-20">
             <div className="container mx-auto px-6 text-center max-w-5xl">
@@ -823,46 +866,7 @@ export default function TradingEALanding({ forcedLang }) {
               </div>
             </div>
           </section>
-          {/* Contact Section */}
-          <section id="contact" className="relative z-10 py-20 bg-black/30 backdrop-blur-sm">
-            <div className="container mx-auto px-6 text-center max-w-3xl">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
-                {translations[lang].contact || 'Contact Us'}
-              </h2>
-              <p className="text-xl text-gray-300 mb-8">
-                {translations[lang].contactDesc || 'Connect with us on your favorite platform!'}
-              </p>
-              <div className="flex flex-wrap justify-center gap-6">
-                <a
-                  href="https://lin.ee/Vv8zh6d5"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-6 py-4 bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl transition-all duration-300 shadow-lg"
-                >
-                  <MessageCircle className="w-6 h-6" />
-                  LINE
-                </a>
-                <a
-                  href="https://www.facebook.com/profile.php?id=61578827489685"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-6 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all duration-300 shadow-lg"
-                >
-                  <Facebook className="w-6 h-6" />
-                  Facebook
-                </a>
-                <a
-                  href="https://t.me/mapa_trading_bot"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-6 py-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold rounded-xl transition-all duration-300 shadow-lg"
-                >
-                  <Send className="w-6 h-6" />
-                  Telegram
-                </a>
-              </div>
-            </div>
-          </section>
+ 
 
           {/* Footer */}
           <footer className="relative z-10 border-t border-white/10 bg-black/30 backdrop-blur-sm">
