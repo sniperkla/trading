@@ -88,6 +88,7 @@ export default function TradingEALanding({ forcedLang }) {
           <span className="font-bold text-yellow-400">
             {translations[lang].botInstructionMCB.amount}
           </span>{' '}
+          <span className="text-xs text-gray-300">CENT/USD</span>{' '}
           {translations[lang].botInstructionMCB.desc2}{' '}
           <span className="font-bold text-yellow-400">
             {translations[lang].botInstructionMCB.lot}
@@ -102,12 +103,28 @@ export default function TradingEALanding({ forcedLang }) {
         </div>
       </div>
     ),
-    SUPERH: (
+    SUPERT: (
       <div className="bg-black/40 rounded-xl p-6 border border-yellow-400/30 text-lg text-white text-center">
         <div className="text-2xl font-bold text-yellow-300 mb-2">
-kkk        </div>
-        <div className="text-yellow-400 text-xl">
-          {translations[lang].botInstructionComingSoon}
+          {translations[lang].botInstructionSupert.name}
+        </div>
+        <div>
+          {translations[lang].botInstructionSupert.desc1}{' '}
+          <span className="font-bold text-yellow-400">
+            {translations[lang].botInstructionSupert.amount}
+          </span>{' '}
+          <span className="text-xs text-gray-300">CENT/USD</span>{' '}
+          {translations[lang].botInstructionSupert.desc2}{' '}
+          <span className="font-bold text-yellow-400">
+            {translations[lang].botInstructionSupert.lot}
+          </span>
+        </div>
+        <div>
+          {translations[lang].botInstructionSupert.profit}{' '}
+          <span className="font-bold text-green-400">
+            {translations[lang].botInstructionSupert.percent}
+          </span>{' '}
+          {translations[lang].botInstructionSupert.perDay}
         </div>
       </div>
     ),
@@ -585,7 +602,7 @@ kkk        </div>
                 <YouTubeWithUnmute />
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+              {/* <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
                 <button className="group relative px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-2xl">
                   <span className="flex items-center gap-2">
                     <Download className="w-5 h-5" />
@@ -593,11 +610,8 @@ kkk        </div>
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-yellow-200 to-yellow-400 rounded-xl blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
                 </button>
-                {/* 
-            <button className="px-8 py-4 border-2 border-yellow-400 text-yellow-400 font-bold rounded-xl hover:bg-yellow-400 hover:text-black transition-all duration-300">
-              {translations[lang].watchDemo}
-            </button> */}
-              </div>
+              
+              </div> */}
 
               <div className="flex justify-center">
                 <ChevronDown className="w-8 h-8 text-yellow-400 animate-bounce" />
@@ -1071,7 +1085,9 @@ function DownloadCarousel({ lang }) {
             <li>
               <span className="font-bold text-yellow-400">{t.MCB.minInvestment}</span>
               <br />
-              <span className="font-mono text-yellow-300">{t.MCB.minInvestmentValue}</span>
+              <span className="font-mono text-yellow-300">
+                {t.MCB.minInvestmentValue} <span className="text-xs text-gray-300">CENT/USD</span>
+              </span>
             </li>
             <li>
               <span className="font-bold text-yellow-400">{t.MCB.note}</span>
@@ -1146,7 +1162,7 @@ function DownloadCarousel({ lang }) {
               </span>
               <br />
               <span className="font-mono text-yellow-300">
-                {t.SUPERH?.minInvestmentValue || '12,000'}
+                {t.SUPERH?.minInvestmentValue || '12,000'} <span className="text-xs text-gray-300">CENT/USD</span>
               </span>
             </li>
             <li>

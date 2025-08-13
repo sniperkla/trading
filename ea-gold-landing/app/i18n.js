@@ -88,7 +88,16 @@ const translations = {
       percent: '0.3%',
       perDay: 'ต่อวัน'
     },
-    botInstructionSupert: { name: 'SUPER H' },
+    botInstructionSupert: {
+      name: 'SUPER H',
+      desc1: 'งบลงทุนที่ปลอดภัย คือ',
+      amount: '12,000',
+      desc2: 'ออก lot',
+      lot: '0.01',
+      profit: 'กำไรเฉลี่ย',
+      percent: '0.3%',
+      perDay: 'ต่อวัน'
+    },
     botInstructionRuntime: { name: 'RUNTIME' },
     botInstructionSupersw: { name: 'SUPER SW' },
     botInstructionComingSoon: 'เร็วๆ นี้',
@@ -229,7 +238,16 @@ const translations = {
       percent: '0.3%',
       perDay: 'per day'
     },
-    botInstructionSupert: { name: 'SUPER H' },
+    botInstructionSupert: {
+      name: 'SUPER H',
+      desc1: 'Safe investment amount is',
+      amount: '12,000',
+      desc2: 'open lot',
+      lot: '0.01',
+      profit: 'Average profit',
+      percent: '0.3%',
+      perDay: 'per day'
+    },
     botInstructionRuntime: { name: 'RUNTIME' },
     botInstructionSupersw: { name: 'SUPER SW' },
     botInstructionComingSoon: 'Coming Soon',
@@ -361,7 +379,16 @@ const translations = {
       percent: '0.3%',
       perDay: '每天'
     },
-    botInstructionSupert: { name: 'SUPER H' },
+    botInstructionSupert: {
+      name: 'SUPER H',
+      desc1: '安全投资金额为',
+      amount: '12,000',
+      desc2: '开仓手数',
+      lot: '0.01',
+      profit: '平均收益',
+      percent: '0.3%',
+      perDay: '每天'
+    },
     botInstructionRuntime: { name: 'RUNTIME' },
     botInstructionSupersw: { name: 'SUPER SW' },
     botInstructionComingSoon: '敬请期待',
@@ -502,7 +529,16 @@ const translations = {
       percent: '0.3%',
       perDay: 'प्रति दिन'
     },
-    botInstructionSupert: { name: 'SUPER H' },
+    botInstructionSupert: {
+      name: 'SUPER H',
+      desc1: 'सुरक्षित निवेश राशि है',
+      amount: '12,000',
+      desc2: 'लॉट खोलें',
+      lot: '0.01',
+      profit: 'औसत लाभ',
+      percent: '0.3%',
+      perDay: 'प्रति दिन'
+    },
     botInstructionRuntime: { name: 'RUNTIME' },
     botInstructionSupersw: { name: 'SUPER SW' },
     botInstructionComingSoon: 'जल्द आ रहा है',
@@ -643,7 +679,16 @@ const translations = {
       percent: '0.3%',
       perDay: 'в день'
     },
-    botInstructionSupert: { name: 'SUPER H' },
+    botInstructionSupert: {
+      name: 'SUPER H',
+      desc1: 'Безопасная сумма инвестиций',
+      amount: '12,000',
+      desc2: 'открыть лот',
+      lot: '0.01',
+      profit: 'Средняя прибыль',
+      percent: '0.3%',
+      perDay: 'в день'
+    },
     botInstructionRuntime: { name: 'RUNTIME' },
     botInstructionSupersw: { name: 'SUPER SW' },
     botInstructionComingSoon: 'Скоро будет',
