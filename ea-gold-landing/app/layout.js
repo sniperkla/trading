@@ -4,6 +4,8 @@ import { headers } from 'next/headers'
 import './globals.css'
 import { match } from '@formatjs/intl-localematcher'
 import Negotiator from 'negotiator'
+import Script from 'next/script'
+
 
 // Ensure Node runtime (Negotiator is Node-only)
 export const runtime = 'nodejs'
@@ -90,10 +92,22 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang={lang}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
+
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-BDMFE7PZPL"
+          strategy="afterInteractive"
+        />
+        <Script id="ga-gtag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-BDMFE7PZPL', { send_page_view: true });
+          `}
+        </Script>
       </body>
     </html>
   )
