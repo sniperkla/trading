@@ -1,151 +1,13 @@
-const translations = {
-  th: {
-    features: 'คุณสมบัติ',
-    performance: 'ประสิทธิภาพ',
-    reviews: 'รีวิว',
-    download: 'ดาวน์โหลด',
-    freeEA: 'ฟรี EA MAPA ',
-    tradingAI: 'หุ่นยนต์เทรด AI อัตโนมัติ',
-    automate: 'อัตโนมัติการเทรดทองของคุณด้วย EA อัจฉริยะ',
-    freeForever: 'ฟรี 100% ตลอดไป',
-    watchDemo: 'ดูตัวอย่าง',
-    downloadFreeEA: 'ดาวน์โหลด EA ฟรี',
-    startTrading: 'เริ่มเทรดทองแบบมืออาชีพ',
-    join: 'เข้าร่วมกับเทรดเดอร์ที่ประสบความสำเร็จ',
-    instantDownload: 'ดาวน์โหลดทันที',
-    noRegister: 'ไม่ต้องลงทะเบียน',
-    support: 'บริการ 24/7',
-    forever: 'ฟรีตลอดไป',
-    whyChoose: 'ทำไมต้องเลือก EA MAPA?',
-    trusted: 'ได้รับความไว้วางใจจากเทรดเดอร์ทั่วโลก',
-    privacy: 'นโยบายความเป็นส่วนตัว',
-    terms: 'ข้อตกลงการใช้บริการ',
-    contact: 'ติดต่อ',
-    contactDesc: 'ติดต่อเราผ่านช่องทางที่คุณสะดวก',
-    line: 'ไลน์',
-    facebook: 'เฟซบุ๊ก',
-    telegram: 'เทเลแกรม',
-    prev: 'ก่อนหน้า',
-    next: 'ถัดไป',
-    activeTraders: 'ผู้ใช้งาน',
-    successRate: 'ปลอดภัยสสูง',
-    autoTrading: 'เทรดอัตโนมัติ',
-    freeForeverShort: 'ฟรีตลอดไป',
-    advancedAI: 'อัลกอริทึม AI ขั้นสูง',
-    aiDesc: 'ขับเคลื่อนด้วย Machine Learning วิเคราะห์ตลาดทองและเทรดอัตโนมัติ',
-    riskManagement: 'บริหารความเสี่ยง',
-    riskDesc: 'มี Stop-loss และ Take-profit ในตัวเพื่อปกป้องเงินทุน',
-    multiBroker: 'รองรับหลายโบรกเกอร์',
-    multiBrokerDesc: 'ใช้งานได้กับ MT4/MT5 และโบรกเกอร์หลักทั่วโลก',
-    fastExecution: 'ประมวลผลรวดเร็ว',
-    fastExecutionDesc: 'ส่งคำสั่งเทรดในเสี้ยววินาทีเพื่อโอกาสกำไรสูงสุด',
-    testi1Name: 'ซาร่า จอห์นสัน',
-    testi1Role: 'เทรดเดอร์มืออาชีพ',
-    testi1Text:
-      'EA ตัวนี้เปลี่ยนผลลัพธ์การเทรดของฉันโดยสิ้นเชิง อัลกอริทึม AI แม่นยำมาก!',
-    testi2Name: 'ไมค์ เฉิน',
-    testi2Role: 'ผู้จัดการลงทุน',
-    testi2Text:
-      'ผมใช้ EA Gold Pro มา 6 เดือน กำไรสม่ำเสมอและบริหารความเสี่ยงดีมาก',
-    testi3Name: 'อเล็กซ์ โรดริเกซ',
-    testi3Role: 'เทรดเดอร์ฟอเร็กซ์',
-    testi3Text:
-      'ในที่สุดก็เจอ EA ฟรีที่ใช้ได้จริง! ติดตั้งง่ายและผลลัพธ์ยอดเยี่ยม',
-    getBrokerReady: 'เตรียมบัญชีโบรกเกอร์ของคุณ',
-    setupGuide: 'ทำตามคู่มือการตั้งค่าเพื่อเริ่มเทรดได้ในไม่กี่นาที',
-    registerVantage: 'สมัครกับ Vantage ตอนนี้',
-    viewSetupGuide: 'ดูคู่มือการตั้งค่า (PDF)',
-    useReferral: 'ใช้รหัสแนะนำ:',
-    vantageGuide: 'คู่มือสมัคร Vantage',
-    yourReferral: 'รหัสแนะนำของคุณ:',
-    referralNote:
-      '* อย่าลืมใส่รหัสนี้ตอนสมัคร มิฉะนั้นจะไม่สามารถขอรับใช้บอทได้',
-    copyReferral: 'คัดลอกรหัสแนะนำ',
-    copied: 'คัดลอกแล้ว ✅',
-    openAccount: 'เปิดบัญชี',
-    empowering: 'เสริมพลังเทรดเดอร์ทั่วโลกด้วยเทคโนโลยีอัตโนมัติล้ำสมัย',
-    noHiddenFees: 'ไม่มีค่าธรรมเนียมแอบแฝง ไม่มีค่าสมัคร',
-    justPureTradingPower: 'เทรดอัตโนมัติล้วนๆ',
-    robot: 'บอท',
-    getYourFreeEA: 'รับ EA ฟรีของคุณ',
-    videoSectionTitle: 'ชมการทำงานของ EA MAPA',
-    videoSectionDesc: 'ดูวิดีโอตัวอย่างการใช้งานจริงของ EA ในตลาดเทรดทอง',
-    mcbSectionTitle: 'เหตุผลที่นักเทรดควรใช้ EA MAPA',
-    mcbSectionDesc: 'EA MAPA MCB',
-    mcbSectionList: [
-      ' ทำงานอัตโนมัติ 24 ชม.\nไม่ต้องเฝ้าหน้าจอ EA ทำงานต่อเนื่องทุกสถานการณ์',
-      ' เทรด 2 ฝั่งอย่างชาญฉลาด (Hedging)\nลดความเสี่ยงจากตลาดผันผวน ด้วยระบบซื้อขายสลับฝั่งแบบมีแบบแผน',
-      ' ปิดไม้ด้วยระบบจับคู่ (Matching Logic)\nไม่ปล่อยไม้ลอยตัว ลดโอกาสติดลบสะสม',
-      ' ปรับลอตตามสถานการณ์อัตโนมัติ\nเพิ่ม-ลดลอตอย่างเหมาะสม ช่วยฟื้นพอร์ตและปิดกำไรไว',
-      ' ใช้งานง่าย ไม่ต้องมีประสบการณ์\nมือใหม่ใช้ได้ มือโปรใช้แล้ว “วางใจ”',
-      ' ลดอารมณ์ในการเทรด\nไม่ต้องลุ้น ไม่ต้องกลัว ไม่ต้องลังเล EA ตัดสินใจตามแผนให้คุณ'
-    ],
-    mcbComingSoon: 'เร็วๆนี้',
-    botInstructionTitle: 'คำแนะนำการใช้งานบอทแต่ละตัว',
-    botInstructionMCB: {
-      name: 'MCB',
-      desc1: 'งบลงทุนที่ปลอดภัย คือ',
-      amount: '300,000',
-      lot: '0.01',
-      desc2: 'ออก lot',
-      profit: 'กำไรเฉลี่ย',
-      percent: '0.3%',
-      perDay: 'ต่อวัน'
-    },
-    botInstructionSupert: {
-      name: 'SUPER H',
-      desc1: 'งบลงทุนที่ปลอดภัย คือ',
-      amount: '12,000',
-      desc2: 'ออก lot',
-      lot: '0.01',
-      profit: 'กำไรเฉลี่ย',
-      percent: '0.3%',
-      perDay: 'ต่อวัน'
-    },
-    botInstructionRuntime: { name: 'RUNTIME' },
-    botInstructionSupersw: { name: 'SUPER SW' },
-    botInstructionComingSoon: 'เร็วๆ นี้',
-    instruction: 'แผนการลงทุน',
-    downloadCarousel: {
-      MCB: {
-        label: 'MAPA.MCB V1.18N',
-        title: 'ชุดการตั้งค่า Lot ใน MAPA.MCB V1.18N',
-        minInvestment: 'เงินลงทุนขั้นต่ำ:',
-        minInvestmentValue: 'เงิน 300,000 USD หรือ USC',
-        note: 'หมายเหตุ: หากใช้เงินลงทุนน้อยกว่า อาจมีความเสี่ยงสูงขึ้น และไม่แนะนำให้ปรับเพิ่มค่าตัวเลขการตั้งค่า Lot ที่ระบบตั้งมาแล้ว',
-        lotSetting: 'การตั้งค่า Lot เริ่มต้น:',
-        lotStart: 'Lot Start B = 0.01',
-        lotPlus: 'Lot Plus = 0.01',
-        lotRelation: 'ความสัมพันธ์เงินลงทุน:',
-        lotRelationDesc: 'ใช้ตั้งค่าเริ่มต้น 300,000 : 0.01',
-        lotExamples: [
-          'ทุน 300,000 = Lot 0.01',
-          'ทุน 600,000 = Lot 0.02',
-          'ทุน 900,000 = Lot 0.03',
-          'ทุน 1,200,000 = Lot 0.04'
-        ],
-        important: 'หมายเหตุสำคัญ:',
-        importantDesc: 'การตั้งค่า Lot ควรสัมพันธ์กับทุนที่ใช้จริง ไม่ควรปรับเพิ่มเกินกว่าที่แนะนำ',
-        download: 'ดาวน์โหลด EA MAPA.MCB V1.18N'
-      },
-       SUPERH: {
-        label: 'Super H',
-        minInvestment: 'งบทุนขั้นต่ำ:',
-        minInvestmentValue: '12,000',
-        lot: 'ล๊อทขั้นต่ำ:',
-        lotValue: '0.01',
-        profit: 'กำไรเฉลี่ย:',
-        profitValue: '0.3%',
-        download: 'ดาวน์โหลด Super H'
-      },
-      coming: {
-        label: 'เร็วๆ นี้',
-        title: 'เร็วๆ นี้',
-        desc: 'ฟีเจอร์ใหม่กำลังจะมาเร็วๆ นี้'
-      }
-    }
-  },
+
+export const translations = {
   en: {
+    meta: {
+      title: 'EA MAPA — Free Gold Trading AI Robot | MT5 Auto Forex EA',
+      description:
+        'EA MAPA is a free, advanced AI trading robot for Gold (XAUUSD) and Forex. 100% free, no sign-up required. Download for MT5. Multi-broker support.',
+      keywords:
+        'EA MAPA, free EA, gold trading robot, Forex EA, MT5, automated trading, AI trading, XAUUSD',
+    },
     features: 'Features',
     performance: 'Performance',
     reviews: 'Reviews',
@@ -299,7 +161,165 @@ const translations = {
       }
     }
   },
+  th: {
+    meta: {
+      title: 'EA MAPA — บอทเทรดทองอัตโนมัติฟรี | MT5',
+      description:
+        'EA MAPA บอทเทรดอัตโนมัติสำหรับทอง (XAUUSD) และฟอเร็กซ์ ใช้ฟรี 100% ดาวน์โหลดสำหรับ MT5',
+      keywords: 'EA MAPA, บอทเทรด, EA ฟรี, MT5, XAUUSD',
+    },
+    features: 'คุณสมบัติ',
+    performance: 'ประสิทธิภาพ',
+    reviews: 'รีวิว',
+    download: 'ดาวน์โหลด',
+    freeEA: 'ฟรี EA MAPA ',
+    tradingAI: 'หุ่นยนต์เทรด AI อัตโนมัติ',
+    automate: 'อัตโนมัติการเทรดทองของคุณด้วย EA อัจฉริยะ',
+    freeForever: 'ฟรี 100% ตลอดไป',
+    watchDemo: 'ดูตัวอย่าง',
+    downloadFreeEA: 'ดาวน์โหลด EA ฟรี',
+    startTrading: 'เริ่มเทรดทองแบบมืออาชีพ',
+    join: 'เข้าร่วมกับเทรดเดอร์ที่ประสบความสำเร็จ',
+    instantDownload: 'ดาวน์โหลดทันที',
+    noRegister: 'ไม่ต้องลงทะเบียน',
+    support: 'บริการ 24/7',
+    forever: 'ฟรีตลอดไป',
+    whyChoose: 'ทำไมต้องเลือก EA MAPA?',
+    trusted: 'ได้รับความไว้วางใจจากเทรดเดอร์ทั่วโลก',
+    privacy: 'นโยบายความเป็นส่วนตัว',
+    terms: 'ข้อตกลงการใช้บริการ',
+    contact: 'ติดต่อ',
+    contactDesc: 'ติดต่อเราผ่านช่องทางที่คุณสะดวก',
+    line: 'ไลน์',
+    facebook: 'เฟซบุ๊ก',
+    telegram: 'เทเลแกรม',
+    prev: 'ก่อนหน้า',
+    next: 'ถัดไป',
+    activeTraders: 'ผู้ใช้งาน',
+    successRate: 'ปลอดภัยสสูง',
+    autoTrading: 'เทรดอัตโนมัติ',
+    freeForeverShort: 'ฟรีตลอดไป',
+    advancedAI: 'อัลกอริทึม AI ขั้นสูง',
+    aiDesc: 'ขับเคลื่อนด้วย Machine Learning วิเคราะห์ตลาดทองและเทรดอัตโนมัติ',
+    riskManagement: 'บริหารความเสี่ยง',
+    riskDesc: 'มี Stop-loss และ Take-profit ในตัวเพื่อปกป้องเงินทุน',
+    multiBroker: 'รองรับหลายโบรกเกอร์',
+    multiBrokerDesc: 'ใช้งานได้กับ MT4/MT5 และโบรกเกอร์หลักทั่วโลก',
+    fastExecution: 'ประมวลผลรวดเร็ว',
+    fastExecutionDesc: 'ส่งคำสั่งเทรดในเสี้ยววินาทีเพื่อโอกาสกำไรสูงสุด',
+    testi1Name: 'ซาร่า จอห์นสัน',
+    testi1Role: 'เทรดเดอร์มืออาชีพ',
+    testi1Text:
+      'EA ตัวนี้เปลี่ยนผลลัพธ์การเทรดของฉันโดยสิ้นเชิง อัลกอริทึม AI แม่นยำมาก!',
+    testi2Name: 'ไมค์ เฉิน',
+    testi2Role: 'ผู้จัดการลงทุน',
+    testi2Text:
+      'ผมใช้ EA Gold Pro มา 6 เดือน กำไรสม่ำเสมอและบริหารความเสี่ยงดีมาก',
+    testi3Name: 'อเล็กซ์ โรดริเกซ',
+    testi3Role: 'เทรดเดอร์ฟอเร็กซ์',
+    testi3Text:
+      'ในที่สุดก็เจอ EA ฟรีที่ใช้ได้จริง! ติดตั้งง่ายและผลลัพธ์ยอดเยี่ยม',
+    getBrokerReady: 'เตรียมบัญชีโบรกเกอร์ของคุณ',
+    setupGuide: 'ทำตามคู่มือการตั้งค่าเพื่อเริ่มเทรดได้ในไม่กี่นาที',
+    registerVantage: 'สมัครกับ Vantage ตอนนี้',
+    viewSetupGuide: 'ดูคู่มือการตั้งค่า (PDF)',
+    useReferral: 'ใช้รหัสแนะนำ:',
+    vantageGuide: 'คู่มือสมัคร Vantage',
+    yourReferral: 'รหัสแนะนำของคุณ:',
+    referralNote:
+      '* อย่าลืมใส่รหัสนี้ตอนสมัคร มิฉะนั้นจะไม่สามารถขอรับใช้บอทได้',
+    copyReferral: 'คัดลอกรหัสแนะนำ',
+    copied: 'คัดลอกแล้ว ✅',
+    openAccount: 'เปิดบัญชี',
+    empowering: 'เสริมพลังเทรดเดอร์ทั่วโลกด้วยเทคโนโลยีอัตโนมัติล้ำสมัย',
+    noHiddenFees: 'ไม่มีค่าธรรมเนียมแอบแฝง ไม่มีค่าสมัคร',
+    justPureTradingPower: 'เทรดอัตโนมัติล้วนๆ',
+    robot: 'บอท',
+    getYourFreeEA: 'รับ EA ฟรีของคุณ',
+    videoSectionTitle: 'ชมการทำงานของ EA MAPA',
+    videoSectionDesc: 'ดูวิดีโอตัวอย่างการใช้งานจริงของ EA ในตลาดเทรดทอง',
+    mcbSectionTitle: 'เหตุผลที่นักเทรดควรใช้ EA MAPA',
+    mcbSectionDesc: 'EA MAPA MCB',
+    mcbSectionList: [
+      ' ทำงานอัตโนมัติ 24 ชม.\nไม่ต้องเฝ้าหน้าจอ EA ทำงานต่อเนื่องทุกสถานการณ์',
+      ' เทรด 2 ฝั่งอย่างชาญฉลาด (Hedging)\nลดความเสี่ยงจากตลาดผันผวน ด้วยระบบซื้อขายสลับฝั่งแบบมีแบบแผน',
+      ' ปิดไม้ด้วยระบบจับคู่ (Matching Logic)\nไม่ปล่อยไม้ลอยตัว ลดโอกาสติดลบสะสม',
+      ' ปรับลอตตามสถานการณ์อัตโนมัติ\nเพิ่ม-ลดลอตอย่างเหมาะสม ช่วยฟื้นพอร์ตและปิดกำไรไว',
+      ' ใช้งานง่าย ไม่ต้องมีประสบการณ์\nมือใหม่ใช้ได้ มือโปรใช้แล้ว “วางใจ”',
+      ' ลดอารมณ์ในการเทรด\nไม่ต้องลุ้น ไม่ต้องกลัว ไม่ต้องลังเล EA ตัดสินใจตามแผนให้คุณ'
+    ],
+    mcbComingSoon: 'เร็วๆนี้',
+    botInstructionTitle: 'คำแนะนำการใช้งานบอทแต่ละตัว',
+    botInstructionMCB: {
+      name: 'MCB',
+      desc1: 'งบลงทุนที่ปลอดภัย คือ',
+      amount: '300,000',
+      lot: '0.01',
+      desc2: 'ออก lot',
+      profit: 'กำไรเฉลี่ย',
+      percent: '0.3%',
+      perDay: 'ต่อวัน'
+    },
+    botInstructionSupert: {
+      name: 'SUPER H',
+      desc1: 'งบลงทุนที่ปลอดภัย คือ',
+      amount: '12,000',
+      desc2: 'ออก lot',
+      lot: '0.01',
+      profit: 'กำไรเฉลี่ย',
+      percent: '0.3%',
+      perDay: 'ต่อวัน'
+    },
+    botInstructionRuntime: { name: 'RUNTIME' },
+    botInstructionSupersw: { name: 'SUPER SW' },
+    botInstructionComingSoon: 'เร็วๆ นี้',
+    instruction: 'แผนการลงทุน',
+    downloadCarousel: {
+      MCB: {
+        label: 'MAPA.MCB V1.18N',
+        title: 'ชุดการตั้งค่า Lot ใน MAPA.MCB V1.18N',
+        minInvestment: 'เงินลงทุนขั้นต่ำ:',
+        minInvestmentValue: 'เงิน 300,000 USD หรือ USC',
+        note: 'หมายเหตุ: หากใช้เงินลงทุนน้อยกว่า อาจมีความเสี่ยงสูงขึ้น และไม่แนะนำให้ปรับเพิ่มค่าตัวเลขการตั้งค่า Lot ที่ระบบตั้งมาแล้ว',
+        lotSetting: 'การตั้งค่า Lot เริ่มต้น:',
+        lotStart: 'Lot Start B = 0.01',
+        lotPlus: 'Lot Plus = 0.01',
+        lotRelation: 'ความสัมพันธ์เงินลงทุน:',
+        lotRelationDesc: 'ใช้ตั้งค่าเริ่มต้น 300,000 : 0.01',
+        lotExamples: [
+          'ทุน 300,000 = Lot 0.01',
+          'ทุน 600,000 = Lot 0.02',
+          'ทุน 900,000 = Lot 0.03',
+          'ทุน 1,200,000 = Lot 0.04'
+        ],
+        important: 'หมายเหตุสำคัญ:',
+        importantDesc: 'การตั้งค่า Lot ควรสัมพันธ์กับทุนที่ใช้จริง ไม่ควรปรับเพิ่มเกินกว่าที่แนะนำ',
+        download: 'ดาวน์โหลด EA MAPA.MCB V1.18N'
+      },
+       SUPERH: {
+        label: 'Super H',
+        minInvestment: 'งบทุนขั้นต่ำ:',
+        minInvestmentValue: '12,000',
+        lot: 'ล๊อทขั้นต่ำ:',
+        lotValue: '0.01',
+        profit: 'กำไรเฉลี่ย:',
+        profitValue: '0.3%',
+        download: 'ดาวน์โหลด Super H'
+      },
+      coming: {
+        label: 'เร็วๆ นี้',
+        title: 'เร็วๆ นี้',
+        desc: 'ฟีเจอร์ใหม่กำลังจะมาเร็วๆ นี้'
+      }
+    }
+  },
   zh: {
+    meta: {
+      title: 'EA MAPA — 免费黄金交易AI机器人 | MT5 自动EA',
+      description:
+        'EA MAPA 是用于黄金 (XAUUSD) 与外汇的免费高级AI交易机器人。免费下载MT5版本。',
+      keywords: 'EA MAPA, 免费EA, 黄金交易机器人, MT5, XAUUSD',
+    },
     features: '功能',
     performance: '性能',
     reviews: '评论',
@@ -445,6 +465,14 @@ const translations = {
     }
   },
   hi: {
+    meta: {
+      title:
+        'EA MAPA निःशुल्क गोल्ड ट्रेडिंग एआई रोबोट | MT5 के लिए स्वचालित Forex EA',
+      description:
+        'EA MAPA सोना (XAUUSD) और फॉरेक्स के लिए एक निःशुल्क, उन्नत एआई ट्रेडिंग रोबोट है। MT5 के लिए डाउनलोड करें।',
+      keywords:
+        'EA MAPA, निःशुल्क EA, गोल्ड ट्रेडिंग रोबोट, MT5, XAUUSD, एआई ट्रेडिंग',
+    },
     features: 'विशेषताएँ',
     performance: 'प्रदर्शन',
     reviews: 'समीक्षाएँ',
@@ -599,6 +627,12 @@ const translations = {
     }
   },
   ru: {
+    meta: {
+      title: 'EA MAPA — Бесплатный AI-робот для торговли золотом | MT5 EA',
+      description:
+        'EA MAPA — бесплатный продвинутый торговый робот для золота (XAUUSD) и Форекс. Загрузите для MT5.',
+      keywords: 'EA MAPA, бесплатный EA, MT5, XAUUSD, автоторговля',
+    },
     features: 'Функции',
     performance: 'Производительность',
     reviews: 'Отзывы',
@@ -753,5 +787,7 @@ const translations = {
     }
   }
 }
+export const SUPPORTED = ['en', 'th', 'zh', 'hi', 'ru']
+export const DEFAULT_LANG ='en'
 
 export default translations
