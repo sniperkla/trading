@@ -2,8 +2,6 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 import MCBCarousel from './MCBCarousel'
-import LanguageRedirect from './LanguageRedirect';
-
 import translations from './i18n'
 import VideoSlider2 from './VideoSlider2'
 import {
@@ -280,7 +278,6 @@ export default function TradingEALanding({ forcedLang }) {
   return (
     <html lang={lang}>
       <>
-            <LanguageRedirect lang={lang}/>
 
         <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
           {/* Animated SVG Background */}
