@@ -62,11 +62,13 @@ export default function RootLayout({ children, params }) {
   return (
     <html lang={currentLang}>
       <head>
-        {SUPPORTED.map((lang) => (
+        {/* Hreflang tags for SEO */}
+        <link rel="alternate" hrefLang="en" href={`${baseUrl}/`} />
+        {SUPPORTED.filter(lang => lang !== 'en').map((lang) => (
           <link key={lang} rel="alternate" hrefLang={lang} href={`${baseUrl}/${lang}`} />
         ))}
         {/* x-default for fallback */}
-        <link rel="alternate" hrefLang="x-default" href={`${baseUrl}/en`} />
+        <link rel="alternate" hrefLang="x-default" href={`${baseUrl}/`} />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {/* Place LanguageSwitcher at the top level so it's always visible */}
