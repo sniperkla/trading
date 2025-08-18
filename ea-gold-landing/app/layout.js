@@ -2,6 +2,7 @@
 import { Geist, Geist_Mono } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
+import ChatBalloon from './ChatBalloon'
 import { SUPPORTED, DEFAULT_LANG, translations } from './i18n'
 import LanguageSwitcher from './LanguageSwitcher'
 
@@ -61,6 +62,7 @@ export default function RootLayout({ children, params }) {
 
   return (
     <html lang={currentLang}>
+      <ChatBalloon />
       <head>
         {/* Hreflang tags for SEO */}
         <link rel="alternate" hrefLang="en" href={`${baseUrl}/`} />

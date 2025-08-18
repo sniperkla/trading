@@ -1,4 +1,3 @@
-
 export const translations = {
   en: {
     meta: {
@@ -159,7 +158,8 @@ export const translations = {
         title: 'Coming Soon',
         desc: 'New features coming soon'
       }
-    }
+    },
+    chatBalloon: "Chat via Telegram",
   },
   th: {
     meta: {
@@ -311,158 +311,8 @@ export const translations = {
         title: 'เร็วๆ นี้',
         desc: 'ฟีเจอร์ใหม่กำลังจะมาเร็วๆ นี้'
       }
-    }
-  },
-  zh: {
-    meta: {
-      title: 'EA MAPA — 免费黄金交易AI机器人 | MT5 自动EA',
-      description:
-        'EA MAPA 是用于黄金 (XAUUSD) 与外汇的免费高级AI交易机器人。免费下载MT5版本。',
-      keywords: 'EA MAPA, 免费EA, 黄金交易机器人, MT5, XAUUSD',
     },
-    features: '功能',
-    performance: '性能',
-    reviews: '评论',
-    download: '下载',
-    freeEA: '免费 EA MAPA',
-    tradingAI: '交易 AI 机器人',
-    automate: '用我们先进的 AI 交易专家自动化您的黄金交易。',
-    freeForever: '永久免费。',
-    watchDemo: '观看演示',
-    downloadFreeEA: '免费下载 EA',
-    startTrading: '像专业人士一样开始黄金交易',
-    join: '加入成千上万的成功交易者',
-    instantDownload: '立即下载',
-    noRegister: '无需注册',
-    support: '全天候支持',
-    forever: '永久免费',
-    whyChoose: '为什么选择 EA MAPA？',
-    trusted: '受到全球交易者信赖',
-    privacy: '隐私政策',
-    terms: '服务条款',
-    contact: '联系',
-    contactDesc: '通过您喜欢的平台与我们联系！',
-    line: 'LINE',
-    facebook: '脸书',
-    telegram: '电报',
-    prev: '上一页',
-    next: '下一页',
-    activeTraders: '活跃交易者',
-    successRate: '高安全性',
-    autoTrading: '自动交易',
-    freeForeverShort: '永久免费',
-    advancedAI: '高级 AI 算法',
-    aiDesc: '通过机器学习驱动，自动分析黄金市场模式并执行盈利交易。',
-    riskManagement: '风险管理',
-    riskDesc: '内置止损和获利机制，以保护您的资本并最大化回报。',
-    multiBroker: '多经纪商支持',
-    multiBrokerDesc: '与 MT4/MT5 平台兼容，适用于全球所有主要外汇经纪商。',
-    fastExecution: '闪电般的快速执行',
-    fastExecutionDesc:
-      '通过我们优化的算法在毫秒内执行交易，最大限度地提高利润潜力。',
-    testi1Name: '莎拉·约翰逊',
-    testi1Role: '专业交易员',
-    testi1Text: '这个 EA 完全改变了我的交易结果。 AI 算法准确性极高！',
-    testi2Name: '迈克·陈',
-    testi2Role: '投资经理',
-    testi2Text:
-      '我已经使用 EA Gold Pro 6 个月了。 稳定的利润和出色的风险管理。',
-    testi3Name: '亚历克斯·罗德里格斯',
-    testi3Role: '外汇交易员',
-    testi3Text: '终于找到了一个真正有效的免费 EA！ 设置简单，结果不言而喻。',
-    getBrokerReady: '准备您的经纪账户',
-    setupGuide: '按照我们的完整指南几分钟内开始交易',
-    registerVantage: '立即注册 Vantage',
-    viewSetupGuide: '查看设置指南 (PDF)',
-    useReferral: '使用推荐码:',
-    vantageGuide: 'Vantage 注册指南',
-    yourReferral: '您的推荐码:',
-    referralNote: '* 注册时请勿忘记填写此代码，否则将无法获得专属权益',
-    copyReferral: '复制推荐码',
-    copied: '已复制 ✅',
-    openAccount: '开设账户',
-    empowering: '用尖端自动化技术赋能全球交易者',
-    noHiddenFees: '无隐藏费用，无订阅',
-    justPureTradingPower: '只有纯粹的交易实力。',
-    robot: '机器人',
-    getYourFreeEA: '立即获取您的免费 EA',
-    videoSectionTitle: '观看 EA MAPA 实际操作',
-    videoSectionDesc: '观看我们的演示视频，了解 EA 如何在真实交易中运行。',
-    mcbSectionTitle: '为什么选择 EA MAPA MCB？',
-    mcbSectionDesc: 'EA MAPA MCB',
-
-    mcbSectionList: [
-      ' 24 小时自动交易\n无需盯盘，EA 全天候持续运行',
-      ' 智能双向交易（对冲）\n通过策略性买卖切换降低市场波动风险',
-      ' 匹配逻辑平仓\n不让订单浮亏，减少累计亏损风险',
-      ' 自动调整手数\n根据情况增减手数，帮助账户恢复并快速获利',
-      ' 易于使用，无需经验\n新手和高手都能放心使用',
-      ' 降低交易情绪影响\n无需担心、犹豫或害怕，EA 按计划执行'
-    ],
-    mcbComingSoon: '敬请期待',
-    botInstructionTitle: '每个机器人使用说明',
-    botInstructionMCB: {
-      name: 'MCB',
-      desc1: '安全投资金额为',
-      amount: '300,000',
-      lot: '0.01',
-      desc2: '开仓手数',
-      profit: '平均收益',
-      percent: '0.3%',
-      perDay: '每天'
-    },
-    botInstructionSupert: {
-      name: 'SUPER H',
-      desc1: '安全投资金额为',
-      amount: '12,000',
-      desc2: '开仓手数',
-      lot: '0.01',
-      profit: '平均收益',
-      percent: '0.3%',
-      perDay: '每天'
-    },
-    botInstructionRuntime: { name: 'RUNTIME' },
-    botInstructionSupersw: { name: 'SUPER SW' },
-    botInstructionComingSoon: '敬请期待',
-    instruction: '投资计划',
-    downloadCarousel: {
-      MCB: {
-        label: 'MAPA.MCB V1.18N',
-        title: 'MAPA.MCB V1.18N 的手动设置指南',
-        minInvestment: '最低推荐投资：',
-        minInvestmentValue: '300,000 美元或 USC',
-        note: '注意：使用更少的资金会增加风险。请勿将手动设置调整超过推荐值。',
-        lotSetting: '初始手动设置：',
-        lotStart: 'Lot Start B = 0.01',
-        lotPlus: 'Lot Plus = 0.01',
-        lotRelation: '投资与手数比例：',
-        lotRelationDesc: '从 300,000 : 0.01 开始',
-        lotExamples: [
-          '300,000 = Lot 0.01',
-          '600,000 = Lot 0.02',
-          '900,000 = Lot 0.03',
-          '1,200,000 = Lot 0.04'
-        ],
-        important: '重要：',
-        importantDesc: '手动设置应与您的真实资金相匹配。请勿将其调整超过推荐值。',
-        download: '下载 EA MAPA.MCB V1.18N'
-      },
-      SUPERH: {
-        label: 'Super H',
-        minInvestment: '最低资金：',
-        minInvestmentValue: '12,000',
-        lot: '最小手数：',
-        lotValue: '0.01',
-        profit: '平均收益：',
-        profitValue: '0.3%',
-        download: '下载 Super H'
-      },
-      coming: {
-        label: '敬请期待',
-        title: '敬请期待',
-        desc: '新功能即将推出'
-      }
-    }
+    chatBalloon: "แชทผ่าน LINE",
   },
   hi: {
     meta: {
@@ -624,7 +474,160 @@ export const translations = {
         title: 'जल्द आ रहा है',
         desc: 'नए फीचर्स जल्द ही आ रहे हैं'
       }
-    }
+    },
+    chatBalloon: "टेलीग्राम पर चैट करें",
+  },
+  zh: {
+    meta: {
+      title: 'EA MAPA — 免费黄金交易AI机器人 | MT5 自动EA',
+      description:
+        'EA MAPA 是用于黄金 (XAUUSD) 与外汇的免费高级AI交易机器人。免费下载MT5版本。',
+      keywords: 'EA MAPA, 免费EA, 黄金交易机器人, MT5, XAUUSD',
+    },
+    features: '功能',
+    performance: '性能',
+    reviews: '评论',
+    download: '下载',
+    freeEA: '免费 EA MAPA',
+    tradingAI: '交易 AI 机器人',
+    automate: '用我们先进的 AI 交易专家自动化您的黄金交易。',
+    freeForever: '永久免费。',
+    watchDemo: '观看演示',
+    downloadFreeEA: '免费下载 EA',
+    startTrading: '像专业人士一样开始黄金交易',
+    join: '加入成千上万的成功交易者',
+    instantDownload: '立即下载',
+    noRegister: '无需注册',
+    support: '全天候支持',
+    forever: '永久免费',
+    whyChoose: '为什么选择 EA MAPA？',
+    trusted: '受到全球交易者信赖',
+    privacy: '隐私政策',
+    terms: '服务条款',
+    contact: '联系',
+    contactDesc: '通过您喜欢的平台与我们联系！',
+    line: 'LINE',
+    facebook: '脸书',
+    telegram: '电报',
+    prev: '上一页',
+    next: '下一页',
+    activeTraders: '活跃交易者',
+    successRate: '高安全性',
+    autoTrading: '自动交易',
+    freeForeverShort: '永久免费',
+    advancedAI: '高级 AI 算法',
+    aiDesc: '通过机器学习驱动，自动分析黄金市场模式并执行盈利交易。',
+    riskManagement: '风险管理',
+    riskDesc: '内置止损和获利机制，以保护您的资本并最大化回报。',
+    multiBroker: '多经纪商支持',
+    multiBrokerDesc: '与 MT4/MT5 平台兼容，适用于全球所有主要外汇经纪商。',
+    fastExecution: '闪电般的快速执行',
+    fastExecutionDesc:
+      '通过我们优化的算法在毫秒内执行交易，最大限度地提高利润潜力。',
+    testi1Name: '莎拉·约翰逊',
+    testi1Role: '专业交易员',
+    testi1Text: '这个 EA 完全改变了我的交易结果。 AI 算法准确性极高！',
+    testi2Name: '迈克·陈',
+    testi2Role: '投资经理',
+    testi2Text:
+      '我已经使用 EA Gold Pro 6 个月了。 稳定的利润和出色的风险管理。',
+    testi3Name: '亚历克斯·罗德里格斯',
+    testi3Role: '外汇交易员',
+    testi3Text: '终于找到了一个真正有效的免费 EA！ 设置简单，结果不言而喻。',
+    getBrokerReady: '准备您的经纪账户',
+    setupGuide: '按照我们的完整指南几分钟内开始交易',
+    registerVantage: '立即注册 Vantage',
+    viewSetupGuide: '查看设置指南 (PDF)',
+    useReferral: '使用推荐码:',
+    vantageGuide: 'Vantage 注册指南',
+    yourReferral: '您的推荐码:',
+    referralNote: '* 注册时请勿忘记填写此代码，否则将无法获得专属权益',
+    copyReferral: '复制推荐码',
+    copied: '已复制 ✅',
+    openAccount: '开设账户',
+    empowering: '用尖端自动化技术赋能全球交易者',
+    noHiddenFees: '无隐藏费用，无订阅',
+    justPureTradingPower: '只有纯粹的交易实力。',
+    robot: '机器人',
+    getYourFreeEA: '立即获取您的免费 EA',
+    videoSectionTitle: '观看 EA MAPA 实际操作',
+    videoSectionDesc: '观看我们的演示视频，了解 EA 如何在真实交易中运行。',
+    mcbSectionTitle: '为什么选择 EA MAPA MCB？',
+    mcbSectionDesc: 'EA MAPA MCB',
+
+    mcbSectionList: [
+      ' 24 小时自动交易\n无需盯盘，EA 全天候持续运行',
+      ' 智能双向交易（对冲）\n通过策略性买卖切换降低市场波动风险',
+      ' 匹配逻辑平仓\n不让订单浮亏，减少累计亏损风险',
+      ' 自动调整手数\n根据情况增减手数，帮助账户恢复并快速获利',
+      ' 易于使用，无需经验\n新手和高手都能放心使用',
+      ' 降低交易情绪影响\n无需担心、犹豫或害怕，EA 按计划执行'
+    ],
+    mcbComingSoon: '敬请期待',
+    botInstructionTitle: '每个机器人使用说明',
+    botInstructionMCB: {
+      name: 'MCB',
+      desc1: '安全投资金额为',
+      amount: '300,000',
+      lot: '0.01',
+      desc2: '开仓手数',
+      profit: '平均收益',
+      percent: '0.3%',
+      perDay: '每天'
+    },
+    botInstructionSupert: {
+      name: 'SUPER H',
+      desc1: '安全投资金额为',
+      amount: '12,000',
+      desc2: '开仓手数',
+      lot: '0.01',
+      profit: '平均收益',
+      percent: '0.3%',
+      perDay: '每天'
+    },
+    botInstructionRuntime: { name: 'RUNTIME' },
+    botInstructionSupersw: { name: 'SUPER SW' },
+    botInstructionComingSoon: '敬请期待',
+    instruction: '投资计划',
+    downloadCarousel: {
+      MCB: {
+        label: 'MAPA.MCB V1.18N',
+        title: 'MAPA.MCB V1.18N 的手动设置指南',
+        minInvestment: '最低推荐投资：',
+        minInvestmentValue: '300,000 美元或 USC',
+        note: '注意：使用更少的资金会增加风险。请勿将手动设置调整超过推荐值。',
+        lotSetting: '初始手动设置：',
+        lotStart: 'Lot Start B = 0.01',
+        lotPlus: 'Lot Plus = 0.01',
+        lotRelation: '投资与手数比例：',
+        lotRelationDesc: '从 300,000 : 0.01 开始',
+        lotExamples: [
+          '300,000 = Lot 0.01',
+          '600,000 = Lot 0.02',
+          '900,000 = Lot 0.03',
+          '1,200,000 = Lot 0.04'
+        ],
+        important: '重要：',
+        importantDesc: '手动设置应与您的真实资金相匹配。请勿将其调整超过推荐值。',
+        download: '下载 EA MAPA.MCB V1.18N'
+      },
+      SUPERH: {
+        label: 'Super H',
+        minInvestment: '最低资金：',
+        minInvestmentValue: '12,000',
+        lot: '最小手数：',
+        lotValue: '0.01',
+        profit: '平均收益：',
+        profitValue: '0.3%',
+        download: '下载 Super H'
+      },
+      coming: {
+        label: '敬请期待',
+        title: '敬请期待',
+        desc: '新功能即将推出'
+      }
+    },
+    chatBalloon: "通过 Telegram 聊天",
   },
   ru: {
     meta: {
@@ -784,7 +787,8 @@ export const translations = {
         title: 'Скоро',
         desc: 'Скоро новые функции'
       }
-    }
+    },
+    chatBalloon: "Чат в Telegram",
   }
 }
 export const SUPPORTED = ['en', 'th', 'zh', 'hi', 'ru']
