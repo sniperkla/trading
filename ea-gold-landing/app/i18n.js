@@ -160,6 +160,7 @@ export const translations = {
       }
     },
     chatBalloon: "Chat via Telegram",
+    menu: 'Menu',
   },
   th: {
     meta: {
@@ -313,6 +314,7 @@ export const translations = {
       }
     },
     chatBalloon: "แชทผ่าน LINE",
+    menu: 'เมนู',
   },
   hi: {
     meta: {
@@ -387,8 +389,7 @@ export const translations = {
     useReferral: 'रेफरल कोड का उपयोग करें:',
     vantageGuide: 'Vantage पंजीकरण गाइड',
     yourReferral: 'आपका रेफरल कोड:',
-    referralNote:
-      '* पंजीकरण करते समय इस कोड को भरना न भूलें, अन्यथा विशेष लाभ नहीं मिलेंगे।',
+    referralNote: '* पंजीकरण करते समय इस कोड को भरना न भूलें, अन्यथा विशेष लाभ नहीं मिलेंगे।',
     copyReferral: 'रेफरल कोड कॉपी करें',
     copied: 'कॉपी हो गया ✅',
     openAccount: 'खाता खोलें',
@@ -476,6 +477,7 @@ export const translations = {
       }
     },
     chatBalloon: "टेलीग्राम पर चैट करें",
+    menu: 'मेनू',
   },
   zh: {
     meta: {
@@ -628,6 +630,7 @@ export const translations = {
       }
     },
     chatBalloon: "通过 Telegram 聊天",
+    menu: '菜单',
   },
   ru: {
     meta: {
@@ -789,6 +792,7 @@ export const translations = {
       }
     },
     chatBalloon: "Чат в Telegram",
+    menu: 'Меню',
   }
 }
 export const SUPPORTED = ['en', 'th', 'zh', 'hi', 'ru']

@@ -1031,7 +1031,7 @@ function ScrollSpyDropdown({ sections, translations, lang, isVisible }) {
             aria-label="Open navigation"
           >
             <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
-            <span className="ml-1">{translations[lang]?.navigate || 'เมนู'}</span>
+            <span className="ml-1">{translations[lang]?.menu || 'Menu'}</span>
           </button>
         </div>
         {/* Dropdown Menu */}
