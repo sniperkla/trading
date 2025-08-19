@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>https://eamapa.com/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://eamapa.com/en"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://eamapa.com/th"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://eamapa.com/ru"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://eamapa.com/hi"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://eamapa.com/zh"/>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://eamapa.com/en</loc></url>
+  <url><loc>https://eamapa.com/th</loc></url>
+  <url><loc>https://eamapa.com/zh</loc></url>
+  <url><loc>https://eamapa.com/hi</loc></url>
+  <url><loc>https://eamapa.com/ru</loc></url>
 </urlset>
