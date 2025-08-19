@@ -488,8 +488,8 @@ export default function TradingEALanding({ forcedLang }) {
                     )}&embedded=true`}
                     width="100%"
                     height="100%"
-                    className="w-full h-full border-none"
-                    title="Vantage PDF Guide"
+                    style={{ border: "none", minHeight: "80vh" }}
+                    title="PDF Viewer"
                   />
                 </div>
               </div>

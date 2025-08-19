@@ -5,6 +5,8 @@ import './globals.css'
 import ChatBalloon from './ChatBalloon'
 import { SUPPORTED, DEFAULT_LANG, translations } from './i18n'
 import LanguageSwitcher from './LanguageSwitcher'
+import GeoRedirect from './GeoRedirect'
+import FloatingUI from './FloatingUI'
 
 export const runtime = 'nodejs'
 
@@ -55,26 +57,22 @@ export async function generateMetadata({ params }) {
 }
 
 export default function RootLayout({ children, params }) {
-  // Get current language from params
-  const currentLang = SUPPORTED.includes(params?.lang) ? params.lang : DEFAULT_LANG
-
-  const baseUrl = 'https://eamapa.com' // define baseUrl here for <link> tags
+  const currentLang = SUPPORTED.includes(params?.lang) ? params.lang : DEFAULT_LANG;
+  const baseUrl = 'https://eamapa.com';
 
   return (
     <html lang={currentLang}>
-      <ChatBalloon />
       <head>
         {/* Hreflang tags for SEO */}
         <link rel="alternate" hrefLang="en" href={`${baseUrl}/`} />
         {SUPPORTED.filter(lang => lang !== 'en').map((lang) => (
           <link key={lang} rel="alternate" hrefLang={lang} href={`${baseUrl}/${lang}`} />
         ))}
-        {/* x-default for fallback */}
         <link rel="alternate" hrefLang="x-default" href={`${baseUrl}/`} />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* Place LanguageSwitcher at the top level so it's always visible */}
-        <LanguageSwitcher currentLang={currentLang} />
+        <GeoRedirect />
+        <FloatingUI />
         {children}
 
         {/* Google Analytics */}
@@ -92,5 +90,5 @@ export default function RootLayout({ children, params }) {
         </Script>
       </body>
     </html>
-  )
+  );
 }
