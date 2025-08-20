@@ -1197,7 +1197,7 @@ function DownloadCarousel({ lang }) {
             </li>
             <li>
               <span className="font-bold text-yellow-400">
-                {t.SUPERH?.profit || 'กำไรเฉลี่ย:'}
+                {t.SUPERH?.profit || 'ผลตอบแทนเฉลี่ย:'}
               </span>
               <br />
               <span className="font-mono text-green-400">

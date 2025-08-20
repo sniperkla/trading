@@ -5,7 +5,7 @@ export const translations = {
       description:
         'EA MAPA is a free, advanced AI trading robot for Gold (XAUUSD) and Forex. 100% free, no sign-up required. Download for MT5. Multi-broker support.',
       keywords:
-        'EA MAPA, free EA, gold trading robot, Forex EA, MT5, automated trading, AI trading, XAUUSD',
+        'EA MAPA, free EA, gold trading robot, Forex EA, MT5, automated trading, AI trading, XAUUSD'
     },
     features: 'Features',
     performance: 'Performance',
@@ -15,7 +15,8 @@ export const translations = {
     tradingAI: 'Trading AI ROBOT',
     automate:
       'Automate your gold trading with our advanced AI-powered Expert Advisor.',
-    freeForever: '100% Free, Forever.',
+    freeForever:
+      'Register through our link, provide your account number, and start using the bot instantly.',
     watchDemo: 'Watch Demo',
     downloadFreeEA: 'Download Free EA',
     startTrading: 'Start Trading Gold Like a Pro',
@@ -77,8 +78,8 @@ export const translations = {
     openAccount: 'Open Account',
     empowering:
       'Empowering traders worldwide with cutting-edge automation technology',
-    noHiddenFees: 'No hidden fees, no subscriptions',
-    justPureTradingPower: 'just pure trading power.',
+    noHiddenFees: 'No hidden fees, no registration required',
+    justPureTradingPower: 'pure automated trading',
     robot: 'robot',
     getYourFreeEA: 'Get Your Free EA Now',
     videoSectionTitle: 'See EA MAPA in Action',
@@ -99,11 +100,11 @@ export const translations = {
     botInstructionTitle: 'Bot Usage Instructions',
     botInstructionMCB: {
       name: 'MCB',
-      desc1: 'Safe investment amount is',
+      desc1: 'Safe investment budget is',
       amount: '300,000',
       lot: '0.01',
-      desc2: 'open lot',
-      profit: 'Average profit',
+      desc2: 'output lot',
+      profit: 'Average return',
       percent: '0.3%',
       perDay: 'per day'
     },
@@ -140,7 +141,8 @@ export const translations = {
           '1,200,000 = Lot 0.04'
         ],
         important: 'Important:',
-        importantDesc: 'Lot size should match your real capital. Do not increase above recommended values.',
+        importantDesc:
+          'Lot size should match your real capital. Do not increase above recommended values.',
         download: 'Download EA MAPA.MCB V1.18N'
       },
       SUPERH: {
@@ -159,15 +161,15 @@ export const translations = {
         desc: 'New features coming soon'
       }
     },
-    chatBalloon: "Chat via Telegram",
-    menu: 'Menu',
+    chatBalloon: 'Chat via Telegram',
+    menu: 'Menu'
   },
   th: {
     meta: {
       title: 'EA MAPA — บอทเทรดทองอัตโนมัติฟรี | MT5',
       description:
         'EA MAPA บอทเทรดอัตโนมัติสำหรับทอง (XAUUSD) และฟอเร็กซ์ ใช้ฟรี 100% ดาวน์โหลดสำหรับ MT5',
-      keywords: 'EA MAPA, บอทเทรด, EA ฟรี, MT5, XAUUSD',
+      keywords: 'EA MAPA, บอทเทรด, EA ฟรี, MT5, XAUUSD'
     },
     features: 'คุณสมบัติ',
     performance: 'ประสิทธิภาพ',
@@ -176,7 +178,8 @@ export const translations = {
     freeEA: 'ฟรี EA MAPA ',
     tradingAI: 'หุ่นยนต์เทรด AI อัตโนมัติ',
     automate: 'อัตโนมัติการเทรดทองของคุณด้วย EA อัจฉริยะ',
-    freeForever: 'ฟรี 100% ตลอดไป',
+    freeForever:
+      'เพียงสมัครผ่านลิงก์ แล้วแจ้งเลขบัญชีที่ต้องการใช้งาน ก็สามารถเริ่มใช้บอทได้ทันที',
     watchDemo: 'ดูตัวอย่าง',
     downloadFreeEA: 'ดาวน์โหลด EA ฟรี',
     startTrading: 'เริ่มเทรดทองแบบมืออาชีพ',
@@ -207,7 +210,7 @@ export const translations = {
     multiBroker: 'รองรับหลายโบรกเกอร์',
     multiBrokerDesc: 'ใช้งานได้กับ MT4/MT5 และโบรกเกอร์หลักทั่วโลก',
     fastExecution: 'ประมวลผลรวดเร็ว',
-    fastExecutionDesc: 'ส่งคำสั่งเทรดในเสี้ยววินาทีเพื่อโอกาสกำไรสูงสุด',
+    fastExecutionDesc: 'ส่งคำสั่งเทรดในเสี้ยววินาทีเพื่อโอกาสผลตอบแทนสูงสุด',
     testi1Name: 'ซาร่า จอห์นสัน',
     testi1Role: 'เทรดเดอร์มืออาชีพ',
     testi1Text:
@@ -215,7 +218,7 @@ export const translations = {
     testi2Name: 'ไมค์ เฉิน',
     testi2Role: 'ผู้จัดการลงทุน',
     testi2Text:
-      'ผมใช้ EA Gold Pro มา 6 เดือน กำไรสม่ำเสมอและบริหารความเสี่ยงดีมาก',
+      'ผมใช้ EA Gold Pro มา 6 เดือน ผลตอบแทนสม่ำเสมอและบริหารความเสี่ยงดีมาก',
     testi3Name: 'อเล็กซ์ โรดริเกซ',
     testi3Role: 'เทรดเดอร์ฟอเร็กซ์',
     testi3Text:
@@ -245,7 +248,7 @@ export const translations = {
       ' ทำงานอัตโนมัติ 24 ชม.\nไม่ต้องเฝ้าหน้าจอ EA ทำงานต่อเนื่องทุกสถานการณ์',
       ' เทรด 2 ฝั่งอย่างชาญฉลาด (Hedging)\nลดความเสี่ยงจากตลาดผันผวน ด้วยระบบซื้อขายสลับฝั่งแบบมีแบบแผน',
       ' ปิดไม้ด้วยระบบจับคู่ (Matching Logic)\nไม่ปล่อยไม้ลอยตัว ลดโอกาสติดลบสะสม',
-      ' ปรับลอตตามสถานการณ์อัตโนมัติ\nเพิ่ม-ลดลอตอย่างเหมาะสม ช่วยฟื้นพอร์ตและปิดกำไรไว',
+      ' ปรับลอตตามสถานการณ์อัตโนมัติ\nเพิ่ม-ลดลอตอย่างเหมาะสม ช่วยฟื้นพอร์ตและปิดผลตอบแทนไว',
       ' ใช้งานง่าย ไม่ต้องมีประสบการณ์\nมือใหม่ใช้ได้ มือโปรใช้แล้ว “วางใจ”',
       ' ลดอารมณ์ในการเทรด\nไม่ต้องลุ้น ไม่ต้องกลัว ไม่ต้องลังเล EA ตัดสินใจตามแผนให้คุณ'
     ],
@@ -253,21 +256,21 @@ export const translations = {
     botInstructionTitle: 'คำแนะนำการใช้งานบอทแต่ละตัว',
     botInstructionMCB: {
       name: 'MCB',
-      desc1: 'งบลงทุนที่ปลอดภัย คือ',
+      desc1: 'งบประมาณที่ปลอดภัย คือ',
       amount: '300,000',
       lot: '0.01',
       desc2: 'ออก lot',
-      profit: 'กำไรเฉลี่ย',
+      profit: 'ผลตอบแทนเฉลี่ย',
       percent: '0.3%',
       perDay: 'ต่อวัน'
     },
     botInstructionSupert: {
       name: 'SUPER H',
-      desc1: 'งบลงทุนที่ปลอดภัย คือ',
+      desc1: 'งบประมาณที่ปลอดภัย คือ',
       amount: '12,000',
       desc2: 'ออก lot',
       lot: '0.01',
-      profit: 'กำไรเฉลี่ย',
+      profit: 'ผลตอบแทนเฉลี่ย',
       percent: '0.3%',
       perDay: 'ต่อวัน'
     },
@@ -279,13 +282,13 @@ export const translations = {
       MCB: {
         label: 'MAPA.MCB V1.18N',
         title: 'ชุดการตั้งค่า Lot ใน MAPA.MCB V1.18N',
-        minInvestment: 'เงินลงทุนขั้นต่ำ:',
-        minInvestmentValue: 'เงิน 300,000 USD หรือ USC',
-        note: 'หมายเหตุ: หากใช้เงินลงทุนน้อยกว่า อาจมีความเสี่ยงสูงขึ้น และไม่แนะนำให้ปรับเพิ่มค่าตัวเลขการตั้งค่า Lot ที่ระบบตั้งมาแล้ว',
+        minInvestment: 'งบประมาณที่ปลอดภัย:',
+        minInvestmentValue: '300,000 USD หรือ USC',
+        note: 'หมายเหตุ: หากใช้งบประมาณน้อยกว่า อาจมีความเสี่ยงสูงขึ้น และไม่แนะนำให้ปรับเพิ่มค่าตัวเลขการตั้งค่า Lot ที่ระบบตั้งมาแล้ว',
         lotSetting: 'การตั้งค่า Lot เริ่มต้น:',
         lotStart: 'Lot Start B = 0.01',
         lotPlus: 'Lot Plus = 0.01',
-        lotRelation: 'ความสัมพันธ์เงินลงทุน:',
+        lotRelation: 'ความสัมพันธ์งบประมาณ:',
         lotRelationDesc: 'ใช้ตั้งค่าเริ่มต้น 300,000 : 0.01',
         lotExamples: [
           'ทุน 300,000 = Lot 0.01',
@@ -294,16 +297,17 @@ export const translations = {
           'ทุน 1,200,000 = Lot 0.04'
         ],
         important: 'หมายเหตุสำคัญ:',
-        importantDesc: 'การตั้งค่า Lot ควรสัมพันธ์กับทุนที่ใช้จริง ไม่ควรปรับเพิ่มเกินกว่าที่แนะนำ',
+        importantDesc:
+          'การตั้งค่า Lot ควรสัมพันธ์กับทุนที่ใช้จริง ไม่ควรปรับเพิ่มเกินกว่าที่แนะนำ',
         download: 'ดาวน์โหลด EA MAPA.MCB V1.18N'
       },
-       SUPERH: {
+      SUPERH: {
         label: 'Super H',
-        minInvestment: 'งบทุนขั้นต่ำ:',
+        minInvestment: 'งบประมาณที่ปลอดภัย:',
         minInvestmentValue: '12,000',
         lot: 'ล๊อทขั้นต่ำ:',
         lotValue: '0.01',
-        profit: 'กำไรเฉลี่ย:',
+        profit: 'ผลตอบแทนเฉลี่ย:',
         profitValue: '0.3%',
         download: 'ดาวน์โหลด Super H'
       },
@@ -313,8 +317,8 @@ export const translations = {
         desc: 'ฟีเจอร์ใหม่กำลังจะมาเร็วๆ นี้'
       }
     },
-    chatBalloon: "แชทผ่าน LINE",
-    menu: 'เมนู',
+    chatBalloon: 'แชทผ่าน LINE',
+    menu: 'เมนู'
   },
   hi: {
     meta: {
@@ -323,7 +327,7 @@ export const translations = {
       description:
         'EA MAPA सोना (XAUUSD) और फॉरेक्स के लिए एक निःशुल्क, उन्नत एआई ट्रेडिंग रोबोट है। MT5 के लिए डाउनलोड करें।',
       keywords:
-        'EA MAPA, निःशुल्क EA, गोल्ड ट्रेडिंग रोबोट, MT5, XAUUSD, एआई ट्रेडिंग',
+        'EA MAPA, निःशुल्क EA, गोल्ड ट्रेडिंग रोबोट, MT5, XAUUSD, एआई ट्रेडिंग'
     },
     features: 'विशेषताएँ',
     performance: 'प्रदर्शन',
@@ -333,7 +337,8 @@ export const translations = {
     tradingAI: 'ट्रेडिंग एआई रोबोट',
     automate:
       'हमारे उन्नत एआई-पावर्ड एक्सपर्ट एडवाइजर के साथ अपने गोल्ड ट्रेडिंग को स्वचालित करें।',
-    freeForever: '100% हमेशा के लिए मुफ्त।',
+    freeForever:
+      'बस लिंक के माध्यम से पंजीकरण करें और वह खाता संख्या प्रदान करें जिसे आप उपयोग करना चाहते हैं, और आप तुरंत बॉट का उपयोग शुरू कर सकते हैं।',
     watchDemo: 'डेमो देखें',
     downloadFreeEA: 'नि:शुल्क EA डाउनलोड करें',
     startTrading: 'पेशेवर की तरह गोल्ड ट्रेडिंग शुरू करें',
@@ -389,14 +394,15 @@ export const translations = {
     useReferral: 'रेफरल कोड का उपयोग करें:',
     vantageGuide: 'Vantage पंजीकरण गाइड',
     yourReferral: 'आपका रेफरल कोड:',
-    referralNote: '* पंजीकरण करते समय इस कोड को भरना न भूलें, अन्यथा विशेष लाभ नहीं मिलेंगे।',
+    referralNote:
+      '* पंजीकरण करते समय इस कोड को भरना न भूलें, अन्यथा विशेष लाभ नहीं मिलेंगे।',
     copyReferral: 'रेफरल कोड कॉपी करें',
     copied: 'कॉपी हो गया ✅',
     openAccount: 'खाता खोलें',
     empowering:
       'उन्नत ऑटोमेशन तकनीक के साथ दुनिया भर के ट्रेडर्स को सशक्त बनाना',
-    noHiddenFees: 'कोई छिपी फीस नहीं, कोई सब्सक्रिप्शन नहीं',
-    justPureTradingPower: 'सिर्फ शुद्ध ट्रेडिंग पावर।',
+    noHiddenFees: 'कोई छिपी हुई फीस नहीं, पंजीकरण की आवश्यकता नहीं',
+    justPureTradingPower: 'शुद्ध स्वचालित ट्रेडिंग',
     robot: 'रोबोट',
     getYourFreeEA: 'अपना मुफ्त EA प्राप्त करें',
     videoSectionTitle: 'EA MAPA को एक्शन में देखें',
@@ -457,10 +463,11 @@ export const translations = {
           '1,200,000 = Lot 0.04'
         ],
         important: 'महत्वपूर्ण:',
-        importantDesc: 'लॉट का आकार आपकी वास्तविक पूंजी से मेल खाना चाहिए। अनुशंसित मानों से ऊपर न बढ़ाएं।',
+        importantDesc:
+          'लॉट का आकार आपकी वास्तविक पूंजी से मेल खाना चाहिए। अनुशंसित मानों से ऊपर न बढ़ाएं।',
         download: 'डाउनलोड EA MAPA.MCB V1.18N'
       },
-         SUPERH: {
+      SUPERH: {
         label: 'Super H',
         minInvestment: 'न्यूनतम पूंजी:',
         minInvestmentValue: '12,000',
@@ -476,15 +483,15 @@ export const translations = {
         desc: 'नए फीचर्स जल्द ही आ रहे हैं'
       }
     },
-    chatBalloon: "टेलीग्राम पर चैट करें",
-    menu: 'मेनू',
+    chatBalloon: 'टेलीग्राम पर चैट करें',
+    menu: 'मेनू'
   },
   zh: {
     meta: {
       title: 'EA MAPA — 免费黄金交易AI机器人 | MT5 自动EA',
       description:
         'EA MAPA 是用于黄金 (XAUUSD) 与外汇的免费高级AI交易机器人。免费下载MT5版本。',
-      keywords: 'EA MAPA, 免费EA, 黄金交易机器人, MT5, XAUUSD',
+      keywords: 'EA MAPA, 免费EA, 黄金交易机器人, MT5, XAUUSD'
     },
     features: '功能',
     performance: '性能',
@@ -493,7 +500,8 @@ export const translations = {
     freeEA: '免费 EA MAPA',
     tradingAI: '交易 AI 机器人',
     automate: '用我们先进的 AI 交易专家自动化您的黄金交易。',
-    freeForever: '永久免费。',
+    freeForever:
+      '只需通过链接注册并提供您想使用的账号，即可立即开始使用机器人。',
     watchDemo: '观看演示',
     downloadFreeEA: '免费下载 EA',
     startTrading: '像专业人士一样开始黄金交易',
@@ -548,8 +556,8 @@ export const translations = {
     copied: '已复制 ✅',
     openAccount: '开设账户',
     empowering: '用尖端自动化技术赋能全球交易者',
-    noHiddenFees: '无隐藏费用，无订阅',
-    justPureTradingPower: '只有纯粹的交易实力。',
+    noHiddenFees: '无隐藏费用，无需注册',
+    justPureTradingPower: '纯自动交易',
     robot: '机器人',
     getYourFreeEA: '立即获取您的免费 EA',
     videoSectionTitle: '观看 EA MAPA 实际操作',
@@ -569,10 +577,10 @@ export const translations = {
     botInstructionTitle: '每个机器人使用说明',
     botInstructionMCB: {
       name: 'MCB',
-      desc1: '安全投资金额为',
+      desc1: '安全投资预算为',
       amount: '300,000',
       lot: '0.01',
-      desc2: '开仓手数',
+      desc2: '输出手数',
       profit: '平均收益',
       percent: '0.3%',
       perDay: '每天'
@@ -610,7 +618,8 @@ export const translations = {
           '1,200,000 = Lot 0.04'
         ],
         important: '重要：',
-        importantDesc: '手动设置应与您的真实资金相匹配。请勿将其调整超过推荐值。',
+        importantDesc:
+          '手动设置应与您的真实资金相匹配。请勿将其调整超过推荐值。',
         download: '下载 EA MAPA.MCB V1.18N'
       },
       SUPERH: {
@@ -629,15 +638,15 @@ export const translations = {
         desc: '新功能即将推出'
       }
     },
-    chatBalloon: "通过 Telegram 聊天",
-    menu: '菜单',
+    chatBalloon: '通过 Telegram 聊天',
+    menu: '菜单'
   },
   ru: {
     meta: {
       title: 'EA MAPA — Бесплатный AI-робот для торговли золотом | MT5 EA',
       description:
         'EA MAPA — бесплатный продвинутый торговый робот для золота (XAUUSD) и Форекс. Загрузите для MT5.',
-      keywords: 'EA MAPA, бесплатный EA, MT5, XAUUSD, автоторговля',
+      keywords: 'EA MAPA, бесплатный EA, MT5, XAUUSD, автоторговля'
     },
     features: 'Функции',
     performance: 'Производительность',
@@ -647,7 +656,8 @@ export const translations = {
     tradingAI: 'Торговый ИИ-робот',
     automate:
       'Автоматизируйте торговлю золотом с помощью нашего продвинутого ИИ-советника.',
-    freeForever: '100% бесплатно навсегда.',
+    freeForever:
+      'Просто зарегистрируйтесь по ссылке и укажите номер счета, который вы хотите использовать, и вы сможете сразу начать использовать бота.',
     watchDemo: 'Смотреть демо',
     downloadFreeEA: 'Скачать бесплатный EA',
     startTrading: 'Начните торговать золотом как профессионал',
@@ -710,8 +720,8 @@ export const translations = {
     openAccount: 'Открыть счет',
     empowering:
       'Расширяем возможности трейдеров по всему миру с помощью передовых автоматизированных технологий',
-    noHiddenFees: 'Без скрытых комиссий, без подписки',
-    justPureTradingPower: 'только чистая торговая мощь.',
+    noHiddenFees: 'Без скрытых комиссий, регистрация не требуется',
+    justPureTradingPower: 'чистая автоматическая торговля',
     robot: 'робот',
     getYourFreeEA: 'Получить бесплатный EA сейчас',
     videoSectionTitle: 'Смотрите EA MAPA в действии',
@@ -731,11 +741,11 @@ export const translations = {
     botInstructionTitle: 'Инструкция по каждому боту',
     botInstructionMCB: {
       name: 'MCB',
-      desc1: 'Безопасная сумма инвестиций',
+      desc1: 'Безопасный инвестиционный бюджет',
       amount: '300,000',
       lot: '0.01',
-      desc2: 'открыть лот',
-      profit: 'Средняя прибыль',
+      desc2: 'выходной лот',
+      profit: 'Средняя доходность',
       percent: '0.3%',
       perDay: 'в день'
     },
@@ -772,10 +782,11 @@ export const translations = {
           '1,200,000 = Lot 0.04'
         ],
         important: 'Важно:',
-        importantDesc: 'Размер лота должен соответствовать вашему реальному капиталу. Не увеличивайте выше рекомендованных значений.',
+        importantDesc:
+          'Размер лота должен соответствовать вашему реальному капиталу. Не увеличивайте выше рекомендованных значений.',
         download: 'Скачать EA MAPA.MCB V1.18N'
       },
-       SUPERH: {
+      SUPERH: {
         label: 'Super H',
         minInvestment: 'Минимальный капитал:',
         minInvestmentValue: '12,000',
@@ -791,11 +802,11 @@ export const translations = {
         desc: 'Скоро новые функции'
       }
     },
-    chatBalloon: "Чат в Telegram",
-    menu: 'Меню',
+    chatBalloon: 'Чат в Telegram',
+    menu: 'Меню'
   }
 }
 export const SUPPORTED = ['en', 'th', 'zh', 'hi', 'ru']
-export const DEFAULT_LANG ='en'
+export const DEFAULT_LANG = 'en'
 
 export default translations
