@@ -21,9 +21,9 @@ import {
   FileText,
   Volume2,
   CheckCircle2Icon,
-   MessageCircle, // <-- add this
-  Facebook,      // <-- add this
-  Send           // <-- add this
+  MessageCircle, // <-- add this
+  Facebook, // <-- add this
+  Send // <-- add this
 } from 'lucide-react'
 function useLang() {
   const [lang, setLang] = useState('en')
@@ -273,12 +273,12 @@ export default function TradingEALanding({ forcedLang }) {
     { id: 'stats', label: translations[lang].performance },
     { id: 'whychoose', label: translations[lang].reviews },
     { id: 'download', label: translations[lang].download },
-    { id: 'instruction', label: translations[lang].instruction }  ]
+    { id: 'instruction', label: translations[lang].instruction }
+  ]
 
   return (
     <html lang={lang}>
       <>
-
         <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
           {/* Animated SVG Background */}
           <svg
@@ -488,7 +488,7 @@ export default function TradingEALanding({ forcedLang }) {
                     )}&embedded=true`}
                     width="100%"
                     height="100%"
-                    style={{ border: "none", minHeight: "80vh" }}
+                    style={{ border: 'none', minHeight: '80vh' }}
                     title="PDF Viewer"
                   />
                 </div>
@@ -596,15 +596,18 @@ export default function TradingEALanding({ forcedLang }) {
             </div>
           </section>
 
-
-         {/* Contact Section */}
-          <section id="contact" className="relative z-10 py-14 bg-black/30 backdrop-blur-sm">
+          {/* Contact Section */}
+          <section
+            id="contact"
+            className="relative z-10 py-14 bg-black/30 backdrop-blur-sm"
+          >
             <div className="container mx-auto px-6 text-center max-w-3xl">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
                 {translations[lang].contact || 'Contact Us'}
               </h2>
               <p className="text-xl text-gray-300 mb-8">
-                {translations[lang].contactDesc || 'Connect with us on your favorite platform!'}
+                {translations[lang].contactDesc ||
+                  'Connect with us on your favorite platform!'}
               </p>
               <div className="flex flex-wrap justify-center gap-6">
                 <a
@@ -866,7 +869,6 @@ export default function TradingEALanding({ forcedLang }) {
               </div>
             </div>
           </section>
- 
 
           {/* Footer */}
           <footer className="relative z-10 border-t border-white/10 bg-black/30 backdrop-blur-sm">
@@ -1007,7 +1009,6 @@ function ScrollSpyDropdown({ sections, translations, lang, isVisible }) {
   }
 
   return (
-    
     <div
       ref={dropdownRef}
       className={`z-50 mb-4 w-full transition-all duration-300 ${
@@ -1030,7 +1031,11 @@ function ScrollSpyDropdown({ sections, translations, lang, isVisible }) {
             onClick={() => setOpen((v) => !v)}
             aria-label="Open navigation"
           >
-            <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
+            <ChevronDown
+              className={`w-5 h-5 transition-transform duration-200 ${
+                open ? 'rotate-180' : ''
+              }`}
+            />
             <span className="ml-1">{translations[lang]?.menu || 'Menu'}</span>
           </button>
         </div>
@@ -1066,7 +1071,8 @@ function ScrollSpyDropdown({ sections, translations, lang, isVisible }) {
 
 // --- DownloadCarousel component ---
 function DownloadCarousel({ lang }) {
-  const t = translations[lang]?.downloadCarousel || translations.en.downloadCarousel
+  const t =
+    translations[lang]?.downloadCarousel || translations.en.downloadCarousel
   const [active, setActive] = useState('MCB')
 
   const items = [
@@ -1088,24 +1094,33 @@ function DownloadCarousel({ lang }) {
           </div>
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              <span className="font-bold text-yellow-400">{t.MCB.minInvestment}</span>
+              <span className="font-bold text-yellow-400">
+                {t.MCB.minInvestment}
+              </span>
               <br />
               <span className="font-mono text-yellow-300">
-                {t.MCB.minInvestmentValue} <span className="text-xs text-gray-300">CENT/USD</span>
+                {t.MCB.minInvestmentValue}{' '}
+                <span className="text-xs text-gray-300">CENT/USD</span>
               </span>
             </li>
             <li>
               <span className="font-bold text-yellow-400">{t.MCB.note}</span>
             </li>
             <li>
-              <span className="font-bold text-yellow-400">{t.MCB.lotSetting}</span>
+              <span className="font-bold text-yellow-400">
+                {t.MCB.lotSetting}
+              </span>
               <br />
-              <span className="font-mono text-yellow-300">{t.MCB.lotStart}</span>
+              <span className="font-mono text-yellow-300">
+                {t.MCB.lotStart}
+              </span>
               <br />
               <span className="font-mono text-yellow-300">{t.MCB.lotPlus}</span>
             </li>
             <li>
-              <span className="font-bold text-yellow-400">{t.MCB.lotRelation}</span>
+              <span className="font-bold text-yellow-400">
+                {t.MCB.lotRelation}
+              </span>
               <br />
               {t.MCB.lotRelationDesc}
               <br />
@@ -1117,7 +1132,9 @@ function DownloadCarousel({ lang }) {
               ))}
             </li>
             <li>
-              <span className="font-bold text-yellow-400">{t.MCB.important}</span>
+              <span className="font-bold text-yellow-400">
+                {t.MCB.important}
+              </span>
               <br />
               {t.MCB.importantDesc}
             </li>
@@ -1132,7 +1149,7 @@ function DownloadCarousel({ lang }) {
               View Myfxbook
             </a>
             <a
-              href="https://drive.google.com/file/d/14ibZ1Whc0Bz8ATIDrNMb9c0E2C5cFfNN/view?usp=drive_link"
+              href="https://zippyshare.day/Ekl62zz1UIpNztR/file"
               className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-2xl"
               target="_blank"
               rel="noopener noreferrer"
@@ -1149,9 +1166,7 @@ function DownloadCarousel({ lang }) {
       label: 'Super H',
       content: (
         <div className="bg-black/40 rounded-xl p-6 border border-yellow-400/30 text-lg text-white text-left max-w-xl mx-auto">
-          <div className="text-2xl font-bold text-yellow-300 mb-2">
-            Super H
-          </div>
+          <div className="text-2xl font-bold text-yellow-300 mb-2">Super H</div>
           <div className="flex justify-center mb-4">
             <img
               src="/images/superhdemo.jpg"
@@ -1167,7 +1182,8 @@ function DownloadCarousel({ lang }) {
               </span>
               <br />
               <span className="font-mono text-yellow-300">
-                {t.SUPERH?.minInvestmentValue || '12,000'} <span className="text-xs text-gray-300">CENT/USD</span>
+                {t.SUPERH?.minInvestmentValue || '12,000'}{' '}
+                <span className="text-xs text-gray-300">CENT/USD</span>
               </span>
             </li>
             <li>
@@ -1191,7 +1207,7 @@ function DownloadCarousel({ lang }) {
           </ul>
           <div className="mt-6 flex flex-col items-center gap-4">
             <a
-              href="https://drive.google.com/drive/folders/1jnLAp6a_xnEZ-g56PEqAdVUZPaBKwqNQ?usp=sharing"
+              href="https://zippyshare.day/rrcNCeO0f8eDS10/file"
               className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-2xl"
               target="_blank"
               rel="noopener noreferrer"
@@ -1210,9 +1226,7 @@ function DownloadCarousel({ lang }) {
           <div className="text-2xl font-bold text-yellow-300 mb-2">
             {t.coming.title}
           </div>
-          <div className="text-yellow-400 text-xl mt-4">
-            {t.coming.desc}
-          </div>
+          <div className="text-yellow-400 text-xl mt-4">{t.coming.desc}</div>
         </div>
       )
     }
