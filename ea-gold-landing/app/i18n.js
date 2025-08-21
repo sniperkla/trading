@@ -336,7 +336,8 @@ export const translations = {
     menu: 'เมนู',
     downloadSection: {
       mcbTitle: 'MCB',
-      mcbDesc: 'EA ที่มีความเสถียรและน่าเชื่อถือที่สุดสำหรับกำไรที่สม่ำเสมอ',
+      mcbDesc:
+        'EA ที่มีความเสถียรและน่าเชื่อถือที่สุดสำหรับผลตอบแทนที่สม่ำเสมอ',
       downloadMcb: 'ดาวน์โหลด MCB',
       popular: 'ยอดนิยม', // Added
       superHTitle: 'Super H',
@@ -424,7 +425,8 @@ export const translations = {
     useReferral: 'रेफरल कोड का उपयोग करें:',
     vantageGuide: 'Vantage पंजीकरण गाइड',
     yourReferral: 'आपका रेफरल कोड:',
-    referralNote: '* पंजीकरण करते समय इस कोड को भरना न भूलें, अन्यथा विशेष लाभ नहीं मिलेंगे।',
+    referralNote:
+      '* पंजीकरण करते समय इस कोड को भरना न भूलें, अन्यथा विशेष लाभ नहीं मिलेंगे।',
     copyReferral: 'रेफरल कोड कॉपी करें',
     copied: 'कॉपी हो गया ✅',
     openAccount: 'खाता खोलें',
@@ -869,7 +871,8 @@ export const translations = {
       downloadMcb: 'Скачать MCB',
       popular: 'Популярный', // Added
       superHTitle: 'Super H',
-      superHDesc: 'Высокопроизводительный EA с продвинутой стратегией хеджирования',
+      superHDesc:
+        'Высокопроизводительный EA с продвинутой стратегией хеджирования',
       downloadSuperH: 'Скачать Super H',
       viewPerformance: 'Посмотреть результаты',
       new: 'Новый',
