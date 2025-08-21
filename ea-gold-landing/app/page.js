@@ -780,6 +780,50 @@ export default function TradingEALanding({ forcedLang }) {
               </div>
             </div>
           </section>
+
+          {/* CTA Section */}
+          <section id="download" className="relative z-10 py-20">
+            <div className="container mx-auto px-6 text-center max-w-4xl">
+              <div
+                className={`max-w-4xl mx-auto transform transition-all duration-1000 ${
+                  isVisible.download
+                    ? 'translate-y-0 opacity-100'
+                    : 'translate-y-10 opacity-0'
+                }`}
+              >
+                <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
+                  {translations[lang].startTrading}
+                </h2>
+                <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+                  {translations[lang].join} {translations[lang].freeEA}{' '}
+                  {translations[lang].robot}.{translations[lang].noHiddenFees} -{' '}
+                  {translations[lang].justPureTradingPower}
+                </p>
+                <DownloadCarousel2 lang={lang} />
+                <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400 mt-8">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <span>{translations[lang].instantDownload}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <span>{translations[lang].noRegister}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <span>{translations[lang].support}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <span>{translations[lang].forever}</span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <DownloadCarousel lang={lang} />
+                </div>
+              </div>
+            </div>
+          </section>
           {/* Testimonials Section */}
           <section
             id="testimonials"
@@ -830,50 +874,6 @@ export default function TradingEALanding({ forcedLang }) {
               </div>
             </div>
           </section>
-          {/* CTA Section */}
-          <section id="download" className="relative z-10 py-20">
-            <div className="container mx-auto px-6 text-center max-w-4xl">
-              <div
-                className={`max-w-4xl mx-auto transform transition-all duration-1000 ${
-                  isVisible.download
-                    ? 'translate-y-0 opacity-100'
-                    : 'translate-y-10 opacity-0'
-                }`}
-              >
-                <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
-                  {translations[lang].startTrading}
-                </h2>
-                <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                  {translations[lang].join} {translations[lang].freeEA}{' '}
-                  {translations[lang].robot}.{translations[lang].noHiddenFees} -{' '}
-                  {translations[lang].justPureTradingPower}
-                </p>
-                <DownloadCarousel2 lang={lang} />
-                <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400 mt-8">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
-                    <span>{translations[lang].instantDownload}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
-                    <span>{translations[lang].noRegister}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
-                    <span>{translations[lang].support}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
-                    <span>{translations[lang].forever}</span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <DownloadCarousel lang={lang} />
-                </div>
-              </div>
-            </div>
-          </section>
-
           {/* Footer */}
           <footer className="relative z-10 border-t border-white/10 bg-black/30 backdrop-blur-sm">
             <div className="container mx-auto px-6 py-12 max-w-4xl">

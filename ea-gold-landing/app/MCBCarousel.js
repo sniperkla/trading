@@ -16,7 +16,7 @@ export default function MCBCarousel({ translations, lang, icon }) {
       content: (
         <>
           {/* MCB Bot Instruction */}
-          <div className="mb-6 p-4 rounded-xl border border-yellow-400/40 bg-black/30 text-center text-base md:text-lg text-white">
+          {/* <div className="mb-6 p-4 rounded-xl border border-yellow-400/40 bg-black/30 text-center text-base md:text-lg text-white">
             <div className="font-bold text-yellow-300 text-xl mb-1">
               {translations[lang].botInstructionMCB.name}
             </div>
@@ -37,11 +37,11 @@ export default function MCBCarousel({ translations, lang, icon }) {
               </span>{' '}
               {translations[lang].botInstructionMCB.perDay}
             </div>
-          </div>
+          </div> */}
           {mcbList.map((item, idx) => (
             <div
               key={idx}
-              className="flex items-start gap-3 mb-6 text-lg md:text-xl text-white/90"
+              className="pt-4 flex items-start gap-3 mb-6 text-lg md:text-xl text-white/90"
             >
               <span className="text-green-400 text-2xl select-none">
                 <CheckCircle2Icon className="w-8 h-8" />
