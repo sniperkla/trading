@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import MCBCarousel from './MCBCarousel'
 import translations from './i18n'
 import VideoSlider2 from './VideoSlider2'
+import DownloadCarousel2 from './DownloadCarousel'
 import {
   ChevronDown,
   TrendingUp,
@@ -271,11 +272,11 @@ export default function TradingEALanding({ forcedLang }) {
   const sections = [
     { id: 'features', label: translations[lang].features },
     { id: 'stats', label: translations[lang].performance },
-    { id: 'whychoose', label: translations[lang].reviews },
+    { id: 'testimonials', label: translations[lang].reviews },
     { id: 'download', label: translations[lang].download },
-    { id: 'instruction', label: translations[lang].instruction }
+    { id: 'instruction', label: translations[lang].instruction },
+    { id: 'contact', label: translations[lang].contact }
   ]
-
   return (
     <html lang={lang}>
       <>
@@ -702,7 +703,7 @@ export default function TradingEALanding({ forcedLang }) {
 
           {/* EA MAPA MCB Carousel Section */}
           <section
-            id="whychoose"
+            id=""
             className="relative z-10 py-20 bg-black/30 backdrop-blur-sm"
           >
             <div className="container mx-auto px-6 max-w-6xl">
@@ -847,7 +848,7 @@ export default function TradingEALanding({ forcedLang }) {
                   {translations[lang].robot}.{translations[lang].noHiddenFees} -{' '}
                   {translations[lang].justPureTradingPower}
                 </p>
-                <DownloadCarousel lang={lang} />
+                <DownloadCarousel2 lang={lang} />
                 <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400 mt-8">
                   <div className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-green-400" />
@@ -865,6 +866,9 @@ export default function TradingEALanding({ forcedLang }) {
                     <CheckCircle className="w-4 h-4 text-green-400" />
                     <span>{translations[lang].forever}</span>
                   </div>
+                </div>
+                <div className="p-6">
+                  <DownloadCarousel lang={lang} />
                 </div>
               </div>
             </div>
@@ -1139,7 +1143,7 @@ function DownloadCarousel({ lang }) {
               {t.MCB.importantDesc}
             </li>
           </ul>
-          <div className="mt-6 flex flex-col items-center gap-4">
+          {/* <div className="mt-6 flex flex-col items-center gap-4">
             <a
               href="https://www.myfxbook.com/members/chatcharit/mapa-mcb/11652603"
               className="px-8 py-4 bg-gradient-to-r from-green-400 to-green-600 text-black font-bold rounded-xl hover:from-green-300 hover:to-green-500 transform hover:scale-105 transition-all duration-300 shadow-2xl"
@@ -1156,7 +1160,7 @@ function DownloadCarousel({ lang }) {
             >
               {t.MCB.download}
             </a>
-          </div>
+          </div> */}
         </div>
       )
     },
@@ -1205,7 +1209,7 @@ function DownloadCarousel({ lang }) {
               </span>
             </li>
           </ul>
-          <div className="mt-6 flex flex-col items-center gap-4">
+          {/* <div className="mt-6 flex flex-col items-center gap-4">
             <a
               href="https://zippyshare.day/rrcNCeO0f8eDS10/file"
               className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-2xl"
@@ -1214,7 +1218,7 @@ function DownloadCarousel({ lang }) {
             >
               {t.SUPERH?.download || 'Download SuperH'}
             </a>
-          </div>
+          </div> */}
         </div>
       )
     },

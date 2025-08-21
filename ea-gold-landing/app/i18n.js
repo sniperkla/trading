@@ -162,7 +162,22 @@ export const translations = {
       }
     },
     chatBalloon: 'Chat via Telegram',
-    menu: 'Menu'
+    menu: 'Menu',
+    downloadSection: {
+      mcbTitle: 'MCB',
+      mcbDesc: 'Most stable and reliable EA for consistent profits',
+      downloadMcb: 'Download MCB',
+      popular: 'Popular', // Added
+      superHTitle: 'Super H',
+      superHDesc: 'High-performance EA with advanced hedging strategy',
+      downloadSuperH: 'Download Super H',
+      viewPerformance: 'View Performance',
+      new: 'New',
+      users: 'users',
+      comingSoon: 'Coming Soon',
+      comingSoonDesc: 'New EA strategy under development',
+      stayTuned: 'Stay Tuned'
+    }
   },
   th: {
     meta: {
@@ -318,7 +333,22 @@ export const translations = {
       }
     },
     chatBalloon: 'แชทผ่าน LINE',
-    menu: 'เมนู'
+    menu: 'เมนู',
+    downloadSection: {
+      mcbTitle: 'MCB',
+      mcbDesc: 'EA ที่มีความเสถียรและน่าเชื่อถือที่สุดสำหรับกำไรที่สม่ำเสมอ',
+      downloadMcb: 'ดาวน์โหลด MCB',
+      popular: 'ยอดนิยม', // Added
+      superHTitle: 'Super H',
+      superHDesc: 'EA ประสิทธิภาพสูงด้วยกลยุทธ์การเฮดจ์ขั้นสูง',
+      downloadSuperH: 'ดาวน์โหลด Super H',
+      viewPerformance: 'ดูผลงาน',
+      new: 'ใหม่',
+      users: 'ผู้ใช้',
+      comingSoon: 'เร็วๆ นี้',
+      comingSoonDesc: 'กลยุทธ์ EA ใหม่อยู่ระหว่างการพัฒนา',
+      stayTuned: 'ติดตามต่อไป'
+    }
   },
   hi: {
     meta: {
@@ -381,7 +411,7 @@ export const translations = {
     testi2Name: 'माइक चेन',
     testi2Role: 'निवेश प्रबंधक',
     testi2Text:
-      'मैंने ईए गोल्ड प्रो का 6 महीने से अधिक समय तक उपयोग किया है। लगातार लाभ और उत्कृष्ट जोखिम प्रबंधन।',
+      'मैंने ईए गोल्ड प्रो का 6 महीने से अधिक समय तक उपयोग किया है। लगातार लाभ और उत्कृष्ट जोखिम प्रबंधन。',
     testi3Name: 'एलेक्स रोड्रिगेज',
     testi3Role: 'फॉरेक्स ट्रेडर',
     testi3Text:
@@ -394,8 +424,7 @@ export const translations = {
     useReferral: 'रेफरल कोड का उपयोग करें:',
     vantageGuide: 'Vantage पंजीकरण गाइड',
     yourReferral: 'आपका रेफरल कोड:',
-    referralNote:
-      '* पंजीकरण करते समय इस कोड को भरना न भूलें, अन्यथा विशेष लाभ नहीं मिलेंगे।',
+    referralNote: '* पंजीकरण करते समय इस कोड को भरना न भूलें, अन्यथा विशेष लाभ नहीं मिलेंगे।',
     copyReferral: 'रेफरल कोड कॉपी करें',
     copied: 'कॉपी हो गया ✅',
     openAccount: 'खाता खोलें',
@@ -464,7 +493,7 @@ export const translations = {
         ],
         important: 'महत्वपूर्ण:',
         importantDesc:
-          'लॉट का आकार आपकी वास्तविक पूंजी से मेल खाना चाहिए। अनुशंसित मानों से ऊपर न बढ़ाएं।',
+          'हाथ से सेटिंग्स को आपके वास्तविक पूंजी के साथ मेल खाना चाहिए। अनुशंसित मानों से ऊपर न बढ़ाएं।',
         download: 'डाउनलोड EA MAPA.MCB V1.18N'
       },
       SUPERH: {
@@ -484,7 +513,22 @@ export const translations = {
       }
     },
     chatBalloon: 'टेलीग्राम पर चैट करें',
-    menu: 'मेनू'
+    menu: 'मेनू',
+    downloadSection: {
+      mcbTitle: 'MCB',
+      mcbDesc: 'निरंतर लाभ के लिए सबसे स्थिर और विश्वसनीय EA',
+      downloadMcb: 'MCB डाउनलोड करें',
+      popular: 'लोकप्रिय', // Added
+      superHTitle: 'Super H',
+      superHDesc: 'उन्नत हेजिंग रणनीति के साथ उच्च-प्रदर्शन EA',
+      downloadSuperH: 'Super H डाउनलोड करें',
+      viewPerformance: 'प्रदर्शन देखें',
+      new: 'नया',
+      users: 'उपयोगकर्ता',
+      comingSoon: 'जल्द आ रहा है',
+      comingSoonDesc: 'नई EA रणनीति विकास के अधीन',
+      stayTuned: 'बने रहें'
+    }
   },
   zh: {
     meta: {
@@ -639,7 +683,22 @@ export const translations = {
       }
     },
     chatBalloon: '通过 Telegram 聊天',
-    menu: '菜单'
+    menu: '菜单',
+    downloadSection: {
+      mcbTitle: 'MCB',
+      mcbDesc: '最稳定可靠的EA，持续盈利',
+      downloadMcb: '下载 MCB',
+      popular: '热门', // Added
+      superHTitle: 'Super H',
+      superHDesc: '高性能EA，采用先进对冲策略',
+      downloadSuperH: '下载 Super H',
+      viewPerformance: '查看表现',
+      new: '新品',
+      users: '用户',
+      comingSoon: '即将推出',
+      comingSoonDesc: '新EA策略开发中',
+      stayTuned: '敬请期待'
+    }
   },
   ru: {
     meta: {
@@ -803,7 +862,22 @@ export const translations = {
       }
     },
     chatBalloon: 'Чат в Telegram',
-    menu: 'Меню'
+    menu: 'Меню',
+    downloadSection: {
+      mcbTitle: 'MCB',
+      mcbDesc: 'Самый стабильный и надежный EA для постоянной прибыли',
+      downloadMcb: 'Скачать MCB',
+      popular: 'Популярный', // Added
+      superHTitle: 'Super H',
+      superHDesc: 'Высокопроизводительный EA с продвинутой стратегией хеджирования',
+      downloadSuperH: 'Скачать Super H',
+      viewPerformance: 'Посмотреть результаты',
+      new: 'Новый',
+      users: 'пользователей',
+      comingSoon: 'Скоро',
+      comingSoonDesc: 'Новая стратегия EA в разработке',
+      stayTuned: 'Следите за обновлениями'
+    }
   }
 }
 export const SUPPORTED = ['en', 'th', 'zh', 'hi', 'ru']
