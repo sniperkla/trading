@@ -5,24 +5,24 @@ const videos = [
   {
     youtubeId: 'RY5LmZsIYvA', // Replace with actual YouTube video ID
     poster: '/images/enposter.png',
-    label: 'English Demo',
+    labelKey: 'englishDemo',
     title: 'EA MAPA Trading System - English'
   },
   {
     youtubeId: 'YKzepkZ6F_g', // Replace with actual YouTube video ID
     poster: '/images/thposter.png',
-    label: 'Thai Demo',
+    labelKey: 'thaiDemo',
     title: 'EA MAPA Trading System - Thai'
   },
   {
     youtubeId: 'N3RPQ2JgVFw', // Replace with actual YouTube video ID
     poster: '/images/demoposter.png',
-    label: 'Demo',
+    labelKey: 'demo',
     title: 'EA MAPA Trading System - Demo'
   }
 ]
 
-export default function VideoSlider2() {
+export default function VideoSlider2({ lang = 'en', translations = {} }) {
   // Determine initial video index based on browser language
   let initialIdx = 0
   if (typeof window !== 'undefined') {
@@ -71,12 +71,12 @@ export default function VideoSlider2() {
           <div className="rounded-3xl overflow-hidden shadow-2xl border border-yellow-400/10 bg-gradient-to-br from-slate-800/60 to-slate-900/60">
             <img
               src={videos[prevIdx].poster}
-              alt={videos[prevIdx].label}
+              alt={translations[lang]?.[videos[prevIdx].labelKey] || videos[prevIdx].labelKey}
               className="w-full aspect-video object-cover"
               style={{ minHeight: 200 }}
             />
             <div className="p-3 text-center text-yellow-300 text-base font-semibold">
-              {videos[prevIdx].label}
+              {translations[lang]?.[videos[prevIdx].labelKey] || videos[prevIdx].labelKey}
             </div>
           </div>
         </div>
@@ -128,14 +128,14 @@ export default function VideoSlider2() {
             <button
               onClick={prev}
               className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-yellow-400 rounded-full p-3 transition-all duration-300 hover:scale-110 border border-yellow-400/40 z-30"
-              aria-label="Previous video"
+              aria-label={translations[lang]?.previousVideo || "Previous video"}
             >
               <ChevronLeft className="w-7 h-7" />
             </button>
             <button
               onClick={next}
               className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-yellow-400 rounded-full p-3 transition-all duration-300 hover:scale-110 border border-yellow-400/40 z-30"
-              aria-label="Next video"
+              aria-label={translations[lang]?.nextVideo || "Next video"}
             >
               <ChevronRight className="w-7 h-7" />
             </button>
@@ -151,12 +151,12 @@ export default function VideoSlider2() {
           <div className="rounded-3xl overflow-hidden shadow-2xl border border-yellow-400/10 bg-gradient-to-br from-slate-800/60 to-slate-900/60">
             <img
               src={videos[nextIdx].poster}
-              alt={videos[nextIdx].label}
+              alt={translations[lang]?.[videos[nextIdx].labelKey] || videos[nextIdx].labelKey}
               className="w-full aspect-video object-cover"
               style={{ minHeight: 200 }}
             />
             <div className="p-3 text-center text-yellow-300 text-base font-semibold">
-              {videos[nextIdx].label}
+              {translations[lang]?.[videos[nextIdx].labelKey] || videos[nextIdx].labelKey}
             </div>
           </div>
         </div>

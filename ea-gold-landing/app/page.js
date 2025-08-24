@@ -680,7 +680,7 @@ export default function TradingEALanding({ forcedLang }) {
         {/* Video Demo Section - Separate from Hero */}
         <section id="video-demo" className="relative z-10 py-4">
           <div className="container mx-auto px-6 flex flex-col items-center max-w-5xl">
-            <VideoSlider2 />
+            <VideoSlider2 lang={lang} translations={translations} />
           </div>
         </section>
 

@@ -19,7 +19,7 @@ const images = [
 	},
 ]
 
-export default function ImageSlider() {
+export default function ImageSlider({ lang = 'en', translations = {} }) {
 	const [current, setCurrent] = React.useState(0)
 	const [animating, setAnimating] = React.useState(false)
 	const [direction, setDirection] = React.useState(1)
@@ -62,7 +62,7 @@ export default function ImageSlider() {
 			<button
 				onClick={handlePrev}
 				className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-black rounded-full w-10 h-10 flex items-center justify-center text-2xl font-bold shadow-lg z-30"
-				aria-label="ก่อนหน้า"
+				aria-label={translations[lang]?.previousImage || "Previous image"}
 				style={{ cursor: 'pointer' }}
 			>
 				&#8592;
@@ -70,7 +70,7 @@ export default function ImageSlider() {
 			<button
 				onClick={handleNext}
 				className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-black rounded-full w-10 h-10 flex items-center justify-center text-2xl font-bold shadow-lg z-30"
-				aria-label="ถัดไป"
+				aria-label={translations[lang]?.nextImage || "Next image"}
 				style={{ cursor: 'pointer' }}
 			>
 				&#8594;
@@ -134,8 +134,8 @@ export default function ImageSlider() {
 							margin: 0,
 						}}
 						tabIndex={offset === 0 ? 0 : -1}
-						aria-label="ดูภาพเต็มขนาด"
-						title="ดูภาพเต็มขนาด"
+						aria-label={translations[lang]?.viewFullSize || "View full size"}
+						title={translations[lang]?.viewFullSize || "View full size"}
 					>
 						<img
 							src={images[idx].src}
