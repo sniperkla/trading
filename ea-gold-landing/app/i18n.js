@@ -1,5 +1,12 @@
 export const translations = {
   en: {
+  step2Note: 'Please see Step 1 for setup instructions before opening your account. You must use the referral code to be eligible for the bot.',
+  registerAccount: 'Register Account',
+  registerDesc: 'Create your Vantage trading account with our referral code',
+  viewGuide: 'View Setup Guide',
+  viewGuideDesc: 'Follow our detailed setup instructions',
+  getSupport: 'Activate Bot',
+  getSupportDesc: 'Send your account number via the channels below after KYC verification to activate the bot.',
     meta: {
       title: 'EA MAPA — Free Gold Trading AI Robot | MT5 Auto Forex EA',
       description:
@@ -177,9 +184,26 @@ export const translations = {
       comingSoon: 'Coming Soon',
       comingSoonDesc: 'New EA strategy under development',
       stayTuned: 'Stay Tuned'
-    }
+    },
+    supportSection: {
+      title: 'Support & Verification',
+      important: 'Important:',
+      instruction:
+        'After you have successfully completed KYC and opened your account, please send your account number to unlock the EA bot.',
+      sendVia: 'You can send your account number via email to',
+      orContact: 'or contact us through our Telegram bot below.',
+      telegramBtn: 'Contact Telegram Bot'
+  },
+  tapToFullscreen: 'Tap the PDF to view fullscreen',
   },
   th: {
+  step2Note: 'โปรดดูขั้นตอนที่ 1 สำหรับคำแนะนำการตั้งค่าก่อนเปิดบัญชี และต้องใช้รหัสแนะนำนี้เพื่อรับสิทธิ์ใช้งานบอท',
+  registerAccount: 'เปิดบัญชี',
+  registerDesc: 'สร้างบัญชี Vantage ของคุณด้วยรหัสแนะนำของเรา',
+  viewGuide: 'ดูคู่มือการตั้งค่า',
+  viewGuideDesc: 'ทำตามคำแนะนำการตั้งค่าอย่างละเอียด',
+  getSupport: 'เปิดใช้งานบอท',
+  getSupportDesc: 'ส่งเลขบัญชีผ่านช่องทางด้านล่าง หลังจากยืนยันตัวตน​ KYC เพื่อเปิดใช้งานบอท',
     meta: {
       title: 'EA MAPA — บอทเทรดทองอัตโนมัติฟรี | MT5',
       description:
@@ -349,9 +373,26 @@ export const translations = {
       comingSoon: 'เร็วๆ นี้',
       comingSoonDesc: 'กลยุทธ์ EA ใหม่อยู่ระหว่างการพัฒนา',
       stayTuned: 'ติดตามต่อไป'
-    }
+    },
+    supportSection: {
+      title: 'ฝ่ายสนับสนุนและยืนยันตัวตน',
+      important: 'สำคัญ:',
+      instruction:
+        'หลังจากที่คุณยืนยันตัวตน (KYC) และเปิดบัญชีเรียบร้อยแล้ว กรุณาส่งเลขบัญชีของคุณเพื่อปลดล็อกบอท EA',
+      sendVia: 'คุณสามารถส่งเลขบัญชีผ่านอีเมลที่',
+      orContact: 'หรือแจ้งผ่าน Line OA ด้านล่าง',
+      telegramBtn: 'ติดต่อ LineOA'
+  },
+  tapToFullscreen: 'แตะที่ PDF เพื่อขยายเต็มหน้าจอ',
   },
   hi: {
+  step2Note: 'कृपया खाता खोलने से पहले सेटअप निर्देशों के लिए चरण 1 देखें। बोट के लिए पात्र होने के लिए आपको रेफरल कोड का उपयोग करना आवश्यक है।',
+  registerAccount: 'खाता पंजीकरण करें',
+  registerDesc: 'हमारे रेफरल कोड के साथ अपना Vantage ट्रेडिंग खाता बनाएं',
+  viewGuide: 'सेटअप गाइड देखें',
+  viewGuideDesc: 'हमारे विस्तृत सेटअप निर्देशों का पालन करें',
+  getSupport: 'बोट सक्रिय करें',
+  getSupportDesc: 'KYC सत्यापन के बाद बोट सक्रिय करने के लिए नीचे दिए गए चैनलों के माध्यम से अपना खाता नंबर भेजें।',
     meta: {
       title:
         'EA MAPA निःशुल्क गोल्ड ट्रेडिंग एआई रोबोट | MT5 के लिए स्वचालित Forex EA',
@@ -530,9 +571,26 @@ export const translations = {
       comingSoon: 'जल्द आ रहा है',
       comingSoonDesc: 'नई EA रणनीति विकास के अधीन',
       stayTuned: 'बने रहें'
-    }
+    },
+    supportSection: {
+      title: 'सपोर्ट और सत्यापन',
+      important: 'महत्वपूर्ण:',
+      instruction:
+        'KYC और खाता खोलने के बाद कृपया अपना खाता नंबर भेजें ताकि EA बोट अनलॉक हो सके।',
+      sendVia: 'आप अपना खाता नंबर ईमेल द्वारा भेज सकते हैं',
+      orContact: 'या नीचे दिए गए हमारे Telegram बोट से संपर्क करें।',
+      telegramBtn: 'Telegram Bot से संपर्क करें'
+  },
+  tapToFullscreen: 'PDF को फुलस्क्रीन में देखने के लिए टैप करें',
   },
   zh: {
+  step2Note: '开户前请参阅第1步的设置说明。必须使用推荐码才能获得机器人资格。',
+  registerAccount: '注册账户',
+  registerDesc: '使用我们的推荐码创建您的 Vantage 交易账户',
+  viewGuide: '查看设置指南',
+  viewGuideDesc: '请按照我们的详细设置说明操作',
+  getSupport: '激活机器人',
+  getSupportDesc: 'KYC认证后，请通过下方渠道发送您的账号以激活机器人。',
     meta: {
       title: 'EA MAPA — 免费黄金交易AI机器人 | MT5 自动EA',
       description:
@@ -700,15 +758,32 @@ export const translations = {
       comingSoon: '即将推出',
       comingSoonDesc: '新EA策略开发中',
       stayTuned: '敬请期待'
-    }
+    },
+    supportSection: {
+      title: '支持与验证',
+      important: '重要提示：',
+      instruction: '完成KYC和开户后，请发送您的账号以解锁EA机器人。',
+      sendVia: '您可以通过电子邮件发送账号至',
+      orContact: '或通过下方Telegram机器人联系我们。',
+      telegramBtn: '联系 Telegram 机器人'
+  },
+  tapToFullscreen: '点击 PDF 以全屏查看',
   },
   ru: {
+  step2Note: 'Пожалуйста, ознакомьтесь с инструкцией на шаге 1 перед открытием счета. Для получения доступа к боту необходимо использовать реферальный код.',
+  registerAccount: 'Открыть счет',
+  registerDesc: 'Создайте торговый счет Vantage с нашим реферальным кодом',
+  viewGuide: 'Посмотреть руководство',
+  viewGuideDesc: 'Следуйте нашим подробным инструкциям по настройке',
+  getSupport: 'Активировать бота',
+  getSupportDesc: 'После прохождения KYC отправьте номер счета через каналы ниже для активации бота.',
     meta: {
       title: 'EA MAPA — Бесплатный AI-робот для торговли золотом | MT5 EA',
       description:
         'EA MAPA — бесплатный продвинутый торговый робот для золота (XAUUSD) и Форекс. Загрузите для MT5.',
       keywords: 'EA MAPA, бесплатный EA, MT5, XAUUSD, автоторговля'
     },
+    tapToFullscreen: 'Нажмите на PDF для просмотра на весь экран',
     features: 'Функции',
     performance: 'Производительность',
     reviews: 'Отзывы',
@@ -880,7 +955,17 @@ export const translations = {
       comingSoon: 'Скоро',
       comingSoonDesc: 'Новая стратегия EA в разработке',
       stayTuned: 'Следите за обновлениями'
-    }
+    },
+    supportSection: {
+      title: 'Поддержка и верификация',
+      important: 'Важно:',
+      instruction:
+        'После успешного прохождения KYC и открытия счета, пожалуйста, отправьте номер счета для разблокировки бота.',
+      sendVia: 'Вы можете отправить номер счета по электронной почте на',
+      orContact: 'или связаться с нашим Telegram-ботом ниже.',
+      telegramBtn: 'Связаться с Telegram-ботом'
+  },
+  tapToFullscreen: 'Нажмите на PDF для просмотра на весь экран',
   }
 }
 export const SUPPORTED = ['en', 'th', 'zh', 'hi', 'ru']
