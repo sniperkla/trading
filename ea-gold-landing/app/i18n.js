@@ -843,6 +843,31 @@ export const translations = {
   viewGuideDesc: 'Следуйте нашим подробным инструкциям по настройке',
   getSupport: 'Активировать бота',
   getSupportDesc: 'После прохождения KYC отправьте номер счета через каналы ниже для активации бота.',
+  botInstructionTitle: 'Инструкция по использованию ботов',
+  botInstructionMCB: {
+    name: 'MCB',
+    desc1: 'Безопасный инвестиционный бюджет',
+    amount: '300,000',
+    lot: '0.01',
+    desc2: 'выходной лот',
+    profit: 'Средняя доходность',
+    percent: '0.3%',
+    perDay: 'в день'
+  },
+  botInstructionSupert: {
+    name: 'SUPER H',
+    desc1: 'Безопасная сумма инвестиций',
+    amount: '12,000',
+    desc2: 'открыть лот',
+    lot: '0.01',
+    profit: 'Средняя прибыль',
+    percent: '0.3%',
+    perDay: 'в день'
+  },
+  botInstructionRuntime: { name: 'RUNTIME' },
+  botInstructionSupersw: { name: 'SUPER SW' },
+  botInstructionComingSoon: 'Скоро будет',
+  instruction: 'План инвестиций',
     meta: {
       title: 'EA MAPA — Бесплатный AI-робот для торговли золотом | MT5 EA',
       description:
@@ -1055,7 +1080,6 @@ export const translations = {
   openPDFTab: '在新标签页中打开 PDF',
   pageOf: '/',
   },
-  ru: {
   step2Note: 'Пожалуйста, ознакомьтесь с инструкцией на шаге 1 перед открытием счета. Для получения доступа к боту необходимо использовать реферальный код.',
   registerAccount: 'Открыть счет',
   registerDesc: 'Создайте торговый счет Vantage с нашим реферальным кодом',
@@ -1091,7 +1115,7 @@ export const translations = {
     fullscreen: 'На весь экран',
     useZoomControls: 'Используйте элементы управления масштабом для настройки размера PDF',
     openPDFTab: 'Открыть PDF в новой вкладке',
-    pageOf: 'из',
+    pageOf: 'из'
   }
 }
 export const SUPPORTED = ['en', 'th', 'zh', 'hi', 'ru']
