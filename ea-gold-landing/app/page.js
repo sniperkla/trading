@@ -5,7 +5,7 @@ import MCBCarousel from './MCBCarousel'
 import translations from './i18n'
 import VideoSlider2 from './VideoSlider2'
 import DownloadCarousel2 from './DownloadCarousel'
-import PDFViewer from './PDFViewer'
+import PDFViewer from './PDFViewerWrapper'
 import {
   ChevronDown,
   TrendingUp,
@@ -293,7 +293,7 @@ export default function TradingEALanding({ forcedLang }) {
   // --- ContactSidebar component ---
 
   return (
-    <html lang={lang}>
+    <>
       {/* <ContactSidebar lang={lang} translations={translations} /> */}
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
         {/* Animated SVG Background */}
@@ -1196,7 +1196,7 @@ export default function TradingEALanding({ forcedLang }) {
           </div>
         </footer>
       </div>
-    </html>
+    </>
   )
 }
 // --- YouTubeWithUnmute component ---
