@@ -1,11 +1,12 @@
 'use client'
 
 import React, { useState, useEffect, useRef } from 'react'
+import { useRouter } from 'next/navigation'
 import MCBCarousel from './MCBCarousel'
-import translations from './i18n'
+import { translations } from './i18n'
 import VideoSlider2 from './VideoSlider2'
 import DownloadCarousel2 from './DownloadCarousel'
-import PDFViewer from './PDFViewerWrapper'
+import RegistrationPopup from './RegistrationPopup'
 import {
   ChevronDown,
   TrendingUp,
@@ -69,11 +70,11 @@ function useVisibleSection() {
 }
 
 export default function TradingEALanding({ forcedLang }) {
+  const router = useRouter()
   const lang = forcedLang || useLang()
 
-  const [showPDFGuide, setShowPDFGuide] = useState(false)
+  const [showRegistrationPopup, setShowRegistrationPopup] = useState(false)
   const [copied, setCopied] = useState(false)
-  const [fullscreenPDF, setFullscreenPDF] = useState(false) // <-- add this
   const referralCode = 'BsFPM765'
 
   // Email copy state and handler for contact section
@@ -220,8 +221,19 @@ export default function TradingEALanding({ forcedLang }) {
     setTimeout(() => setCopied(false), 2000) // รีเซ็ตหลัง 2 วิ
   }
 
-  // Use different PDF for Thai language
-  const publicPDFUrl = lang === 'th' ? '/pdfs/th.pdf' : '/pdfs/en.pdf'
+  // Handle PDF Guide button click
+  const handleViewSetupGuide = () => {
+    setShowRegistrationPopup(true)
+  }
+
+  const handleRegistrationPopupClose = () => {
+    setShowRegistrationPopup(false)
+  }
+
+  const handleContinueToGuide = () => {
+    setShowRegistrationPopup(false)
+    router.push(`/pdf-guide?lang=${lang}`)
+  }
 
   const isVisible = useVisibleSection() // ใช้ custom hook
 
@@ -451,171 +463,14 @@ export default function TradingEALanding({ forcedLang }) {
           isVisible={isVisible}
         />
 
-        {showPDFGuide && (
-          <>
-            {/* Improved PDF Modal */}
-            <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center px-2 py-4 sm:p-0">
-              <div className="relative w-full max-w-2xl md:max-w-3xl bg-slate-900 rounded-2xl shadow-2xl border border-white/10 flex flex-col max-h-[95vh] mx-auto overflow-hidden">
-                {/* Referral Note Above PDF */}
-
-                {/* Header */}
-                <div className="flex items-center justify-between p-4 border-b border-white/10 bg-slate-900/90 sticky top-0 z-10">
-                  <div className="flex flex-col gap-1">
-                    <h3 className="text-xl sm:text-2xl font-bold text-yellow-400">
-                      {translations[lang].vantageGuide}
-                    </h3>
-                    <div className="flex items-center gap-2 text-sm text-yellow-300 font-semibold">
-                      {translations[lang].yourReferral}
-                      <span className="bg-yellow-400 text-black font-mono px-2 py-1 rounded">
-                        {referralCode}
-                      </span>
-
-                      <button
-                        onClick={handleCopyReferral}
-                        className="ml-2 px-2 py-1 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded transition-all text-xs"
-                      >
-                        {copied
-                          ? translations[lang].copied
-                          : translations[lang].copyReferral}
-                      </button>
-                    </div>
-                    {/* Removed duplicate referral note above the code */}
-                  </div>
-                  <button
-                    onClick={() => setShowPDFGuide(false)}
-                    className="p-2 sm:p-3 bg-black/30 hover:bg-yellow-400/20 rounded-full transition-colors focus:outline-none"
-                    aria-label="Close PDF Guide"
-                  >
-                    <X className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
-                  </button>
-                </div>
-                <div className="w-full text-xs text-yellow-200 text-center font-normal p-2 bg-black/30">
-                  {translations[lang].referralNote}
-                </div>
-                {/* PDF Viewer */}
-                <div className="flex-1 w-full overflow-auto flex flex-col items-center justify-center bg-slate-900">
-                  <PDFViewer
-                    pdfUrl={publicPDFUrl}
-                    showPDF={true}
-                    onClose={() => setShowPDFGuide(false)}
-                    lang={lang}
-                    translations={translations}
-                  />
-                </div>
-                {/* Actions Row (Desktop) */}
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 p-4 border-t border-white/10 bg-slate-900/90">
-                  <a
-                    href="https://vigco.co/uyYRJz"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full sm:w-full px-6 py-4 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold rounded-2xl shadow-lg hover:from-blue-400 hover:to-blue-600 hover:scale-105 transition-all duration-300 text-lg text-center mb-2 sm:mb-0 border-2 border-blue-400/60 focus:outline-none focus:ring-4 focus:ring-blue-300"
-                    style={{ fontSize: '1.35rem', letterSpacing: '0.02em' }}
-                  >
-                    {translations[lang].openAccount}
-                  </a>
-                </div>
-                {/* Support Section */}
-                <div className="p-4 border-t border-white/10 bg-slate-900/95">
-                  <div className="flex flex-col sm:flex-row items-center gap-3 mb-2">
-                    <Mail className="w-7 h-7 text-yellow-300" />
-                    <span className="font-bold text-yellow-300 text-md">
-                      {translations[lang].supportSection.title}
-                    </span>
-                  </div>
-                  <p className="text-gray-200 text-xs mb-2">
-                    <span className="font-semibold text-yellow-200">
-                      {translations[lang].supportSection.important}
-                    </span>{' '}
-                    {translations[lang].supportSection.instruction}
-                  </p>
-                  <p className="text-gray-200 text-xs mb-2">
-                    {translations[lang].supportSection.sendVia}{' '}
-                    <a
-                      href="mailto:support@eamapa.com"
-                      className="text-yellow-400 underline"
-                    >
-                      support@eamapa.com
-                    </a>{' '}
-                    {translations[lang].supportSection.orContact}
-                  </p>
-                  <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-end gap-2 sm:gap-4 w-full sm:w-auto mt-2">
-                    {lang === 'th' ? (
-                      <a
-                        href="https://lin.ee/Vv8zh6d5"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl transition-all duration-300 shadow"
-                      >
-                        <MessageCircle className="w-6 h-6" />
-                        ติดต่อ LINE OA
-                      </a>
-                    ) : (
-                      <a
-                        href="https://t.me/mapa_trading_bot"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500 hover:bg-cyan-600 text-white font-bold rounded-xl transition-all duration-300 shadow"
-                      >
-                        <Send className="w-6 h-6" />
-                        {translations[lang].supportSection.telegramBtn}
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Fullscreen PDF for mobile */}
-            {fullscreenPDF && (
-              <div className="fixed inset-0 z-[999] bg-black flex flex-col">
-                <div className="flex justify-end p-2">
-                  <button
-                    onClick={() => setFullscreenPDF(false)}
-                    className="p-2 bg-black/60 rounded-full hover:bg-yellow-400/20 transition"
-                  >
-                    <X className="w-8 h-8 text-white" />
-                  </button>
-                </div>
-                <iframe
-                  src={`https://docs.google.com/gview?url=${encodeURIComponent(
-                    publicPDFUrl
-                  )}&embedded=true`}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 'none', flex: 1, minHeight: '80vh' }}
-                  title="PDF Fullscreen"
-                  className="w-full h-full"
-                />
-                {/* Support section with responsive text size */}
-                <div className="bg-black/80 px-2 py-1 text-center flex flex-col items-center gap-1 text-xs sm:text-sm">
-                  <span className="font-semibold">
-                    {translations[lang].supportSection.title}
-                  </span>
-                  <span>
-                    <a
-                      href="mailto:support@eamapa.com"
-                      className="underline text-yellow-300"
-                    >
-                      support@eamapa.com
-                    </a>
-                    {' · '}
-                    <a
-                      href={
-                        lang === 'th'
-                          ? 'https://lin.ee/Vv8zh6d5'
-                          : 'https://t.me/mapa_trading_bot'
-                      }
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline text-yellow-300"
-                    >
-                      {lang === 'th' ? 'LINE OA' : 'Telegram'}
-                    </a>
-                  </span>
-                </div>
-              </div>
-            )}
-          </>
-        )}
+        {/* Registration Popup */}
+        <RegistrationPopup
+          isOpen={showRegistrationPopup}
+          onClose={handleRegistrationPopupClose}
+          onContinue={handleContinueToGuide}
+          lang={lang}
+          translations={translations}
+        />
 
         {/* Hero Section */}
         {/* Hero Section */}
@@ -745,7 +600,7 @@ export default function TradingEALanding({ forcedLang }) {
                       </p>
                       <div className="mt-auto">
                         <button
-                          onClick={() => setShowPDFGuide(true)}
+                          onClick={handleViewSetupGuide}
                           className="inline-flex items-center gap-2 px-6 py-3 bg-black/60 border-2 border-yellow-400 text-yellow-400 font-bold rounded-xl hover:bg-yellow-400 hover:text-black hover:scale-105 transition-all duration-300"
                         >
                           <FileText className="w-5 h-5" />
@@ -1108,9 +963,9 @@ export default function TradingEALanding({ forcedLang }) {
                   <span>{translations[lang].forever}</span>
                 </div>
               </div>
-              <div className="p-6">
+              {/* <div className="p-6">
                 <DownloadCarousel lang={lang} />
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
@@ -1360,187 +1215,187 @@ function ScrollSpyDropdown({ sections, translations, lang, isVisible }) {
 }
 
 // --- DownloadCarousel component ---
-function DownloadCarousel({ lang }) {
-  const t =
-    translations[lang]?.downloadCarousel || translations.en.downloadCarousel
-  const [active, setActive] = useState('MCB')
+// function DownloadCarousel({ lang }) {
+//   const t =
+//     translations[lang]?.downloadCarousel || translations.en.downloadCarousel
+//   const [active, setActive] = useState('MCB')
 
-  const items = [
-    {
-      key: 'MCB',
-      label: t.MCB.label,
-      content: (
-        <div className="bg-black/40 rounded-xl p-6 border border-yellow-400/30 text-lg text-white text-left max-w-xl mx-auto">
-          <div className="text-2xl font-bold text-yellow-300 mb-2">
-            {t.MCB.title}
-          </div>
-          <div className="flex justify-center mb-4">
-            <img
-              src="/images/mcbdemo.jpg"
-              alt="MCB Demo"
-              className="rounded-xl shadow-lg max-h-64 object-contain cursor-pointer transition hover:scale-105"
-              onClick={() => window.open('/images/mcbdemo.jpg', '_blank')}
-            />
-          </div>
-          <ul className="list-disc pl-5 space-y-2">
-            <li>
-              <span className="font-bold text-yellow-400">
-                {t.MCB.minInvestment}
-              </span>
-              <br />
-              <span className="font-mono text-yellow-300">
-                {t.MCB.minInvestmentValue}{' '}
-                <span className="text-xs text-gray-300">CENT/USD</span>
-              </span>
-            </li>
-            <li>
-              <span className="font-bold text-yellow-400">{t.MCB.note}</span>
-            </li>
-            <li>
-              <span className="font-bold text-yellow-400">
-                {t.MCB.lotSetting}
-              </span>
-              <br />
-              <span className="font-mono text-yellow-300">
-                {t.MCB.lotStart}
-              </span>
-              <br />
-              <span className="font-mono text-yellow-300">{t.MCB.lotPlus}</span>
-            </li>
-            <li>
-              <span className="font-bold text-yellow-400">
-                {t.MCB.lotRelation}
-              </span>
-              <br />
-              {t.MCB.lotRelationDesc}
-              <br />
-              {t.MCB.lotExamples.map((ex, i) => (
-                <span key={i}>
-                  {ex}
-                  <br />
-                </span>
-              ))}
-            </li>
-            <li>
-              <span className="font-bold text-yellow-400">
-                {t.MCB.important}
-              </span>
-              <br />
-              {t.MCB.importantDesc}
-            </li>
-          </ul>
-          {/* <div className="mt-6 flex flex-col items-center gap-4">
-            <a
-              href="https://www.myfxbook.com/members/chatcharit/mapa-mcb/11652603"
-              className="px-8 py-4 bg-gradient-to-r from-green-400 to-green-600 text-black font-bold rounded-xl hover:from-green-300 hover:to-green-500 transform hover:scale-105 transition-all duration-300 shadow-2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View Myfxbook
-            </a>
-            <a
-              href="https://zippyshare.day/Ekl62zz1UIpNztR/file"
-              className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t.MCB.download}
-            </a>
-          </div> */}
-        </div>
-      )
-    },
-    // --- New item for SuperH ---
-    {
-      key: 'SUPER H',
-      label: 'Super H',
-      content: (
-        <div className="bg-black/40 rounded-xl p-6 border border-yellow-400/30 text-lg text-white text-left max-w-xl mx-auto">
-          <div className="text-2xl font-bold text-yellow-300 mb-2">Super H</div>
-          <div className="flex justify-center mb-4">
-            <img
-              src="/images/superhdemo.jpg"
-              alt="SuperH Demo"
-              className="rounded-xl shadow-lg max-h-64 object-contain cursor-pointer transition hover:scale-105"
-              onClick={() => window.open('/images/superhdemo.jpg', '_blank')}
-            />
-          </div>
-          <ul className="list-disc pl-5 space-y-2">
-            <li>
-              <span className="font-bold text-yellow-400">
-                {t.SUPERH?.minInvestment || 'งบทุนขั้นต่ำ:'}
-              </span>
-              <br />
-              <span className="font-mono text-yellow-300">
-                {t.SUPERH?.minInvestmentValue || '12,000'}{' '}
-                <span className="text-xs text-gray-300">CENT/USD</span>
-              </span>
-            </li>
-            <li>
-              <span className="font-bold text-yellow-400">
-                {t.SUPERH?.lot || 'ล๊อทขั้นต่ำ:'}
-              </span>
-              <br />
-              <span className="font-mono text-yellow-300">
-                {t.SUPERH?.lotValue || '0.01'}
-              </span>
-            </li>
-            <li>
-              <span className="font-bold text-yellow-400">
-                {t.SUPERH?.profit || 'ผลตอบแทนเฉลี่ย:'}
-              </span>
-              <br />
-              <span className="font-mono text-green-400">
-                {t.SUPERH?.profitValue || '0.3%'}
-              </span>
-            </li>
-          </ul>
-          {/* <div className="mt-6 flex flex-col items-center gap-4">
-            <a
-              href="https://zippyshare.day/rrcNCeO0f8eDS10/file"
-              className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t.SUPERH?.download || 'Download SuperH'}
-            </a>
-          </div> */}
-        </div>
-      )
-    },
-    {
-      key: 'COMING',
-      label: t.coming.label,
-      content: (
-        <div className="bg-black/40 rounded-xl p-6 border border-yellow-400/30 text-lg text-white text-center">
-          <div className="text-2xl font-bold text-yellow-300 mb-2">
-            {t.coming.title}
-          </div>
-          <div className="text-yellow-400 text-xl mt-4">{t.coming.desc}</div>
-        </div>
-      )
-    }
-  ]
-  return (
-    <div>
-      <div className="flex justify-center gap-4 mb-8 flex-wrap">
-        {items.map((item) => (
-          <button
-            key={item.key}
-            onClick={() => setActive(item.key)}
-            className={`px-6 py-2 rounded-full font-bold border-2 transition-all duration-200 text-lg focus:outline-none
-              ${
-                active === item.key
-                  ? 'bg-yellow-400 text-black border-yellow-400 shadow-lg scale-105'
-                  : 'bg-black/40 text-yellow-300 border-yellow-400/40 hover:bg-yellow-400/20 hover:text-yellow-400'
-              }
-            `}
-          >
-            {item.label}
-          </button>
-        ))}
-      </div>
-      <div>{items.find((i) => i.key === active).content}</div>
-    </div>
-  )
-}
+//   const items = [
+//     {
+//       key: 'MCB',
+//       label: t.MCB.label,
+//       content: (
+//         <div className="bg-black/40 rounded-xl p-6 border border-yellow-400/30 text-lg text-white text-left max-w-xl mx-auto">
+//           <div className="text-2xl font-bold text-yellow-300 mb-2">
+//             {t.MCB.title}
+//           </div>
+//           <div className="flex justify-center mb-4">
+//             <img
+//               src="/images/mcbdemo.jpg"
+//               alt="MCB Demo"
+//               className="rounded-xl shadow-lg max-h-64 object-contain cursor-pointer transition hover:scale-105"
+//               onClick={() => window.open('/images/mcbdemo.jpg', '_blank')}
+//             />
+//           </div>
+//           <ul className="list-disc pl-5 space-y-2">
+//             <li>
+//               <span className="font-bold text-yellow-400">
+//                 {t.MCB.minInvestment}
+//               </span>
+//               <br />
+//               <span className="font-mono text-yellow-300">
+//                 {t.MCB.minInvestmentValue}{' '}
+//                 <span className="text-xs text-gray-300">CENT/USD</span>
+//               </span>
+//             </li>
+//             <li>
+//               <span className="font-bold text-yellow-400">{t.MCB.note}</span>
+//             </li>
+//             <li>
+//               <span className="font-bold text-yellow-400">
+//                 {t.MCB.lotSetting}
+//               </span>
+//               <br />
+//               <span className="font-mono text-yellow-300">
+//                 {t.MCB.lotStart}
+//               </span>
+//               <br />
+//               <span className="font-mono text-yellow-300">{t.MCB.lotPlus}</span>
+//             </li>
+//             <li>
+//               <span className="font-bold text-yellow-400">
+//                 {t.MCB.lotRelation}
+//               </span>
+//               <br />
+//               {t.MCB.lotRelationDesc}
+//               <br />
+//               {t.MCB.lotExamples.map((ex, i) => (
+//                 <span key={i}>
+//                   {ex}
+//                   <br />
+//                 </span>
+//               ))}
+//             </li>
+//             <li>
+//               <span className="font-bold text-yellow-400">
+//                 {t.MCB.important}
+//               </span>
+//               <br />
+//               {t.MCB.importantDesc}
+//             </li>
+//           </ul>
+//           {/* <div className="mt-6 flex flex-col items-center gap-4">
+//             <a
+//               href="https://www.myfxbook.com/members/chatcharit/mapa-mcb/11652603"
+//               className="px-8 py-4 bg-gradient-to-r from-green-400 to-green-600 text-black font-bold rounded-xl hover:from-green-300 hover:to-green-500 transform hover:scale-105 transition-all duration-300 shadow-2xl"
+//               target="_blank"
+//               rel="noopener noreferrer"
+//             >
+//               View Myfxbook
+//             </a>
+//             <a
+//               href="https://zippyshare.day/Ekl62zz1UIpNztR/file"
+//               className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-2xl"
+//               target="_blank"
+//               rel="noopener noreferrer"
+//             >
+//               {t.MCB.download}
+//             </a>
+//           </div> */}
+//         </div>
+//       )
+//     },
+//     // --- New item for SuperH ---
+//     {
+//       key: 'SUPER H',
+//       label: 'Super H',
+//       content: (
+//         <div className="bg-black/40 rounded-xl p-6 border border-yellow-400/30 text-lg text-white text-left max-w-xl mx-auto">
+//           <div className="text-2xl font-bold text-yellow-300 mb-2">Super H</div>
+//           <div className="flex justify-center mb-4">
+//             <img
+//               src="/images/superhdemo.jpg"
+//               alt="SuperH Demo"
+//               className="rounded-xl shadow-lg max-h-64 object-contain cursor-pointer transition hover:scale-105"
+//               onClick={() => window.open('/images/superhdemo.jpg', '_blank')}
+//             />
+//           </div>
+//           <ul className="list-disc pl-5 space-y-2">
+//             <li>
+//               <span className="font-bold text-yellow-400">
+//                 {t.SUPERH?.minInvestment || 'งบทุนขั้นต่ำ:'}
+//               </span>
+//               <br />
+//               <span className="font-mono text-yellow-300">
+//                 {t.SUPERH?.minInvestmentValue || '12,000'}{' '}
+//                 <span className="text-xs text-gray-300">CENT/USD</span>
+//               </span>
+//             </li>
+//             <li>
+//               <span className="font-bold text-yellow-400">
+//                 {t.SUPERH?.lot || 'ล๊อทขั้นต่ำ:'}
+//               </span>
+//               <br />
+//               <span className="font-mono text-yellow-300">
+//                 {t.SUPERH?.lotValue || '0.01'}
+//               </span>
+//             </li>
+//             <li>
+//               <span className="font-bold text-yellow-400">
+//                 {t.SUPERH?.profit || 'ผลตอบแทนเฉลี่ย:'}
+//               </span>
+//               <br />
+//               <span className="font-mono text-green-400">
+//                 {t.SUPERH?.profitValue || '0.3%'}
+//               </span>
+//             </li>
+//           </ul>
+//           {/* <div className="mt-6 flex flex-col items-center gap-4">
+//             <a
+//               href="https://zippyshare.day/rrcNCeO0f8eDS10/file"
+//               className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-2xl"
+//               target="_blank"
+//               rel="noopener noreferrer"
+//             >
+//               {t.SUPERH?.download || 'Download SuperH'}
+//             </a>
+//           </div> */}
+//         </div>
+//       )
+//     },
+//     {
+//       key: 'COMING',
+//       label: t.coming.label,
+//       content: (
+//         <div className="bg-black/40 rounded-xl p-6 border border-yellow-400/30 text-lg text-white text-center">
+//           <div className="text-2xl font-bold text-yellow-300 mb-2">
+//             {t.coming.title}
+//           </div>
+//           <div className="text-yellow-400 text-xl mt-4">{t.coming.desc}</div>
+//         </div>
+//       )
+//     }
+//   ]
+//   return (
+//     <div>
+//       <div className="flex justify-center gap-4 mb-8 flex-wrap">
+//         {items.map((item) => (
+//           <button
+//             key={item.key}
+//             onClick={() => setActive(item.key)}
+//             className={`px-6 py-2 rounded-full font-bold border-2 transition-all duration-200 text-lg focus:outline-none
+//               ${
+//                 active === item.key
+//                   ? 'bg-yellow-400 text-black border-yellow-400 shadow-lg scale-105'
+//                   : 'bg-black/40 text-yellow-300 border-yellow-400/40 hover:bg-yellow-400/20 hover:text-yellow-400'
+//               }
+//             `}
+//           >
+//             {item.label}
+//           </button>
+//         ))}
+//       </div>
+//       <div>{items.find((i) => i.key === active).content}</div>
+//     </div>
+//   )
+// }
