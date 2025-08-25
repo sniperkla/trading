@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import {
   X,
   Mail,
@@ -41,7 +41,7 @@ function useLang() {
   return lang
 }
 
-export default function PDFGuidePage() {
+function PDFGuidePageContent() {
   const router = useRouter()
   const lang = useLang()
   const [copied, setCopied] = useState(false)
@@ -186,5 +186,24 @@ export default function PDFGuidePage() {
         </div>
       </div>
     </>
+  )
+}
+
+function LoadingFallback() {
+  return (
+    <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center">
+      <div className="text-center">
+        <div className="w-8 h-8 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin mb-4 mx-auto"></div>
+        <p className="text-yellow-400 font-semibold">Loading...</p>
+      </div>
+    </div>
+  )
+}
+
+export default function PDFGuidePage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <PDFGuidePageContent />
+    </Suspense>
   )
 }
