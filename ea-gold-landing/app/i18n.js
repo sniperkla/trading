@@ -1,14 +1,14 @@
 export const translations = {
   en: {
     step2Note:
-      'Please see Step 1 for setup instructions before opening your account. You must use the referral code to be eligible for the bot.',
+      'Please see Step 1 for setup instructions before opening your account. You must use the referral code to be eligible for the EA.',
     registerAccount: 'Register Account',
     registerDesc: 'Create your Vantage trading account with our referral code',
     viewGuide: 'User Guide',
     viewGuideDesc: 'Follow our detailed setup instructions',
-    getSupport: 'Activate Bot',
+    getSupport: 'Activate EA',
     getSupportDesc:
-      'Send your account number via the channels below after KYC verification to activate the bot.',
+      'Send your account number via the channels below after KYC verification to activate the EA.',
     meta: {
       title: 'EA MAPA — Free Gold Trading AI Robot | MT5 Auto Forex EA',
       description:
@@ -25,7 +25,7 @@ export const translations = {
     automate:
       'Automate your gold trading with our advanced AI-powered Expert Advisor.',
     freeForever:
-      'Register through our link, provide your account number, and start using the bot instantly.',
+      'Register through our link, provide your account number, and start using the EA instantly.',
     watchDemo: 'Watch Demo',
     downloadFreeEA: 'Download Free EA',
     startTrading: 'Start Trading Gold Like a Pro',
@@ -86,7 +86,7 @@ export const translations = {
     getBrokerReady: 'Get Your Broker Account Ready',
     setupGuide: 'Follow our complete setup guide to get trading in minutes',
     registerVantage: 'Register with Vantage Now',
-    viewSetupGuide: 'Activate Bot',
+    viewSetupGuide: 'Activate EA',
     useReferral: 'Use referral code:',
     vantageGuide: 'Vantage Registration Guide',
     yourReferral: 'Your referral code:',
@@ -116,7 +116,7 @@ export const translations = {
       ' Reduces trading emotions\nNo need to worry, hesitate, or fear. EA follows the plan for you.'
     ],
     mcbComingSoon: 'Coming Soon',
-    botInstructionTitle: 'Bot Usage Instructions',
+    botInstructionTitle: 'EA Usage Instructions',
     botInstructionMCB: {
       name: 'MCB',
       desc1: 'Safe investment budget is',
@@ -201,10 +201,10 @@ export const translations = {
       title: 'Support & Verification',
       important: 'Important:',
       instruction:
-        'After you have successfully completed KYC and opened your account, please send your account number to unlock the EA bot.',
+        'After you have successfully completed KYC and opened your account, please send your account number to unlock the EA system.',
       sendVia: 'You can send your account number via email to',
-      orContact: 'or contact us through our Telegram bot below.',
-      telegramBtn: 'Contact Telegram Bot'
+      orContact: 'or contact us through our Telegram support below.',
+      telegramBtn: 'Contact Telegram Support'
     },
     tapToFullscreen: 'Tap the fullscreen button for better viewing',
     pdfLoading: 'Loading PDF...',
@@ -231,42 +231,41 @@ export const translations = {
     openPDFTab: 'Open PDF in new tab',
     pageOf: 'of',
     // Registration popup
-    importantNotice: 'Bot Access Request Process',
+    importantNotice: 'EA Access Request Process',
     registrationRequired: 'Registration Required',
     step1: 'Step 1:',
     step2: 'Step 2:',
     step3: 'Step 3:',
     step4: 'Step 4:',
     mustRegisterFirst:
-      'You must register with our referral code to access bot permissions.',
+      'You must register with our referral code to access EA permissions.',
     completeKYC:
       'Complete KYC verification in your broker account as per the PDF Guide.',
     sendAccountNumber:
-      'Send your account number to Support via email: support@eamapa.com or other channels to activate bot access.',
-    downloadBot:
-      'Download the bot from the Download section on the website.',
+      'Send your account number to Support via email: support@eamapa.com or other channels to activate EA access.',
+    downloadBot: 'Download the EA from the Download section on the website.',
     referralCode: 'Referral Code:',
     dontForgetCode: "⚠️ Don't forget this code when registering!",
     registerNow: 'Register Now',
-    alreadyRegistered: 'Start Using Bot',
+    alreadyRegistered: 'Start Using EA',
     disclaimer1: 'Trading involves significant risk of loss.',
     disclaimer2: 'Please ensure you understand the risks before proceeding.'
   },
   th: {
     step2Note:
-      'โปรดดูขั้นตอนที่ 1 สำหรับคำแนะนำการตั้งค่าก่อนเปิดบัญชี และต้องใช้รหัสแนะนำนี้เพื่อรับสิทธิ์ใช้งานบอท',
+      'โปรดดูขั้นตอนที่ 1 สำหรับคำแนะนำการตั้งค่าก่อนเปิดบัญชี และต้องใช้รหัสแนะนำนี้เพื่อรับสิทธิ์ใช้งาน EA',
     registerAccount: 'เปิดบัญชี',
     registerDesc: 'สร้างบัญชี Vantage ของคุณด้วยรหัสแนะนำของเรา',
     viewGuide: 'คู่มือการใช้งาน',
     viewGuideDesc: 'ทำตามคำแนะนำการตั้งค่าอย่างละเอียด',
-    getSupport: 'เปิดใช้งานบอท',
+    getSupport: 'เปิดใช้งาน EA',
     getSupportDesc:
-      'ส่งเลขบัญชีผ่านช่องทางด้านล่าง หลังจากยืนยันตัวตน​ KYC เพื่อเปิดใช้งานบอท',
+      'ส่งเลขบัญชีผ่านช่องทางด้านล่าง หลังจากยืนยันตัวตน​ KYC เพื่อเปิดใช้งาน EA',
     meta: {
-      title: 'EA MAPA — บอทเทรดทองอัตโนมัติฟรี | MT5',
+      title: 'EA MAPA — EA เทรดทองอัตโนมัติฟรี | MT5',
       description:
-        'EA MAPA บอทเทรดอัตโนมัติสำหรับทอง (XAUUSD) และฟอเร็กซ์ ใช้ฟรี 100% ดาวน์โหลดสำหรับ MT5',
-      keywords: 'EA MAPA, บอทเทรด, EA ฟรี, MT5, XAUUSD'
+        'EA MAPA EA เทรดอัตโนมัติสำหรับทอง (XAUUSD) และฟอเร็กซ์ ใช้ฟรี 100% ดาวน์โหลดสำหรับ MT5',
+      keywords: 'EA MAPA, EA เทรด, EA ฟรี, MT5, XAUUSD'
     },
     features: 'คุณสมบัติ',
     performance: 'ประสิทธิภาพ',
@@ -276,7 +275,7 @@ export const translations = {
     tradingAI: 'หุ่นยนต์เทรด AI อัตโนมัติ',
     automate: 'อัตโนมัติการเทรดทองของคุณด้วย EA อัจฉริยะ',
     freeForever:
-      'เพียงสมัครผ่านลิงก์ แล้วแจ้งเลขบัญชีที่ต้องการใช้งาน ก็สามารถเริ่มใช้บอทได้ทันที',
+      'เพียงสมัครผ่านลิงก์ แล้วแจ้งเลขบัญชีที่ต้องการใช้งาน ก็สามารถเริ่มใช้ EA ได้ทันที',
     watchDemo: 'ดูตัวอย่าง',
     downloadFreeEA: 'ดาวน์โหลด EA ฟรี',
     startTrading: 'เริ่มเทรดทองแบบมืออาชีพ',
@@ -333,19 +332,19 @@ export const translations = {
     getBrokerReady: 'เตรียมบัญชีโบรกเกอร์ของคุณ',
     setupGuide: 'ทำตามคู่มือการตั้งค่าเพื่อเริ่มเทรดได้ในไม่กี่นาที',
     registerVantage: 'สมัครกับ Vantage ตอนนี้',
-    viewSetupGuide: 'เปิดใช้งานบอท',
+    viewSetupGuide: 'เปิดใช้งาน EA',
     useReferral: 'ใช้รหัสแนะนำ:',
     vantageGuide: 'คู่มือสมัคร Vantage',
     yourReferral: 'รหัสแนะนำของคุณ:',
     referralNote:
-      '* อย่าลืมใส่รหัสนี้ตอนสมัคร มิฉะนั้นจะไม่สามารถขอรับใช้บอทได้',
+      '* อย่าลืมใส่รหัสนี้ตอนสมัคร มิฉะนั้นจะไม่สามารถขอรับใช้ EA ได้',
     copyReferral: 'คัดลอกรหัสแนะนำ',
     copied: 'คัดลอกแล้ว ✅',
     openAccount: 'เปิดบัญชี',
     empowering: 'เสริมพลังเทรดเดอร์ทั่วโลกด้วยเทคโนโลยีอัตโนมัติล้ำสมัย',
     noHiddenFees: 'ไม่มีค่าธรรมเนียมแอบแฝง ไม่มีค่าสมัคร',
     justPureTradingPower: 'เทรดอัตโนมัติล้วนๆ',
-    robot: 'บอท',
+    robot: 'EA',
     getYourFreeEA: 'รับ EA ฟรีของคุณ',
     videoSectionTitle: 'ชมการทำงานของ EA MAPA',
     videoSectionDesc: 'ดูวิดีโอตัวอย่างการใช้งานจริงของ EA ในตลาดเทรดทอง',
@@ -360,7 +359,7 @@ export const translations = {
       ' ลดอารมณ์ในการเทรด\nไม่ต้องลุ้น ไม่ต้องกลัว ไม่ต้องลังเล EA ตัดสินใจตามแผนให้คุณ'
     ],
     mcbComingSoon: 'เร็วๆนี้',
-    botInstructionTitle: 'คำแนะนำการใช้งานบอทแต่ละตัว',
+    botInstructionTitle: 'คำแนะนำการใช้งาน EA แต่ละตัว',
     botInstructionMCB: {
       name: 'MCB',
       desc1: 'งบประมาณที่ปลอดภัย คือ',
@@ -475,37 +474,36 @@ export const translations = {
     openPDFTab: 'เปิด PDF ในแท็บใหม่',
     pageOf: 'จาก',
     // Registration popup
-    importantNotice: 'ขั้นตอนการขอรับใช้งานบอท',
+    importantNotice: 'ขั้นตอนการขอรับใช้งาน EA',
     registrationRequired: 'จำเป็นต้องลงทะเบียน',
     step1: 'ขั้นตอนที่ 1:',
     step2: 'ขั้นตอนที่ 2:',
     step3: 'ขั้นตอนที่ 3:',
     step4: 'ขั้นตอนที่ 4:',
     mustRegisterFirst:
-      'คุณต้องลงทะเบียนด้วยรหัสแนะนำของเรา เพื่อสิทธิ์เข้าถึงใช้งานบอท',
+      'คุณต้องลงทะเบียนด้วยรหัสแนะนำของเรา เพื่อสิทธิ์เข้าถึงใช้งาน EA',
     completeKYC:
       'ทำการยืนยันตัวตน KYC ในบัญชีโบรกเกอร์ของคุณให้เสร็จสิ้น ตามคู่มือ PDF Guide',
     sendAccountNumber:
-      'ส่งเลขบัญชีของคุณให้ ทางทีมงาน ผ่านทาง email: support@eamapa.com หรือ ผ่านช่องทาง LINE OA เพื่อเปิดสิทธิ์ในการเข้าใช้บอท',
-    downloadBot:
-      'ดาวน์โหลด บอท จาก หัวข้อดาวน์โหลด ที่หน้าเว็บไซต์',
+      'ส่งเลขบัญชีของคุณให้ ทางทีมงาน ผ่านทาง email: support@eamapa.com หรือ ผ่านช่องทาง LINE OA เพื่อเปิดสิทธิ์ในการเข้าใช้ EA',
+    downloadBot: 'ดาวน์โหลด EA จาก หัวข้อดาวน์โหลด ที่หน้าเว็บไซต์',
     referralCode: 'รหัสแนะนำ:',
     dontForgetCode: '⚠️ อย่าลืมรหัสนี้เมื่อลงทะเบียน!',
     registerNow: 'ลงทะเบียนเลย',
-    alreadyRegistered: 'เริ่มใช้งานบอท',
+    alreadyRegistered: 'เริ่มใช้งาน EA',
     disclaimer1: 'การเทรดมีความเสี่ยงสูงที่อาจสูญเสียเงินลงทุน',
     disclaimer2: 'โปรดตรวจสอบให้แน่ใจว่าคุณเข้าใจความเสี่ยงก่อนดำเนินการ'
   },
   hi: {
     step2Note:
-      'कृपया खाता खोलने से पहले सेटअप निर्देशों के लिए चरण 1 देखें। बोट के लिए पात्र होने के लिए आपको रेफरल कोड का उपयोग करना आवश्यक है।',
+      'कृपया खाता खोलने से पहले सेटअप निर्देशों के लिए चरण 1 देखें। EA के लिए पात्र होने के लिए आपको रेफरल कोड का उपयोग करना आवश्यक है।',
     registerAccount: 'खाता पंजीकरण करें',
     registerDesc: 'हमारे रेफरल कोड के साथ अपना Vantage ट्रेडिंग खाता बनाएं',
     viewGuide: 'उपयोगकर्ता गाइड',
     viewGuideDesc: 'हमारे विस्तृत सेटअप निर्देशों का पालन करें',
-    getSupport: 'बोट सक्रिय करें',
+    getSupport: 'EA सक्रिय करें',
     getSupportDesc:
-      'KYC सत्यापन के बाद बोट सक्रिय करने के लिए नीचे दिए गए चैनलों के माध्यम से अपना खाता नंबर भेजें।',
+      'KYC सत्यापन के बाद EA सक्रिय करने के लिए नीचे दिए गए चैनलों के माध्यम से अपना खाता नंबर भेजें।',
     meta: {
       title:
         'EA MAPA निःशुल्क गोल्ड ट्रेडिंग एआई रोबोट | MT5 के लिए स्वचालित Forex EA',
@@ -523,7 +521,7 @@ export const translations = {
     automate:
       'हमारे उन्नत एआई-पावर्ड एक्सपर्ट एडवाइजर के साथ अपने गोल्ड ट्रेडिंग को स्वचालित करें।',
     freeForever:
-      'बस लिंक के माध्यम से पंजीकरण करें और वह खाता संख्या प्रदान करें जिसे आप उपयोग करना चाहते हैं, और आप तुरंत बॉट का उपयोग शुरू कर सकते हैं।',
+      'बस लिंक के माध्यम से पंजीकरण करें और वह खाता संख्या प्रदान करें जिसे आप उपयोग करना चाहते हैं, और आप तुरंत EA का उपयोग शुरू कर सकते हैं।',
     watchDemo: 'डेमो देखें',
     downloadFreeEA: 'नि:शुल्क EA डाउनलोड करें',
     startTrading: 'पेशेवर की तरह गोल्ड ट्रेडिंग शुरू करें',
@@ -730,24 +728,23 @@ export const translations = {
     openPDFTab: 'PDF को नए टैब में खोलें',
     pageOf: 'का',
     // Registration popup
-    importantNotice: 'बॉट एक्सेस अनुरोध प्रक्रिया',
+    importantNotice: 'EA एक्सेस अनुरोध प्रक्रिया',
     registrationRequired: 'पंजीकरण आवश्यक',
     step1: 'चरण 1:',
     step2: 'चरण 2:',
     step3: 'चरण 3:',
     step4: 'चरण 4:',
     mustRegisterFirst:
-      'आपको बॉट एक्सेस की अनुमतियों के लिए हमारे रेफरल कोड के साथ पंजीकरण करना होगा।',
+      'आपको EA एक्सेस की अनुमतियों के लिए हमारे रेफरल कोड के साथ पंजीकरण करना होगा।',
     completeKYC:
       'PDF गाइड के अनुसार अपने ब्रोकर खाते में KYC सत्यापन पूरा करें।',
     sendAccountNumber:
-      'बॉट एक्सेस सक्रिय करने के लिए अपना खाता नंबर Support को email: support@eamapa.com या अन्य चैनलों के माध्यम से भेजें।',
-    downloadBot:
-      'वेबसाइट पर डाउनलोड सेक्शन से बॉट डाउनलोड करें।',
+      'EA एक्सेस सक्रिय करने के लिए अपना खाता नंबर Support को email: support@eamapa.com या अन्य चैनलों के माध्यम से भेजें।',
+    downloadBot: 'वेबसाइट पर डाउनलोड सेक्शन से EA डाउनलोड करें।',
     referralCode: 'रेफरल कोड:',
     dontForgetCode: '⚠️ पंजीकरण करते समय यह कोड न भूलें!',
     registerNow: 'अभी पंजीकरण करें',
-    alreadyRegistered: 'बोट का उपयोग शुरू करें',
+    alreadyRegistered: 'EA का उपयोग शुरू करें',
     disclaimer1: 'ट्रेडिंग में नुकसान का काफी जोखिम होता है।',
     disclaimer2: 'कृपया आगे बढ़ने से पहले जोखिमों को समझना सुनिश्चित करें।'
   },
@@ -948,22 +945,21 @@ export const translations = {
     },
     tapToFullscreen: '点击 PDF 以全屏查看',
     // Registration popup
-    importantNotice: '机器人访问申请流程',
+    importantNotice: 'EA访问申请流程',
     registrationRequired: '需要注册',
     step1: '第一步:',
     step2: '第二步:',
     step3: '第三步:',
     step4: '第四步:',
-    mustRegisterFirst: '您必须使用我们的推荐码注册以获得机器人访问权限。',
+    mustRegisterFirst: '您必须使用我们的推荐码注册以获得EA访问权限。',
     completeKYC: '根据PDF指南在您的经纪商账户中完成KYC验证。',
     sendAccountNumber:
-      '将您的账号发送给Support，通过email: support@eamapa.com 或其他渠道以激活机器人访问权限。',
-    downloadBot:
-      '从网站的下载部分下载机器人。',
+      '将您的账号发送给Support，通过email: support@eamapa.com 或其他渠道以激活EA访问权限。',
+    downloadBot: '从网站的下载部分下载EA。',
     referralCode: '推荐码:',
     dontForgetCode: '⚠️ 注册时请勿忘记此代码！',
     registerNow: '立即注册',
-    alreadyRegistered: '开始使用机器人',
+    alreadyRegistered: '开始使用EA',
     disclaimer1: '交易涉及重大亏损风险。',
     disclaimer2: '请确保您在继续之前了解风险。'
   },
@@ -1227,24 +1223,23 @@ export const translations = {
     openPDFTab: 'Открыть PDF в новой вкладке',
     pageOf: 'из',
     // Registration popup
-    importantNotice: 'Процесс запроса доступа к боту',
+    importantNotice: 'Процесс запроса доступа к EA',
     registrationRequired: 'Требуется регистрация',
     step1: 'Шаг 1:',
     step2: 'Шаг 2:',
     step3: 'Шаг 3:',
     step4: 'Шаг 4:',
     mustRegisterFirst:
-      'Вы должны зарегистрироваться с нашим реферальным кодом для получения разрешений доступа к боту.',
+      'Вы должны зарегистрироваться с нашим реферальным кодом для получения разрешений доступа к EA.',
     completeKYC:
       'Завершите верификацию KYC в вашем брокерском аккаунте согласно PDF руководству.',
     sendAccountNumber:
-      'Отправьте номер вашего счета в Support через email: support@eamapa.com или другие каналы для активации доступа к боту.',
-    downloadBot:
-      'Скачайте бота из раздела загрузки на сайте.',
+      'Отправьте номер вашего счета в Support через email: support@eamapa.com или другие каналы для активации доступа к EA.',
+    downloadBot: 'Скачайте EA из раздела загрузки на сайте.',
     referralCode: 'Реферальный код:',
     dontForgetCode: '⚠️ Не забудьте этот код при регистрации!',
     registerNow: 'Зарегистрироваться сейчас',
-    alreadyRegistered: 'Начать использовать бота',
+    alreadyRegistered: 'Начать использовать EA',
     disclaimer1: 'Торговля связана со значительным риском потерь.',
     disclaimer2:
       'Пожалуйста, убедитесь, что понимаете риски, прежде чем продолжить.'
