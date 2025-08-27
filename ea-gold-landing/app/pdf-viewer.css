@@ -1,0 +1,130 @@
+/* React PDF Viewer Styles */
+.react-pdf__Page {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.react-pdf__Page__canvas {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100%;
+}
+
+.react-pdf__Document {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Loading and error states */
+.pdf-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.pdf-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+}
+
+/* Control buttons */
+.pdf-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  border-bottom: 1px solid rgba(107, 114, 128, 1);
+}
+
+.pdf-nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pdf-zoom-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pdf-control-button {
+  padding: 0.5rem;
+  background: rgba(55, 65, 81, 1);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.pdf-control-button:hover:not(:disabled) {
+  background: rgba(75, 85, 99, 1);
+}
+
+.pdf-control-button:disabled {
+  background: rgba(31, 41, 55, 1);
+  color: rgba(107, 114, 128, 1);
+  cursor: not-allowed;
+}
+
+.pdf-page-info {
+  color: white;
+  font-weight: 600;
+  padding: 0 0.75rem;
+}
+
+.pdf-zoom-info {
+  color: white;
+  font-weight: 600;
+  padding: 0 0.75rem;
+}
+
+.pdf-download-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(37, 99, 235, 1);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.pdf-download-button:hover {
+  background: rgba(29, 78, 216, 1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .pdf-controls {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .pdf-nav-buttons,
+  .pdf-zoom-buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .pdf-page-info,
+  .pdf-zoom-info {
+    font-size: 0.875rem;
+  }
+}

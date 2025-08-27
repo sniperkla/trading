@@ -24,13 +24,12 @@ mongoose
 app.post('/license_api', async (req, res) => {
   try {
     const { account, licenes } = req.body
-    console.log('account', account)
-    console.log('licenes', licenes)
-
+    console.log('account, licenes', account, licenes)
     const checkAccount = await licen.findOne({
       user: account,
       licenes: licenes
     })
+    console.log('checkAccount', checkAccount)
     if (checkAccount) {
       return res.status(HTTPStatus.OK).json({ status: 'valid' })
     } else return res.status(HTTPStatus.OK).json({ status: 'invalid' })
