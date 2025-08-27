@@ -14,13 +14,23 @@ export default function FloatingUI() {
 
   if (isRegisterPage) return null
 
-
-  // Language detection: use forcedLang, browser, or fallback
-  let lang = DEFAULT_LANG
-  if (typeof window !== 'undefined') {
-    lang = window.__forcedLang || (window.navigator.language && window.navigator.language.slice(0, 2)) || DEFAULT_LANG
-    if (!SUPPORTED.includes(lang)) lang = DEFAULT_LANG
+  // Extract language from pathname - this will be reactive to route changes
+  const getLangFromPathname = () => {
+    const langMatch = pathname.match(/^\/(en|th|zh|hi|ru)/)
+    if (langMatch && SUPPORTED.includes(langMatch[1])) {
+      return langMatch[1]
+    }
+    
+    // Fallback to browser language detection
+    if (typeof window !== 'undefined') {
+      const browserLang = (window.navigator.language || window.navigator.userLanguage || 'en').slice(0, 2)
+      return SUPPORTED.includes(browserLang) ? browserLang : DEFAULT_LANG
+    }
+    
+    return DEFAULT_LANG
   }
+
+  const lang = getLangFromPathname()
 
   // Email copy popup state (shared for both desktop and mobile)
   const [copied, setCopied] = React.useState(false)

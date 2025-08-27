@@ -11,7 +11,7 @@ export default function RegistrationPopup({
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center px-4">
+    <div className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm flex items-center justify-center px-4">
       <div className="relative w-full max-w-lg bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl shadow-2xl border border-red-400/50 overflow-hidden">
         {/* Header with red accent */}
         <div className="bg-gradient-to-r from-red-500 to-red-600 p-4">
@@ -61,6 +61,13 @@ export default function RegistrationPopup({
                 </span>{' '}
                 {translations[lang]?.sendAccountNumber ||
                   'Send your account number to activate the bot.'}
+              </p>
+              <p>
+                <span className="font-semibold text-yellow-400">
+                  {translations[lang]?.step4 || 'Step 4:'}
+                </span>{' '}
+                {translations[lang]?.downloadBot ||
+                  'Download the bot from the Download section on the website.'}
               </p>
             </div>
           </div>

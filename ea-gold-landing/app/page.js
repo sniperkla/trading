@@ -77,6 +77,15 @@ export default function TradingEALanding({ forcedLang }) {
   const [copied, setCopied] = useState(false)
   const referralCode = 'BsFPM765'
 
+  // Show registration popup on first load with a slight delay
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowRegistrationPopup(true)
+    }, 1000) // Show popup after 1 second
+
+    return () => clearTimeout(timer)
+  }, [])
+
   // Email copy state and handler for contact section
   const [emailCopied, setEmailCopied] = useState(false)
   const handleCopyEmail = async (e) => {
@@ -557,7 +566,7 @@ export default function TradingEALanding({ forcedLang }) {
                 {translations[lang].setupGuide}
               </p>
               {/* Referral Code Section */}
-              <div className="p-4 relative max-w-2xl mx-auto">
+              {/* <div className="p-4 relative max-w-2xl mx-auto">
                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 via-yellow-300/20 to-yellow-400/20 rounded-3xl blur-xl group-hover:scale-105 transition-transform duration-300"></div>
                 <button
                   onClick={handleCopyReferral}
@@ -578,13 +587,16 @@ export default function TradingEALanding({ forcedLang }) {
                     </div>
                   )}
                 </button>
-              </div>
+              </div> */}
               {/* Steps Grid */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                 {/* Step 1 (was Step 2) */}
                 <div className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/20 to-yellow-600/20 rounded-2xl blur-xl group-hover:scale-105 transition-transform duration-300"></div>
-                  <div className="relative bg-black/40 backdrop-blur-sm p-6 rounded-2xl border border-yellow-400/30 hover:scale-105 transition-all duration-300 min-h-[340px] flex flex-col">
+                  <div
+                    onClick={handleViewSetupGuide}
+                    className="relative bg-black/40 backdrop-blur-sm p-6 rounded-2xl border border-yellow-400/30 hover:scale-105 transition-all duration-300 min-h-[340px] flex flex-col cursor-pointer"
+                  >
                     <div className="flex flex-col flex-1">
                       <div className="bg-yellow-500/20 w-12 h-12 rounded-full flex items-center justify-center mb-4 mx-auto">
                         <span className="text-2xl font-bold text-yellow-400">
@@ -599,13 +611,10 @@ export default function TradingEALanding({ forcedLang }) {
                           'Follow our detailed setup instructions'}
                       </p>
                       <div className="mt-auto">
-                        <button
-                          onClick={handleViewSetupGuide}
-                          className="inline-flex items-center gap-2 px-6 py-3 bg-black/60 border-2 border-yellow-400 text-yellow-400 font-bold rounded-xl hover:bg-yellow-400 hover:text-black hover:scale-105 transition-all duration-300"
-                        >
+                        <div className="inline-flex items-center gap-2 px-6 py-3 bg-black/60 border-2 border-yellow-400 text-yellow-400 font-bold rounded-xl hover:bg-yellow-400 hover:text-black hover:scale-105 transition-all duration-300">
                           <FileText className="w-5 h-5" />
                           {translations[lang].viewSetupGuide}
-                        </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -613,7 +622,7 @@ export default function TradingEALanding({ forcedLang }) {
                 {/* Step 2 (was Step 1) */}
                 <div className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-blue-600/20 rounded-2xl blur-xl group-hover:scale-105 transition-transform duration-300"></div>
-                  <div className="relative bg-black/40 backdrop-blur-sm p-6 rounded-2xl border border-blue-400/30 hover:scale-105 transition-all duration-300 min-h-[340px] flex flex-col">
+                  <div className="relative bg-black/40 backdrop-blur-sm p-6 rounded-2xl border border-blue-400/30 hover:scale-105 transition-all duration-300 min-h-[340px] flex flex-col cursor-pointer">
                     <div className="flex flex-col flex-1">
                       <div className="bg-blue-500/20 w-12 h-12 rounded-full flex items-center justify-center mb-4 mx-auto">
                         <span className="text-2xl font-bold text-blue-400">
@@ -631,26 +640,23 @@ export default function TradingEALanding({ forcedLang }) {
                       <div className="text-xs text-yellow-300 text-center mb-2">
                         {translations[lang].step2Note}
                       </div>
-                      {/*
-                        <div className="mt-auto">
-                          <a
-                            href="https://vigco.co/uyYRJz"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold rounded-xl hover:from-blue-400 hover:to-blue-500 hover:scale-105 transition-all duration-300 shadow-lg"
-                          >
-                            <Users className="w-5 h-5" />
-                            {translations[lang].registerVantage}
-                          </a>
-                        </div>
-                        */}
                     </div>
                   </div>
                 </div>
                 {/* Step 3 */}
                 <div className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-br from-green-400/20 to-green-600/20 rounded-2xl blur-xl group-hover:scale-105 transition-transform duration-300"></div>
-                  <div className="relative bg-black/40 backdrop-blur-sm p-6 rounded-2xl border border-green-400/30 hover:scale-105 transition-all duration-300 min-h-[340px] flex flex-col">
+                  <div
+                    onClick={() =>
+                      window.open(
+                        lang === 'th'
+                          ? 'https://lin.ee/Vv8zh6d5'
+                          : 'https://t.me/mapa_trading_bot',
+                        '_blank'
+                      )
+                    }
+                    className="relative bg-black/40 backdrop-blur-sm p-6 rounded-2xl border border-green-400/30 hover:scale-105 transition-all duration-300 min-h-[340px] flex flex-col cursor-pointer"
+                  >
                     <div className="flex flex-col flex-1">
                       <div className="bg-green-500/20 w-12 h-12 rounded-full flex items-center justify-center mb-4 mx-auto">
                         <span className="text-2xl font-bold text-green-400">
@@ -665,23 +671,14 @@ export default function TradingEALanding({ forcedLang }) {
                           'Need help? Our support team is ready to assist'}
                       </p>
                       <div className="mt-auto">
-                        <a
-                          href={
-                            lang === 'th'
-                              ? 'https://lin.ee/Vv8zh6d5'
-                              : 'https://t.me/mapa_trading_bot'
-                          }
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-xl hover:from-green-400 hover:to-green-500 hover:scale-105 transition-all duration-300 shadow-lg"
-                        >
+                        <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-xl hover:from-green-400 hover:to-green-500 hover:scale-105 transition-all duration-300 shadow-lg">
                           {lang === 'th' ? (
                             <MessageCircle className="w-5 h-5" />
                           ) : (
                             <Send className="w-5 h-5" />
                           )}
                           {lang === 'th' ? 'LINE Support' : 'Telegram Support'}
-                        </a>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -690,9 +687,74 @@ export default function TradingEALanding({ forcedLang }) {
             </div>
           </div>
         </section>
+        {/* Continue with ImageSlider and buttons */}
+        <section className="relative z-10 pb-20">
+          <div className="container mx-auto px-6 text-center max-w-5xl">
+            <div className="mb-8">
+              <YouTubeWithUnmute />
+            </div>
 
+            {/* <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                <button className="group relative px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-2xl">
+                  <span className="flex items-center gap-2">
+                    <Download className="w-5 h-5" />
+                    {translations[lang].downloadFreeEA}
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-200 to-yellow-400 rounded-xl blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
+                </button>
+              
+              </div> */}
+
+            <div className="flex justify-center">
+              <ChevronDown className="w-8 h-8 text-yellow-400 animate-bounce" />
+            </div>
+          </div>
+        </section>
+        {/* CTA Section */}
+        <section id="download" className="relative z-10 py-20">
+          <div className="container mx-auto px-6 text-center max-w-4xl">
+            <div
+              className={`max-w-4xl mx-auto transform transition-all duration-1000 ${
+                isVisible.download
+                  ? 'translate-y-0 opacity-100'
+                  : 'translate-y-10 opacity-0'
+              }`}
+            >
+              <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
+                {translations[lang].startTrading}
+              </h2>
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+                {translations[lang].join} {translations[lang].freeEA}{' '}
+                {translations[lang].robot}.{translations[lang].noHiddenFees} -{' '}
+                {translations[lang].justPureTradingPower}
+              </p>
+              <DownloadCarousel2 lang={lang} />
+              <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400 mt-8">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-400" />
+                  <span>{translations[lang].instantDownload}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-400" />
+                  <span>{translations[lang].noRegister}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-400" />
+                  <span>{translations[lang].support}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-400" />
+                  <span>{translations[lang].forever}</span>
+                </div>
+              </div>
+              {/* <div className="p-6">
+                <DownloadCarousel lang={lang} />
+              </div> */}
+            </div>
+          </div>
+        </section>
         {/* Contact Section */}
-        <section
+        {/* <section
           id="contact"
           className="relative z-10 py-20 bg-gradient-to-br from-slate-900/80 to-slate-800/80 backdrop-blur-md"
         >
@@ -775,31 +837,8 @@ export default function TradingEALanding({ forcedLang }) {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
-        {/* Continue with ImageSlider and buttons */}
-        <section className="relative z-10 pb-20">
-          <div className="container mx-auto px-6 text-center max-w-5xl">
-            <div className="mb-8">
-              <YouTubeWithUnmute />
-            </div>
-
-            {/* <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-                <button className="group relative px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold rounded-xl hover:from-yellow-300 hover:to-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-2xl">
-                  <span className="flex items-center gap-2">
-                    <Download className="w-5 h-5" />
-                    {translations[lang].downloadFreeEA}
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-200 to-yellow-400 rounded-xl blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
-                </button>
-              
-              </div> */}
-
-            <div className="flex justify-center">
-              <ChevronDown className="w-8 h-8 text-yellow-400 animate-bounce" />
-            </div>
-          </div>
-        </section>
         {/* Stats Section */}
         <section
           id="stats"
@@ -926,49 +965,6 @@ export default function TradingEALanding({ forcedLang }) {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section id="download" className="relative z-10 py-20">
-          <div className="container mx-auto px-6 text-center max-w-4xl">
-            <div
-              className={`max-w-4xl mx-auto transform transition-all duration-1000 ${
-                isVisible.download
-                  ? 'translate-y-0 opacity-100'
-                  : 'translate-y-10 opacity-0'
-              }`}
-            >
-              <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
-                {translations[lang].startTrading}
-              </h2>
-              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                {translations[lang].join} {translations[lang].freeEA}{' '}
-                {translations[lang].robot}.{translations[lang].noHiddenFees} -{' '}
-                {translations[lang].justPureTradingPower}
-              </p>
-              <DownloadCarousel2 lang={lang} />
-              <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400 mt-8">
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-400" />
-                  <span>{translations[lang].instantDownload}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-400" />
-                  <span>{translations[lang].noRegister}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-400" />
-                  <span>{translations[lang].support}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-400" />
-                  <span>{translations[lang].forever}</span>
-                </div>
-              </div>
-              {/* <div className="p-6">
-                <DownloadCarousel lang={lang} />
-              </div> */}
-            </div>
-          </div>
-        </section>
         {/* Testimonials Section */}
         <section
           id="testimonials"

@@ -4,7 +4,7 @@ export const translations = {
       'Please see Step 1 for setup instructions before opening your account. You must use the referral code to be eligible for the bot.',
     registerAccount: 'Register Account',
     registerDesc: 'Create your Vantage trading account with our referral code',
-    viewGuide: 'View Setup Guide',
+    viewGuide: 'User Guide',
     viewGuideDesc: 'Follow our detailed setup instructions',
     getSupport: 'Activate Bot',
     getSupportDesc:
@@ -86,7 +86,7 @@ export const translations = {
     getBrokerReady: 'Get Your Broker Account Ready',
     setupGuide: 'Follow our complete setup guide to get trading in minutes',
     registerVantage: 'Register with Vantage Now',
-    viewSetupGuide: 'View Setup Guide (PDF)',
+    viewSetupGuide: 'Activate Bot',
     useReferral: 'Use referral code:',
     vantageGuide: 'Vantage Registration Guide',
     yourReferral: 'Your referral code:',
@@ -231,21 +231,24 @@ export const translations = {
     openPDFTab: 'Open PDF in new tab',
     pageOf: 'of',
     // Registration popup
-    importantNotice: 'Important Notice',
+    importantNotice: 'Bot Access Request Process',
     registrationRequired: 'Registration Required',
     step1: 'Step 1:',
     step2: 'Step 2:',
     step3: 'Step 3:',
+    step4: 'Step 4:',
     mustRegisterFirst:
       'You must register with our referral code to access bot permissions.',
     completeKYC:
       'Complete KYC verification in your broker account as per the PDF Guide.',
     sendAccountNumber:
       'Send your account number to Support via email: support@eamapa.com or other channels to activate bot access.',
+    downloadBot:
+      'Download the bot from the Download section on the website.',
     referralCode: 'Referral Code:',
     dontForgetCode: "⚠️ Don't forget this code when registering!",
     registerNow: 'Register Now',
-    alreadyRegistered: 'Next Step',
+    alreadyRegistered: 'Start Using Bot',
     disclaimer1: 'Trading involves significant risk of loss.',
     disclaimer2: 'Please ensure you understand the risks before proceeding.'
   },
@@ -254,7 +257,7 @@ export const translations = {
       'โปรดดูขั้นตอนที่ 1 สำหรับคำแนะนำการตั้งค่าก่อนเปิดบัญชี และต้องใช้รหัสแนะนำนี้เพื่อรับสิทธิ์ใช้งานบอท',
     registerAccount: 'เปิดบัญชี',
     registerDesc: 'สร้างบัญชี Vantage ของคุณด้วยรหัสแนะนำของเรา',
-    viewGuide: 'ดูคู่มือการตั้งค่า',
+    viewGuide: 'คู่มือการใช้งาน',
     viewGuideDesc: 'ทำตามคำแนะนำการตั้งค่าอย่างละเอียด',
     getSupport: 'เปิดใช้งานบอท',
     getSupportDesc:
@@ -330,7 +333,7 @@ export const translations = {
     getBrokerReady: 'เตรียมบัญชีโบรกเกอร์ของคุณ',
     setupGuide: 'ทำตามคู่มือการตั้งค่าเพื่อเริ่มเทรดได้ในไม่กี่นาที',
     registerVantage: 'สมัครกับ Vantage ตอนนี้',
-    viewSetupGuide: 'ดูคู่มือการตั้งค่า (PDF)',
+    viewSetupGuide: 'เปิดใช้งานบอท',
     useReferral: 'ใช้รหัสแนะนำ:',
     vantageGuide: 'คู่มือสมัคร Vantage',
     yourReferral: 'รหัสแนะนำของคุณ:',
@@ -472,21 +475,24 @@ export const translations = {
     openPDFTab: 'เปิด PDF ในแท็บใหม่',
     pageOf: 'จาก',
     // Registration popup
-    importantNotice: 'ประกาศสำคัญ',
+    importantNotice: 'ขั้นตอนการขอรับใช้งานบอท',
     registrationRequired: 'จำเป็นต้องลงทะเบียน',
     step1: 'ขั้นตอนที่ 1:',
     step2: 'ขั้นตอนที่ 2:',
     step3: 'ขั้นตอนที่ 3:',
+    step4: 'ขั้นตอนที่ 4:',
     mustRegisterFirst:
       'คุณต้องลงทะเบียนด้วยรหัสแนะนำของเรา เพื่อสิทธิ์เข้าถึงใช้งานบอท',
     completeKYC:
       'ทำการยืนยันตัวตน KYC ในบัญชีโบรกเกอร์ของคุณให้เสร็จสิ้น ตามคู่มือ PDF Guide',
     sendAccountNumber:
       'ส่งเลขบัญชีของคุณให้ ทางทีมงาน ผ่านทาง email: support@eamapa.com หรือ ผ่านช่องทาง LINE OA เพื่อเปิดสิทธิ์ในการเข้าใช้บอท',
+    downloadBot:
+      'ดาวน์โหลด บอท จาก หัวข้อดาวน์โหลด ที่หน้าเว็บไซต์',
     referralCode: 'รหัสแนะนำ:',
     dontForgetCode: '⚠️ อย่าลืมรหัสนี้เมื่อลงทะเบียน!',
     registerNow: 'ลงทะเบียนเลย',
-    alreadyRegistered: 'ขั้นตอนต่อไป',
+    alreadyRegistered: 'เริ่มใช้งานบอท',
     disclaimer1: 'การเทรดมีความเสี่ยงสูงที่อาจสูญเสียเงินลงทุน',
     disclaimer2: 'โปรดตรวจสอบให้แน่ใจว่าคุณเข้าใจความเสี่ยงก่อนดำเนินการ'
   },
@@ -495,7 +501,7 @@ export const translations = {
       'कृपया खाता खोलने से पहले सेटअप निर्देशों के लिए चरण 1 देखें। बोट के लिए पात्र होने के लिए आपको रेफरल कोड का उपयोग करना आवश्यक है।',
     registerAccount: 'खाता पंजीकरण करें',
     registerDesc: 'हमारे रेफरल कोड के साथ अपना Vantage ट्रेडिंग खाता बनाएं',
-    viewGuide: 'सेटअप गाइड देखें',
+    viewGuide: 'उपयोगकर्ता गाइड',
     viewGuideDesc: 'हमारे विस्तृत सेटअप निर्देशों का पालन करें',
     getSupport: 'बोट सक्रिय करें',
     getSupportDesc:
@@ -579,7 +585,7 @@ export const translations = {
     setupGuide:
       'हमारे पूर्ण सेटअप गाइड का पालन करें और मिनटों में ट्रेडिंग शुरू करें',
     registerVantage: 'अब Vantage के साथ रजिस्टर करें',
-    viewSetupGuide: 'सेटअप गाइड देखें (PDF)',
+    viewSetupGuide: 'बोट सक्रिय करें',
     useReferral: 'रेफरल कोड का उपयोग करें:',
     vantageGuide: 'Vantage पंजीकरण गाइड',
     yourReferral: 'आपका रेफरल कोड:',
@@ -724,21 +730,24 @@ export const translations = {
     openPDFTab: 'PDF को नए टैब में खोलें',
     pageOf: 'का',
     // Registration popup
-    importantNotice: 'महत्वपूर्ण सूचना',
+    importantNotice: 'बॉट एक्सेस अनुरोध प्रक्रिया',
     registrationRequired: 'पंजीकरण आवश्यक',
     step1: 'चरण 1:',
     step2: 'चरण 2:',
     step3: 'चरण 3:',
+    step4: 'चरण 4:',
     mustRegisterFirst:
       'आपको बॉट एक्सेस की अनुमतियों के लिए हमारे रेफरल कोड के साथ पंजीकरण करना होगा।',
     completeKYC:
       'PDF गाइड के अनुसार अपने ब्रोकर खाते में KYC सत्यापन पूरा करें।',
     sendAccountNumber:
       'बॉट एक्सेस सक्रिय करने के लिए अपना खाता नंबर Support को email: support@eamapa.com या अन्य चैनलों के माध्यम से भेजें।',
+    downloadBot:
+      'वेबसाइट पर डाउनलोड सेक्शन से बॉट डाउनलोड करें।',
     referralCode: 'रेफरल कोड:',
     dontForgetCode: '⚠️ पंजीकरण करते समय यह कोड न भूलें!',
     registerNow: 'अभी पंजीकरण करें',
-    alreadyRegistered: 'अगला कदम',
+    alreadyRegistered: 'बोट का उपयोग शुरू करें',
     disclaimer1: 'ट्रेडिंग में नुकसान का काफी जोखिम होता है।',
     disclaimer2: 'कृपया आगे बढ़ने से पहले जोखिमों को समझना सुनिश्चित करें।'
   },
@@ -747,7 +756,7 @@ export const translations = {
       '开户前请参阅第1步的设置说明。必须使用推荐码才能获得机器人资格。',
     registerAccount: '注册账户',
     registerDesc: '使用我们的推荐码创建您的 Vantage 交易账户',
-    viewGuide: '查看设置指南',
+    viewGuide: '使用指南',
     viewGuideDesc: '请按照我们的详细设置说明操作',
     getSupport: '激活机器人',
     getSupportDesc: 'KYC认证后，请通过下方渠道发送您的账号以激活机器人。',
@@ -821,7 +830,7 @@ export const translations = {
     getBrokerReady: '准备您的经纪账户',
     setupGuide: '按照我们的完整指南几分钟内开始交易',
     registerVantage: '立即注册 Vantage',
-    viewSetupGuide: '查看设置指南 (PDF)',
+    viewSetupGuide: '激活机器人',
     useReferral: '使用推荐码:',
     vantageGuide: 'Vantage 注册指南',
     yourReferral: '您的推荐码:',
@@ -939,19 +948,22 @@ export const translations = {
     },
     tapToFullscreen: '点击 PDF 以全屏查看',
     // Registration popup
-    importantNotice: '重要通知',
+    importantNotice: '机器人访问申请流程',
     registrationRequired: '需要注册',
     step1: '第一步:',
     step2: '第二步:',
     step3: '第三步:',
+    step4: '第四步:',
     mustRegisterFirst: '您必须使用我们的推荐码注册以获得机器人访问权限。',
     completeKYC: '根据PDF指南在您的经纪商账户中完成KYC验证。',
     sendAccountNumber:
       '将您的账号发送给Support，通过email: support@eamapa.com 或其他渠道以激活机器人访问权限。',
+    downloadBot:
+      '从网站的下载部分下载机器人。',
     referralCode: '推荐码:',
     dontForgetCode: '⚠️ 注册时请勿忘记此代码！',
     registerNow: '立即注册',
-    alreadyRegistered: '下一步',
+    alreadyRegistered: '开始使用机器人',
     disclaimer1: '交易涉及重大亏损风险。',
     disclaimer2: '请确保您在继续之前了解风险。'
   },
@@ -960,7 +972,7 @@ export const translations = {
       'Пожалуйста, ознакомьтесь с инструкцией на шаге 1 перед открытием счета. Для получения доступа к боту необходимо использовать реферальный код.',
     registerAccount: 'Открыть счет',
     registerDesc: 'Создайте торговый счет Vantage с нашим реферальным кодом',
-    viewGuide: 'Посмотреть руководство',
+    viewGuide: 'Руководство пользователя',
     viewGuideDesc: 'Следуйте нашим подробным инструкциям по настройке',
     getSupport: 'Активировать бота',
     getSupportDesc:
@@ -1068,7 +1080,7 @@ export const translations = {
     setupGuide:
       'Следуйте нашему полному руководству, чтобы начать торговать за считанные минуты',
     registerVantage: 'Зарегистрируйтесь в Vantage сейчас',
-    viewSetupGuide: 'Посмотреть руководство по настройке (PDF)',
+    viewSetupGuide: 'Активировать бота',
     useReferral: 'Используйте реферальный код:',
     vantageGuide: 'Руководство по регистрации Vantage',
     yourReferral: 'Ваш реферальный код:',
@@ -1215,21 +1227,24 @@ export const translations = {
     openPDFTab: 'Открыть PDF в новой вкладке',
     pageOf: 'из',
     // Registration popup
-    importantNotice: 'Важное уведомление',
+    importantNotice: 'Процесс запроса доступа к боту',
     registrationRequired: 'Требуется регистрация',
     step1: 'Шаг 1:',
     step2: 'Шаг 2:',
     step3: 'Шаг 3:',
+    step4: 'Шаг 4:',
     mustRegisterFirst:
       'Вы должны зарегистрироваться с нашим реферальным кодом для получения разрешений доступа к боту.',
     completeKYC:
       'Завершите верификацию KYC в вашем брокерском аккаунте согласно PDF руководству.',
     sendAccountNumber:
       'Отправьте номер вашего счета в Support через email: support@eamapa.com или другие каналы для активации доступа к боту.',
+    downloadBot:
+      'Скачайте бота из раздела загрузки на сайте.',
     referralCode: 'Реферальный код:',
     dontForgetCode: '⚠️ Не забудьте этот код при регистрации!',
     registerNow: 'Зарегистрироваться сейчас',
-    alreadyRegistered: 'Следующий шаг',
+    alreadyRegistered: 'Начать использовать бота',
     disclaimer1: 'Торговля связана со значительным риском потерь.',
     disclaimer2:
       'Пожалуйста, убедитесь, что понимаете риски, прежде чем продолжить.'
