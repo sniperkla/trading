@@ -100,7 +100,7 @@ export default function RegistrationPopup({
               </h4>
               <div className="bg-black/40 rounded-lg p-2 sm:p-3 font-mono text-center">
                 <span className="text-xl sm:text-2xl font-bold text-yellow-400">
-                  nyJ0baom
+                  BsFPM765
                 </span>
               </div>
               <p className="text-xs text-gray-300 mt-2 text-center">

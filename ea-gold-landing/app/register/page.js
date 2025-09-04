@@ -17,7 +17,7 @@ export default function RegisterPDFPage() {
       : 'en'
   const [lang, setLang] = useState(initialLang)
 
-  const referralCode = 'nyJ0baom'
+  const referralCode = 'BsFPM765'
 
   const handleCopyReferral = () => {
     navigator.clipboard.writeText(referralCode)
@@ -96,7 +96,7 @@ export default function RegisterPDFPage() {
             </button>
             {/* Open Account Button */}
             <a
-              href="https://vigco.co/FzI3ei"
+              href="https://vigco.co/uyYRJz"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-3 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors text-xs sm:text-sm text-center flex items-center justify-center gap-2"

@@ -120,7 +120,7 @@ export const translations = {
     botInstructionMCB: {
       name: 'MCB',
       desc1: 'Safe investment budget is',
-      amount: '20,000',
+      amount: '300,000',
       lot: '0.01',
       desc2: 'output lot',
       profit: 'Average return',
@@ -146,18 +146,18 @@ export const translations = {
         label: 'MAPA.MCB V1.18N',
         title: 'Lot Setting Guide for MAPA.MCB V1.18N',
         minInvestment: 'Minimum recommended investment:',
-        minInvestmentValue: '20,000 USD or USC',
+        minInvestmentValue: '300,000 USD or USC',
         note: 'Note: Using less capital increases risk. Do not increase lot settings above the recommended values.',
         lotSetting: 'Initial Lot Setting:',
         lotStart: 'Lot Start B = 0.01',
         lotPlus: 'Lot Plus = 0.01',
         lotRelation: 'Investment to Lot Ratio:',
-        lotRelationDesc: 'Start with 20,000 : 0.01',
+        lotRelationDesc: 'Start with 300,000 : 0.01',
         lotExamples: [
-          '20,000 = Lot 0.01',
-          '40,000 = Lot 0.02',
-          '60,000 = Lot 0.03',
-          '80,000 = Lot 0.04'
+          '300,000 = Lot 0.01',
+          '600,000 = Lot 0.02',
+          '900,000 = Lot 0.03',
+          '1,200,000 = Lot 0.04'
         ],
         important: 'Important:',
         importantDesc:
@@ -363,7 +363,7 @@ export const translations = {
     botInstructionMCB: {
       name: 'MCB',
       desc1: 'งบประมาณที่ปลอดภัย คือ',
-      amount: '20,000',
+      amount: '300,000',
       lot: '0.01',
       desc2: 'ออก lot',
       profit: 'ผลตอบแทนเฉลี่ย',
@@ -389,18 +389,18 @@ export const translations = {
         label: 'MAPA.MCB V1.18N',
         title: 'ชุดการตั้งค่า Lot ใน MAPA.MCB V1.18N',
         minInvestment: 'งบประมาณที่ปลอดภัย:',
-        minInvestmentValue: '20,000 USD หรือ USC',
+        minInvestmentValue: '300,000 USD หรือ USC',
         note: 'หมายเหตุ: หากใช้งบประมาณน้อยกว่า อาจมีความเสี่ยงสูงขึ้น และไม่แนะนำให้ปรับเพิ่มค่าตัวเลขการตั้งค่า Lot ที่ระบบตั้งมาแล้ว',
         lotSetting: 'การตั้งค่า Lot เริ่มต้น:',
         lotStart: 'Lot Start B = 0.01',
         lotPlus: 'Lot Plus = 0.01',
         lotRelation: 'ความสัมพันธ์งบประมาณ:',
-        lotRelationDesc: 'ใช้ตั้งค่าเริ่มต้น 20,000 : 0.01',
+        lotRelationDesc: 'ใช้ตั้งค่าเริ่มต้น 300,000 : 0.01',
         lotExamples: [
-          'ทุน 20,000 = Lot 0.01',
-          'ทุน 40,000 = Lot 0.02',
-          'ทุน 60,000 = Lot 0.03',
-          'ทุน 80,000 = Lot 0.04'
+          'ทุน 300,000 = Lot 0.01',
+          'ทุน 600,000 = Lot 0.02',
+          'ทุน 900,000 = Lot 0.03',
+          'ทุน 1,200,000 = Lot 0.04'
         ],
         important: 'หมายเหตุสำคัญ:',
         importantDesc:
@@ -616,7 +616,7 @@ export const translations = {
     botInstructionMCB: {
       name: 'MCB',
       desc1: 'सुरक्षित निवेश राशि है',
-      amount: '20,000',
+      amount: '300,000',
       lot: '0.01',
       desc2: 'लॉट खोलें',
       profit: 'औसत लाभ',
@@ -642,18 +642,18 @@ export const translations = {
         label: 'MAPA.MCB V1.18N',
         title: 'MAPA.MCB V1.18N के लिए लॉट सेटिंग गाइड',
         minInvestment: 'न्यूनतम अनुशंसित निवेश:',
-        minInvestmentValue: '20,000 USD या USC',
+        minInvestmentValue: '300,000 USD या USC',
         note: 'नोट: कम पूंजी का उपयोग करने से जोखिम बढ़ता है। अनुशंसित मानों से ऊपर लॉट सेटिंग्स बढ़ाने की कोशिश न करें।',
         lotSetting: 'प्रारंभिक लॉट सेटिंग:',
         lotStart: 'Lot Start B = 0.01',
         lotPlus: 'Lot Plus = 0.01',
         lotRelation: 'निवेश से लॉट अनुपात:',
-        lotRelationDesc: '20,000 : 0.01 से शुरू करें',
+        lotRelationDesc: '300,000 : 0.01 से शुरू करें',
         lotExamples: [
-          '20,000 = Lot 0.01',
-          '40,000 = Lot 0.02',
-          '60,000 = Lot 0.03',
-          '80,000 = Lot 0.04'
+          '300,000 = Lot 0.01',
+          '600,000 = Lot 0.02',
+          '900,000 = Lot 0.03',
+          '1,200,000 = Lot 0.04'
         ],
         important: 'महत्वपूर्ण:',
         importantDesc:
@@ -858,7 +858,7 @@ export const translations = {
     botInstructionMCB: {
       name: 'MCB',
       desc1: '安全投资预算为',
-      amount: '20,000',
+      amount: '300,000',
       lot: '0.01',
       desc2: '输出手数',
       profit: '平均收益',
@@ -884,18 +884,18 @@ export const translations = {
         label: 'MAPA.MCB V1.18N',
         title: 'MAPA.MCB V1.18N 的手动设置指南',
         minInvestment: '最低推荐投资：',
-        minInvestmentValue: '20,000 美元或 USC',
+        minInvestmentValue: '300,000 美元或 USC',
         note: '注意：使用更少的资金会增加风险。请勿将手动设置调整超过推荐值。',
         lotSetting: '初始手动设置：',
         lotStart: 'Lot Start B = 0.01',
         lotPlus: 'Lot Plus = 0.01',
         lotRelation: '投资与手数比例：',
-        lotRelationDesc: '从 20,000 : 0.01 开始',
+        lotRelationDesc: '从 300,000 : 0.01 开始',
         lotExamples: [
-          '20,000 = Lot 0.01',
-          '40,000 = Lot 0.02',
-          '60,000 = Lot 0.03',
-          '80,000 = Lot 0.04'
+          '300,000 = Lot 0.01',
+          '600,000 = Lot 0.02',
+          '900,000 = Lot 0.03',
+          '1,200,000 = Lot 0.04'
         ],
         important: '重要：',
         importantDesc:
@@ -977,7 +977,7 @@ export const translations = {
     botInstructionMCB: {
       name: 'MCB',
       desc1: 'Безопасный инвестиционный бюджет',
-      amount: '20,000',
+      amount: '300,000',
       lot: '0.01',
       desc2: 'выходной лот',
       profit: 'Средняя доходность',
@@ -1109,7 +1109,7 @@ export const translations = {
     botInstructionMCB: {
       name: 'MCB',
       desc1: 'Безопасный инвестиционный бюджет',
-      amount: '20,000',
+      amount: '300,000',
       lot: '0.01',
       desc2: 'выходной лот',
       profit: 'Средняя доходность',
@@ -1135,18 +1135,18 @@ export const translations = {
         label: 'MAPA.MCB V1.18N',
         title: 'Руководство по настройке лота для MAPA.MCB V1.18N',
         minInvestment: 'Минимальная рекомендуемая инвестиция:',
-        minInvestmentValue: '20,000 USD или USC',
+        minInvestmentValue: '300,000 USD или USC',
         note: 'Примечание: использование меньшего капитала увеличивает риск. Не увеличивайте настройки лота выше рекомендованных значений.',
         lotSetting: 'Начальная настройка лота:',
         lotStart: 'Lot Start B = 0.01',
         lotPlus: 'Lot Plus = 0.01',
         lotRelation: 'Соотношение инвестиций к лоту:',
-        lotRelationDesc: 'Начните с 20,000 : 0.01',
+        lotRelationDesc: 'Начните с 300,000 : 0.01',
         lotExamples: [
-          '20,000 = Lot 0.01',
-          '40,000 = Lot 0.02',
-          '60,000 = Lot 0.03',
-          '80,000 = Lot 0.04'
+          '300,000 = Lot 0.01',
+          '600,000 = Lot 0.02',
+          '900,000 = Lot 0.03',
+          '1,200,000 = Lot 0.04'
         ],
         important: 'Важно:',
         importantDesc:

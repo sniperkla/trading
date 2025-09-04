@@ -75,7 +75,7 @@ export default function TradingEALanding({ forcedLang }) {
 
   const [showRegistrationPopup, setShowRegistrationPopup] = useState(false)
   const [copied, setCopied] = useState(false)
-  const referralCode = 'nyJ0baom'
+  const referralCode = 'BsFPM765'
 
   // Show registration popup on first load with a slight delay
   useEffect(() => {

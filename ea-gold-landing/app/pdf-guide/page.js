@@ -45,7 +45,7 @@ function PDFGuidePageContent() {
   const router = useRouter()
   const lang = useLang()
   const [copied, setCopied] = useState(false)
-  const referralCode = 'nyJ0baom'
+  const referralCode = 'BsFPM765'
 
   const handleCopyReferral = () => {
     navigator.clipboard.writeText(referralCode)
@@ -125,7 +125,7 @@ function PDFGuidePageContent() {
           {/* Actions Row */}
           <div className="flex flex-col items-center justify-center gap-3 p-3 sm:p-4 border-t border-white/10 bg-slate-900/90">
             <a
-              href="https://vigco.co/FzI3ei"
+              href="https://vigco.co/uyYRJz"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold rounded-xl sm:rounded-2xl shadow-lg hover:from-blue-400 hover:to-blue-600 hover:scale-105 transition-all duration-300 text-base sm:text-lg text-center border-2 border-blue-400/60 focus:outline-none focus:ring-4 focus:ring-blue-300"
