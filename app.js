@@ -41,7 +41,7 @@ app.post('/license_api', async (req, res) => {
     if (checkAccount) {
       const now = new Date()
       let expireDateGregorian
-      console.log('checkAccount', checkAccount)
+      // console.log('checkAccount', checkAccount)
       if (
         checkAccount.expireDate &&
         typeof checkAccount.expireDate === 'string'
