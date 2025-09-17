@@ -41,27 +41,25 @@ app.post('/license_api', async (req, res) => {
     if (checkAccount) {
       const now = new Date()
       let expireDateGregorian
-      // console.log('checkAccount', checkAccount)
       if (
         checkAccount.expireDate &&
         typeof checkAccount.expireDate === 'string'
       ) {
-        // Parse Thai Buddhist calendar date and time string (e.g., "01/09/2568 12:00")
+        // Parse Thai Buddhist calendar date and time string (e.g., "17/09/2568 15:22" or "17/09/2568")
         let datePart = checkAccount.expireDate
         let timePart = '00:00'
         if (checkAccount.expireDate.includes(' ')) {
-          ;[datePart, timePart] = checkAccount.expireDate.split(' ')
+          [datePart, timePart] = checkAccount.expireDate.split(' ')
         }
         const [day, month, yearThai] = datePart.split('/').map(Number)
         const yearGregorian = yearThai - 543
-        const [hour, minute] = timePart.split(':').map(Number)
-        expireDateGregorian = new Date(
-          yearGregorian,
-          month - 1,
-          day,
-          hour,
-          minute
-        )
+        let hour = 0, minute = 0
+        if (timePart && timePart.includes(':')) {
+          const timeSplit = timePart.split(':')
+          hour = Number(timeSplit[0]) || 0
+          minute = Number(timeSplit[1]) || 0
+        }
+        expireDateGregorian = new Date(yearGregorian, month - 1, day, hour, minute, 0)
       } else if (checkAccount.expireDate instanceof Date) {
         expireDateGregorian = checkAccount.expireDate
       }
