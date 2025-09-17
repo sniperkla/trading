@@ -1,3 +1,12 @@
+// Simple API key authentication middleware
+// const API_KEY = process.env.API_KEY || 'your-secret-api-key';
+// function apiKeyAuth(req, res, next) {
+//   const key = req.headers['x-api-key'];
+//   if (!key || key !== API_KEY) {
+//     return res.status(HTTPStatus.UNAUTHORIZED).json({ error: 'Unauthorized' });
+//   }
+//   next();
+// }
 const express = require('express')
 const HTTPStatus = require('http-status')
 const app = express()
@@ -21,6 +30,7 @@ mongoose
   .then(() => console.log('MongoDB connected successfully'))
   .catch((err) => console.error('Error connecting to MongoDB:', err))
 
+// app.post('/license_api', apiKeyAuth, async (req, res) => {
 app.post('/license_api', async (req, res) => {
   try {
     const { account, licenes } = req.body
@@ -28,10 +38,10 @@ app.post('/license_api', async (req, res) => {
       user: account,
       licenes: licenes
     })
-    console.log('checkAccount', checkAccount)
     if (checkAccount) {
       const now = new Date()
       let expireDateGregorian
+      console.log('checkAccount', checkAccount)
       if (
         checkAccount.expireDate &&
         typeof checkAccount.expireDate === 'string'
@@ -58,11 +68,24 @@ app.post('/license_api', async (req, res) => {
 
       if (expireDateGregorian && expireDateGregorian < now) {
         // Expired, update status to invalid
-        checkAccount.status = 'invalid'
-        await checkAccount.save()
+        if (checkAccount.status !== 'invalid') {
+          checkAccount.status = 'invalid'
+          await checkAccount.save()
+        }
         return res.status(HTTPStatus.OK).json({
           status: 'invalid',
           reason: 'expired',
+          expireDate: checkAccount.expireDate,
+          expireDateThai: checkAccount.expireDateThai
+        })
+      } else if (expireDateGregorian && expireDateGregorian >= now) {
+        // Not expired, update status to valid
+        if (checkAccount.status !== 'valid') {
+          checkAccount.status = 'valid'
+          await checkAccount.save()
+        }
+        return res.status(HTTPStatus.OK).json({
+          status: 'valid',
           expireDate: checkAccount.expireDate,
           expireDateThai: checkAccount.expireDateThai
         })
