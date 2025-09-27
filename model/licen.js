@@ -3,8 +3,8 @@ const Schema = mongoose.Schema
 
 const account = new Schema(
   {
-    user: { type: String },
-    licenes: { type: String },
+    accountNumber: { type: String },
+    license: { type: String },
     expireDate: { type: String },
     status: { type: String, default: 'valid' }
   },
@@ -12,4 +12,4 @@ const account = new Schema(
     timestamps: true
   }
 )
-module.exports = mongoose.model('account', account)
+module.exports = mongoose.model('customeraccounts', account)
