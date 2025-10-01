@@ -22,6 +22,81 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 const connectionString = `${process.env.DB}` + `${process.env.NAME}`
 
+// ---------------- Helper Functions (expiration handling) ----------------
+// Parse Thai Buddhist calendar date (DD/MM/YYYY[ HH:mm]) to JS Date
+const parseThaiExpireDate = (dateStr) => {
+  if (!dateStr || typeof dateStr !== 'string') return null
+  let datePart = dateStr
+  let timePart = '00:00'
+  if (dateStr.includes(' ')) {
+    ;[datePart, timePart] = dateStr.split(' ')
+  }
+  const [day, month, yearThai] = datePart.split('/').map(Number)
+  if (!day || !month || !yearThai) return null
+  const yearGregorian = yearThai - 543
+  let hour = 0,
+    minute = 0
+  if (timePart && timePart.includes(':')) {
+    const timeSplit = timePart.split(':')
+    hour = Number(timeSplit[0]) || 0
+    minute = Number(timeSplit[1]) || 0
+  }
+  return new Date(yearGregorian, month - 1, day, hour, minute, 0)
+}
+
+// Evaluate one license document, update status if needed, and build response object.
+// Keeps custom statuses (e.g., 'revoked') untouched unless determining expiry.
+async function evaluateAndSyncLicense(doc) {
+  const now = new Date()
+  let expireDateGregorian = null
+  if (doc.expireDate) {
+    if (typeof doc.expireDate === 'string') {
+      expireDateGregorian = parseThaiExpireDate(doc.expireDate)
+    } else if (doc.expireDate instanceof Date) {
+      expireDateGregorian = doc.expireDate
+    }
+  }
+
+  // If we can evaluate an expiry date
+  if (expireDateGregorian) {
+    if (expireDateGregorian < now) {
+      if (doc.status !== 'expired') {
+        // Only overwrite if status is (valid|expired) to not override manual flags
+        if (['valid', 'expired', 'invalid'].includes(doc.status)) {
+          doc.status = 'expired'
+          await doc.save()
+        }
+      }
+      return {
+        status: 'invalid',
+        reason: 'expired',
+        expireDate: doc.expireDate,
+        expireDateThai: doc.expireDateThai
+      }
+    } else {
+      if (doc.status !== 'valid') {
+        if (['valid', 'expired', 'invalid'].includes(doc.status)) {
+          doc.status = 'valid'
+          await doc.save()
+        }
+      }
+      return {
+        status: 'valid',
+        expireDate: doc.expireDate,
+        expireDateThai: doc.expireDateThai
+      }
+    }
+  }
+
+  // No parsable expiry date -> return current status & note
+  return {
+    status: doc.status || 'valid',
+    expireDate: doc.expireDate || null,
+    expireDateThai: doc.expireDateThai,
+    note: 'no-expire-date'
+  }
+}
+
 console.log('connectionString', connectionString)
 mongoose
   .connect(connectionString, {
@@ -34,90 +109,46 @@ mongoose
 app.post('/license_api', async (req, res) => {
   try {
     const { account, licenes } = req.body
-    const checkAccount = await licen.findOne({
-      accountNumber: account,
-      license: licenes
-    })
 
-    if (checkAccount) {
-      if (checkAccount.status !== 'valid') {
+    // DEMO account first
+    const demoDoc = await licen.findOne({ accountNumber: 'demo', license: licenes })
+    if (demoDoc) {
+      const demoResult = await evaluateAndSyncLicense(demoDoc)
+      return res.status(HTTPStatus.OK).json(demoResult)
+    }
+
+    // Normal account
+    const userDoc = await licen.findOne({ accountNumber: account, license: licenes })
+    if (!userDoc) {
+      // Fallback: account not found but license exists -> treat as demo usage
+      const licenseOnlyDoc = await licen.findOne({ license: licenes })
+      if (licenseOnlyDoc) {
+        const assumed = await evaluateAndSyncLicense(licenseOnlyDoc)
         return res.status(HTTPStatus.OK).json({
-          status: 'invalid',
-          reason: checkAccount.status,
-          expireDate: checkAccount.expireDate,
-          expireDateThai: checkAccount.expireDateThai
+          ...assumed,
+          assumedDemo: true,
+          reason: assumed.reason || 'account-not-found-demo-assumed'
         })
       }
+      return res.status(HTTPStatus.OK).json({ status: 'invalid', reason: 'not found' })
+    }
 
-      const now = new Date()
-      let expireDateGregorian
-      if (
-        checkAccount.expireDate &&
-        typeof checkAccount.expireDate === 'string'
-      ) {
-        // Parse Thai Buddhist calendar date and time string (e.g., "17/09/2568 15:22" or "17/09/2568")
-        let datePart = checkAccount.expireDate
-        let timePart = '00:00'
-        if (checkAccount.expireDate.includes(' ')) {
-          ;[datePart, timePart] = checkAccount.expireDate.split(' ')
-        }
-        const [day, month, yearThai] = datePart.split('/').map(Number)
-        const yearGregorian = yearThai - 543
-        let hour = 0,
-          minute = 0
-        if (timePart && timePart.includes(':')) {
-          const timeSplit = timePart.split(':')
-          hour = Number(timeSplit[0]) || 0
-          minute = Number(timeSplit[1]) || 0
-        }
-        expireDateGregorian = new Date(
-          yearGregorian,
-          month - 1,
-          day,
-          hour,
-          minute,
-          0
-        )
-      } else if (checkAccount.expireDate instanceof Date) {
-        expireDateGregorian = checkAccount.expireDate
-      }
-
-      if (expireDateGregorian && expireDateGregorian < now) {
-        // Expired, update status to invalid
-        if (checkAccount.status !== 'invalid') {
-          checkAccount.status = 'expired'
-          await checkAccount.save()
-        }
-        return res.status(HTTPStatus.OK).json({
-          status: 'invalid',
-          reason: 'expired',
-          expireDate: checkAccount.expireDate,
-          expireDateThai: checkAccount.expireDateThai
-        })
-      } else if (expireDateGregorian && expireDateGregorian >= now) {
-        // Not expired, update status to valid
-        if (checkAccount.status !== 'valid') {
-          checkAccount.status = 'valid'
-          await checkAccount.save()
-        }
-        return res.status(HTTPStatus.OK).json({
-          status: 'valid',
-          expireDate: checkAccount.expireDate,
-          expireDateThai: checkAccount.expireDateThai
-        })
-      }
-      return res.status(HTTPStatus.OK).json({
-        status: checkAccount.status,
-        expireDate: checkAccount.expireDate,
-        expireDateThai: checkAccount.expireDateThai
-      })
-    } else {
+    // If status already something other than valid/expired/invalid (like revoked), return immediately
+    if (!['valid', 'expired', 'invalid'].includes(userDoc.status)) {
       return res.status(HTTPStatus.OK).json({
         status: 'invalid',
-        reason: 'not found'
+        reason: userDoc.status,
+        expireDate: userDoc.expireDate,
+        expireDateThai: userDoc.expireDateThai
       })
     }
-  } catch (error) {
+
+    const result = await evaluateAndSyncLicense(userDoc)
+    return res.status(HTTPStatus.OK).json(result)
+  }
+  
+  
+  catch (error) {
     return res.status(HTTPStatus.INTERNAL_SERVER_ERROR).json({
       error: error
     })
