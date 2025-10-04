@@ -61,7 +61,7 @@ async function evaluateAndSyncLicense(doc) {
   if (expireDateGregorian) {
     if (expireDateGregorian < now) {
       if (doc.status !== 'expired') {
-        // Only overwrite if status is (valid|expired) to not override manual flags
+        // Only overwrite if status is (valid|expired|invalid) - preserve suspended, revoked, etc.
         if (['valid', 'expired', 'invalid'].includes(doc.status)) {
           doc.status = 'expired'
           await doc.save()
@@ -75,6 +75,7 @@ async function evaluateAndSyncLicense(doc) {
       }
     } else {
       if (doc.status !== 'valid') {
+        // Only overwrite if status is (valid|expired|invalid) - preserve suspended, revoked, etc.
         if (['valid', 'expired', 'invalid'].includes(doc.status)) {
           doc.status = 'valid'
           await doc.save()
@@ -112,10 +113,19 @@ app.post('/license_api', async (req, res) => {
 
     // DEMO account first
     const demoDoc = await licen.findOne({
-      accountNumber: 'demo',
+      accountNumber: 'DEMO',
       license: licenes
     })
     if (demoDoc) {
+      // Check for suspended or other non-standard statuses first
+      if (!['valid', 'expired', 'invalid'].includes(demoDoc.status)) {
+        return res.status(HTTPStatus.OK).json({
+          status: 'invalid',
+          reason: demoDoc.status,
+          expireDate: demoDoc.expireDate,
+          expireDateThai: demoDoc.expireDateThai
+        })
+      }
       const demoResult = await evaluateAndSyncLicense(demoDoc)
       return res.status(HTTPStatus.OK).json(demoResult)
     }
