@@ -111,18 +111,24 @@ app.post('/license_api', async (req, res) => {
     const { account, licenes } = req.body
 
     // DEMO account first
-    const demoDoc = await licen.findOne({ accountNumber: 'demo', license: licenes })
+    const demoDoc = await licen.findOne({
+      accountNumber: 'demo',
+      license: licenes
+    })
     if (demoDoc) {
       const demoResult = await evaluateAndSyncLicense(demoDoc)
       return res.status(HTTPStatus.OK).json(demoResult)
     }
 
     // Normal account
-    const userDoc = await licen.findOne({ accountNumber: account, license: licenes })
+    const userDoc = await licen.findOne({
+      accountNumber: account,
+      license: licenes
+    })
     if (!userDoc) {
       // Fallback: account not found but license exists -> treat as demo usage
       const licenseOnlyDoc = await licen.findOne({ license: licenes })
-      if (licenseOnlyDoc) {
+      if (licenseOnlyDoc && licenseOnlyDoc.accountNumber === 'DEMO') {
         const assumed = await evaluateAndSyncLicense(licenseOnlyDoc)
         return res.status(HTTPStatus.OK).json({
           ...assumed,
@@ -130,7 +136,9 @@ app.post('/license_api', async (req, res) => {
           reason: assumed.reason || 'account-not-found-demo-assumed'
         })
       }
-      return res.status(HTTPStatus.OK).json({ status: 'invalid', reason: 'not found' })
+      return res
+        .status(HTTPStatus.OK)
+        .json({ status: 'invalid', reason: 'not found' })
     }
 
     // If status already something other than valid/expired/invalid (like revoked), return immediately
@@ -145,10 +153,8 @@ app.post('/license_api', async (req, res) => {
 
     const result = await evaluateAndSyncLicense(userDoc)
     return res.status(HTTPStatus.OK).json(result)
-  }
-  
-  
-  catch (error) {
+  } catch (error) {
+    console.error('Error processing /license_api request:', error)
     return res.status(HTTPStatus.INTERNAL_SERVER_ERROR).json({
       error: error
     })
