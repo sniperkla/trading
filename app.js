@@ -59,10 +59,14 @@ async function evaluateAndSyncLicense(doc) {
 
   // If we can evaluate an expiry date
   if (expireDateGregorian) {
+    const msInDay = 24 * 60 * 60 * 1000
+    const daysToExpire = Math.floor((expireDateGregorian - now) / msInDay)
     if (expireDateGregorian < now) {
       if (doc.status !== 'expired') {
         // Only overwrite if status is (valid|expired|invalid) - preserve suspended, revoked, etc.
-        if (['valid', 'expired', 'invalid'].includes(doc.status)) {
+        if (
+          ['valid', 'expired', 'invalid', 'nearly_expired'].includes(doc.status)
+        ) {
           doc.status = 'expired'
           await doc.save()
         }
@@ -70,13 +74,30 @@ async function evaluateAndSyncLicense(doc) {
       return {
         status: 'invalid',
         reason: 'expired',
+        expireDate: doc.expireDate
+      }
+    } else if (daysToExpire >= 0 && daysToExpire < 3) {
+      if (doc.status !== 'nearly_expired') {
+        if (
+          ['valid', 'expired', 'invalid', 'nearly_expired'].includes(doc.status)
+        ) {
+          doc.status = 'nearly_expired'
+          await doc.save()
+        }
+      }
+      return {
+        status: 'nearly_expired',
+        reason: 'expires_soon',
+        daysToExpire,
         expireDate: doc.expireDate,
         expireDateThai: doc.expireDateThai
       }
     } else {
       if (doc.status !== 'valid') {
-        // Only overwrite if status is (valid|expired|invalid) - preserve suspended, revoked, etc.
-        if (['valid', 'expired', 'invalid'].includes(doc.status)) {
+        // Only overwrite if status is (valid|expired|invalid|nearly_expired) - preserve suspended, revoked, etc.
+        if (
+          ['valid', 'expired', 'invalid', 'nearly_expired'].includes(doc.status)
+        ) {
           doc.status = 'valid'
           await doc.save()
         }
@@ -151,13 +172,20 @@ app.post('/license_api', async (req, res) => {
         .json({ status: 'invalid', reason: 'not found' })
     }
 
-    // If status already something other than valid/expired/invalid (like revoked), return immediately
+    // If status is nearly_expired, return nearly_expired (not invalid)
+    if (userDoc.status === 'nearly_expired') {
+      return res.status(HTTPStatus.OK).json({
+        status: 'valid',
+        reason: 'expires_soon',
+        expireDate: userDoc.expireDate
+      })
+    }
+    // If status already something other than valid/expired/invalid/nearly_expired (like revoked), return immediately
     if (!['valid', 'expired', 'invalid'].includes(userDoc.status)) {
       return res.status(HTTPStatus.OK).json({
         status: 'invalid',
         reason: userDoc.status,
-        expireDate: userDoc.expireDate,
-        expireDateThai: userDoc.expireDateThai
+        expireDate: userDoc.expireDate
       })
     }
 
