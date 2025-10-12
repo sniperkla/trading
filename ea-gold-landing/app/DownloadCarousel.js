@@ -47,7 +47,7 @@ const getCards = (
         </div>
         <div className="w-full flex flex-col gap-2">
           <a
-            href="https://zippyshare.day/Ekl62zz1UIpNztR/file"
+            href="https://mega.nz/file/S5JxACBL#2cqJp4Jz6jU-WqUk84cylTvD1sIy9BoSPqonWzVm2Sw"
             className={`w-full h-12 inline-flex items-center justify-center px-6 text-base font-medium rounded-xl transition-all duration-300 ${
               hoveredMCB
                 ? 'bg-yellow-400 text-black shadow-[0_0_15px_rgba(234,179,8,0.5)]'
@@ -135,7 +135,7 @@ const getCards = (
         </div>
         <div className="w-full flex flex-col gap-2">
           <a
-            href="https://zippyshare.day/rrcNCeO0f8eDS10/file"
+            href="https://mega.nz/file/ekBWzI7a#1khNBj5lwMnT_r_kbwAohWAd2FQI_9iutjcFZQFeEt0"
             target="_blank"
             rel="noopener noreferrer"
             className={`w-full h-12 inline-flex items-center justify-center px-6 text-base font-medium rounded-xl transition-all duration-300 ${
